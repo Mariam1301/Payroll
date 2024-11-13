@@ -1,0 +1,52 @@
+<div class="border border-primeng-surface-200">
+  <p-table [value]="data()" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        @for(column of columnList(); track column.name){
+        <th class="font-primeng">{{ column.name }}</th>
+        } @if(showDeleteButton()){
+        <th></th>
+        }
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row let-i="rowIndex">
+      <tr
+        [ngClass]="{ clickable: !disabled() }"
+        (click)="!disabled() && rowClicked.emit({ index: i, dataItem: row })"
+      >
+        @for(column of columnList(); track column.name){
+        <td>
+          @if(column.templateRef ){
+
+          <ng-container
+            *ngTemplateOutlet="
+              column.template?.template;
+              context: { $implicit: row }
+            "
+          ></ng-container>
+
+          }@else{
+
+          <p>{{ row[column.valueField] || "" }}</p>
+
+          }
+        </td>
+        } @if(showDeleteButton()){
+        <td>
+          <button
+            *transloco="let t"
+            uiConfirm
+            class="py-2 px-3 rounded"
+            [ngClass]="{
+              'hover:shadow-md transition-all duration-200 ': !disabled()
+            }"
+            (confirm)="deleteClicked.emit({ dataItem: row, index: i })"
+          >
+            <i class="pi pi-trash" style="font-size: 2rem"></i>
+          </button>
+        </td>
+        }
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

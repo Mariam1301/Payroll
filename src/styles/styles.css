@@ -1,3 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "../../node_modules/tailwindcss/base.css" layer(tailwindcss);
+@import "../../node_modules/tailwindcss/components.css" layer(tailwindcss);
+@import "../../node_modules/tailwindcss/utilities.css" layer(tailwindcss);
+/* @import "primeng/resources/themes/lara-light-blue/theme.css"; */
+/* @import "primeng/resources/primeng.css"; */
+@import "primeng/resources/themes/aura-light-noir/theme.css";
+
+tr.clickable {
+  @apply hover:bg-primeng-surface-100 cursor-pointer duration-300 transition-all;
+}
+th {
+  @apply cursor-default;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.p-calendar,
+.p-dropdown {
+  @apply w-full max-w-full;
+}
+
+.p-dialog-content {
+  @apply sm:p-5 p-2 pb-10 sm:pb-5;
+}
+.p-dialog-header {
+  @apply sm:p-5 px-2 py-5;
+}
+.p-dialog-bottom .p-dialog {
+  @apply m-0 rounded-b-none;
+}
+@media (max-width: 640px) {
+  .p-toast {
+    max-width: 90vw;
+    word-wrap: break-word;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+  }
+}
+
+.p-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.p-hidden-accessible input,
+.p-hidden-accessible select {
+  transform: scale(0);
+}

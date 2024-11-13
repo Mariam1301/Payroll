@@ -1,3 +1,7 @@
 {
-  "test": "Test"
+  "test": "Test",
+  "requiredError": "This field is required",
+  "patternError": "Invalid format",
+  "noRecords": "No records",
+  "select": "Select"
 }
