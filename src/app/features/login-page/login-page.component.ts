@@ -27,8 +27,7 @@ import { Router } from '@angular/router';
 export class LoginPageComponent {
   loginData = signal<Partial<LoginData>>({});
   showInvalidCredentialsError = signal(false);
-  regex =
-    "[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+(.[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@[a-zA-Z0-9_][-a-zA-Z0-9_]*(.[-a-zA-Z0-9_]+)*.[cC][oO][mM](:[0-9]{1,5})?";
+
   private readonly _loginService = inject(LoginService);
   private readonly _router = inject(Router);
 

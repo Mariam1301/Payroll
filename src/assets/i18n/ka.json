@@ -12,5 +12,24 @@
   "noAccount": "თუ არ გაქვს ანგარიში",
   "register": "დარეგისტრირდი",
   "emailOrPasswordNotValid": "არასწორი ელ-ფოსტა ან/და პაროლი",
-  "emailError": "გთხოვთ შეიყვანოთ სწორი ელ-ფოსტა"
+  "emailError": "გთხოვთ შეიყვანოთ სწორი ელ-ფოსტა",
+  "createYourAccount": "შექმენი შენი ანგარიში",
+  "pleaseEnterRegistrationDetails": " გთხოვთ შეიყვანოთ თქვენი დეტალები",
+
+  "name": "სახელი",
+  "lastName": "გვარი",
+  "confirmPassword": "დაადასტურე პაროლი",
+  "choosePassword": "აირჩიე პაროლი",
+  "tooSimple": "ძალიან მარტივია",
+  "avarageComplexity": "საშუალო სირთულის",
+  "complexPassword": "რთული პაროლი",
+  "byCreatingAccountYouAgreeWith": "რეგისტრირებით ვეთანხმები",
+  "termsAndConditions": "წესები და პირობები",
+  "alreadyHaveAccount": "უკვე გაქვთ ანგარიში?",
+  "signIn": "შესვლა",
+  "signUp": "რეგისტრაცია",
+  "passwordNoMatch": "შეყვანილი პაროლები არ ემთხვევა",
+  "minlength": "შეიყვანეთ მინიმუმ {{}} სიმბოლო",
+  "emailAlreadyInUse": "ეს ელ-ფოსტა უკვე გამოყენებულია",
+  "successMessage": "ოპერაცია წარმატებით დასრულდა"
 }

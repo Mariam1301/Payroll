@@ -8,6 +8,7 @@ import {
 } from './base-http.model';
 import { catchError, finalize, tap } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
+import { TranslocoService } from '@jsverse/transloco';
 
 const BASE_URL = 'http://Payroll-api.devgkh.com/api/';
 
@@ -18,7 +19,8 @@ export class BaseHttpService implements BaseHttpActions {
   constructor(
     public httpClient: HttpClient,
     private readonly _toastService: MessageService,
-    private readonly _loaderService: LoaderService
+    private readonly _loaderService: LoaderService,
+    private readonly _translocoService: TranslocoService
   ) {}
 
   get<T>(url: string, params?: ParamsType, options?: HttpRequestOptions) {
@@ -54,7 +56,8 @@ export class BaseHttpService implements BaseHttpActions {
         catchError((er) => {
           this.handleErrorResponse(er);
           throw er;
-        })
+        }),
+        tap(() => options?.showSuccessMessage && this.handleSuccessToast())
       );
   }
 
@@ -121,6 +124,13 @@ export class BaseHttpService implements BaseHttpActions {
       severity: 'error',
       summary: 'მოხდა შეცდომა',
       detail: errorMessage,
+    });
+  }
+
+  private handleSuccessToast(message?: string) {
+    this._toastService.add({
+      severity: 'success',
+      summary: message || this._translocoService.translate('successMessage'),
     });
   }
 }

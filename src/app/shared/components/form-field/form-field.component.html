@@ -2,7 +2,9 @@
   @if(label){
   <label
     class="mb-1 text-sm block"
-    [ngClass]="displayError() ? 'text-invalid' : 'text-primeng-text'"
+    [ngClass]="
+      errorMessage || displayError() ? 'text-invalid' : 'text-primeng-text'
+    "
   >
     {{ label }}<span *ngIf="isRequired()" class=""> *</span> </label
   >}
@@ -10,7 +12,9 @@
     <ng-content></ng-content>
   </div>
 
-  <span class="text-invalid text-xs h-2 leading-none">
-    {{ displayError() }}
-  </span>
+  <div class="h-3">
+    <span class="text-invalid text-xs leading-none">
+      {{ errorMessage || displayError() }}
+    </span>
+  </div>
 </div>

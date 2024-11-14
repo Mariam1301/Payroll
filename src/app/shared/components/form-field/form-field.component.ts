@@ -47,6 +47,8 @@ export class UiFormFieldComponent implements AfterContentInit {
     { validation: 'required', errorTranslationKey: 'requiredError' },
     { validation: 'pattern', errorTranslationKey: 'patternError' },
     { validation: 'email', errorTranslationKey: 'emailError' },
+    { validation: 'PasswordNoMatch', errorTranslationKey: 'passwordNoMatch' },
+    { validation: 'minlength', errorTranslationKey: 'minlength' },
   ];
 
   ngAfterContentInit(): void {
@@ -77,7 +79,9 @@ export class UiFormFieldComponent implements AfterContentInit {
         for (const validator of this.validators) {
           if (this.control.errors?.[validator.validation]) {
             this._translocoService
-              .selectTranslate(validator.errorTranslationKey)
+              .selectTranslate(validator.errorTranslationKey, {
+                ...this.control.errors?.[validator.validation],
+              })
               .pipe(takeUntilDestroyed(this._destroyRef))
               .subscribe((translation) => this.displayError.set(translation));
             break;

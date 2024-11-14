@@ -59,3 +59,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .p-hidden-accessible select {
   transform: scale(0);
 }
+.p-password {
+  width: 100%;
+}
+.p-password-input {
+  width: 100%;
+}
