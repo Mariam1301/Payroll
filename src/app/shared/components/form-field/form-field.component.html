@@ -1,15 +1,16 @@
 <div>
+  @if(label){
   <label
-    *ngIf="label"
     class="mb-1 text-sm block"
     [ngClass]="displayError() ? 'text-invalid' : 'text-primeng-text'"
   >
-    {{ label }}<span *ngIf="isRequired()" class=""> *</span>
-  </label>
+    {{ label }}<span *ngIf="isRequired()" class=""> *</span> </label
+  >}
   <div>
     <ng-content></ng-content>
   </div>
-  <small *ngIf="displayError" class="text-invalid">
+
+  <span class="text-invalid text-xs h-2 leading-none">
     {{ displayError() }}
-  </small>
+  </span>
 </div>

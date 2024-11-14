@@ -12,6 +12,8 @@ import { CounterState } from './store/counter/counter.state';
 import { Store } from '@ngrx/store';
 import { selectCount } from './store/counter/counter.selector';
 import { increment } from './store/counter/counter.actions';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,8 @@ import { increment } from './store/counter/counter.actions';
     UiDataElement,
     CommonModule,
     UiTemplateDirective,
+    ToastModule,
+    ConfirmDialogModule,
   ],
   templateUrl: './app.component.html',
 })

@@ -9,7 +9,7 @@ import {
 import { catchError, finalize, tap } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
 
-const BASE_URL = 'http://backend.devgkh.com/api/';
+const BASE_URL = 'http://Payroll-api.devgkh.com/api/';
 
 @Injectable({
   providedIn: 'root',

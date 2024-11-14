@@ -43,6 +43,12 @@ export class UiFormFieldComponent implements AfterContentInit {
   private readonly _destroyRef = inject(DestroyRef);
   private readonly _translocoService = inject(TranslocoService);
 
+  private validators: ValidatorConfig[] = [
+    { validation: 'required', errorTranslationKey: 'requiredError' },
+    { validation: 'pattern', errorTranslationKey: 'patternError' },
+    { validation: 'email', errorTranslationKey: 'emailError' },
+  ];
+
   ngAfterContentInit(): void {
     if (!this.control) {
       console.warn(
@@ -53,7 +59,10 @@ export class UiFormFieldComponent implements AfterContentInit {
 
     this.control.statusChanges
       ?.pipe(takeUntilDestroyed(this._destroyRef))
-      .subscribe(() => this.displayError.set(''));
+      .subscribe(() => {
+        this.displayError.set('');
+        this.updateErrorMessage();
+      });
   }
 
   updateErrorMessage(): void {
@@ -64,16 +73,16 @@ export class UiFormFieldComponent implements AfterContentInit {
     ) {
       if (this.errorMessage) {
         this.displayError.set(this.errorMessage);
-      } else if (this.control.errors?.['required']) {
-        this._translocoService
-          .selectTranslate('requiredError')
-          .pipe(takeUntilDestroyed(this._destroyRef))
-          .subscribe((translation) => this.displayError.set(translation));
-      } else if (this.control.errors?.['pattern']) {
-        this._translocoService
-          .selectTranslate('patternError')
-          .pipe(takeUntilDestroyed(this._destroyRef))
-          .subscribe((translation) => this.displayError.set(translation));
+      } else {
+        for (const validator of this.validators) {
+          if (this.control.errors?.[validator.validation]) {
+            this._translocoService
+              .selectTranslate(validator.errorTranslationKey)
+              .pipe(takeUntilDestroyed(this._destroyRef))
+              .subscribe((translation) => this.displayError.set(translation));
+            break;
+          }
+        }
       }
     }
   }
@@ -83,4 +92,9 @@ export class UiFormFieldComponent implements AfterContentInit {
       this.control?.validator && this.control?.validator({} as AbstractControl);
     return !!validator && validator['required'];
   }
+}
+
+interface ValidatorConfig {
+  validation: string;
+  errorTranslationKey: string;
 }

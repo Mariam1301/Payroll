@@ -48,6 +48,7 @@ module.exports = {
           800: "var(--primary-800)",
           900: "var(--primary-900)",
         },
+        link: "#0ea5e9",
       },
       borderRadius: {
         primeng: "var(--border-radius)",

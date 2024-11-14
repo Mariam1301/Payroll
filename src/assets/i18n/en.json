@@ -3,5 +3,14 @@
   "requiredError": "This field is required",
   "patternError": "Invalid format",
   "noRecords": "No records",
-  "select": "Select"
+  "select": "Select",
+  "loginToContinue": "Please log in to get started.",
+  "welcomeToPayroll": "Welcome to Payroll",
+  "login": "Log in",
+  "email": "Email",
+  "password": "Password",
+  "noAccount": "If you don't have account",
+  "register": "Register",
+  "emailOrPasswordNotValid": "Invalid Email and/or Password",
+  "emailError": "Please enter a valid email address."
 }
