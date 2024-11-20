@@ -6,14 +6,14 @@ import { authorizedRoutes } from './features/wrapper/authorized.routes';
 
 export const routes: Routes = [
   {
-    path: '',
-    children: authorizedRoutes,
-    canActivate: [authMatchGuard],
-  },
-  {
     path: 'auth',
     children: unauthorizedRoutes,
     canActivate: [nonAuthenticatedMatchGuard],
+  },
+  {
+    path: '',
+    children: authorizedRoutes,
+    canActivate: [authMatchGuard],
   },
 
   {

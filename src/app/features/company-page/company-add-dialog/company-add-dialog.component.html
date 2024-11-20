@@ -1,0 +1,17 @@
+<form #form="ngForm" autocomplete="off" *transloco="let t">
+  <ui-form-field class="w-full" [label]="t('name')">
+    <input
+      required
+      pInputText
+      name="name"
+      class="w-full"
+      [(ngModel)]="companyData().name"
+    />
+  </ui-form-field>
+
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

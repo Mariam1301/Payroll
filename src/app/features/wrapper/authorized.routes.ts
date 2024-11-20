@@ -13,10 +13,10 @@ export const authorizedRoutes: Routes = [
             (m) => m.CompanyPageComponent
           ),
       },
+      {
+        path: '**',
+        redirectTo: 'company',
+      },
     ],
-  },
-  {
-    path: '**',
-    redirectTo: 'company',
   },
 ];

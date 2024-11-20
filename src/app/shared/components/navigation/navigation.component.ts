@@ -1,10 +1,11 @@
 import { Component, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'ui-navigation',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, TranslocoModule],
   templateUrl: './navigation.component.html',
 })
 export class UiNavigationComponent {

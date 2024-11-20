@@ -1,9 +1,9 @@
-<div class="border border-primeng-surface-200">
+<div class="border border-primeng-surface-200" *transloco="let t">
   <p-table [value]="data()" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
-        @for(column of columnList(); track column.name){
-        <th class="font-primeng">{{ column.name }}</th>
+        @for(column of columnList(); track column?.name){
+        <th class="font-primeng">{{ t(column?.name || "") }}</th>
         } @if(showDeleteButton()){
         <th></th>
         }
@@ -14,7 +14,7 @@
         [ngClass]="{ clickable: !disabled() }"
         (click)="!disabled() && rowClicked.emit({ index: i, dataItem: row })"
       >
-        @for(column of columnList(); track column.name){
+        @for(column of columnList(); track column?.name){
         <td>
           @if(column.templateRef ){
 

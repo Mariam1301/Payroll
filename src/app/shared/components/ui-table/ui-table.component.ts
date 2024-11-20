@@ -2,11 +2,12 @@ import { NgClass } from '@angular/common';
 import { Component, input, output, TemplateRef } from '@angular/core';
 import { UiConfirmationDirective } from '../../directives/confirmation/confirmation.directive';
 import { TableModule } from 'primeng/table';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'ui-table',
   standalone: true,
-  imports: [NgClass, UiConfirmationDirective, TableModule],
+  imports: [NgClass, UiConfirmationDirective, TableModule, TranslocoModule],
   templateUrl: './ui-table.component.html',
 })
 export class UiTableComponent {

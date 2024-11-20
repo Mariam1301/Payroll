@@ -6,7 +6,6 @@ import {
 import { UiHeaderComponent } from '../../shared/components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { SidebarModule } from 'primeng/sidebar';
-import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-wrapper',
@@ -21,11 +20,10 @@ import { TranslocoService } from '@jsverse/transloco';
 })
 export class WrapperComponent {
   isMenuOpen = signal(false);
-  private readonly _translocoService = inject(TranslocoService);
 
   navigationArray: NavigationModel[] = [
     {
-      title: this._translocoService.translate('companies'),
+      title: 'companies',
       path: 'company',
     },
   ];

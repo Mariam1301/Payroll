@@ -6,11 +6,7 @@ import {
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import {
-  HTTP_INTERCEPTORS,
-  provideHttpClient,
-  withInterceptors,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TranslocoHttpLoader } from './localization/transloco-loader.service';
 import { provideTransloco } from '@jsverse/transloco';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -21,6 +17,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { counterReducer } from './store/counter/counter.reducer';
 import { authInterceptor } from './core/interceptors/auth/auth.interceptor';
 import { userReducer } from './store/user/user.reducer';
+import { DialogService } from 'primeng/dynamicdialog';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -40,6 +37,7 @@ export const appConfig: ApplicationConfig = {
     }),
     ConfirmationService,
     MessageService,
+    DialogService,
     provideStore({ counter: counterReducer, user: userReducer }),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),

@@ -31,5 +31,11 @@
   "minlength": "Please enter at least {{requiredLength}} characters",
   "emailAlreadyInUse": "This email is already in use",
   "successMessage": "Operation was successful",
-  "createAccount": "Create an account"
+  "createAccount": "Create an account",
+  "company": "Company",
+  "add": "Add",
+  "companies": "Companies",
+  "cancel": "Cancel",
+  "save": "Save",
+  "noRecord": "No Record"
 }
