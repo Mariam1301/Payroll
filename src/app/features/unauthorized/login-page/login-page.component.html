@@ -56,7 +56,9 @@
   <section>
     <p class="text-sm text-center flex items-center gap-1 text-gray-400">
       <span>{{ t("noAccount") }}, </span>
-      <button class="text-link">{{ t("createAccount") }}</button>
+      <button class="text-link" [routerLink]="['../signUp']">
+        {{ t("createAccount") }}
+      </button>
     </p>
   </section>
 </main>

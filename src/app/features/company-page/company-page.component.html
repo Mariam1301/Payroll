@@ -1,0 +1,11 @@
+<ng-container *transloco="let t">
+  <ui-responsive-data-view
+    [title]="t('company')"
+    [data]="data()"
+    [showAddButton]="true"
+    [showDeleteButton]="false"
+    (addButtonClicked)="onAddClick()"
+  >
+    <ui-data-element [name]="t('name')" valueField="name"></ui-data-element>
+  </ui-responsive-data-view>
+</ng-container>

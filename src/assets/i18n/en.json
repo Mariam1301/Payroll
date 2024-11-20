@@ -30,5 +30,6 @@
   "passwordNoMatch": "The passwords you've entered don’t match.",
   "minlength": "Please enter at least {{requiredLength}} characters",
   "emailAlreadyInUse": "This email is already in use",
-  "successMessage": "Operation was successful"
+  "successMessage": "Operation was successful",
+  "createAccount": "Create an account"
 }

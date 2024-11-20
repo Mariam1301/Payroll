@@ -17,7 +17,12 @@ export class LoginService {
 
   login(loginData: LoginData) {
     return this._baseHttpService
-      .post<AuthResponse, LoginData>(`${this.entityName}`, loginData)
+      .post<AuthResponse, LoginData>(
+        `${this.entityName}`,
+        loginData,
+        undefined,
+        { showSuccessMessage: true }
+      )
       .pipe(
         tap(({ user, token }) => {
           localStorage.setItem('user', JSON.stringify({ ...user, token }));

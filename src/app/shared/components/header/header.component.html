@@ -1,0 +1,21 @@
+<div
+  class="w-full flex items-center justify-between px-5 h-12 bg-primeng-surface-100 border-b border-primeng-surface-border"
+>
+  <div>
+    <h1>LOGO</h1>
+  </div>
+  <div class="flex items-center gap-x-2">
+    <div
+      class="cursor-pointer flex lg:hidden bg-primeng-surface-ground rounded-primeng border-primeng-surface-border border items-center justify-center"
+      (click)="menuClicked.emit()"
+    >
+      <i class="pi pi-bars text-xs"></i>
+    </div>
+    <p-avatar
+      [label]="(user$ | async) || ''"
+      styleClass="mr-2"
+      size="normal"
+      shape="circle"
+    />
+  </div>
+</div>

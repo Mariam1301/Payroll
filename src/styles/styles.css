@@ -5,6 +5,8 @@
 @import "primeng/resources/themes/aura-light-noir/theme.css";
 /* @import "primeng/resources/themes/lara-light-blue/theme.css"; */
 
+@import "primeicons/primeicons.css";
+
 tr.clickable {
   @apply hover:bg-primeng-surface-100 cursor-pointer duration-300 transition-all;
 }

@@ -1,1 +1,15 @@
-<p>wrapper works!</p>
+<ui-header (menuClicked)="isMenuOpen.set(!isMenuOpen())"></ui-header>
+<div class="w-full flex flex-1 h-full">
+  <div class="w-1/5 lg:block hidden border-r min-h-screen">
+    <ui-navigation [navigation]="navigationArray"></ui-navigation>
+  </div>
+  <div class="w-full lg:px-10 sm:px-4 py-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<p-sidebar [(visible)]="isMenuOpen">
+  <ui-navigation
+    [navigation]="navigationArray"
+    (navigationClicked)="isMenuOpen.set(false)"
+  ></ui-navigation>
+</p-sidebar>

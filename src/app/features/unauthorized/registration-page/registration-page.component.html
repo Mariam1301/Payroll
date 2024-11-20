@@ -98,7 +98,9 @@
   <section>
     <p class="text-sm text-center text-gray-400">
       <span>{{ t("alreadyHaveAccount") }} </span>
-      <button class="text-link inline">{{ t("signIn") }}</button>
+      <button class="text-link inline" [routerLink]="['../signIn']">
+        {{ t("signIn") }}
+      </button>
     </p>
   </section>
 </main>

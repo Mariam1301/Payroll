@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { UiFormFieldComponent } from './shared/components/form-field/form-field.component';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
@@ -14,6 +14,7 @@ import { selectCount } from './store/counter/counter.selector';
 import { increment } from './store/counter/counter.actions';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { LoginService } from './core/services/login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -32,11 +33,17 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
   ],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   count$: Observable<number>;
+
+  private _loginService = inject(LoginService);
 
   constructor(private store: Store<{ counter: CounterState }>) {
     this.count$ = this.store.select(selectCount);
+  }
+
+  ngOnInit(): void {
+    this._loginService.getUser();
   }
 
   onIncrement() {

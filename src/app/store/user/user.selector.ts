@@ -3,7 +3,7 @@ import { UserState } from './user.state';
 
 export const selectUserState = createFeatureSelector<UserState>('user');
 
-export const selectCount = createSelector(
+export const selectUser = createSelector(
   selectUserState,
   (state) => state.user
 );

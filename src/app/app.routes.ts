@@ -1,20 +1,21 @@
 import { Routes } from '@angular/router';
-import { WrapperComponent } from './features/wrapper/wrapper.component';
-import { authGuard } from './core/guards/auth/auth.guard';
-import { loggedInAuthGuardGuard } from './core/guards/logged-in-auth/logged-in-auth-guard.guard';
-import { RegistrationPageComponent } from './features/registration-page/registration-page.component';
+import { authMatchGuard } from './core/guards/auth/auth.guard';
+import { nonAuthenticatedMatchGuard } from './core/guards/nonAuth.guard.ts/non-auth.guard';
+import { unauthorizedRoutes } from './features/unauthorized/unauthorized.routes';
+import { authorizedRoutes } from './features/wrapper/authorized.routes';
 
 export const routes: Routes = [
   {
     path: '',
-    component: WrapperComponent,
-    canActivate: [authGuard],
+    children: authorizedRoutes,
+    canActivate: [authMatchGuard],
   },
   {
-    path: 'login',
-    component: RegistrationPageComponent,
-    canActivate: [loggedInAuthGuardGuard],
+    path: 'auth',
+    children: unauthorizedRoutes,
+    canActivate: [nonAuthenticatedMatchGuard],
   },
+
   {
     path: '**',
     redirectTo: '',

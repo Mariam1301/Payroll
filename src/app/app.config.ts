@@ -6,7 +6,11 @@ import {
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 import { TranslocoHttpLoader } from './localization/transloco-loader.service';
 import { provideTransloco } from '@jsverse/transloco';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -15,13 +19,14 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { counterReducer } from './store/counter/counter.reducer';
-import { AuthInterceptor } from './core/interceptors/auth/auth.interceptor';
+import { authInterceptor } from './core/interceptors/auth/auth.interceptor';
+import { userReducer } from './store/user/user.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimations(),
     provideTransloco({
       config: {
@@ -35,9 +40,8 @@ export const appConfig: ApplicationConfig = {
     }),
     ConfirmationService,
     MessageService,
-    provideStore({ counter: counterReducer }),
+    provideStore({ counter: counterReducer, user: userReducer }),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 };
