@@ -67,3 +67,25 @@ input[type="number"]::-webkit-outer-spin-button {
 .p-password-input {
   width: 100%;
 }
+
+.p-inputnumber {
+  width: 100%;
+}
+.p-inputwrapper {
+  width: 100%;
+}
+
+.p-inputnumber-input {
+  width: 100%;
+}
+.p-inputtext {
+  width: 100%;
+}
+
+.p-dialog-mask-scrollblocker {
+  overflow-y: scroll;
+}
+
+.p-dialog-content {
+  overflow-y: clip !important;
+}

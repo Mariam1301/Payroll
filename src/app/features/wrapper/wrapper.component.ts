@@ -26,6 +26,10 @@ export class WrapperComponent {
       title: 'companies',
       path: 'company',
     },
+    {
+      title: 'employees',
+      path: 'employee',
+    },
   ];
 
   toggleIsMenuOpen() {

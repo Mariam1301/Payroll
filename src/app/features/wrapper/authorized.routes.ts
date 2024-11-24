@@ -14,6 +14,13 @@ export const authorizedRoutes: Routes = [
           ),
       },
       {
+        path: 'employee',
+        loadChildren: () =>
+          import('../employee-page/employee.routes').then(
+            (r) => r.employeeRoutes
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'company',
       },

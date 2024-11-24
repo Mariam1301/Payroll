@@ -1,0 +1,185 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <div class="flex w-full items-center gap-x-5">
+    <ui-form-field class="w-full" [label]="t('fistName')">
+      <input
+        required
+        pInputText
+        name="fistName"
+        class="w-full"
+        [(ngModel)]="employeeData().first_name"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('lastName')">
+      <input
+        required
+        pInputText
+        name="lastName"
+        class="w-full"
+        [(ngModel)]="employeeData().last_name"
+      />
+    </ui-form-field>
+  </div>
+  <ui-form-field class="w-full" [label]="t('address')">
+    <input
+      required
+      pInputText
+      name="address"
+      class="w-full"
+      [(ngModel)]="employeeData().address"
+    />
+  </ui-form-field>
+  <div class="flex w-full items-center gap-x-5">
+    <ui-form-field class="w-full" [label]="t('email')">
+      <input
+        required
+        email
+        pInputText
+        name="email"
+        class="w-full"
+        [(ngModel)]="employeeData().email"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('phoneNumber')">
+      <p-inputNumber
+        required
+        prefix="+995 "
+        name="phone"
+        mode="decimal"
+        placeholder="+995 999999999"
+        [min]="0"
+        [minlength]="9"
+        [maxlength]="9"
+        [useGrouping]="false"
+        [(ngModel)]="employeeData().phone"
+      />
+    </ui-form-field>
+  </div>
+  <div class="flex w-full items-center gap-x-5">
+    <ui-form-field class="w-full" [label]="t('residency')">
+      <input
+        required
+        pInputText
+        name="residency"
+        class="w-full"
+        [(ngModel)]="employeeData().residency"
+      />
+    </ui-form-field>
+
+    <ui-form-field class="w-full" [label]="t('gender')">
+      <p-dropdown
+        name="gender"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectGender')"
+        [options]="genderOptions()"
+        [(ngModel)]="employeeData().gender"
+      />
+    </ui-form-field>
+  </div>
+
+  <div class="flex w-full items-center gap-x-5">
+    <ui-form-field class="w-full" [label]="t('personalNumber')">
+      <input
+        required
+        pInputText
+        class="w-full"
+        type="number"
+        name="personal_number"
+        [(ngModel)]="employeeData().personal_number"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('position')">
+      <input
+        required
+        pInputText
+        name="position"
+        class="w-full"
+        [(ngModel)]="employeeData().position"
+      />
+    </ui-form-field>
+  </div>
+  <div class="flex w-full items-center gap-x-5">
+    <ui-form-field class="w-full" [label]="t('workStartDate')">
+      <p-calendar
+        required
+        name="workStartDate"
+        [(ngModel)]="employeeData().work_start_date"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        inputId="buttondisplay"
+    /></ui-form-field>
+    <ui-form-field class="w-full" [label]="t('birthDate')">
+      <p-calendar
+        required
+        name="birthDate"
+        [(ngModel)]="employeeData().birth_date"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        inputId="buttondisplay"
+    /></ui-form-field>
+  </div>
+
+  <ui-form-field class="w-full" [label]="t('bankAccountNumber')">
+    <input
+      required
+      pInputText
+      uiIbanValidator
+      minlength="22"
+      name="iban"
+      class="w-full"
+      [(ngModel)]="employeeData().bank_account_number"
+    />
+  </ui-form-field>
+  <p-checkbox
+    name="isInPension"
+    [binary]="true"
+    [label]="t('isInPension')"
+    [(ngModel)]="employeeData().isInPension"
+  />
+  <div class="h-2 w-full border-b border-dashed"></div>
+  <div>
+    <p class="text-lg mb-2 font-bold">{{ t("salary") }}</p>
+    <div class="flex items-center gap-x-4">
+      <ui-form-field class="w-full" [label]="t('amount')">
+        <input
+          required
+          pInputText
+          type="number"
+          name="amount"
+          class="w-full"
+          [(ngModel)]="employeeData().salary!.amount"
+        />
+      </ui-form-field>
+      <ui-form-field class="w-full" [label]="t('currency')">
+        <p-dropdown
+          name="currency"
+          optionLabel="label"
+          optionValue="id"
+          [placeholder]="t('selectCurrency')"
+          [options]="currencyOptions()"
+          [(ngModel)]="employeeData().salary!.currency"
+        />
+      </ui-form-field>
+      <ui-form-field class="w-full" [label]="t('salaryType')">
+        <p-dropdown
+          name="salaryType"
+          optionLabel="label"
+          optionValue="id"
+          [placeholder]="t('salaryType')"
+          [options]="salaryTypeOptions()"
+          [(ngModel)]="employeeData().salary!.salaryType"
+        />
+      </ui-form-field>
+    </div>
+  </div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

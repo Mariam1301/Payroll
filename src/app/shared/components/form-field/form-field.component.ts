@@ -49,6 +49,8 @@ export class UiFormFieldComponent implements AfterContentInit {
     { validation: 'email', errorTranslationKey: 'emailError' },
     { validation: 'PasswordNoMatch', errorTranslationKey: 'passwordNoMatch' },
     { validation: 'minlength', errorTranslationKey: 'minlength' },
+    { validation: 'maxlength', errorTranslationKey: 'maxlength' },
+    { validation: 'invalidIban', errorTranslationKey: 'invalidIban' },
   ];
 
   ngAfterContentInit(): void {
@@ -71,7 +73,8 @@ export class UiFormFieldComponent implements AfterContentInit {
     if (
       this.control &&
       this.control.invalid &&
-      (this.control.dirty || this.control.touched)
+      this.control.dirty &&
+      this.control.touched
     ) {
       if (this.errorMessage) {
         this.displayError.set(this.errorMessage);

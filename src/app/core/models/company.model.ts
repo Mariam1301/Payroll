@@ -5,7 +5,7 @@ export interface Company {
   identification_code: string;
   logo: string;
   mobile: string;
-  name: 'new company';
+  name: string;
   created_at?: Date;
   deleted_at?: Date;
   updated_at?: Date;
