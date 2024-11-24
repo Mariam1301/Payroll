@@ -44,4 +44,3 @@ jobs:
 
           # Step 5: Restart Nginx to serve the updated front-end
           sudo systemctl restart nginx
-x
