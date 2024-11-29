@@ -3,10 +3,17 @@
     [title]="t('employee')"
     [data]="data()"
     [showAddButton]="true"
-    [showDeleteButton]="false"
+    [showDeleteButton]="true"
     (addButtonClicked)="onAddClick()"
+    (rowClicked)="onRowClick($event)"
+    (deleteClicked)="onDeleteClick($event)"
   >
     <ui-data-element name="name" valueField="name"></ui-data-element>
-    <ui-data-element name="email" valueField="email"></ui-data-element>
+    <ui-data-element name="lastName" valueField="surname"></ui-data-element>
+    <ui-data-element
+      name="personalNumber"
+      valueField="id_number"
+    ></ui-data-element>
+    <ui-data-element name="position" valueField="position"></ui-data-element>
   </ui-responsive-data-view>
 </ng-container>

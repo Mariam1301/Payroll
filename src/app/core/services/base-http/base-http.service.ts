@@ -117,6 +117,17 @@ export class BaseHttpService implements BaseHttpActions {
       summary: errorSummary,
       detail: errorText,
     });
+
+    let errors = error?.error?.errors;
+    if (errors && Object.keys(errors).length) {
+      for (let key of Object.keys(errors)) {
+        this._toastService.add({
+          severity: 'error',
+          summary: key,
+          detail: errors[key],
+        });
+      }
+    }
   }
 
   private handleErrorToast(errorMessage: string) {

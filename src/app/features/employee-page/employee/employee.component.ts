@@ -1,10 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { InputTextModule } from 'primeng/inputtext';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import {
   CurrencyEnum,
   Employee,
@@ -19,6 +19,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { IbanValidatorDirective } from '../../../shared/directives/iban-validator/iban-validator.directive';
 import { CheckboxModule } from 'primeng/checkbox';
 import { JsonPipe } from '@angular/common';
+import { formatDateToISODate } from '../../../core/utils/date-formating';
 
 @Component({
   standalone: true,
@@ -34,16 +35,24 @@ import { JsonPipe } from '@angular/common';
     CalendarModule,
     IbanValidatorDirective,
     CheckboxModule,
-    JsonPipe,
   ],
   templateUrl: './employee.component.html',
 })
-export class EmployeeComponent {
-  employeeData = signal<Partial<Employee>>({ salary: {} });
+export class EmployeeComponent implements OnInit {
+  employeeData = signal<Partial<Employee>>({});
+  stillWorking = signal(true);
+
+  now = new Date();
 
   private readonly _employeeService = inject(EmployeeService);
   private readonly _ref = inject(DynamicDialogRef);
+  private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _translocoService = inject(TranslocoService);
+
+  ngOnInit(): void {
+    const employe = this._dialogConfig.data;
+    employe && this.employeeData.set(employe);
+  }
 
   genderOptions = signal<{ id: GenderEnum; label: string }[]>([
     {
@@ -82,9 +91,28 @@ export class EmployeeComponent {
     },
   ]);
 
+  onStillWorkingChange() {
+    this.employeeData.update((prev) => ({ ...prev, end_date: undefined }));
+  }
+
+  // toDate(value?: string | Date | number) {
+  //   value&&console.log(new Date(value!));
+  //   return value ? new Date(value) : undefined;
+  // }
+
   onSaveClick() {
-    this._employeeService
-      .add(this.employeeData() as Employee)
-      .subscribe(() => this._ref.close(true));
+    const data = {
+      ...this.employeeData(),
+      phone: this.employeeData()?.phone?.toString(),
+      id_number: this.employeeData()?.id_number?.toString(),
+      birth_date: formatDateToISODate(this.employeeData().birth_date!),
+      start_date: formatDateToISODate(this.employeeData().start_date!),
+    };
+
+    const stream$ = this.employeeData().id
+      ? this._employeeService.update(data)
+      : this._employeeService.add(data);
+
+    stream$.subscribe(() => this._ref.close(true));
   }
 }

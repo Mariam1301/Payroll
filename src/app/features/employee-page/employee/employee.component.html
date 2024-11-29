@@ -11,7 +11,7 @@
         pInputText
         name="fistName"
         class="w-full"
-        [(ngModel)]="employeeData().first_name"
+        [(ngModel)]="employeeData().name"
       />
     </ui-form-field>
     <ui-form-field class="w-full" [label]="t('lastName')">
@@ -20,7 +20,7 @@
         pInputText
         name="lastName"
         class="w-full"
-        [(ngModel)]="employeeData().last_name"
+        [(ngModel)]="employeeData().surname"
       />
     </ui-form-field>
   </div>
@@ -34,16 +34,17 @@
     />
   </ui-form-field>
   <div class="flex w-full items-center gap-x-5">
-    <ui-form-field class="w-full" [label]="t('email')">
-      <input
+    <ui-form-field class="w-full" [label]="t('birthDate')">
+      <p-calendar
         required
-        email
-        pInputText
-        name="email"
-        class="w-full"
-        [(ngModel)]="employeeData().email"
-      />
-    </ui-form-field>
+        name="birthDate"
+        dateFormat="yy-mm-dd"
+        [(ngModel)]="employeeData().birth_date"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        inputId="buttondisplay"
+    /></ui-form-field>
+
     <ui-form-field class="w-full" [label]="t('phoneNumber')">
       <p-inputNumber
         required
@@ -90,7 +91,7 @@
         class="w-full"
         type="number"
         name="personal_number"
-        [(ngModel)]="employeeData().personal_number"
+        [(ngModel)]="employeeData().id_number"
       />
     </ui-form-field>
     <ui-form-field class="w-full" [label]="t('position')">
@@ -103,45 +104,68 @@
       />
     </ui-form-field>
   </div>
-  <div class="flex w-full items-center gap-x-5">
+  <div class="flex w-full items-center gap-x-5 mb-5">
     <ui-form-field class="w-full" [label]="t('workStartDate')">
       <p-calendar
         required
         name="workStartDate"
-        [(ngModel)]="employeeData().work_start_date"
+        dateFormat="yy-mm-dd"
+        [maxDate]="employeeData().end_date || now"
         [showIcon]="true"
         [showOnFocus]="false"
-        inputId="buttondisplay"
+        [(ngModel)]="employeeData().start_date"
     /></ui-form-field>
-    <ui-form-field class="w-full" [label]="t('birthDate')">
-      <p-calendar
-        required
-        name="birthDate"
-        [(ngModel)]="employeeData().birth_date"
-        [showIcon]="true"
-        [showOnFocus]="false"
-        inputId="buttondisplay"
-    /></ui-form-field>
+    <div class="w-full relative">
+      <ui-form-field class="w-full" [label]="t('workEndDate')">
+        <p-calendar
+          name="workEndDate"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [minDate]="employeeData().start_date"
+          [maxDate]="employeeData().end_date || now"
+          [disabled]="stillWorking()"
+          [(ngModel)]="employeeData().end_date"
+      /></ui-form-field>
+      <div class="absolute -bottom-5">
+        <p-checkbox
+          name="stillWorking"
+          [binary]="true"
+          [label]="t('stillWorking')"
+          [(ngModel)]="stillWorking"
+          (ngModelChange)="onStillWorkingChange()"
+        />
+      </div>
+    </div>
   </div>
-
-  <ui-form-field class="w-full" [label]="t('bankAccountNumber')">
-    <input
-      required
-      pInputText
-      uiIbanValidator
-      minlength="22"
-      name="iban"
-      class="w-full"
-      [(ngModel)]="employeeData().bank_account_number"
-    />
-  </ui-form-field>
+  <div class="flex w-full items-center gap-x-5">
+    <ui-form-field class="w-full" [label]="t('email')">
+      <input
+        email
+        pInputText
+        name="email"
+        class="w-full"
+        [(ngModel)]="employeeData().email"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('bankAccountNumber')">
+      <input
+        required
+        pInputText
+        minlength="22"
+        name="iban"
+        class="w-full"
+        [(ngModel)]="employeeData().bank_account"
+      />
+    </ui-form-field>
+  </div>
   <p-checkbox
     name="isInPension"
     [binary]="true"
     [label]="t('isInPension')"
-    [(ngModel)]="employeeData().isInPension"
+    [(ngModel)]="employeeData().pension"
   />
-  <div class="h-2 w-full border-b border-dashed"></div>
+  <!-- <div class="h-2 w-full border-b border-dashed"></div>
   <div>
     <p class="text-lg mb-2 font-bold">{{ t("salary") }}</p>
     <div class="flex items-center gap-x-4">
@@ -176,7 +200,7 @@
         />
       </ui-form-field>
     </div>
-  </div>
+  </div> -->
   <ui-dialog-actions
     [showCancel]="true"
     [disabled]="!!form.invalid"

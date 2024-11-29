@@ -18,18 +18,12 @@ export class EmployeeService {
     return this._baseHttpService.get<Employee>(`${this.entityName}/${id}`);
   }
 
-  add(data: Employee) {
-    return this._baseHttpService.post<unknown, Employee>(
-      `${this.entityName}`,
-      data
-    );
+  add(data: any) {
+    return this._baseHttpService.post<unknown, any>(`${this.entityName}`, data);
   }
 
-  update(data: Employee) {
-    return this._baseHttpService.put<unknown, Employee>(
-      `${this.entityName}`,
-      data
-    );
+  update(data: any) {
+    return this._baseHttpService.put<unknown, any>(`${this.entityName}`, data);
   }
 
   delete(id: number) {

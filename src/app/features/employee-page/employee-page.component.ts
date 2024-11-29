@@ -34,6 +34,22 @@ export class EmployeePageComponent implements OnInit {
       .onClose.subscribe((data) => !!data && this.fetchEmployee());
   }
 
+  onRowClick({ dataItem }: any) {
+    this._dialogService
+      .open(EmployeeComponent, {
+        header: this._translocoService.translate('employee'),
+        width: '70vw',
+        data: { ...dataItem },
+      })
+      .onClose.subscribe((data) => !!data && this.fetchEmployee());
+  }
+
+  onDeleteClick({ dataItem }: any) {
+    this._employeeService
+      .delete(dataItem.id)
+      .subscribe(() => this.fetchEmployee());
+  }
+
   fetchEmployee() {
     this._employeeService
       .getAll()
