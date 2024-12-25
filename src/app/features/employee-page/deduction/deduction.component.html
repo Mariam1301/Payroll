@@ -1,0 +1,91 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+
+
+  <ui-form-field class="w-full" [label]="t('type')">
+    <input
+      required
+      pInputText
+      name="type"
+      class="w-full"
+      [(ngModel)]="deduction().type"
+    />
+  </ui-form-field>
+  <div class="flex items-center gap-x-4">
+    <ui-form-field class="w-full" [label]="t('amount')">
+      <input
+        required
+        pInputText
+        type="number"
+        name="amount"
+        class="w-full"
+        [(ngModel)]="deduction()!.amount"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('currency')">
+      <p-dropdown
+        name="currency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions()"
+        [(ngModel)]="deduction().currency"
+      />
+    </ui-form-field>
+  </div>
+  <div class="flex items-center gap-x-4">
+    <ui-form-field class="w-full" [label]="t('paymentType')">
+      <p-dropdown
+        name="paymentType"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('paymentType')"
+        [options]="PaymentTypeOptions()"
+        [(ngModel)]="deduction()!.payment_type"
+      />
+    </ui-form-field>
+
+  </div>    <div class="flex items-center gap-x-4">
+  <ui-form-field class="w-full" [label]="t('salaryStartDate')">
+    <p-calendar
+      required
+      name="workStartDate"
+      dateFormat="yy-mm-dd"
+      [maxDate]="(deduction().end_date|dateType )|| now"
+      [showIcon]="true"
+      [showOnFocus]="false"
+      [(ngModel)]="deduction().start_date"
+    /></ui-form-field>
+  <div class="w-full relative">
+    <ui-form-field class="w-full" [label]="t('salaryEndDate')">
+      <p-calendar
+        name="salaryEndDate"
+        dateFormat="yy-mm-dd"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [minDate]="deduction().start_date|dateType"
+        [maxDate]="(deduction().end_date|dateType) || now"
+        [disabled]="currentDeduction()"
+        [(ngModel)]="deduction().end_date"
+      /></ui-form-field>
+    <div class="absolute -bottom-5">
+      <p-checkbox
+        name="currentDeduction"
+        [binary]="true"
+        [label]="t('currentDeduction')"
+        [(ngModel)]="currentDeduction"
+        (ngModelChange)="onCurrentDeductionChange()"
+      />
+    </div>
+  </div>
+</div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

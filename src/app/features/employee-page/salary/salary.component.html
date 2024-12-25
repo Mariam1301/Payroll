@@ -1,0 +1,93 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+
+  <div  class="flex flex-col gap-4"
+  >
+    <div class="flex items-center gap-x-4">
+      <ui-form-field class="w-full" [label]="t('amount')">
+        <input
+          required
+          pInputText
+          type="number"
+          name="amount"
+          class="w-full"
+          [(ngModel)]="salary()!.amount"
+        />
+      </ui-form-field>
+      <ui-form-field class="w-full" [label]="t('currency')">
+        <p-dropdown
+          name="currency"
+          optionLabel="label"
+          optionValue="id"
+          [placeholder]="t('selectCurrency')"
+          [options]="currencyOptions()"
+          [(ngModel)]="salary().currency"
+        />
+      </ui-form-field>
+    </div>
+    <div class="flex items-center gap-x-4">
+      <ui-form-field class="w-full" [label]="t('paymentType')">
+        <p-dropdown
+          name="paymentType"
+          optionLabel="label"
+          optionValue="id"
+          [placeholder]="t('paymentType')"
+          [options]="PaymentTypeOptions()"
+          [(ngModel)]="salary()!.payment_type"
+        />
+      </ui-form-field>
+      <ui-form-field class="w-full" [label]="t('salaryType')">
+        <p-dropdown
+          name="salaryType"
+          optionLabel="label"
+          optionValue="id"
+          [placeholder]="t('salaryType')"
+          [options]="SalaryTypeOptions()"
+          [(ngModel)]="salary()!.type"
+        />
+      </ui-form-field>
+    </div>    <div class="flex items-center gap-x-4">
+    <ui-form-field class="w-full" [label]="t('salaryStartDate')">
+      <p-calendar
+        required
+        name="workStartDate"
+        dateFormat="yy-mm-dd"
+        [maxDate]="(salary().end_date|dateType )|| now"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="salary().start_date"
+      /></ui-form-field>
+    <div class="w-full relative">
+      <ui-form-field class="w-full" [label]="t('salaryEndDate')">
+        <p-calendar
+          name="salaryEndDate"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [minDate]="salary().start_date|dateType"
+          [maxDate]="(salary().end_date|dateType) || now"
+          [disabled]="currentSalary()"
+          [(ngModel)]="salary().end_date"
+        /></ui-form-field>
+      <div class="absolute -bottom-5">
+        <p-checkbox
+          name="currentSalary"
+          [binary]="true"
+          [label]="t('currentSalary')"
+          [(ngModel)]="currentSalary"
+          (ngModelChange)="onCurrentSalaryChange()"
+        />
+      </div>
+    </div>
+    </div>
+  </div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

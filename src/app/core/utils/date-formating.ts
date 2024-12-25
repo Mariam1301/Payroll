@@ -1,4 +1,7 @@
 export function formatDateToISODate(date: Date | string) {
+  if(!date){
+    return
+  }
   const localDate = new Date(date as Date);
   const year = localDate.getFullYear();
   const month = ('0' + (localDate.getMonth() + 1)).slice(-2);

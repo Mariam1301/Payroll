@@ -1,0 +1,20 @@
+<ng-container *transloco="let t">
+  <ui-responsive-data-view
+    [title]="t('benefits')"
+    [data]="data()"
+    [showAddButton]="true"
+    [showDeleteButton]="true"
+    (addButtonClicked)="onAddClick()"
+    (rowClicked)="onRowClick($event)"
+    (deleteClicked)="onDeleteClick($event)"
+  >
+
+    <ui-data-element name="type" valueField="type"></ui-data-element>
+    <ui-data-element name="amount" valueField="amount"></ui-data-element>
+    <ui-data-element name="currency" valueField="currency"></ui-data-element>
+    <ui-data-element name="paymentType" valueField="payment_type"></ui-data-element>
+    <ui-data-element name="startDate" valueField="start_date"></ui-data-element>
+    <ui-data-element name="endDate" valueField="end_date"></ui-data-element>
+
+  </ui-responsive-data-view>
+</ng-container>

@@ -1,48 +1,53 @@
 <div class="sm:hidden" *transloco="let t">
-  @for( dataItem of data();let i = $index; track i; ){
-  <button
-    class="w-full border border-primeng-surface-200 bg-primeng-surface-0 max-w-full rounded-md my-3"
-    [ngClass]="{
-      'transition-all duration-200 hover:border-primeng-surface-500 ':
-        !disabled()
-    }"
-    [disabled]="disabled()"
-    (click)="!disabled() && rowClicked.emit({ index: i, dataItem })"
-  >
-    <div class="py-4">
-      @for(column of columnList(); track column?.name){
-      <div class="flex items-center justify-between truncate">
-        <div class="flex items-center gap-2 my-1 px-4 truncate">
-          <p class="font-bold font-primeng text-sm">{{ t(column?.name) }}:</p>
-          <p class="truncate font-primeng text-sm">
-            @if(column.templateRef ){
-            <ng-container
-              *ngTemplateOutlet="
-                column.template?.template;
-                context: { $implicit: dataItem }
-              "
-            ></ng-container>
-            }@else{
-            {{ dataItem ? dataItem[column?.valueField] : "" }}
-            }
-          </p>
-        </div>
-      </div>
-      }
-    </div>
-
-    @if(showDeleteButton()){
+  @for (dataItem of data(); let i = $index; track i) {
     <button
-      uiConfirm
-      class="py-4 rounded-b-primeng border-t w-full flex items-center justify-center border-dashed"
-      label="delete"
-      name="delete"
+      class="w-full border border-primeng-surface-200 bg-primeng-surface-0 max-w-full rounded-md my-3"
       [ngClass]="{
-        'hover:bg-primeng-surface-50 transition-all duration-200 ': !disabled()
+        'transition-all duration-200 hover:border-primeng-surface-500 ':
+          !disabled(),
       }"
-      (confirm)="deleteClicked.emit({dataItem, index:i})"
+      [disabled]="disabled()"
+      (click)="!disabled() && rowClicked.emit({ index: i, dataItem })"
     >
-      <i class="pi pi-trash" style="font-size: 2rem"></i></button
-    >}</button
-  >}
+      <div class="py-4">
+        @for (column of columnList(); track column?.name) {
+          <div class="flex items-center justify-between truncate">
+            <div class="flex items-center gap-2 my-1 px-4 truncate">
+              <p class="font-bold font-primeng text-sm">
+                {{ t(column?.name) }}:
+              </p>
+              <p class="truncate font-primeng text-sm">
+                @if (column.templateRef) {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      column.template?.template;
+                      context: { $implicit: dataItem }
+                    "
+                  ></ng-container>
+                } @else {
+                  {{ dataItem ? dataItem[column?.valueField] : "" }}
+                }
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+
+      @if (showDeleteButton()) {
+        <button
+          uiConfirm
+          class="py-4 rounded-b-primeng border-t w-full flex items-center justify-center border-dashed"
+          label="delete"
+          name="delete"
+          [ngClass]="{
+            'hover:bg-primeng-surface-50 transition-all duration-200 ':
+              !disabled(),
+          }"
+          (confirm)="deleteClicked.emit({ dataItem, index: i })"
+        >
+          <i class="pi pi-trash" style="font-size: 2rem"></i>
+        </button>
+      }
+    </button>
+  }
 </div>

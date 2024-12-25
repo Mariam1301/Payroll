@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <ui-responsive-data-view
-    [title]="t('employee')"
+    [title]="t('employees')"
     [data]="data()"
     [showAddButton]="true"
     [showDeleteButton]="true"
@@ -10,10 +10,5 @@
   >
     <ui-data-element name="name" valueField="name"></ui-data-element>
     <ui-data-element name="lastName" valueField="surname"></ui-data-element>
-    <ui-data-element
-      name="personalNumber"
-      valueField="id_number"
-    ></ui-data-element>
-    <ui-data-element name="position" valueField="position"></ui-data-element>
   </ui-responsive-data-view>
 </ng-container>

@@ -4,7 +4,7 @@ import { EmployeePageComponent } from './employee-page.component';
 
 export const employeeRoutes: Routes = [
   {
-    path: 'details',
+    path: 'details/:employeeId',
     component: EmployeeDetailsComponent,
   },
   {

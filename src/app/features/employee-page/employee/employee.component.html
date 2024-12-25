@@ -5,7 +5,7 @@
   *transloco="let t"
 >
   <div class="flex w-full items-center gap-x-5">
-    <ui-form-field class="w-full" [label]="t('fistName')">
+    <ui-form-field class="w-full" [label]="t('firstName')">
       <input
         required
         pInputText
@@ -110,7 +110,7 @@
         required
         name="workStartDate"
         dateFormat="yy-mm-dd"
-        [maxDate]="employeeData().end_date || now"
+        [maxDate]="(employeeData().end_date|dateType) || now"
         [showIcon]="true"
         [showOnFocus]="false"
         [(ngModel)]="employeeData().start_date"
@@ -122,8 +122,8 @@
           dateFormat="yy-mm-dd"
           [showIcon]="true"
           [showOnFocus]="false"
-          [minDate]="employeeData().start_date"
-          [maxDate]="employeeData().end_date || now"
+          [minDate]="employeeData().start_date|dateType"
+          [maxDate]="(employeeData().end_date|dateType)  || now"
           [disabled]="stillWorking()"
           [(ngModel)]="employeeData().end_date"
       /></ui-form-field>
@@ -165,42 +165,6 @@
     [label]="t('isInPension')"
     [(ngModel)]="employeeData().pension"
   />
-  <!-- <div class="h-2 w-full border-b border-dashed"></div>
-  <div>
-    <p class="text-lg mb-2 font-bold">{{ t("salary") }}</p>
-    <div class="flex items-center gap-x-4">
-      <ui-form-field class="w-full" [label]="t('amount')">
-        <input
-          required
-          pInputText
-          type="number"
-          name="amount"
-          class="w-full"
-          [(ngModel)]="employeeData().salary!.amount"
-        />
-      </ui-form-field>
-      <ui-form-field class="w-full" [label]="t('currency')">
-        <p-dropdown
-          name="currency"
-          optionLabel="label"
-          optionValue="id"
-          [placeholder]="t('selectCurrency')"
-          [options]="currencyOptions()"
-          [(ngModel)]="employeeData().salary!.currency"
-        />
-      </ui-form-field>
-      <ui-form-field class="w-full" [label]="t('salaryType')">
-        <p-dropdown
-          name="salaryType"
-          optionLabel="label"
-          optionValue="id"
-          [placeholder]="t('salaryType')"
-          [options]="salaryTypeOptions()"
-          [(ngModel)]="employeeData().salary!.salaryType"
-        />
-      </ui-form-field>
-    </div>
-  </div> -->
   <ui-dialog-actions
     [showCancel]="true"
     [disabled]="!!form.invalid"

@@ -2,10 +2,11 @@
   <p-table [value]="data()" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
-        @for(column of columnList(); track column?.name){
-        <th class="font-primeng">{{ t(column?.name || "") }}</th>
-        } @if(showDeleteButton()){
-        <th></th>
+        @for (column of columnList(); track column?.name) {
+          <th class="font-primeng">{{ t(column?.name || "") }}</th>
+        }
+        @if (showDeleteButton()) {
+          <th></th>
         }
       </tr>
     </ng-template>
@@ -14,37 +15,34 @@
         [ngClass]="{ clickable: !disabled() }"
         (click)="!disabled() && rowClicked.emit({ index: i, dataItem: row })"
       >
-        @for(column of columnList(); track column?.name){
-        <td>
-          @if(column.templateRef ){
-
-          <ng-container
-            *ngTemplateOutlet="
-              column.template?.template;
-              context: { $implicit: row }
-            "
-          ></ng-container>
-
-          }@else{
-
-          <p>{{ row[column.valueField] || "" }}</p>
-
-          }
-        </td>
-        } @if(showDeleteButton()){
-        <td>
-          <button
-            *transloco="let t"
-            uiConfirm
-            class="py-2 px-3 rounded"
-            [ngClass]="{
-              'hover:shadow-md transition-all duration-200 ': !disabled()
-            }"
-            (confirm)="deleteClicked.emit({ dataItem: row, index: i })"
-          >
-            <i class="pi pi-trash" style="font-size: 1rem"></i>
-          </button>
-        </td>
+        @for (column of columnList(); track column?.name) {
+          <td>
+            @if (column.templateRef) {
+              <ng-container
+                *ngTemplateOutlet="
+                  column.templateRef;
+                  context: { $implicit: row }
+                "
+              ></ng-container>
+            } @else {
+              <p>{{ row[column.valueField] || "" }}</p>
+            }
+          </td>
+        }
+        @if (showDeleteButton()) {
+          <td>
+            <button
+              *transloco="let t"
+              uiConfirm
+              class="py-2 px-3 rounded"
+              [ngClass]="{
+                'hover:shadow-md transition-all duration-200 ': !disabled(),
+              }"
+              (confirm)="deleteClicked.emit({ dataItem: row, index: i })"
+            >
+              <i class="pi pi-trash" style="font-size: 1rem"></i>
+            </button>
+          </td>
         }
       </tr>
     </ng-template>

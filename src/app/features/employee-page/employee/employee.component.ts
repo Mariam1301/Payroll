@@ -6,20 +6,17 @@ import { UiDialogActionsComponent } from '../../../shared/components/dialog-acti
 import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import {
-  CurrencyEnum,
   Employee,
-  SalaryTypeEnum,
 } from '../../../core/models/employee.model';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DropdownModule } from 'primeng/dropdown';
-import { GenderEnum } from '../../../core/models/general.model';
+import {CurrencyEnum, GenderEnum, PaymentTypeEnum} from '../../../core/models/general.model';
 import { CalendarModule } from 'primeng/calendar';
-import { IbanValidatorDirective } from '../../../shared/directives/iban-validator/iban-validator.directive';
 import { CheckboxModule } from 'primeng/checkbox';
-import { JsonPipe } from '@angular/common';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
+import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
 
 @Component({
   standalone: true,
@@ -33,8 +30,8 @@ import { formatDateToISODate } from '../../../core/utils/date-formating';
     InputMaskModule,
     DropdownModule,
     CalendarModule,
-    IbanValidatorDirective,
     CheckboxModule,
+    DateTypePipe
   ],
   templateUrl: './employee.component.html',
 })
@@ -65,13 +62,13 @@ export class EmployeeComponent implements OnInit {
     },
   ]);
 
-  salaryTypeOptions = signal<{ id: SalaryTypeEnum; label: string }[]>([
+  salaryTypeOptions = signal<{ id: PaymentTypeEnum; label: string }[]>([
     {
-      id: SalaryTypeEnum.Gross,
+      id: PaymentTypeEnum.Gross,
       label: this._translocoService.translate('gross'),
     },
     {
-      id: SalaryTypeEnum.Net,
+      id: PaymentTypeEnum.Net,
       label: this._translocoService.translate('net'),
     },
   ]);
@@ -94,11 +91,6 @@ export class EmployeeComponent implements OnInit {
   onStillWorkingChange() {
     this.employeeData.update((prev) => ({ ...prev, end_date: undefined }));
   }
-
-  // toDate(value?: string | Date | number) {
-  //   value&&console.log(new Date(value!));
-  //   return value ? new Date(value) : undefined;
-  // }
 
   onSaveClick() {
     const data = {

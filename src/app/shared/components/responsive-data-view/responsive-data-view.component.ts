@@ -20,7 +20,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
-import { UiConfirmationDirective } from '../../directives/confirmation/confirmation.directive';
 import { UiTemplateDirective } from '../../directives/template/ui-template.directive';
 import { LoaderService } from '../../../core/services/loader/loader.service';
 import { TranslocoModule } from '@jsverse/transloco';
@@ -40,7 +39,6 @@ import { UiTableComponent } from '../ui-table/ui-table.component';
     TableModule,
     CommonModule,
     SkeletonModule,
-    UiConfirmationDirective,
     ButtonModule,
     FormsModule,
     TranslocoModule,
@@ -108,6 +106,7 @@ export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
         templateRef: item.templateRef(),
       }))
     );
+
     for (let template of this.templateRefs()) {
       if (template.name === 'note') {
         this.noteTemplate.set(template.template);
