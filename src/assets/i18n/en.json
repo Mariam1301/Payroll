@@ -74,9 +74,14 @@
   "thereIsNoSalaryInformation": "There is no salary information",
   "startDate": "Start date",
   "endDate": "End date",
-"type": "Type",
+  "type": "Type",
   "benefits": "Benefits",
   "deductions": "Deductions",
   "benefit": "Benefit",
-  "deduction": "Deduction"
+  "deduction": "Deduction",
+  "monthlyBenefit": "Monthly benefit",
+  "monthlyBenefits": "Monthly benefits",
+  "monthlyDeductions": "Monthly deductions",
+  "monthlyDeduction": "Monthly deduction",
+  "edit": "Edit"
 }

@@ -31,8 +31,8 @@
     </ui-preview-field
     >
     <ui-preview-field [label]="t('position')">{{ employeeData().position }}</ui-preview-field>
-    <ui-preview-field [label]="t('workStartDate')">{{ employeeData().start_date }}</ui-preview-field>
-    <ui-preview-field [label]="t('workEndDate')">{{ employeeData().end_date || t('stillWorking') }}</ui-preview-field>
+    <ui-preview-field [label]="t('startDate')">{{ employeeData().start_date }}</ui-preview-field>
+    <ui-preview-field [label]="t('endDate')">{{ employeeData().end_date || t('stillWorking') }}</ui-preview-field>
     <ui-preview-field [label]="t('email')">{{ employeeData().email }}</ui-preview-field>
     <ui-preview-field [label]="t('bankAccountNumber')">{{ employeeData().bank_account }}</ui-preview-field>
     <ui-preview-field [label]="t('isInPension')">{{ t((employeeData().pension) ? 'active' : 'inactive') }}

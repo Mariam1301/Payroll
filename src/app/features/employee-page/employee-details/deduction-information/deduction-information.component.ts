@@ -37,7 +37,7 @@ export class DeductionInformationComponent {
   onAddClick() {
     this._dialogService
       .open(DeductionComponent, {
-        header: this._translocoService.translate('deduction'),
+        header: this._translocoService.translate('monthlyDeduction'),
         width: '70vw',
         data: { deduction:null, employeeId:this.employeeId() },
       })
@@ -47,7 +47,7 @@ export class DeductionInformationComponent {
   onRowClick({ dataItem }: any) {
     this._dialogService
       .open(DeductionComponent, {
-        header: this._translocoService.translate('deduction'),
+        header: this._translocoService.translate('monthlyDeduction'),
         width: '70vw',
         data: { deduction:dataItem, employeeId:this.employeeId() },
       })

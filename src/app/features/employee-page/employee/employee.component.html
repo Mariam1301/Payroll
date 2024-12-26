@@ -105,7 +105,7 @@
     </ui-form-field>
   </div>
   <div class="flex w-full items-center gap-x-5 mb-5">
-    <ui-form-field class="w-full" [label]="t('workStartDate')">
+    <ui-form-field class="w-full" [label]="t('startDate')">
       <p-calendar
         required
         name="workStartDate"
@@ -116,7 +116,7 @@
         [(ngModel)]="employeeData().start_date"
     /></ui-form-field>
     <div class="w-full relative">
-      <ui-form-field class="w-full" [label]="t('workEndDate')">
+      <ui-form-field class="w-full" [label]="t('endDate')">
         <p-calendar
           name="workEndDate"
           dateFormat="yy-mm-dd"

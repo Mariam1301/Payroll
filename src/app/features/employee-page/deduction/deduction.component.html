@@ -50,10 +50,10 @@
     </ui-form-field>
 
   </div>    <div class="flex items-center gap-x-4">
-  <ui-form-field class="w-full" [label]="t('salaryStartDate')">
+  <ui-form-field class="w-full" [label]="t('startDate')">
     <p-calendar
       required
-      name="workStartDate"
+      name="startDate"
       dateFormat="yy-mm-dd"
       [maxDate]="(deduction().end_date|dateType )|| now"
       [showIcon]="true"
@@ -61,9 +61,9 @@
       [(ngModel)]="deduction().start_date"
     /></ui-form-field>
   <div class="w-full relative">
-    <ui-form-field class="w-full" [label]="t('salaryEndDate')">
+    <ui-form-field class="w-full" [label]="t('endDate')">
       <p-calendar
-        name="salaryEndDate"
+        name="endDate"
         dateFormat="yy-mm-dd"
         [showIcon]="true"
         [showOnFocus]="false"

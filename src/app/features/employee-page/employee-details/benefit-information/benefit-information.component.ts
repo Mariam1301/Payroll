@@ -38,7 +38,7 @@ export class BenefitInformationComponent {
   onAddClick() {
     this._dialogService
       .open(BenefitComponent, {
-        header: this._translocoService.translate('benefit'),
+        header: this._translocoService.translate('monthlyBenefit'),
         width: '70vw',
         data: { benefit:null, employeeId:this.employeeId() },
       })
@@ -48,7 +48,7 @@ export class BenefitInformationComponent {
   onRowClick({ dataItem }: any) {
     this._dialogService
       .open(BenefitComponent, {
-        header: this._translocoService.translate('benefit'),
+        header: this._translocoService.translate('monthlyBenefit'),
         width: '70vw',
         data: { benefit:dataItem, employeeId:this.employeeId() },
       })

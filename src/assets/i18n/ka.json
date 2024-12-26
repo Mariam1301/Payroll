@@ -63,7 +63,7 @@
   "daily": "დღიური",
   "hourly": "საათობრივი",
   "fixed": "ფიქსირებული",
-  "amount": "რაოდენობა",
+  "amount": "თანხა",
   "currency": "ვალუტა",
   "paymentType": "გადახდის ტიპი",
   "salaryType": "ანაზღაურების ტიპი",
@@ -75,9 +75,14 @@
   "startDate": "დაწყების თარიღი",
   "endDate": "დასრულების თარიღი",
   "type": "ტიპი",
-  "benefits": "ბენეფიტები",
+  "benefits": "დანამატები",
   "deductions": "დაქვითები",
-  "benefit": "ბენეფიტი",
-  "deduction": "დაქვითვა"
+  "benefit": "დანამატი",
+  "deduction": "დაქვითვა",
+  "monthlyBenefit": "თვიური დანამატი",
+  "monthlyBenefits": "თვიური დანამატები",
+  "edit": "ცვლილება",
+  "monthlyDeductions": "თვიური დაქვითვები",
+  "monthlyDeduction": "თვიური დაქვითვა"
 
 }
