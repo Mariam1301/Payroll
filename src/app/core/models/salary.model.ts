@@ -9,6 +9,7 @@ export interface SalaryModel {
   includes_company_pension: boolean;
   currency: CurrencyEnum;
   amount: number;
+  payment_currency: CurrencyEnum;
   id: number;
 }
 

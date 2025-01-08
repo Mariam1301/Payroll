@@ -86,5 +86,6 @@
   "monthlyDeduction": "თვიური დაქვითვა",
   "includesIncomeTax": "მოიცავს საშემოსავლოს",
   "includesCompanyPension": "მოიცავს კომპანიის საპენსიოს",
-  "includesEmployeePension": "მოიცავს თანამშრომლის საპენსიოს"
+  "includesEmployeePension": "მოიცავს თანამშრომლის საპენსიოს",
+  "paymentCurrency": "გადახდის ვალუტა"
 }

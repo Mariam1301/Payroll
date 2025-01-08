@@ -26,6 +26,16 @@
           [(ngModel)]="salary().currency"
         />
       </ui-form-field>
+      <ui-form-field class="w-full" [label]="t('paymentCurrency')">
+        <p-dropdown
+          name="paymentCurrency"
+          optionLabel="label"
+          optionValue="id"
+          [placeholder]="t('selectCurrency')"
+          [options]="currencyOptions()"
+          [(ngModel)]="salary().payment_currency"
+        />
+      </ui-form-field>
     </div>
 
     <ui-form-field class="w-full" [label]="t('salaryType')">
