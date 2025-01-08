@@ -3,11 +3,6 @@ export enum GenderEnum {
   Male = 'Male',
 }
 
-export enum PaymentTypeEnum {
-  Net = "net",
-  Gross= "gross"
-}
-
 export enum CurrencyEnum {
   GEL = 'GEL',
   USD = 'USD',

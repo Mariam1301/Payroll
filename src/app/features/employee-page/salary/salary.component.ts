@@ -14,10 +14,7 @@ import { tap } from 'rxjs';
 import { CalendarModule } from 'primeng/calendar';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { CheckboxModule } from 'primeng/checkbox';
-import {
-  CurrencyEnum,
-  PaymentTypeEnum,
-} from '../../../core/models/general.model';
+import { CurrencyEnum } from '../../../core/models/general.model';
 
 @Component({
   standalone: true,
@@ -47,17 +44,6 @@ export class SalaryComponent implements OnInit {
   currentSalary = signal(true);
 
   now = new Date();
-
-  PaymentTypeOptions = signal<{ id: PaymentTypeEnum; label: string }[]>([
-    {
-      id: PaymentTypeEnum.Gross,
-      label: this._translocoService.translate('gross'),
-    },
-    {
-      id: PaymentTypeEnum.Net,
-      label: this._translocoService.translate('net'),
-    },
-  ]);
 
   SalaryTypeOptions = signal<{ id: SalaryTypeEnum; label: string }[]>([
     {

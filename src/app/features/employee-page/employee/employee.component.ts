@@ -5,18 +5,16 @@ import { InputTextModule } from 'primeng/inputtext';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import {
-  Employee,
-} from '../../../core/models/employee.model';
+import { Employee } from '../../../core/models/employee.model';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DropdownModule } from 'primeng/dropdown';
-import {CurrencyEnum, GenderEnum, PaymentTypeEnum} from '../../../core/models/general.model';
+import { CurrencyEnum, GenderEnum } from '../../../core/models/general.model';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
-import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
+import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 
 @Component({
   standalone: true,
@@ -31,7 +29,7 @@ import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
     DropdownModule,
     CalendarModule,
     CheckboxModule,
-    DateTypePipe
+    DateTypePipe,
   ],
   templateUrl: './employee.component.html',
 })
@@ -59,17 +57,6 @@ export class EmployeeComponent implements OnInit {
     {
       id: GenderEnum.Male,
       label: this._translocoService.translate('male'),
-    },
-  ]);
-
-  salaryTypeOptions = signal<{ id: PaymentTypeEnum; label: string }[]>([
-    {
-      id: PaymentTypeEnum.Gross,
-      label: this._translocoService.translate('gross'),
-    },
-    {
-      id: PaymentTypeEnum.Net,
-      label: this._translocoService.translate('net'),
     },
   ]);
 

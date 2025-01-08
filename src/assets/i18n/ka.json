@@ -66,7 +66,6 @@
   "monthlyFixed": "თვიური ფიქსირებული",
   "amount": "თანხა",
   "currency": "ვალუტა",
-  "paymentType": "გადახდის ტიპი",
   "salaryType": "ანაზღაურების ტიპი",
   "salary": "ხელფასი",
   "selectCurrency": "აირჩიე ვალუტა",
@@ -84,5 +83,8 @@
   "monthlyBenefits": "თვიური დანამატები",
   "edit": "ცვლილება",
   "monthlyDeductions": "თვიური დაქვითვები",
-  "monthlyDeduction": "თვიური დაქვითვა"
+  "monthlyDeduction": "თვიური დაქვითვა",
+  "includesIncomeTax": "მოიცავს საშემოსავლოს",
+  "includesCompanyPension": "მოიცავს კომპანიის საპენსიოს",
+  "includesEmployeePension": "მოიცავს თანამშრომლის საპენსიოს"
 }

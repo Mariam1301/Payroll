@@ -1,10 +1,12 @@
-import { CurrencyEnum, PaymentTypeEnum } from './general.model';
+import { CurrencyEnum } from './general.model';
 
 export interface SalaryModel {
   start_date: Date | string;
   end_date: Date | string;
   type: SalaryTypeEnum;
-  payment_type: PaymentTypeEnum;
+  includes_income_tax: boolean;
+  includes_employee_pension: boolean;
+  includes_company_pension: boolean;
   currency: CurrencyEnum;
   amount: number;
   id: number;

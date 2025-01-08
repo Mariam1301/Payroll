@@ -66,7 +66,6 @@
   "monthlyFixed": "Monthly fixed",
   "amount": "Amount",
   "currency": "Currency",
-  "paymentType": "Payment type",
   "salaryType": "Salary type",
   "salary": "Salary",
   "selectCurrency": "Select currency",
@@ -84,5 +83,8 @@
   "monthlyBenefits": "Monthly benefits",
   "monthlyDeductions": "Monthly deductions",
   "monthlyDeduction": "Monthly deduction",
-  "edit": "Edit"
+  "edit": "Edit",
+  "includesIncomeTax": "Includes income tax",
+  "includesCompanyPension": "Includes company pension",
+  "includesEmployeePension": "Includes employee pension"
 }

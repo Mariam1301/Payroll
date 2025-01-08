@@ -4,9 +4,7 @@
   autocomplete="off"
   *transloco="let t"
 >
-
-  <div  class="flex flex-col gap-4"
-  >
+  <div class="flex flex-col gap-4">
     <div class="flex items-center gap-x-4">
       <ui-form-field class="w-full" [label]="t('amount')">
         <input
@@ -29,60 +27,70 @@
         />
       </ui-form-field>
     </div>
+
+    <ui-form-field class="w-full" [label]="t('salaryType')">
+      <p-dropdown
+        name="salaryType"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('salaryType')"
+        [options]="SalaryTypeOptions()"
+        [(ngModel)]="salary()!.type"
+      />
+    </ui-form-field>
     <div class="flex items-center gap-x-4">
-      <ui-form-field class="w-full" [label]="t('paymentType')">
-        <p-dropdown
-          name="paymentType"
-          optionLabel="label"
-          optionValue="id"
-          [placeholder]="t('paymentType')"
-          [options]="PaymentTypeOptions()"
-          [(ngModel)]="salary()!.payment_type"
-        />
-      </ui-form-field>
-      <ui-form-field class="w-full" [label]="t('salaryType')">
-        <p-dropdown
-          name="salaryType"
-          optionLabel="label"
-          optionValue="id"
-          [placeholder]="t('salaryType')"
-          [options]="SalaryTypeOptions()"
-          [(ngModel)]="salary()!.type"
-        />
-      </ui-form-field>
-    </div>    <div class="flex items-center gap-x-4">
-    <ui-form-field class="w-full" [label]="t('startDate')">
-      <p-calendar
-        required
-        name="startDate"
-        dateFormat="yy-mm-dd"
-        [maxDate]="(salary().end_date|dateType )|| now"
-        [showIcon]="true"
-        [showOnFocus]="false"
-        [(ngModel)]="salary().start_date"
-      /></ui-form-field>
-    <div class="w-full relative">
-      <ui-form-field class="w-full" [label]="t('endDate')">
+      <p-checkbox
+        name="includesIncomeTax"
+        [binary]="true"
+        [label]="t('includesIncomeTax')"
+        [(ngModel)]="salary()!.includes_income_tax"
+      />
+      <p-checkbox
+        name="includesEmployeePension"
+        [binary]="true"
+        [label]="t('includesEmployeePension')"
+        [(ngModel)]="salary()!.includes_employee_pension"
+      />
+      <p-checkbox
+        name="includesCompanyPension"
+        [binary]="true"
+        [label]="t('includesCompanyPension')"
+        [(ngModel)]="salary()!.includes_company_pension"
+      />
+    </div>
+    <div class="flex items-center gap-x-4">
+      <ui-form-field class="w-full" [label]="t('startDate')">
         <p-calendar
-          name="endDate"
+          required
+          name="startDate"
           dateFormat="yy-mm-dd"
+          [maxDate]="(salary().end_date | dateType) || now"
           [showIcon]="true"
           [showOnFocus]="false"
-          [minDate]="salary().start_date|dateType"
-          [maxDate]="(salary().end_date|dateType) || now"
-          [disabled]="currentSalary()"
-          [(ngModel)]="salary().end_date"
+          [(ngModel)]="salary().start_date"
+      /></ui-form-field>
+      <div class="w-full relative">
+        <ui-form-field class="w-full" [label]="t('endDate')">
+          <p-calendar
+            name="endDate"
+            dateFormat="yy-mm-dd"
+            [showIcon]="true"
+            [showOnFocus]="false"
+            [minDate]="salary().start_date | dateType"
+            [maxDate]="(salary().end_date | dateType) || now"
+            [disabled]="currentSalary()"
+            [(ngModel)]="salary().end_date"
         /></ui-form-field>
-      <div class="absolute -bottom-5">
-        <p-checkbox
-          name="currentSalary"
-          [binary]="true"
-          [label]="t('currentSalary')"
-          [(ngModel)]="currentSalary"
-          (ngModelChange)="onCurrentSalaryChange()"
-        />
+        <div class="absolute -bottom-5">
+          <p-checkbox
+            name="currentSalary"
+            [binary]="true"
+            [label]="t('currentSalary')"
+            [(ngModel)]="currentSalary"
+            (ngModelChange)="onCurrentSalaryChange()"
+          />
+        </div>
       </div>
-    </div>
     </div>
   </div>
   <ui-dialog-actions

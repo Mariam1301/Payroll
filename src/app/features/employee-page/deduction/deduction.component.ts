@@ -1,18 +1,18 @@
-import {Component, inject, signal} from '@angular/core';
-import {CalendarModule} from "primeng/calendar";
-import {CheckboxModule} from "primeng/checkbox";
-import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
-import {DropdownModule} from "primeng/dropdown";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {InputTextModule} from "primeng/inputtext";
-import {TranslocoDirective, TranslocoService} from "@jsverse/transloco";
-import {UiDialogActionsComponent} from "../../../shared/components/dialog-actions/dialog-actions.component";
-import {UiFormFieldComponent} from "../../../shared/components/form-field/form-field.component";
-import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
-import {EmployeeService} from "../../../core/services/employee/employee.service";
-import {CurrencyEnum, PaymentTypeEnum} from "../../../core/models/general.model";
-import {formatDateToISODate} from "../../../core/utils/date-formating";
-import {Deduction} from "../../../core/models/deduction.model";
+import { Component, inject, signal } from '@angular/core';
+import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
+import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { EmployeeService } from '../../../core/services/employee/employee.service';
+import { CurrencyEnum } from '../../../core/models/general.model';
+import { formatDateToISODate } from '../../../core/utils/date-formating';
+import { Deduction } from '../../../core/models/deduction.model';
 
 @Component({
   selector: 'app-deduction',
@@ -27,36 +27,21 @@ import {Deduction} from "../../../core/models/deduction.model";
     ReactiveFormsModule,
     TranslocoDirective,
     UiDialogActionsComponent,
-    UiFormFieldComponent
+    UiFormFieldComponent,
   ],
   templateUrl: './deduction.component.html',
 })
 export class DeductionComponent {
   deduction = signal<Partial<Deduction>>({});
 
-  private  readonly  _translocoService = inject(TranslocoService);
+  private readonly _translocoService = inject(TranslocoService);
   private readonly _ref = inject(DynamicDialogRef);
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _employeeService = inject(EmployeeService);
 
-  currentDeduction  = signal(true)
+  currentDeduction = signal(true);
 
   now = new Date();
-
-
-
-  PaymentTypeOptions = signal<{ id: PaymentTypeEnum; label: string }[]>([
-    {
-
-      id: PaymentTypeEnum.Gross,
-      label: this._translocoService.translate('gross'),
-    },
-    {
-      id: PaymentTypeEnum.Net,
-      label: this._translocoService.translate('net'),
-    },
-  ]);
-
 
   currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
     {
@@ -78,24 +63,21 @@ export class DeductionComponent {
     deduction && this.deduction.set(deduction);
   }
 
-
-  onSaveClick(){
+  onSaveClick() {
     const employeeId = this._dialogConfig.data?.employeeId;
     const data = {
       ...this.deduction(),
       start_date: formatDateToISODate(this.deduction().start_date!),
       end_date: formatDateToISODate(this.deduction().end_date!),
     };
-    const stream$ = (data?.id)
-      ?this._employeeService.updateDeduction(employeeId, data):
-      this._employeeService.addDeduction(employeeId, data)
-
+    const stream$ = data?.id
+      ? this._employeeService.updateDeduction(employeeId, data)
+      : this._employeeService.addDeduction(employeeId, data);
 
     stream$.subscribe(() => this._ref.close(true));
   }
 
-  onCurrentDeductionChange(){
+  onCurrentDeductionChange() {
     this.deduction.update((prev) => ({ ...prev, end_date: undefined }));
-
   }
 }
