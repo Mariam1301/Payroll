@@ -63,6 +63,7 @@
   "daily": "დღიური",
   "hourly": "საათობრივი",
   "fixed": "ფიქსირებული",
+  "monthlyFixed": "თვიური ფიქსირებული",
   "amount": "თანხა",
   "currency": "ვალუტა",
   "paymentType": "გადახდის ტიპი",
@@ -84,5 +85,4 @@
   "edit": "ცვლილება",
   "monthlyDeductions": "თვიური დაქვითვები",
   "monthlyDeduction": "თვიური დაქვითვა"
-
 }

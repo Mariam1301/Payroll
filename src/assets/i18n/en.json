@@ -63,6 +63,7 @@
   "daily": "Daily",
   "hourly": "Hourly",
   "fixed": "Fixed",
+  "monthlyFixed": "Monthly fixed",
   "amount": "Amount",
   "currency": "Currency",
   "paymentType": "Payment type",
