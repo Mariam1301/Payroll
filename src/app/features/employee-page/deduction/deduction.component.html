@@ -13,7 +13,7 @@
       [(ngModel)]="deduction().type"
     />
   </ui-form-field>
-  <div class="flex items-center gap-x-4">
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('amount')">
       <input
         required
@@ -35,7 +35,7 @@
       />
     </ui-form-field>
   </div>
-  <div class="flex items-center gap-x-4">
+  <div class="flex items-center gap-4">
     <p-checkbox
       name="includesIncomeTax"
       [binary]="true"
@@ -55,7 +55,7 @@
       [(ngModel)]="deduction()!.includes_company_pension"
     />
   </div>
-  <div class="flex items-center gap-x-4">
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('startDate')">
       <p-calendar
         required

@@ -8,6 +8,7 @@ import { EmployeeService } from '../../../../core/services/employee/employee.ser
 import { ExemptionsComponent } from '../../exemptions/exemptions.component';
 import { DatePipe } from '@angular/common';
 import { UiTemplateDirective } from '../../../../shared/directives/template/ui-template.directive';
+import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 
 @Component({
   templateUrl: './exemption-information.component.html',
@@ -27,7 +28,7 @@ export class ExemptionInformationComponent {
   data = signal<Partial<Exemption>[]>([]);
 
   private _employeeService = inject(EmployeeService);
-  private _dialogService = inject(DialogService);
+  private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
 
   ngOnInit(): void {
@@ -38,7 +39,6 @@ export class ExemptionInformationComponent {
     this._dialogService
       .open(ExemptionsComponent, {
         header: this._translocoService.translate('exemption'),
-        width: '70vw',
         data: { exemption: null, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
@@ -48,7 +48,6 @@ export class ExemptionInformationComponent {
     this._dialogService
       .open(ExemptionsComponent, {
         header: this._translocoService.translate('exemption'),
-        width: '70vw',
         data: { exemption: dataItem, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());

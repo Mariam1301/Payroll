@@ -18,6 +18,7 @@ import { counterReducer } from './store/counter/counter.reducer';
 import { authInterceptor } from './core/interceptors/auth/auth.interceptor';
 import { userReducer } from './store/user/user.reducer';
 import { DialogService } from 'primeng/dynamicdialog';
+import { UiDialogService } from './core/services/dialog/dialog.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -38,6 +39,7 @@ export const appConfig: ApplicationConfig = {
     ConfirmationService,
     MessageService,
     DialogService,
+    UiDialogService,
     provideStore({ counter: counterReducer, user: userReducer }),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),

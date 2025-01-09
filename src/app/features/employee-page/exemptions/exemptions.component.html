@@ -13,7 +13,7 @@
       [(ngModel)]="exemption().type"
     />
   </ui-form-field>
-  <div class="flex items-center gap-x-4">
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('limitType')">
       <p-dropdown
         name="limitType"
@@ -27,7 +27,7 @@
     </ui-form-field>
 
     @if (exemption().limit_type === "AMOUNT_BASED") {
-      <div class="flex items-center gap-x-4 w-full">
+      <div class="flex sm:flex-nowrap flex-wrap items-center gap-4 w-full">
         <ui-form-field class="w-full" [label]="t('amount')">
           <input
             required

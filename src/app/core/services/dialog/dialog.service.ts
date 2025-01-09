@@ -8,7 +8,7 @@ export class UiDialogService {
   open(component: Type<unknown>, config?: DynamicDialogConfig) {
     return this._dialogService.open(component, {
       header: '',
-      width: '50vw',
+      width: '60vw',
       modal: true,
       breakpoints: { '640px': '100vw' },
       ...config,

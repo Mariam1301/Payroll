@@ -6,7 +6,7 @@ import { EmployeeService } from '../../core/services/employee/employee.service';
 import { Employee } from '../../core/models/employee.model';
 import { UiDialogService } from '../../core/services/dialog/dialog.service';
 import { EmployeeComponent } from './employee/employee.component';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-page',
@@ -17,7 +17,7 @@ import {Router} from "@angular/router";
 })
 export class EmployeePageComponent implements OnInit {
   data = signal<Partial<Employee>[]>([]);
-  router = inject(Router)
+  router = inject(Router);
 
   private readonly _employeeService = inject(EmployeeService);
   private readonly _dialogService = inject(UiDialogService);
@@ -31,7 +31,6 @@ export class EmployeePageComponent implements OnInit {
     this._dialogService
       .open(EmployeeComponent, {
         header: this._translocoService.translate('employee'),
-        width: '70vw',
       })
       .onClose.subscribe((data) => !!data && this.fetchEmployee());
   }
@@ -40,11 +39,10 @@ export class EmployeePageComponent implements OnInit {
     this.router.navigate(['/employee/details', dataItem.id]);
   }
 
-  onEditClick({dataItem}: any) {
+  onEditClick({ dataItem }: any) {
     this._dialogService
       .open(EmployeeComponent, {
         header: this._translocoService.translate('employee'),
-        width: '70vw',
         data: { ...dataItem },
       })
       .onClose.subscribe((data) => !!data && this.fetchEmployee());

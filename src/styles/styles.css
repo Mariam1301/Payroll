@@ -26,10 +26,13 @@ input[type="number"]::-webkit-outer-spin-button {
 .p-dropdown {
   @apply w-full max-w-full;
 }
-
 .p-dialog-content {
   @apply sm:p-5 p-2 pb-10 sm:pb-5;
 }
+
+/* .p-dialog {
+  @apply sm:w-[60vw]  w-[100vw];
+} */
 .p-dialog-header {
   @apply sm:p-5 px-2 py-5;
 }

@@ -3,12 +3,12 @@ import { EmployeeService } from '../../../../core/services/employee/employee.ser
 import { SalaryModel } from '../../../../core/models/salary.model';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { ButtonModule } from 'primeng/button';
-import { DialogService } from 'primeng/dynamicdialog';
 import { SalaryComponent } from '../../salary/salary.component';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { UiTemplateDirective } from '../../../../shared/directives/template/ui-template.directive';
 import { DatePipe } from '@angular/common';
+import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 
 @Component({
   selector: 'employee-salary-information',
@@ -29,7 +29,7 @@ export class SalaryInformationComponent {
   data = signal<Partial<SalaryModel>[]>([]);
 
   private _employeeService = inject(EmployeeService);
-  private _dialogService = inject(DialogService);
+  private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
 
   ngOnInit(): void {
@@ -40,7 +40,6 @@ export class SalaryInformationComponent {
     this._dialogService
       .open(SalaryComponent, {
         header: this._translocoService.translate('salary'),
-        width: '70vw',
         data: { salary: null, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetchSalary());
@@ -50,7 +49,6 @@ export class SalaryInformationComponent {
     this._dialogService
       .open(SalaryComponent, {
         header: this._translocoService.translate('salary'),
-        width: '70vw',
         data: { salary: dataItem, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetchSalary());

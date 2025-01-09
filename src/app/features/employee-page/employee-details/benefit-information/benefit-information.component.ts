@@ -3,11 +3,10 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { EmployeeService } from '../../../../core/services/employee/employee.service';
-import { DialogService } from 'primeng/dynamicdialog';
-import { SalaryComponent } from '../../salary/salary.component';
 import { Benefit } from '../../../../core/models/benefit.model';
 import { BenefitComponent } from '../../benefit/benefit.component';
 import { DatePipe } from '@angular/common';
+import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 
 @Component({
   selector: 'employee-benefit-information',
@@ -26,7 +25,7 @@ export class BenefitInformationComponent {
   data = signal<Partial<Benefit>[]>([]);
 
   private _employeeService = inject(EmployeeService);
-  private _dialogService = inject(DialogService);
+  private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
 
   ngOnInit(): void {
@@ -37,7 +36,6 @@ export class BenefitInformationComponent {
     this._dialogService
       .open(BenefitComponent, {
         header: this._translocoService.translate('monthlyBenefit'),
-        width: '70vw',
         data: { benefit: null, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
@@ -47,7 +45,6 @@ export class BenefitInformationComponent {
     this._dialogService
       .open(BenefitComponent, {
         header: this._translocoService.translate('monthlyBenefit'),
-        width: '70vw',
         data: { benefit: dataItem, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());

@@ -1,11 +1,12 @@
-import { NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, input, output, TemplateRef } from '@angular/core';
 import { UiConfirmationDirective } from '../../directives/confirmation/confirmation.directive';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'ui-list',
   standalone: true,
-  imports: [NgClass, UiConfirmationDirective],
+  imports: [UiConfirmationDirective, TranslocoDirective, CommonModule],
   templateUrl: './ui-list.component.html',
 })
 export class UiListComponent {

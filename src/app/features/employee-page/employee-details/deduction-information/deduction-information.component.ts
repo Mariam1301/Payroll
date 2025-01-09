@@ -7,6 +7,7 @@ import { DeductionComponent } from '../../deduction/deduction.component';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { DatePipe } from '@angular/common';
+import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 
 @Component({
   selector: 'employee-deduction-information',
@@ -25,7 +26,7 @@ export class DeductionInformationComponent {
   data = signal<Partial<Deduction>[]>([]);
 
   private _employeeService = inject(EmployeeService);
-  private _dialogService = inject(DialogService);
+  private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
 
   ngOnInit(): void {
@@ -36,7 +37,6 @@ export class DeductionInformationComponent {
     this._dialogService
       .open(DeductionComponent, {
         header: this._translocoService.translate('monthlyDeduction'),
-        width: '70vw',
         data: { deduction: null, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
@@ -46,7 +46,6 @@ export class DeductionInformationComponent {
     this._dialogService
       .open(DeductionComponent, {
         header: this._translocoService.translate('monthlyDeduction'),
-        width: '70vw',
         data: { deduction: dataItem, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());

@@ -9,9 +9,9 @@ import { GeneralInformationComponent } from './general-information/general-infor
 import { SalaryInformationComponent } from './salary-information/salary-information.component';
 import { BenefitInformationComponent } from './benefit-information/benefit-information.component';
 import { DeductionInformationComponent } from './deduction-information/deduction-information.component';
-import { DialogService } from 'primeng/dynamicdialog';
 import { EmployeeComponent } from '../employee/employee.component';
 import { ExemptionInformationComponent } from './exemption-information/exemption-information.component';
+import { UiDialogService } from '../../../core/services/dialog/dialog.service';
 
 @Component({
   standalone: true,
@@ -31,7 +31,7 @@ export class EmployeeDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private employeeService = inject(EmployeeService);
-  private _dialogService = inject(DialogService);
+  private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
 
   employeeGeneralInformation = signal<Partial<Employee> | null>(null);
@@ -46,7 +46,6 @@ export class EmployeeDetailsComponent implements OnInit {
     this._dialogService
       .open(EmployeeComponent, {
         header: this._translocoService.translate('generalInformation'),
-        width: '70vw',
         data: { ...this.employeeGeneralInformation() },
       })
       .onClose.subscribe((data) => !!data && this.fetchGeneralDetails());
