@@ -87,5 +87,9 @@
   "includesIncomeTax": "Includes income tax",
   "includesCompanyPension": "Includes company pension",
   "includesEmployeePension": "Includes employee pension",
-  "paymentCurrency": "Payment currency"
+  "paymentCurrency": "Payment currency",
+  "currentBenefit": "Current benefit",
+  "currentDeduction": "Current deduction",
+  "currentSalary": "Current salary",
+  "calculationCurrency": "Calculation currency"
 }
