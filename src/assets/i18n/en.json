@@ -91,5 +91,11 @@
   "currentBenefit": "Current benefit",
   "currentDeduction": "Current deduction",
   "currentSalary": "Current salary",
-  "calculationCurrency": "Calculation currency"
+  "calculationCurrency": "Calculation currency",
+  "exemption": "Exemption",
+  "exemptions": "Exemptions",
+  "limitType": "Limit type",
+  "timeBased": "Time based",
+  "amountBased": "Amount based",
+  "selectLimitType": "Select limit type"
 }

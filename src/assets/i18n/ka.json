@@ -91,5 +91,11 @@
   "currentBenefit": "მიმდინარე დანამატი",
   "currentDeduction": "მიმდინარე დაქვითვა",
   "currentSalary": "მიმდინარე ხელფასი",
-  "calculationCurrency": "დათვლის ვალუტა"
+  "calculationCurrency": "დათვლის ვალუტა",
+  "exemption": "შეღავათი",
+  "exemptions": "შეღავათები",
+  "limitType": "ლიმიტის ტიპი",
+  "timeBased": "თარიღით განსაზღვრული",
+  "amountBased": "თანხით განსაზღვრული",
+  "selectLimitType": "აირჩიეთ ლიმიტის ტიპი"
 }

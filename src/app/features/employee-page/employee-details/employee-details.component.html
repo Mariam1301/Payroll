@@ -1,9 +1,30 @@
+@if (employeeId && employeeGeneralInformation()) {
+  <div *transloco="let t" class="m-5 flex flex-col gap-8 pb-16">
+    <h1 class="">
+      <span class="text-gray-400 cursor-pointer" (click)="navigateToEmployee()"
+        >{{ t("employees") + " /" }} </span
+      >{{
+        employeeGeneralInformation()!.name +
+          " " +
+          employeeGeneralInformation()!.surname
+      }}
+    </h1>
 
-@if(employeeId&&employeeGeneralInformation()){<div *transloco="let t" class=" m-5 flex flex-col gap-8  pb-16" >
-<h1 class=""><span class="text-gray-400 cursor-pointer" (click)="navigateToEmployee()">{{ t('employees') + ' /' }} </span>{{employeeGeneralInformation()!.name + ' ' + employeeGeneralInformation()!.surname}}</h1>
-
-  <employee-general-information [employeeData]="employeeGeneralInformation()!" (editClicked)="onEditClick()"></employee-general-information>
-  <employee-salary-information [employeeId]="employeeId"  ></employee-salary-information>
-  <employee-benefit-information [employeeId]="employeeId"></employee-benefit-information>
-  <employee-deduction-information [employeeId]="employeeId"></employee-deduction-information>
-</div>}
+    <employee-general-information
+      [employeeData]="employeeGeneralInformation()!"
+      (editClicked)="onEditClick()"
+    ></employee-general-information>
+    <employee-salary-information
+      [employeeId]="employeeId"
+    ></employee-salary-information>
+    <employee-benefit-information
+      [employeeId]="employeeId"
+    ></employee-benefit-information>
+    <employee-deduction-information
+      [employeeId]="employeeId"
+    ></employee-deduction-information>
+    <employee-exemption-information
+      [employeeId]="employeeId"
+    ></employee-exemption-information>
+  </div>
+}

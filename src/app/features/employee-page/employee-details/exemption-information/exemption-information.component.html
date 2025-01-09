@@ -1,0 +1,27 @@
+<ng-container *transloco="let t">
+  <ui-responsive-data-view
+    [title]="t('exemptions')"
+    [data]="data()"
+    [showAddButton]="true"
+    [showDeleteButton]="true"
+    (addButtonClicked)="onAddClick()"
+    (rowClicked)="onRowClick($event)"
+    (deleteClicked)="onDeleteClick($event)"
+  >
+    <ui-data-element name="type" valueField="type"></ui-data-element>
+    <ui-data-element name="limitType">
+      <ng-template uiTemplate let-row>
+        <span>{{ t(row.limit_type) }}</span>
+      </ng-template>
+    </ui-data-element>
+
+    <ui-data-element name="amount" valueField="amount"></ui-data-element>
+    <ui-data-element name="currency" valueField="currency"></ui-data-element>
+
+    <ui-data-element name="endDate">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.end_date | date: "dd/MM/yyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+  </ui-responsive-data-view>
+</ng-container>

@@ -1,0 +1,72 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <ui-form-field class="w-full" [label]="t('type')">
+    <input
+      required
+      pInputText
+      name="type"
+      class="w-full"
+      [(ngModel)]="exemption().type"
+    />
+  </ui-form-field>
+  <div class="flex items-center gap-x-4">
+    <ui-form-field class="w-full" [label]="t('limitType')">
+      <p-dropdown
+        name="limitType"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectLimitType')"
+        appendTo="body"
+        [options]="limitTypeOptions()"
+        [(ngModel)]="exemption().limit_type"
+      />
+    </ui-form-field>
+
+    @if (exemption().limit_type === "AMOUNT_BASED") {
+      <div class="flex items-center gap-x-4 w-full">
+        <ui-form-field class="w-full" [label]="t('amount')">
+          <input
+            required
+            pInputText
+            type="number"
+            name="amount"
+            class="w-full"
+            [(ngModel)]="exemption()!.amount"
+          />
+        </ui-form-field>
+        <ui-form-field class="w-full" [label]="t('currency')">
+          <p-dropdown
+            name="currency"
+            optionLabel="label"
+            optionValue="id"
+            appendTo="body"
+            [placeholder]="t('selectCurrency')"
+            [options]="currencyOptions()"
+            [(ngModel)]="exemption().currency"
+          />
+        </ui-form-field>
+      </div>
+    }
+    @if (exemption().limit_type === "TIME_BASED") {
+      <ui-form-field class="w-full" [label]="t('endDate')">
+        <p-calendar
+          name="endDate"
+          dateFormat="yy-mm-dd"
+          appendTo="body"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [(ngModel)]="exemption().end_date"
+      /></ui-form-field>
+    }
+  </div>
+
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>
