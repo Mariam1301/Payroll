@@ -5,6 +5,7 @@ export interface Exemption {
   type: string;
   limit_type: LimitType;
   end_date?: string;
+  start_date?: string;
   amount?: number;
   currency?: CurrencyEnum;
 }

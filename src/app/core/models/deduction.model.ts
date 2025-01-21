@@ -7,7 +7,8 @@ export interface Deduction {
   includes_income_tax: boolean;
   includes_employee_pension: boolean;
   includes_company_pension: boolean;
-  currency: CurrencyEnum;
+  payment_currency: CurrencyEnum;
+  calculation_currency: CurrencyEnum;
   amount: number;
   id: number;
 }

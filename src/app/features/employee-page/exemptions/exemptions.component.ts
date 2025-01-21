@@ -11,6 +11,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { CurrencyEnum } from '../../../core/models/general.model';
 import { InputTextModule } from 'primeng/inputtext';
+import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
 
 @Component({
   templateUrl: './exemptions.component.html',
@@ -23,10 +24,13 @@ import { InputTextModule } from 'primeng/inputtext';
     UiDialogActionsComponent,
     TranslocoDirective,
     InputTextModule,
+    DateTypePipe,
   ],
 })
 export class ExemptionsComponent {
   exemption = signal<Partial<Exemption>>({});
+
+  now = new Date();
 
   private readonly _translocoService = inject(TranslocoService);
   private readonly _ref = inject(DynamicDialogRef);
@@ -69,15 +73,17 @@ export class ExemptionsComponent {
     const data = {
       ...this.exemption(),
       end_date: formatDateToISODate(this.exemption().end_date!),
+      start_date: formatDateToISODate(this.exemption().start_date!)
     };
-    const stream$ = data?.id
-      ? this._employeeService.updateDeduction(employeeId, data)
-      : this._employeeService.addDeduction(employeeId, data);
+    // const stream$ = data?.id
+    //   ? this._employeeService.updateDeduction(employeeId, data)
+    //   : this._employeeService.addDeduction(employeeId, data);
 
-    stream$.subscribe(() => this._ref.close(true));
+    // stream$.subscribe(() => this._ref.close(true));
+    console.log(data)
   }
 
-  onCurrentDeductionChange() {
+  onLimitTypeChange() {
     this.exemption.update((prev) => ({ ...prev, end_date: undefined }));
   }
 }

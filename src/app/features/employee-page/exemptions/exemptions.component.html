@@ -16,6 +16,7 @@
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('limitType')">
       <p-dropdown
+        required
         name="limitType"
         optionLabel="label"
         optionValue="id"
@@ -23,12 +24,23 @@
         appendTo="body"
         [options]="limitTypeOptions()"
         [(ngModel)]="exemption().limit_type"
+        (ngModelChange)="onLimitTypeChange()"
       />
     </ui-form-field>
-
+    @if(!!exemption().limit_type){    <ui-form-field class="w-full" [label]="t('startDate')">
+      <p-calendar
+        required
+        name="startDate"
+        dateFormat="yy-mm-dd"
+        appendTo="body"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [maxDate]="(exemption().end_date | dateType) || now"
+        [(ngModel)]="exemption().start_date"
+      /></ui-form-field>}
     @if (exemption().limit_type === "AMOUNT_BASED") {
       <div class="flex sm:flex-nowrap flex-wrap items-center gap-4 w-full">
-        <ui-form-field class="w-full" [label]="t('amount')">
+        <ui-form-field class="w-full" [label]="t('amount')+' GEL'">
           <input
             required
             pInputText
@@ -38,20 +50,12 @@
             [(ngModel)]="exemption()!.amount"
           />
         </ui-form-field>
-        <ui-form-field class="w-full" [label]="t('currency')">
-          <p-dropdown
-            name="currency"
-            optionLabel="label"
-            optionValue="id"
-            appendTo="body"
-            [placeholder]="t('selectCurrency')"
-            [options]="currencyOptions()"
-            [(ngModel)]="exemption().currency"
-          />
-        </ui-form-field>
+
       </div>
     }
     @if (exemption().limit_type === "TIME_BASED") {
+
+
       <ui-form-field class="w-full" [label]="t('endDate')">
         <p-calendar
           name="endDate"
@@ -59,6 +63,8 @@
           appendTo="body"
           [showIcon]="true"
           [showOnFocus]="false"
+          [minDate]="exemption().start_date | dateType"
+          [maxDate]="(exemption().end_date | dateType) || now"
           [(ngModel)]="exemption().end_date"
       /></ui-form-field>
     }

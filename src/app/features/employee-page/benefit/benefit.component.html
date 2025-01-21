@@ -13,7 +13,7 @@
       [(ngModel)]="benefit().type"
     />
   </ui-form-field>
-  <div class="flex flex-wrap items-center gap-4">
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('amount')">
       <input
         required
@@ -24,16 +24,29 @@
         [(ngModel)]="benefit()!.amount"
       />
     </ui-form-field>
-    <ui-form-field class="w-full" [label]="t('currency')">
+    <ui-form-field class="w-full" [label]="t('paymentCurrency')">
       <p-dropdown
-        name="currency"
+        required
+        appendTo="body"
+        name="paymentCurrency"
         optionLabel="label"
         optionValue="id"
         [placeholder]="t('selectCurrency')"
         [options]="currencyOptions()"
-        [(ngModel)]="benefit().currency"
+        [(ngModel)]="benefit().payment_currency"
       />
-    </ui-form-field>
+    </ui-form-field>    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+    <p-dropdown
+      required
+      appendTo="body"
+      name="calculationCurrency"
+      optionLabel="label"
+      optionValue="id"
+      [placeholder]="t('selectCurrency')"
+      [options]="currencyOptions()"
+      [(ngModel)]="benefit().calculation_currency"
+    />
+  </ui-form-field>
   </div>
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <p-checkbox

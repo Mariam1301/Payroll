@@ -24,14 +24,27 @@
         [(ngModel)]="deduction()!.amount"
       />
     </ui-form-field>
-    <ui-form-field class="w-full" [label]="t('currency')">
+    <ui-form-field class="w-full" [label]="t('paymentCurrency')">
       <p-dropdown
-        name="currency"
+        required
+        appendTo="body"
+        name="paymentCurrency"
         optionLabel="label"
         optionValue="id"
         [placeholder]="t('selectCurrency')"
         [options]="currencyOptions()"
-        [(ngModel)]="deduction().currency"
+        [(ngModel)]="deduction().payment_currency"
+      />
+    </ui-form-field>    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+      <p-dropdown
+        required
+        appendTo="body"
+        name="calculationCurrency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions()"
+        [(ngModel)]="deduction().calculation_currency"
       />
     </ui-form-field>
   </div>

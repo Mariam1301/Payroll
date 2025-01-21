@@ -11,10 +11,30 @@ export interface SalaryModel {
   amount: number;
   payment_currency: CurrencyEnum;
   id: number;
+  daily_salary_calculation_base: DailySalaryCalculationBaseEnum;
+  non_working_days: NonWorkingDaysEnum[];
+  non_working_custom_dates?: string[]
 }
 
 export enum SalaryTypeEnum {
   Daily = 'daily',
   Fixed = 'fixed',
   Hourly = 'hourly',
+}
+
+export enum DailySalaryCalculationBaseEnum {
+  CALENDAR_DAYS = 'CALENDAR_DAYS',
+  WORK_DAYS = 'WORK_DAYS',
+}
+
+export enum NonWorkingDaysEnum {
+  PUBLIC_HOLIDAYS_UNDER_GEORGIAN_LAW = 'PUBLIC_HOLIDAYS_UNDER_GEORGIAN_LAW',
+  EVERY_MONDAY = 'EVERY_MONDAY',
+  EVERY_TUESDAY = 'EVERY_TUESDAY',
+  EVERY_WEDNESDAY = 'EVERY_WEDNESDAY',
+  EVERY_THURSDAY = 'EVERY_THURSDAY',
+  EVERY_FRIDAY = 'EVERY_FRIDAY',
+  EVERY_SATURDAY = 'EVERY_SATURDAY',
+  EVERY_SUNDAY = 'EVERY_SUNDAY',
+  CUSTOM_DATES = 'CUSTOM_DATES',
 }

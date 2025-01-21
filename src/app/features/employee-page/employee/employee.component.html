@@ -61,11 +61,11 @@
     </ui-form-field>
   </div>
   <div class="flex w-full sm:flex-nowrap flex-wrap items-center gap-5">
-    <ui-form-field class="w-full" [label]="t('residency')">
+    <ui-form-field class="w-full" [label]="t('taxResidency')">
       <input
         required
         pInputText
-        name="residency"
+        name="taxResidency"
         class="w-full"
         [(ngModel)]="employeeData().residency"
       />
@@ -89,7 +89,6 @@
         required
         pInputText
         class="w-full"
-        type="number"
         name="personal_number"
         [(ngModel)]="employeeData().id_number"
       />

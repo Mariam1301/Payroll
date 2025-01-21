@@ -38,7 +38,7 @@ export class ExemptionInformationComponent {
   onAddClick() {
     this._dialogService
       .open(ExemptionsComponent, {
-        header: this._translocoService.translate('exemption'),
+        header: this._translocoService.translate('incomeTaxExemption'),
         data: { exemption: null, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
@@ -47,7 +47,7 @@ export class ExemptionInformationComponent {
   onRowClick({ dataItem }: any) {
     this._dialogService
       .open(ExemptionsComponent, {
-        header: this._translocoService.translate('exemption'),
+        header: this._translocoService.translate('incomeTaxExemption'),
         data: { exemption: dataItem, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
