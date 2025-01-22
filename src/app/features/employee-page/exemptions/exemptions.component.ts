@@ -1,16 +1,16 @@
-import { Component, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
-import { Exemption, LimitType } from '../../../core/models/exemption.model';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
-import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
-import { EmployeeService } from '../../../core/services/employee/employee.service';
-import { formatDateToISODate } from '../../../core/utils/date-formating';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
-import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
-import { CurrencyEnum } from '../../../core/models/general.model';
-import { InputTextModule } from 'primeng/inputtext';
+import {Component, inject, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {UiFormFieldComponent} from '../../../shared/components/form-field/form-field.component';
+import {Exemption, LimitType} from '../../../core/models/exemption.model';
+import {TranslocoDirective, TranslocoService} from '@jsverse/transloco';
+import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {EmployeeService} from '../../../core/services/employee/employee.service';
+import {formatDateToISODate} from '../../../core/utils/date-formating';
+import {DropdownModule} from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
+import {UiDialogActionsComponent} from '../../../shared/components/dialog-actions/dialog-actions.component';
+import {CurrencyEnum} from '../../../core/models/general.model';
+import {InputTextModule} from 'primeng/inputtext';
 import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
 
 @Component({
@@ -37,6 +37,8 @@ export class ExemptionsComponent {
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _employeeService = inject(EmployeeService);
 
+  limitTypeEnum = LimitType;
+
   limitTypeOptions = signal<{ id: LimitType; label: string }[]>([
     {
       id: LimitType.TIME_BASED,
@@ -46,6 +48,10 @@ export class ExemptionsComponent {
       id: LimitType.AMOUNT_BASED,
       label: this._translocoService.translate('amountBased'),
     },
+    {
+      id: LimitType.PEMANENT,
+      label: this._translocoService.translate('permanent'),
+    }
   ]);
 
   currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
@@ -83,7 +89,8 @@ export class ExemptionsComponent {
     console.log(data)
   }
 
-  onLimitTypeChange() {
-    this.exemption.update((prev) => ({ ...prev, end_date: undefined }));
+  onLimitTypeChange(type: LimitType) {
+
+    this.exemption.update((prev) => ({ ...prev, end_date: undefined, amount: undefined, start_date: type === LimitType.PEMANENT?undefined:prev.start_date }));
   }
 }

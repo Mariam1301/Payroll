@@ -54,21 +54,35 @@
     </ui-form-field>
 
     @if (salary().type === salaryTypeEnum.Fixed) {
-      <ui-form-field
-        class="w-full"
-        [label]="t('dailySalaryCalculationBaseOptions')"
-      >
-        <p-dropdown
-          required
-          name="dailySalaryCalculationBaseOptions"
-          optionLabel="label"
-          optionValue="id"
-          [placeholder]="t('selectDailySalaryCalculationBaseOptions')"
-          [options]="dailySalaryCalculationBaseOptions()"
-          [(ngModel)]="salary()!.daily_salary_calculation_base"
-          (ngModelChange)="onDailySalaryCalculationBaseChange()"
-        />
-      </ui-form-field>
+      <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+        <ui-form-field class="w-full" [label]="t('dailyWorkingHours')">
+          <p-inputNumber
+            required
+            type="number"
+            mode="decimal"
+            name="dailyWorkingHours"
+            [inputId]="t('dailyWorkingHours')"
+            [min]="0"
+            [suffix]="' ' + t('hr')"
+            [(ngModel)]="salary()!.daily_working_hours"
+          />
+        </ui-form-field>
+        <ui-form-field
+          class="w-full"
+          [label]="t('dailySalaryCalculationBaseOptions')"
+        >
+          <p-dropdown
+            required
+            name="dailySalaryCalculationBaseOptions"
+            optionLabel="label"
+            optionValue="id"
+            [placeholder]="t('selectDailySalaryCalculationBaseOptions')"
+            [options]="dailySalaryCalculationBaseOptions()"
+            [(ngModel)]="salary()!.daily_salary_calculation_base"
+            (ngModelChange)="onDailySalaryCalculationBaseChange()"
+          />
+        </ui-form-field>
+      </div>
     }
     @if (
       salary().daily_salary_calculation_base ===

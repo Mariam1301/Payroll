@@ -113,5 +113,8 @@
   "selectFromCalendar": "Select from calendar",
   "customNonWorkingDays": "Custom non-working days",
   "selectNonWorkingDays": "Select non-working days",
-  "selectDailySalaryCalculationBaseOptions": "Select daily salary calculation base options"
+  "selectDailySalaryCalculationBaseOptions": "Select daily salary calculation base options",
+  "dailyWorkingHours": "Daily working hours",
+  "hr": "hr",
+  "permanent": "Permanent"
 }

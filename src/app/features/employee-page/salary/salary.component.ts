@@ -20,6 +20,8 @@ import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CurrencyEnum } from '../../../core/models/general.model';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { InputNumberModule } from 'primeng/inputnumber';
+
 
 @Component({
   standalone: true,
@@ -37,6 +39,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
     DateTypePipe,
     CheckboxModule,
     MultiSelectModule,
+    InputNumberModule
   ],
 })
 export class SalaryComponent implements OnInit {
@@ -181,6 +184,7 @@ export class SalaryComponent implements OnInit {
       ...prev,
       daily_salary_calculation_base: undefined,
       non_working_days: undefined,
+      daily_working_hours: undefined
     }));
   }
 

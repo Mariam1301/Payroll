@@ -12,6 +12,7 @@ export interface SalaryModel {
   payment_currency: CurrencyEnum;
   id: number;
   daily_salary_calculation_base: DailySalaryCalculationBaseEnum;
+  daily_working_hours?: number;
   non_working_days: NonWorkingDaysEnum[];
   non_working_custom_dates?: string[]
 }

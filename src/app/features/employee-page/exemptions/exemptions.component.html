@@ -24,10 +24,10 @@
         appendTo="body"
         [options]="limitTypeOptions()"
         [(ngModel)]="exemption().limit_type"
-        (ngModelChange)="onLimitTypeChange()"
+        (ngModelChange)="onLimitTypeChange($event)"
       />
     </ui-form-field>
-    @if(!!exemption().limit_type){    <ui-form-field class="w-full" [label]="t('startDate')">
+    @if(exemption().limit_type === limitTypeEnum.AMOUNT_BASED||exemption().limit_type === limitTypeEnum.TIME_BASED){    <ui-form-field class="w-full" [label]="t('startDate')">
       <p-calendar
         required
         name="startDate"
@@ -38,7 +38,7 @@
         [maxDate]="(exemption().end_date | dateType) || now"
         [(ngModel)]="exemption().start_date"
       /></ui-form-field>}
-    @if (exemption().limit_type === "AMOUNT_BASED") {
+    @if (exemption().limit_type ===  limitTypeEnum.AMOUNT_BASED) {
       <div class="flex sm:flex-nowrap flex-wrap items-center gap-4 w-full">
         <ui-form-field class="w-full" [label]="t('amount')+' GEL'">
           <input
@@ -53,7 +53,7 @@
 
       </div>
     }
-    @if (exemption().limit_type === "TIME_BASED") {
+    @if (exemption().limit_type ===  limitTypeEnum.TIME_BASED) {
 
 
       <ui-form-field class="w-full" [label]="t('endDate')">

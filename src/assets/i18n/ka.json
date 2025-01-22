@@ -113,5 +113,8 @@
   "selectFromCalendar": "აირჩიეთ კალენდარიდან",
   "customNonWorkingDays": "მორგებული უქმე დღეები",
   "selectNonWorkingDays": "აირჩიეთ უქმე დღეები",
-  "selectDailySalaryCalculationBaseOptions": "აირჩიეთ დღიური ხელფასის კალკულაციის ბაზა"
+  "selectDailySalaryCalculationBaseOptions": "აირჩიეთ დღიური ხელფასის კალკულაციის ბაზა",
+  "dailyWorkingHours": "დღეში სამუშაო საათების რაოდენობა",
+  "hr": "სთ",
+  "permanent": "მუდმივი"
 }

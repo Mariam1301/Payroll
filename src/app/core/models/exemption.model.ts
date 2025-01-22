@@ -13,4 +13,6 @@ export interface Exemption {
 export enum LimitType {
   TIME_BASED = 'TIME_BASED',
   AMOUNT_BASED = 'AMOUNT_BASED',
+  PEMANENT = 'PEMANENT',
+
 }
