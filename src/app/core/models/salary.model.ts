@@ -19,7 +19,7 @@ export interface SalaryModel {
 
 export enum SalaryTypeEnum {
   Daily = 'daily',
-  Fixed = 'fixed',
+  Fixed = 'monthly',
   Hourly = 'hourly',
 }
 

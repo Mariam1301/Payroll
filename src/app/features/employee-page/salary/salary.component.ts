@@ -141,7 +141,7 @@ export class SalaryComponent implements OnInit {
   ]);
 
   ngOnInit(): void {
-    const salary = this._dialogConfig.data?.salary;
+    const salary = {...this._dialogConfig.data?.salary};
     salary && this.salary.set(salary);
   }
 
@@ -156,13 +156,11 @@ export class SalaryComponent implements OnInit {
       ),
     };
     const stream$ = data?.id
-      ? this._employeeService.updateSalary(employeeId, this.salary())
-      : this._employeeService.addSalary(employeeId, this.salary());
+      ? this._employeeService.updateSalary(employeeId, data as Partial<SalaryModel>)
+      : this._employeeService.addSalary(employeeId, data as Partial<SalaryModel>);
 
-    // stream$
-    //   .pipe(tap((data) => console.log(data)))
-    //   .subscribe(() => this._ref.close(true));
-    console.log(data);
+    stream$
+      .subscribe(() => this._ref.close(true));
   }
 
   onCustomNonWorkingDaysChange(item: NonWorkingDaysEnum) {
