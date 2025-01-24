@@ -9,7 +9,7 @@ import {
   SalaryModel,
   SalaryTypeEnum,
 } from '../../../core/models/salary.model';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { DropdownModule } from 'primeng/dropdown';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
@@ -22,7 +22,6 @@ import { CurrencyEnum } from '../../../core/models/general.model';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputNumberModule } from 'primeng/inputnumber';
 
-
 @Component({
   standalone: true,
   templateUrl: './salary.component.html',
@@ -32,14 +31,14 @@ import { InputNumberModule } from 'primeng/inputnumber';
     FormsModule,
     InputTextModule,
     UiFormFieldComponent,
-    TranslocoDirective,
+    TranslocoModule,
     DropdownModule,
     UiDialogActionsComponent,
     CalendarModule,
     DateTypePipe,
     CheckboxModule,
     MultiSelectModule,
-    InputNumberModule
+    InputNumberModule,
   ],
 })
 export class SalaryComponent implements OnInit {
@@ -70,6 +69,10 @@ export class SalaryComponent implements OnInit {
     {
       id: SalaryTypeEnum.Fixed,
       label: this._translocoService.translate('monthlyFixed'),
+    },
+    {
+      id: SalaryTypeEnum.Shifts,
+      label: this._translocoService.translate('monthlyShifts'),
     },
   ]);
 
@@ -141,7 +144,7 @@ export class SalaryComponent implements OnInit {
   ]);
 
   ngOnInit(): void {
-    const salary = {...this._dialogConfig.data?.salary};
+    const salary = { ...this._dialogConfig.data?.salary };
     salary && this.salary.set(salary);
   }
 
@@ -156,11 +159,16 @@ export class SalaryComponent implements OnInit {
       ),
     };
     const stream$ = data?.id
-      ? this._employeeService.updateSalary(employeeId, data as Partial<SalaryModel>)
-      : this._employeeService.addSalary(employeeId, data as Partial<SalaryModel>);
+      ? this._employeeService.updateSalary(
+          employeeId,
+          data as Partial<SalaryModel>,
+        )
+      : this._employeeService.addSalary(
+          employeeId,
+          data as Partial<SalaryModel>,
+        );
 
-    stream$
-      .subscribe(() => this._ref.close(true));
+    stream$.subscribe(() => this._ref.close(true));
   }
 
   onCustomNonWorkingDaysChange(item: NonWorkingDaysEnum) {
@@ -182,7 +190,8 @@ export class SalaryComponent implements OnInit {
       ...prev,
       daily_salary_calculation_base: undefined,
       non_working_days: undefined,
-      daily_working_hours: undefined
+      daily_working_hours: undefined,
+      monthly_working_days: undefined,
     }));
   }
 

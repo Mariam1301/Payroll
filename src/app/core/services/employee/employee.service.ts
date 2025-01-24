@@ -43,7 +43,7 @@ export class EmployeeService {
   }
 
   getAllSalary(employeeId: number){
-    return this._baseHttpService.get<{salaries: Partial<SalaryModel>[] }>(`${this.entityName}/${employeeId}/salaries`).pipe(map(data => data.salaries));
+    return this._baseHttpService.get<{data: Partial<SalaryModel>[] }>(`${this.entityName}/${employeeId}/salaries`).pipe(map(data => data.data));
   }
 
   updateSalary(employeeId: number, data: Partial<SalaryModel>){

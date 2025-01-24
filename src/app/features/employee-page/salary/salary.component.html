@@ -5,6 +5,104 @@
   *transloco="let t"
 >
   <div class="flex flex-col gap-4">
+    <ui-form-field class="w-full" [label]="t('salaryType')">
+      <p-dropdown
+        required
+        name="salaryType"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('salaryType')"
+        [options]="SalaryTypeOptions()"
+        [(ngModel)]="salary()!.type"
+        (ngModelChange)="onSalaryTypeChange()"
+      />
+    </ui-form-field>
+
+    <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+      @if (!!salary().type && salary().type !== salaryTypeEnum.Hourly) {
+        <ui-form-field class="w-full" [label]="t('dailyWorkingHours')">
+          <p-inputNumber
+            required
+            type="number"
+            mode="decimal"
+            name="dailyWorkingHours"
+            [inputId]="t('dailyWorkingHours')"
+            [min]="0"
+            [suffix]="' ' + t('hr')"
+            [(ngModel)]="salary()!.daily_working_hours"
+          />
+        </ui-form-field>
+      }
+      @if (salary().type === salaryTypeEnum.Shifts) {
+        <ui-form-field class="w-full" [label]="t('monthlyWorkingDays')">
+          <p-inputNumber
+            required
+            type="number"
+            mode="decimal"
+            name="monthlyWorkingDays"
+            [inputId]="t('monthlyWorkingDays')"
+            [min]="0"
+            [(ngModel)]="salary()!.monthly_working_days"
+          />
+        </ui-form-field>
+
+      }
+    </div>
+    @if (salary().type === salaryTypeEnum.Fixed) {
+      <ui-form-field
+        class="w-full"
+        [label]="t('dailySalaryCalculationBaseOptions')"
+      >
+        <p-dropdown
+          required
+          name="dailySalaryCalculationBaseOptions"
+          optionLabel="label"
+          optionValue="id"
+          [placeholder]="t('selectDailySalaryCalculationBaseOptions')"
+          [options]="dailySalaryCalculationBaseOptions()"
+          [(ngModel)]="salary()!.daily_salary_calculation_base"
+          (ngModelChange)="onDailySalaryCalculationBaseChange()"
+        />
+      </ui-form-field>
+
+      @if (
+        salary().daily_salary_calculation_base ===
+        dailySalaryCalculationBaseEnum.WORK_DAYS
+      ) {
+        <ui-form-field class="w-full" [label]="t('nonWorkingDays')">
+          <p-multiSelect
+            required
+            name="nonWorkingDays"
+            appendTo="body"
+            optionLabel="label"
+            optionValue="id"
+            [showHeader]="false"
+            [placeholder]="t('selectNonWorkingDays')"
+            [options]="nonWorkingDaysOptions()"
+            [(ngModel)]="salary()!.non_working_days"
+            (ngModelChange)="onNonWorkingDaysChange()"
+          />
+        </ui-form-field>
+      }
+
+      @if (
+        salary().non_working_days?.includes(nonWorkingDaysEnum.CUSTOM_DATES)
+      ) {
+        <ui-form-field class="w-full" [label]="t('customNonWorkingDays')">
+          <p-calendar
+            required
+            appendTo="body"
+            name="customNonWorkingDays"
+            dateFormat="yy-mm-dd"
+            selectionMode="multiple"
+            [showIcon]="true"
+            [showOnFocus]="false"
+            [inline]="true"
+            [(ngModel)]="salary().non_working_custom_dates"
+            (ngModelChange)="onCustomNonWorkingDaysChange($event)"
+        /></ui-form-field>
+      }
+    }
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
       <ui-form-field class="w-full" [label]="t('amount')">
         <input
@@ -24,7 +122,7 @@
           optionValue="id"
           [placeholder]="t('selectCurrency')"
           [options]="currencyOptions()"
-          [(ngModel)]="salary().currency"
+          [(ngModel)]="salary().calculation_currency"
         />
       </ui-form-field>
       <ui-form-field class="w-full" [label]="t('paymentCurrency')">
@@ -39,86 +137,6 @@
         />
       </ui-form-field>
     </div>
-
-    <ui-form-field class="w-full" [label]="t('salaryType')">
-      <p-dropdown
-        required
-        name="salaryType"
-        optionLabel="label"
-        optionValue="id"
-        [placeholder]="t('salaryType')"
-        [options]="SalaryTypeOptions()"
-        [(ngModel)]="salary()!.type"
-        (ngModelChange)="onSalaryTypeChange()"
-      />
-    </ui-form-field>
-
-    @if (salary().type === salaryTypeEnum.Fixed) {
-      <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
-        <ui-form-field class="w-full" [label]="t('dailyWorkingHours')">
-          <p-inputNumber
-            required
-            type="number"
-            mode="decimal"
-            name="dailyWorkingHours"
-            [inputId]="t('dailyWorkingHours')"
-            [min]="0"
-            [suffix]="' ' + t('hr')"
-            [(ngModel)]="salary()!.daily_working_hours"
-          />
-        </ui-form-field>
-        <ui-form-field
-          class="w-full"
-          [label]="t('dailySalaryCalculationBaseOptions')"
-        >
-          <p-dropdown
-            required
-            name="dailySalaryCalculationBaseOptions"
-            optionLabel="label"
-            optionValue="id"
-            [placeholder]="t('selectDailySalaryCalculationBaseOptions')"
-            [options]="dailySalaryCalculationBaseOptions()"
-            [(ngModel)]="salary()!.daily_salary_calculation_base"
-            (ngModelChange)="onDailySalaryCalculationBaseChange()"
-          />
-        </ui-form-field>
-      </div>
-    }
-    @if (
-      salary().daily_salary_calculation_base ===
-      dailySalaryCalculationBaseEnum.WORK_DAYS
-    ) {
-      <ui-form-field class="w-full" [label]="t('nonWorkingDays')">
-        <p-multiSelect
-          required
-          name="nonWorkingDays"
-          appendTo="body"
-          optionLabel="label"
-          optionValue="id"
-          [showHeader]="false"
-          [placeholder]="t('selectNonWorkingDays')"
-          [options]="nonWorkingDaysOptions()"
-          [(ngModel)]="salary()!.non_working_days"
-          (ngModelChange)="onNonWorkingDaysChange()"
-        />
-      </ui-form-field>
-    }
-
-    @if (salary().non_working_days?.includes(nonWorkingDaysEnum.CUSTOM_DATES)) {
-      <ui-form-field class="w-full" [label]="t('customNonWorkingDays')">
-        <p-calendar
-          required
-          appendTo="body"
-          name="customNonWorkingDays"
-          dateFormat="yy-mm-dd"
-          selectionMode="multiple"
-          [showIcon]="true"
-          [showOnFocus]="false"
-          [inline]="true"
-          [(ngModel)]="salary().non_working_custom_dates"
-          (ngModelChange)="onCustomNonWorkingDaysChange($event)"
-      /></ui-form-field>
-    }
 
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
       <p-checkbox

@@ -116,5 +116,7 @@
   "selectDailySalaryCalculationBaseOptions": "Select daily salary calculation base options",
   "dailyWorkingHours": "Daily working hours",
   "hr": "hr",
-  "permanent": "Permanent"
+  "permanent": "Permanent",
+  "monthlyShifts": "Monthly shifts",
+  "monthlyWorkingDays": "Number of Workdays in a Month"
 }

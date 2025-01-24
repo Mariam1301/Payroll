@@ -116,5 +116,8 @@
   "selectDailySalaryCalculationBaseOptions": "აირჩიეთ დღიური ხელფასის კალკულაციის ბაზა",
   "dailyWorkingHours": "დღეში სამუშაო საათების რაოდენობა",
   "hr": "სთ",
-  "permanent": "მუდმივი"
+  "permanent": "მუდმივი",
+  "monthlyShifts": "თვიური სმენითი",
+  "monthlyWorkingDays": "თვეში სამუშაო დღეების რაოდენობა"
+
 }
