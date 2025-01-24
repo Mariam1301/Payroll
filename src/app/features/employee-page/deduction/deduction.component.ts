@@ -34,7 +34,6 @@ import { Deduction } from '../../../core/models/deduction.model';
 export class DeductionComponent {
   deduction = signal<Partial<Deduction>>({});
 
-  private readonly _translocoService = inject(TranslocoService);
   private readonly _ref = inject(DynamicDialogRef);
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _employeeService = inject(EmployeeService);
@@ -59,7 +58,7 @@ export class DeductionComponent {
   ]);
 
   ngOnInit(): void {
-    const deduction = this._dialogConfig.data?.deduction;
+    const deduction = {...this._dialogConfig.data?.deduction};
     deduction && this.deduction.set(deduction);
   }
 

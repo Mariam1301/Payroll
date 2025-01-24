@@ -12,7 +12,7 @@ import { DeductionInformationComponent } from './deduction-information/deduction
 import { EmployeeComponent } from '../employee/employee.component';
 import { ExemptionInformationComponent } from './exemption-information/exemption-information.component';
 import { UiDialogService } from '../../../core/services/dialog/dialog.service';
-import {IncentiveBonusInformationComponent} from "./benefit-information copy/incentive-bonus-information.component";
+import {IncentiveBonusInformationComponent} from "./incentive-bonus-information/incentive-bonus-information.component";
 
 @Component({
   standalone: true,

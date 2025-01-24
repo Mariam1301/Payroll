@@ -34,7 +34,6 @@ import { CurrencyEnum } from '../../../core/models/general.model';
 export class BenefitComponent {
   benefit = signal<Partial<Benefit>>({});
 
-  private readonly _translocoService = inject(TranslocoService);
   private readonly _ref = inject(DynamicDialogRef);
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _employeeService = inject(EmployeeService);
@@ -59,7 +58,7 @@ export class BenefitComponent {
   ]);
 
   ngOnInit(): void {
-    const benefit = this._dialogConfig.data?.benefit;
+    const benefit = {...this._dialogConfig.data?.benefit};
     benefit && this.benefit.set(benefit);
   }
 

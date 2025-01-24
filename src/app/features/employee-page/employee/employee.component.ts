@@ -45,7 +45,7 @@ export class EmployeeComponent implements OnInit {
   private readonly _translocoService = inject(TranslocoService);
 
   ngOnInit(): void {
-    const employe = this._dialogConfig.data;
+    const employe = {...this._dialogConfig.data};
     employe && this.employeeData.set(employe);
   }
 

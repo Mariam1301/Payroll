@@ -7,6 +7,7 @@ import { Benefit } from '../../../../core/models/benefit.model';
 import { BenefitComponent } from '../../benefit/benefit.component';
 import { DatePipe } from '@angular/common';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
+import {UiTemplateDirective} from "../../../../shared/directives/template/ui-template.directive";
 
 @Component({
   selector: 'employee-benefit-information',
@@ -16,6 +17,7 @@ import { UiDialogService } from '../../../../core/services/dialog/dialog.service
     UiDataElement,
     UiResponsiveDataViewComponent,
     DatePipe,
+    UiTemplateDirective,
   ],
   templateUrl: './benefit-information.component.html',
 })
