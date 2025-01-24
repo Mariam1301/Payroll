@@ -121,5 +121,9 @@
   "monthlyWorkingDays": "Number of Workdays in a Month",
   "incentiveBonuses": "Incentive bonuses",
   "incentiveBonus": "Incentive bonus",
-  "percent": "Percent"
+  "percent": "Percent",
+  "overtimePolicies": "Overtime Policies",
+  "overtimePolicy": "Overtime policy",
+  "forExample": "e.g.",
+  "weekendOvertimePolicy": "Weekend overtime policy"
 }

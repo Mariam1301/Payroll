@@ -3,11 +3,7 @@ import { CompanyService } from '../../core/services/company/company.service';
 import { UiResponsiveDataViewComponent } from '../../shared/components/responsive-data-view/responsive-data-view.component';
 import { UiDataElement } from '../../shared/components/responsive-data-view/data-element/data-element.component';
 import { Company } from '../../core/models/company.model';
-import {
-  TranslocoDirective,
-  TranslocoModule,
-  TranslocoService,
-} from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { CompanyAddDialogComponent } from './company-add-dialog/company-add-dialog.component';
 import { UiDialogService } from '../../core/services/dialog/dialog.service';
 
@@ -37,8 +33,6 @@ export class CompanyPageComponent implements OnInit {
   }
 
   fetchCompanies() {
-    this._companyService
-      .get()
-      .subscribe(({ company }) => this.data.set([company]));
+    this._companyService.get().subscribe((company) => this.data.set([company]));
   }
 }

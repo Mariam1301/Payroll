@@ -121,6 +121,9 @@
   "monthlyWorkingDays": "თვეში სამუშაო დღეების რაოდენობა",
   "incentiveBonuses": "ბონუსები",
   "incentiveBonus": "ბონუსი",
-  "percent": "პროცენტი"
-
+  "percent": "პროცენტი",
+  "overtimePolicies": "ოვერთაიმების პოლიტიკა",
+  "overtimePolicy": "ოვერთაიმების პოლიტიკა",
+  "forExample": "მაგ.",
+  "weekendOvertimePolicy": "უქმე დღეების ოვერთაიმის პოლიტიკა"
 }

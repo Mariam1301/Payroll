@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BaseHttpService } from '../base-http/base-http.service';
 import { Company } from '../../models/company.model';
+import {map} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class CompanyService {
   get() {
     return this._baseHttpService.get<{ company: Company }>(
       `${this.entityName}`
-    );
+    ).pipe(map((company) => company.company));
   }
 
   create(data: { name: string }) {

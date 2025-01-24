@@ -9,8 +9,8 @@ export const authorizedRoutes: Routes = [
       {
         path: 'company',
         loadComponent: () =>
-          import('../company-page/company-page.component').then(
-            (m) => m.CompanyPageComponent
+          import('../company-page/company-details/company-details.component').then(
+            (m) => m.CompanyDetailsComponent
           ),
       },
       {
