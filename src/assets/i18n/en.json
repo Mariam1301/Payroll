@@ -118,5 +118,8 @@
   "hr": "hr",
   "permanent": "Permanent",
   "monthlyShifts": "Monthly shifts",
-  "monthlyWorkingDays": "Number of Workdays in a Month"
+  "monthlyWorkingDays": "Number of Workdays in a Month",
+  "incentiveBonuses": "Incentive bonuses",
+  "incentiveBonus": "Incentive bonus",
+  "percent": "Percent"
 }

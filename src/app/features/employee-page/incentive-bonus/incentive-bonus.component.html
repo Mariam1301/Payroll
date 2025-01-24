@@ -1,0 +1,112 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <ui-form-field class="w-full" [label]="t('type')">
+    <input
+      required
+      pInputText
+      name="type"
+      class="w-full"
+      [(ngModel)]="incentiveBonus().type"
+    />
+  </ui-form-field>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('percent')">
+      <p-inputNumber
+        required
+        type="number"
+        mode="decimal"
+        name="percent"
+        [inputId]="t('percent')"
+        [min]="0"
+        [suffix]="' ' + t('%')"
+        [(ngModel)]="incentiveBonus()!.percent"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('paymentCurrency')">
+      <p-dropdown
+        required
+        appendTo="body"
+        name="paymentCurrency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions()"
+        [(ngModel)]="incentiveBonus().payment_currency"
+      />
+    </ui-form-field>    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+    <p-dropdown
+      required
+      appendTo="body"
+      name="calculationCurrency"
+      optionLabel="label"
+      optionValue="id"
+      [placeholder]="t('selectCurrency')"
+      [options]="currencyOptions()"
+      [(ngModel)]="incentiveBonus().calculation_currency"
+    />
+  </ui-form-field>
+  </div>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <p-checkbox
+      name="includesIncomeTax"
+      [binary]="true"
+      [label]="t('includesIncomeTax')"
+      [(ngModel)]="incentiveBonus()!.includes_income_tax"
+    />
+    <p-checkbox
+      name="includesEmployeePension"
+      [binary]="true"
+      [label]="t('includesEmployeePension')"
+      [(ngModel)]="incentiveBonus()!.includes_employee_pension"
+    />
+    <p-checkbox
+      name="includesCompanyPension"
+      [binary]="true"
+      [label]="t('includesCompanyPension')"
+      [(ngModel)]="incentiveBonus()!.includes_company_pension"
+    />
+  </div>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('startDate')">
+      <p-calendar
+        required
+        name="startDate"
+        dateFormat="yy-mm-dd"
+        [maxDate]="(incentiveBonus().end_date | dateType) || now"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="incentiveBonus().start_date"
+    /></ui-form-field>
+    <div class="w-full relative">
+      <ui-form-field class="w-full" [label]="t('endDate')">
+        <p-calendar
+          name="endDate"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [minDate]="incentiveBonus().start_date | dateType"
+          [maxDate]="(incentiveBonus().end_date | dateType) || now"
+          [disabled]="currentIncentiveBonus()"
+          [(ngModel)]="incentiveBonus().end_date"
+      /></ui-form-field>
+      <div class="absolute -bottom-5">
+        <p-checkbox
+          name="currentBenefit"
+          [binary]="true"
+          [label]="t('currentBenefit')"
+          [(ngModel)]="currentIncentiveBonus"
+          (ngModelChange)="onCurrentBenefitChange()"
+        />
+      </div>
+    </div>
+  </div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

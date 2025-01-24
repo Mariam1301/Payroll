@@ -118,6 +118,9 @@
   "hr": "სთ",
   "permanent": "მუდმივი",
   "monthlyShifts": "თვიური სმენითი",
-  "monthlyWorkingDays": "თვეში სამუშაო დღეების რაოდენობა"
+  "monthlyWorkingDays": "თვეში სამუშაო დღეების რაოდენობა",
+  "incentiveBonuses": "ბონუსები",
+  "incentiveBonus": "ბონუსი",
+  "percent": "პროცენტი"
 
 }
