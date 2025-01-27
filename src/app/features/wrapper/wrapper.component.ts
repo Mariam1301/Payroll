@@ -46,6 +46,10 @@ export class WrapperComponent {
       title: 'oneTimeBonuses',
       path: 'oneTimeBonuses',
     },
+    {
+      title: 'payrollGeneration',
+      path: 'payrollGeneration',
+    },
   ];
 
   toggleIsMenuOpen() {

@@ -142,5 +142,8 @@
   "oneTimeDeductions": "One-time deductions",
   "oneTimeDeduction": "One-time deduction",
   "oneTimeBonuses": "One-time bonuses",
-  "oneTimeBonus": "One-time bonus"
+  "oneTimeBonus": "One-time bonus",
+  "payrollGeneration": "Payroll generation",
+  "generatePayroll": "Generate payroll",
+  "payroll": "Payroll"
 }

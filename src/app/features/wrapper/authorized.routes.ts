@@ -49,6 +49,13 @@ export const authorizedRoutes: Routes = [
           ),
       },
       {
+        path: 'payrollGeneration',
+        loadComponent: () =>
+          import('../payroll-generation/payroll-generation.component').then(
+            (r) => r.PayrollGenerationComponent,
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'company',
       },

@@ -142,5 +142,8 @@
   "oneTimeDeductions": "ერთჯერადი დაქვითვები",
   "oneTimeDeduction": "ერთჯერადი დაქვითვა",
   "oneTimeBonuses": "ერთჯერადი ბონუსები",
-  "oneTimeBonus": "ერთჯერადი ბონუსი"
+  "oneTimeBonus": "ერთჯერადი ბონუსი",
+  "payrollGeneration": "უწყისის გენერირება",
+  "generatePayroll": "დააგენერირე უწყისი",
+  "payroll": "უწყისი"
 }

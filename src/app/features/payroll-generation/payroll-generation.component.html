@@ -1,0 +1,60 @@
+<ng-container *transloco="let t">
+  <div class="w-full flex items-start justify-center py-10">
+    <button
+      class="p-button w-full sm:w-fit justify-center flex gap-2 items-center"
+      (click)="onGeneratePayrollClick()"
+    >
+      <p *transloco="let t">{{ t("generatePayroll") }}</p>
+    </button>
+  </div>
+
+  @if (data()?.length) {
+    <ui-responsive-data-view
+      [title]="t('payroll') + ' ' + '01/01/2025 - 20/01/2025'"
+      [data]="data()"
+      [showAddButton]="false"
+      [showDeleteButton]="false"
+    >
+      <ui-data-element name="name" valueField="employee_name"></ui-data-element>
+      <ui-data-element
+        name="lastName"
+        valueField="employee_surname"
+      ></ui-data-element>
+      <ui-data-element
+        name="position"
+        valueField="employee_position"
+      ></ui-data-element>
+      <ui-data-element
+        name="email"
+        valueField="employee_email"
+      ></ui-data-element>
+      <ui-data-element
+        name="address"
+        valueField="employee_address"
+      ></ui-data-element>
+      <ui-data-element
+        name="bankAccount"
+        valueField="employee_bank_account"
+      ></ui-data-element>
+      <ui-data-element name="birthDate">
+        <ng-template uiTemplate let-row>
+          <span>{{ row.employee_birth_date | date: "dd/MM/yyy" }}</span>
+        </ng-template>
+      </ui-data-element>
+
+      <ui-data-element
+        name="idNumber"
+        valueField="employee_id_number"
+      ></ui-data-element>
+      <ui-data-element
+        name="gender"
+        valueField="employee_gender"
+      ></ui-data-element>
+      <ui-data-element
+        name="residency"
+        valueField="employee_residency"
+      ></ui-data-element>
+      <ui-data-element name="salary" valueField="salary"></ui-data-element>
+    </ui-responsive-data-view>
+  }
+</ng-container>

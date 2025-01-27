@@ -1,0 +1,70 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('dateFrom')">
+      <p-calendar
+        required
+        appendTo="body"
+        name="dateFrom"
+        dateFormat="yy-mm-dd"
+        [maxDate]="(payrollGenerationData().date_from | dateType) || now"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="payrollGenerationData().date_from"
+    /></ui-form-field>
+    <div class="w-full relative">
+      <ui-form-field class="w-full" [label]="t('dateTo')">
+        <p-calendar
+          name="dateTo"
+          appendTo="body"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [minDate]="payrollGenerationData().date_from | dateType"
+          [maxDate]="(payrollGenerationData().date_to | dateType) || now"
+          [(ngModel)]="payrollGenerationData().date_to"
+      /></ui-form-field>
+    </div>
+  </div>
+
+  <ui-form-field class="w-full" [label]="t('employees')">
+    <p-multiSelect
+      required
+      name="employees"
+      appendTo="body"
+      optionLabel="label"
+      optionValue="id"
+      [placeholder]="t('selectEmployees')"
+      [options]="employees()"
+      display="chip"
+      [filter]="false"
+      [(ngModel)]="payrollGenerationData()!.employee_ids"
+    >
+      <ng-template pTemplate="selectedItems" let-employees>
+        <div class="min-h-6">
+          @for (item of employees; track item.id) {
+            <p-chip
+              [label]="item?.name + item?.surname"
+              [removable]="true"
+              (onRemove)="onRemoveItem(item.id)"
+            />
+          }
+        </div>
+      </ng-template>
+
+      <ng-template let-employee pTemplate="items">
+        {{ employee.name }} {{ employee.surname }}
+      </ng-template>
+    </p-multiSelect>
+  </ui-form-field>
+
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onGenerateClick()"
+  ></ui-dialog-actions>
+</form>
