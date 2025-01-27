@@ -1,0 +1,83 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <ui-form-field class="w-full" [label]="t('employee')">
+    <p-dropdown
+      required
+      appendTo="body"
+      name="employee"
+      optionValue="id"
+      [placeholder]="t('selectEmployee')"
+      [options]="employees()"
+      [(ngModel)]="monthlyOvertime().employee_id"
+    >
+      <ng-template pTemplate="selectedItem" let-employee>
+        {{ employee.name }}
+        {{ employee.surname }}
+      </ng-template>
+
+      <ng-template let-employee pTemplate="item">
+        {{ employee.name }} {{ employee.surname }}
+      </ng-template></p-dropdown
+    >
+  </ui-form-field>
+  <ui-form-field class="w-full" [label]="t('overtimePolicyType')">
+    <p-dropdown
+      required
+      appendTo="body"
+      name="overtimePolicyType"
+      optionLabel="name"
+      optionValue="id"
+      [placeholder]="t('selectOvertimePolicyType')"
+      [options]="overtimeTypes"
+      [(ngModel)]="monthlyOvertime().overtime_policy_id"
+    />
+  </ui-form-field>
+
+
+  <ui-form-field class="w-full" [label]="t('overtimeHoursWorked')">
+    <p-inputNumber
+      required
+      type="number"
+      mode="decimal"
+      name="overtimeHoursWorked"
+      [inputId]="t('overtimeHoursWorked')"
+      [min]="0"
+      [suffix]="' ' + t('hr')"
+      [(ngModel)]="monthlyOvertime()!.overtime_hours_worked"
+    />
+  </ui-form-field>
+
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('dateFrom')">
+      <p-calendar
+        required
+        name="dateFrom"
+        dateFormat="yy-mm-dd"
+        [maxDate]="(monthlyOvertime().date_from | dateType) || now"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="monthlyOvertime().date_from"
+    /></ui-form-field>
+    <div class="w-full relative">
+      <ui-form-field class="w-full" [label]="t('dateTo')">
+        <p-calendar
+          name="dateTo"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [minDate]="monthlyOvertime().date_from | dateType"
+          [maxDate]="(monthlyOvertime().date_to | dateType) || now"
+          [(ngModel)]="monthlyOvertime().date_to"
+      /></ui-form-field>
+    </div>
+  </div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

@@ -125,5 +125,14 @@
   "overtimePolicies": "ოვერთაიმების პოლიტიკა",
   "overtimePolicy": "ოვერთაიმების პოლიტიკა",
   "forExample": "მაგ.",
-  "weekendOvertimePolicy": "უქმე დღეების ოვერთაიმის პოლიტიკა"
+  "weekendOvertimePolicy": "უქმე დღეების ოვერთაიმის პოლიტიკა",
+  "overtime": "ოვერთაიმები",
+  "overtimes": "ოვერთაიმები",
+  "overtimePolicyType": "ოვერთაიმების პოლიტიკის ტიპი",
+  "selectOvertimePolicyType": "აირჩიეთ ოვერთაიმის პოლიტიკის ტიპი",
+  "overtimeHoursWorked": "ნამუშევარი ოვერთაიმის საათები",
+  "dateFrom": "თარიღი -დან",
+  "dateTo": "თარიღი -მდე",
+  "selectEmployee": "აირჩიეთ თანამშრომელი",
+  "overTimeType": "ოვერთაიმის ტიპი"
 }

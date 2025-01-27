@@ -1,0 +1,32 @@
+<ng-container *transloco="let t">
+  <ui-responsive-data-view
+    [title]="t('overtimes')"
+    [data]="data()"
+    [showAddButton]="true"
+    [showDeleteButton]="true"
+    (addButtonClicked)="onAddClick()"
+    (rowClicked)="onRowClick($event)"
+    (deleteClicked)="onDeleteClick($event)"
+  >
+    <ui-data-element name="employee" valueField="employee"></ui-data-element>
+    <ui-data-element
+      name="overTimeType"
+      valueField="overtime_type"
+    ></ui-data-element>
+    <ui-data-element name="overtimeHoursWorked">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.overtime_hours_worked + t("hr") }}</span>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="dateFrom">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.date_from | date: "dd/MM/yyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="dateTo">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.date_to | date: "dd/MM/yyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+  </ui-responsive-data-view>
+</ng-container>

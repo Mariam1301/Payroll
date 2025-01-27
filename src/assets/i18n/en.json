@@ -125,5 +125,14 @@
   "overtimePolicies": "Overtime Policies",
   "overtimePolicy": "Overtime policy",
   "forExample": "e.g.",
-  "weekendOvertimePolicy": "Weekend overtime policy"
+  "weekendOvertimePolicy": "Weekend overtime policy",
+  "overtime": "Overtime",
+  "overtimes": "Overtimes",
+  "overtimePolicyType": "Overtime policy type",
+  "selectOvertimePolicyType": "Select overtime policy type",
+  "overtimeHoursWorked": "Overtime hours worked",
+  "dateFrom": "Date from",
+  "dateTo": "Date to",
+  "selectEmployee": "Select employee",
+  "overTimeType": "Overtime type"
 }

@@ -9,15 +9,22 @@ export const authorizedRoutes: Routes = [
       {
         path: 'company',
         loadComponent: () =>
-          import('../company-page/company-details/company-details.component').then(
-            (m) => m.CompanyDetailsComponent
-          ),
+          import(
+            '../company-page/company-details/company-details.component'
+          ).then((m) => m.CompanyDetailsComponent),
       },
       {
         path: 'employee',
         loadChildren: () =>
           import('../employee-page/employee.routes').then(
-            (r) => r.employeeRoutes
+            (r) => r.employeeRoutes,
+          ),
+      },
+      {
+        path: 'overtimes',
+        loadComponent: () =>
+          import('../monthly-overtimes/monthly-overtimes.component').then(
+            (r) => r.MonthlyOvertimesComponent,
           ),
       },
       {

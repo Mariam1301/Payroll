@@ -30,6 +30,10 @@ export class WrapperComponent {
       title: 'employees',
       path: 'employee',
     },
+    {
+      title: 'overtimes',
+      path: 'overtimes',
+    },
   ];
 
   toggleIsMenuOpen() {
