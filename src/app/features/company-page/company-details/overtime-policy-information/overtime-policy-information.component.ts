@@ -1,21 +1,15 @@
-import {Component, inject, input, OnInit, signal} from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
-import {UiTemplateDirective} from "../../../../shared/directives/template/ui-template.directive";
-import {OvertimePolicy} from "../../../../core/models/ovetime-policy.model";
-import {OvertimePolicyComponent} from "../../overtime-policy/overtime-policy.component";
+import { OvertimePolicy } from '../../../../core/models/ovetime-policy.model';
+import { OvertimePolicyComponent } from '../../overtime-policy/overtime-policy.component';
 
 @Component({
   selector: 'company-overtime-policy-information',
   standalone: true,
-  imports: [
-    TranslocoDirective,
-    UiDataElement,
-    UiResponsiveDataViewComponent,
-    UiTemplateDirective,
-  ],
+  imports: [TranslocoDirective, UiDataElement, UiResponsiveDataViewComponent],
   templateUrl: './overtime-policy-information.component.html',
 })
 export class OvertimePolicyInformationComponent implements OnInit {

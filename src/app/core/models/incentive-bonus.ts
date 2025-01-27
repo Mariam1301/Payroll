@@ -1,4 +1,4 @@
-import {CurrencyEnum} from "./general.model";
+import { CurrencyEnum } from './general.model';
 
 export interface IncentiveBonus {
   start_date: Date | string;

@@ -10,7 +10,7 @@
       pInputText
       name="type"
       class="w-full"
-      [placeholder]="t('forExample')+ ' ' + t('weekendOvertimePolicy')"
+      [placeholder]="t('forExample') + ' ' + t('weekendOvertimePolicy')"
       [(ngModel)]="overtimePolicy().type"
     />
   </ui-form-field>
@@ -27,50 +27,8 @@
         [(ngModel)]="overtimePolicy()!.percent"
       />
     </ui-form-field>
-    <ui-form-field class="w-full" [label]="t('paymentCurrency')">
-      <p-dropdown
-        required
-        appendTo="body"
-        name="paymentCurrency"
-        optionLabel="label"
-        optionValue="id"
-        [placeholder]="t('selectCurrency')"
-        [options]="currencyOptions()"
-        [(ngModel)]="overtimePolicy().payment_currency"
-      />
-    </ui-form-field>    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
-    <p-dropdown
-      required
-      appendTo="body"
-      name="calculationCurrency"
-      optionLabel="label"
-      optionValue="id"
-      [placeholder]="t('selectCurrency')"
-      [options]="currencyOptions()"
-      [(ngModel)]="overtimePolicy().calculation_currency"
-    />
-  </ui-form-field>
   </div>
-  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
-    <p-checkbox
-      name="includesIncomeTax"
-      [binary]="true"
-      [label]="t('includesIncomeTax')"
-      [(ngModel)]="overtimePolicy()!.includes_income_tax"
-    />
-    <p-checkbox
-      name="includesEmployeePension"
-      [binary]="true"
-      [label]="t('includesEmployeePension')"
-      [(ngModel)]="overtimePolicy()!.includes_employee_pension"
-    />
-    <p-checkbox
-      name="includesCompanyPension"
-      [binary]="true"
-      [label]="t('includesCompanyPension')"
-      [(ngModel)]="overtimePolicy()!.includes_company_pension"
-    />
-  </div>
+
   <ui-dialog-actions
     [showCancel]="true"
     [disabled]="!!form.invalid"
