@@ -140,5 +140,7 @@
   "incentiveBonusType": "ბონუსის ტიპი",
   "selectIncentiveBonusType": "მიუთითეთ ბონუსის ტიპი",
   "oneTimeDeductions": "ერთჯერადი დაქვითვები",
-  "oneTimeDeduction": "ერთჯერადი დაქვითვა"
+  "oneTimeDeduction": "ერთჯერადი დაქვითვა",
+  "oneTimeBonuses": "ერთჯერადი ბონუსები",
+  "oneTimeBonus": "ერთჯერადი ბონუსი"
 }

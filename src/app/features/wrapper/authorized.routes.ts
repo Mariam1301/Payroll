@@ -42,6 +42,13 @@ export const authorizedRoutes: Routes = [
           ),
       },
       {
+        path: 'oneTimeBonuses',
+        loadComponent: () =>
+          import('../one-time-bonuses/one-time-bonuses.component').then(
+            (r) => r.OneTimeBonusesComponent,
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'company',
       },

@@ -140,5 +140,7 @@
   "incentiveBonusType": "Incentive bonus type",
   "selectIncentiveBonusType": "Select incentive bonus type",
   "oneTimeDeductions": "One-time deductions",
-  "oneTimeDeduction": "One-time deduction"
+  "oneTimeDeduction": "One-time deduction",
+  "oneTimeBonuses": "One-time bonuses",
+  "oneTimeBonus": "One-time bonus"
 }
