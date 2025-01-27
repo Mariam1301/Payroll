@@ -134,5 +134,9 @@
   "dateFrom": "თარიღი -დან",
   "dateTo": "თარიღი -მდე",
   "selectEmployee": "აირჩიეთ თანამშრომელი",
-  "overTimeType": "ოვერთაიმის ტიპი"
+  "overTimeType": "ოვერთაიმის ტიპი",
+  "percentageBonus": "პროცენტული ბონუსი",
+  "percentageBonuses": "პროცენტული ბონუსები",
+  "incentiveBonusType": "ბონუსის ტიპი",
+  "selectIncentiveBonusType": "მიუთითეთ ბონუსის ტიპი"
 }

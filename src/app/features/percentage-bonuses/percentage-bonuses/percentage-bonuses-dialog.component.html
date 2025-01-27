@@ -1,0 +1,81 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <ui-form-field class="w-full" [label]="t('employee')">
+    <p-dropdown
+      required
+      appendTo="body"
+      name="employee"
+      optionValue="id"
+      [placeholder]="t('selectEmployee')"
+      [options]="employees()"
+      [(ngModel)]="percentageBonus().employee_id"
+    >
+      <ng-template pTemplate="selectedItem" let-employee>
+        {{ employee.name }}
+        {{ employee.surname }}
+      </ng-template>
+
+      <ng-template let-employee pTemplate="item">
+        {{ employee.name }} {{ employee.surname }}
+      </ng-template></p-dropdown
+    >
+  </ui-form-field>
+  <ui-form-field class="w-full" [label]="t('incentiveBonusType')">
+    <p-dropdown
+      required
+      appendTo="body"
+      name="overtimePolicyType"
+      optionLabel="name"
+      optionValue="id"
+      [placeholder]="t('selectIncentiveBonusType')"
+      [options]="incentiveBonusTypes"
+      [(ngModel)]="percentageBonus().incentive_bonus_type_id"
+    />
+  </ui-form-field>
+
+
+  <ui-form-field class="w-full" [label]="t('amount')">
+    <input
+      required
+      pInputText
+      type="number"
+      name="amount"
+      class="w-full"
+      [(ngModel)]="percentageBonus()!.amount"
+    />
+  </ui-form-field>
+
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('dateFrom')">
+      <p-calendar
+        required
+        name="dateFrom"
+        dateFormat="yy-mm-dd"
+        [maxDate]="(percentageBonus().date_from | dateType) || now"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="percentageBonus().date_from"
+    /></ui-form-field>
+    <div class="w-full relative">
+      <ui-form-field class="w-full" [label]="t('dateTo')">
+        <p-calendar
+          name="dateTo"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [minDate]="percentageBonus().date_from | dateType"
+          [maxDate]="(percentageBonus().date_to | dateType) || now"
+          [(ngModel)]="percentageBonus().date_to"
+      /></ui-form-field>
+    </div>
+  </div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

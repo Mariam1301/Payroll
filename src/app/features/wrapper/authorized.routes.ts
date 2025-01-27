@@ -26,6 +26,12 @@ export const authorizedRoutes: Routes = [
           import('../monthly-overtimes/monthly-overtimes.component').then(
             (r) => r.MonthlyOvertimesComponent,
           ),
+      },{
+        path: 'percentageBonuses',
+        loadComponent: () =>
+          import('../percentage-bonuses/percentage-bonucses.component').then(
+            (r) => r.PercentageBonucsesComponent,
+          ),
       },
       {
         path: '**',

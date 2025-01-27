@@ -134,5 +134,9 @@
   "dateFrom": "Date from",
   "dateTo": "Date to",
   "selectEmployee": "Select employee",
-  "overTimeType": "Overtime type"
+  "overTimeType": "Overtime type",
+  "percentageBonus": "Percentage bonus",
+  "percentageBonuses": "Percentage bonuses",
+  "incentiveBonusType": "Incentive bonus type",
+  "selectIncentiveBonusType": "Select incentive bonus type"
 }
