@@ -1,0 +1,113 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <ui-form-field class="w-full" [label]="t('employee')">
+    <p-dropdown
+      required
+      appendTo="body"
+      name="employee"
+      optionValue="id"
+      [placeholder]="t('selectEmployee')"
+      [options]="employees()"
+      [(ngModel)]="oneTimeDeduction().employee_id"
+    >
+      <ng-template pTemplate="selectedItem" let-employee>
+        {{ employee.name }}
+        {{ employee.surname }}
+      </ng-template>
+
+      <ng-template let-employee pTemplate="item">
+        {{ employee.name }} {{ employee.surname }}
+      </ng-template></p-dropdown
+    >
+  </ui-form-field>
+
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('amount')">
+      <input
+        required
+        pInputText
+        type="number"
+        name="amount"
+        class="w-full"
+        [(ngModel)]="oneTimeDeduction()!.amount"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('paymentCurrency')">
+      <p-dropdown
+        required
+        appendTo="body"
+        name="paymentCurrency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions()"
+        [(ngModel)]="oneTimeDeduction().payment_currency"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+      <p-dropdown
+        required
+        appendTo="body"
+        name="calculationCurrency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions()"
+        [(ngModel)]="oneTimeDeduction().calculation_currency"
+      />
+    </ui-form-field>
+  </div>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <p-checkbox
+      name="includesIncomeTax"
+      [binary]="true"
+      [label]="t('includesIncomeTax')"
+      [(ngModel)]="oneTimeDeduction()!.includes_income_tax"
+    />
+    <p-checkbox
+      name="includesEmployeePension"
+      [binary]="true"
+      [label]="t('includesEmployeePension')"
+      [(ngModel)]="oneTimeDeduction()!.includes_employee_pension"
+    />
+    <p-checkbox
+      name="includesCompanyPension"
+      [binary]="true"
+      [label]="t('includesCompanyPension')"
+      [(ngModel)]="oneTimeDeduction()!.includes_company_pension"
+    />
+  </div>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('dateFrom')">
+      <p-calendar
+        required
+        name="dateFrom"
+        dateFormat="yy-mm-dd"
+        [maxDate]="(oneTimeDeduction().date_from | dateType) || now"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="oneTimeDeduction().date_from"
+    /></ui-form-field>
+    <div class="w-full relative">
+      <ui-form-field class="w-full" [label]="t('dateTo')">
+        <p-calendar
+          name="dateTo"
+          dateFormat="yy-mm-dd"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [minDate]="oneTimeDeduction().date_from | dateType"
+          [maxDate]="(oneTimeDeduction().date_to | dateType) || now"
+          [(ngModel)]="oneTimeDeduction().date_to"
+      /></ui-form-field>
+    </div>
+  </div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

@@ -138,5 +138,7 @@
   "percentageBonus": "Percentage bonus",
   "percentageBonuses": "Percentage bonuses",
   "incentiveBonusType": "Incentive bonus type",
-  "selectIncentiveBonusType": "Select incentive bonus type"
+  "selectIncentiveBonusType": "Select incentive bonus type",
+  "oneTimeDeductions": "One-time deductions",
+  "oneTimeDeduction": "One-time deduction"
 }

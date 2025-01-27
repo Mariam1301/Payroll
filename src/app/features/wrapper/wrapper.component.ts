@@ -33,9 +33,14 @@ export class WrapperComponent {
     {
       title: 'overtimes',
       path: 'overtimes',
-    }, {
+    },
+    {
       title: 'percentageBonuses',
       path: 'percentageBonuses',
+    },
+    {
+      title: 'oneTimeDeductions',
+      path: 'oneTimeDeductions',
     },
   ];
 

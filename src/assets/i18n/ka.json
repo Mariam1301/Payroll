@@ -138,5 +138,7 @@
   "percentageBonus": "პროცენტული ბონუსი",
   "percentageBonuses": "პროცენტული ბონუსები",
   "incentiveBonusType": "ბონუსის ტიპი",
-  "selectIncentiveBonusType": "მიუთითეთ ბონუსის ტიპი"
+  "selectIncentiveBonusType": "მიუთითეთ ბონუსის ტიპი",
+  "oneTimeDeductions": "ერთჯერადი დაქვითვები",
+  "oneTimeDeduction": "ერთჯერადი დაქვითვა"
 }

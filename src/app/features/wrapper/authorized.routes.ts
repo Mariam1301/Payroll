@@ -26,11 +26,19 @@ export const authorizedRoutes: Routes = [
           import('../monthly-overtimes/monthly-overtimes.component').then(
             (r) => r.MonthlyOvertimesComponent,
           ),
-      },{
+      },
+      {
         path: 'percentageBonuses',
         loadComponent: () =>
           import('../percentage-bonuses/percentage-bonucses.component').then(
             (r) => r.PercentageBonucsesComponent,
+          ),
+      },
+      {
+        path: 'oneTimeDeductions',
+        loadComponent: () =>
+          import('../one-time-deductions/one-time-deduction.component').then(
+            (r) => r.OneTimeDeductionsComponent,
           ),
       },
       {
