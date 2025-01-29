@@ -1,6 +1,9 @@
 import { Component, input, inject, signal } from '@angular/core';
 import { EmployeeService } from '../../../../core/services/employee/employee.service';
-import { SalaryModel } from '../../../../core/models/salary.model';
+import {
+  SalaryModel,
+  SalaryTypeEnum,
+} from '../../../../core/models/salary.model';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { ButtonModule } from 'primeng/button';
 import { SalaryComponent } from '../../salary/salary.component';
@@ -31,6 +34,13 @@ export class SalaryInformationComponent {
   private _employeeService = inject(EmployeeService);
   private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
+
+  salaryTypeToTranslationKeyMap = {
+    [SalaryTypeEnum.Fixed.toString()]: 'monthlyFixed',
+    [SalaryTypeEnum.Hourly.toString()]: 'hourly',
+    [SalaryTypeEnum.Daily.toString()]: 'daily',
+    [SalaryTypeEnum.Shifts.toString()]: 'monthlyShifts',
+  };
 
   ngOnInit(): void {
     this.fetchSalary();

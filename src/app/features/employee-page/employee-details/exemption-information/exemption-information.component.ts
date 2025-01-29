@@ -1,9 +1,8 @@
-import { Component, inject, input, signal } from '@angular/core';
+import {Component, inject, input, OnInit, signal} from '@angular/core';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
-import { Exemption } from '../../../../core/models/exemption.model';
+import {Exemption, LimitType} from '../../../../core/models/exemption.model';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
-import { DialogService } from 'primeng/dynamicdialog';
 import { EmployeeService } from '../../../../core/services/employee/employee.service';
 import { ExemptionsComponent } from '../../exemptions/exemptions.component';
 import { DatePipe } from '@angular/common';
@@ -22,10 +21,12 @@ import { UiDialogService } from '../../../../core/services/dialog/dialog.service
     TranslocoDirective,
   ],
 })
-export class ExemptionInformationComponent {
+export class ExemptionInformationComponent implements OnInit {
   employeeId = input.required<number>();
 
   data = signal<Partial<Exemption>[]>([]);
+
+  limitType = LimitType
 
   private _employeeService = inject(EmployeeService);
   private _dialogService = inject(UiDialogService);
@@ -53,7 +54,12 @@ export class ExemptionInformationComponent {
       .onClose.subscribe((data) => !!data && this.fetch());
   }
 
-  onDeleteClick({ dataItem }: any) {}
+  onDeleteClick({ dataItem }: any) {
+  this._employeeService.deleteIncomeTaxExemption(this.employeeId(), dataItem?.id).subscribe(() => this.fetch());
+  }
 
-  fetch() {}
+  fetch(){
+  this._employeeService
+.getIncomeTaxExemption(this.employeeId())
+.subscribe((exemptions) => this.data.set(exemptions));}
 }

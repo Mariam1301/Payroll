@@ -11,13 +11,24 @@
     <ui-data-element name="type" valueField="type"></ui-data-element>
     <ui-data-element name="limitType">
       <ng-template uiTemplate let-row>
-        <span>{{ t(row.limit_type) }}</span>
+        <span>{{
+          t(
+            row.limit_type === limitType.TIME_BASED
+              ? "timeBased"
+              : row.limit_type === limitType.AMOUNT_BASED
+                ? "amountBased"
+                : "permanent"
+          )
+        }}</span>
       </ng-template>
     </ui-data-element>
 
     <ui-data-element name="amount" valueField="amount"></ui-data-element>
-    <ui-data-element name="currency" valueField="currency"></ui-data-element>
-
+    <ui-data-element name="startDate">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.start_date | date: "dd/MM/yyy" }}</span>
+      </ng-template>
+    </ui-data-element>
     <ui-data-element name="endDate">
       <ng-template uiTemplate let-row>
         <span>{{ row.end_date | date: "dd/MM/yyy" }}</span>

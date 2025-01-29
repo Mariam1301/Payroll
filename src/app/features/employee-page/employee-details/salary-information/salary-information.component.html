@@ -18,7 +18,11 @@
       valueField="payment_currency"
     ></ui-data-element>
 
-    <ui-data-element name="salaryType" valueField="type"></ui-data-element>
+    <ui-data-element name="salaryType">
+      <ng-template uiTemplate let-row>
+        <span>{{ t(salaryTypeToTranslationKeyMap[row.type]) }}</span>
+      </ng-template>
+    </ui-data-element>
     <ui-data-element name="startDate">
       <ng-template uiTemplate let-row>
         <span>{{ row.start_date | date: "dd/MM/yyy" }}</span>

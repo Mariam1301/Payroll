@@ -10,7 +10,8 @@
   >
     <ui-data-element name="type" valueField="type"></ui-data-element>
     <ui-data-element name="amount" valueField="amount"></ui-data-element>
-    <ui-data-element name="currency" valueField="currency"></ui-data-element>
+    <ui-data-element name="paymentCurrency" valueField="payment_currency"></ui-data-element>
+    <ui-data-element name="calculationCurrency" valueField="calculation_currency"></ui-data-element>
     <ui-data-element name="startDate">
       <ng-template uiTemplate let-row>
         <span>{{ row.start_date | date: "dd/MM/yyy" }}</span>

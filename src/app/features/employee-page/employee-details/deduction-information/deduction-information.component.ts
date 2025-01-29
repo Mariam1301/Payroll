@@ -8,6 +8,7 @@ import { UiDataElement } from '../../../../shared/components/responsive-data-vie
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { DatePipe } from '@angular/common';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
+import {UiTemplateDirective} from "../../../../shared/directives/template/ui-template.directive";
 
 @Component({
   selector: 'employee-deduction-information',
@@ -17,6 +18,7 @@ import { UiDialogService } from '../../../../core/services/dialog/dialog.service
     UiDataElement,
     UiResponsiveDataViewComponent,
     DatePipe,
+    UiTemplateDirective,
   ],
   templateUrl: './deduction-information.component.html',
 })

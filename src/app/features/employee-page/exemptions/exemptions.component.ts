@@ -81,16 +81,14 @@ export class ExemptionsComponent {
       end_date: formatDateToISODate(this.exemption().end_date!),
       start_date: formatDateToISODate(this.exemption().start_date!)
     };
-    // const stream$ = data?.id
-    //   ? this._employeeService.updateDeduction(employeeId, data)
-    //   : this._employeeService.addDeduction(employeeId, data);
+    const stream$ = data?.id
+      ? this._employeeService.updateIncomeTaxExemption(employeeId, data)
+      : this._employeeService.addIncomeTaxExemption(employeeId, data);
 
-    // stream$.subscribe(() => this._ref.close(true));
-    console.log(data)
+    stream$.subscribe(() => this._ref.close(true));
   }
 
   onLimitTypeChange(type: LimitType) {
-
     this.exemption.update((prev) => ({ ...prev, end_date: undefined, amount: undefined, start_date: type === LimitType.PEMANENT?undefined:prev.start_date }));
   }
 }

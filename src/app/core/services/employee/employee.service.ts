@@ -5,6 +5,8 @@ import {SalaryModel} from "../../models/salary.model";
 import {map} from "rxjs";
 import {Benefit} from "../../models/benefit.model";
 import {Deduction} from "../../models/deduction.model";
+import {IncentiveBonus} from "../../models/incentive-bonus";
+import {Exemption} from "../../models/exemption.model";
 
 @Injectable({
   providedIn: 'root',
@@ -86,5 +88,37 @@ export class EmployeeService {
 
   deleteDeduction(employeeId: number, deductionId: number){
     return this._baseHttpService.delete(`${this.entityName}/${employeeId}/deductions/${deductionId}`);
+  }
+
+  addIncentiveBonus(employeeId: number, data: Partial<IncentiveBonus>){
+    return this._baseHttpService.post(`${this.entityName}/${employeeId}/incentive-bonuses`, data);
+  }
+
+  getIncentiveBonus(employeeId: number){
+    return this._baseHttpService.get<Partial<IncentiveBonus>[] >(`${this.entityName}/${employeeId}/incentive-bonuses`).pipe(map(data => data));
+  }
+
+  updateIncentiveBonus(employeeId: number, data: Partial<IncentiveBonus>){
+    return this._baseHttpService.put(`${this.entityName}/${employeeId}/incentive-bonuses/${data.id}`, data);
+  }
+
+  deleteIncentiveBonus(employeeId: number, incentiveBonusId: number){
+    return this._baseHttpService.delete(`${this.entityName}/${employeeId}/incentive-bonuses/${incentiveBonusId}`);
+  }
+
+  addIncomeTaxExemption(employeeId: number, data: Partial<Exemption>){
+    return this._baseHttpService.post(`${this.entityName}/${employeeId}/income-tax-exemptions`, data);
+  }
+
+  getIncomeTaxExemption(employeeId: number){
+    return this._baseHttpService.get<Partial<Exemption>[] >(`${this.entityName}/${employeeId}/income-tax-exemptions`).pipe(map(data => data));
+  }
+
+  updateIncomeTaxExemption(employeeId: number, data: Partial<Exemption>){
+    return this._baseHttpService.put(`${this.entityName}/${employeeId}/income-tax-exemptions/${data.id}`, data);
+  }
+
+  deleteIncomeTaxExemption(employeeId: number, exemptionId: number){
+    return this._baseHttpService.delete(`${this.entityName}/${employeeId}/income-tax-exemptions/${exemptionId}`);
   }
 }

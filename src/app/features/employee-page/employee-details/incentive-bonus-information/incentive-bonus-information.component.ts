@@ -53,14 +53,14 @@ export class IncentiveBonusInformationComponent {
   }
 
   onDeleteClick({ dataItem }: any) {
-    // this._employeeService
-    //   .deleteBenefit(this.employeeId(), dataItem.id)
-    //   .subscribe(() => this.fetch());
+    this._employeeService
+      .deleteIncentiveBonus(this.employeeId(), dataItem.id)
+      .subscribe(() => this.fetch());
   }
 
   fetch() {
-    // this._employeeService
-    //   .getBenefits(this.employeeId())
-    //   .subscribe((benefits) => this.data.set(benefits));
+    this._employeeService
+      .getIncentiveBonus(this.employeeId())
+      .subscribe((incentiveBonuces) => this.data.set(incentiveBonuces));
   }
 }

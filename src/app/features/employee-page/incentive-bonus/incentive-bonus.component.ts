@@ -72,11 +72,11 @@ export class IncentiveBonusComponent implements OnInit {
       start_date: formatDateToISODate(this.incentiveBonus().start_date!),
       end_date: formatDateToISODate(this.incentiveBonus().end_date!),
     };
-    // const stream$ = data?.id
-    //   ? this._employeeService.updateBenefit(employeeId, data)
-    //   : this._employeeService.addBenefit(employeeId, data);
+    const stream$ = data?.id
+      ? this._employeeService.updateIncentiveBonus(employeeId, data)
+      : this._employeeService.addIncentiveBonus(employeeId, data);
 
-    console.log(data)
+    stream$.subscribe(() => this._ref.close(true));
 
   }
 
