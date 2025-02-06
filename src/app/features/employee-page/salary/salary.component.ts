@@ -99,7 +99,7 @@ export class SalaryComponent implements OnInit {
       label: this._translocoService.translate('calendarDays'),
     },
     {
-      id: DailySalaryCalculationBaseEnum.WORK_DAYS,
+      id: DailySalaryCalculationBaseEnum.WORKING_DAYS,
       label: this._translocoService.translate('workingDays'),
     },
   ]);

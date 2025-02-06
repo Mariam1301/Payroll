@@ -26,7 +26,7 @@ export enum SalaryTypeEnum {
 
 export enum DailySalaryCalculationBaseEnum {
   CALENDAR_DAYS = 'CALENDAR_DAYS',
-  WORK_DAYS = 'WORK_DAYS',
+  WORKING_DAYS = 'WORKING_DAYS',
 }
 
 export enum NonWorkingDaysEnum {
