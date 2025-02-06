@@ -126,6 +126,7 @@ export class BaseHttpService implements BaseHttpActions {
       severity: 'error',
       summary: errorSummary,
       detail: errorText,
+      sticky: true,
     });
 
     let errors = error?.error?.errors;
@@ -145,6 +146,7 @@ export class BaseHttpService implements BaseHttpActions {
       severity: 'error',
       summary: 'მოხდა შეცდომა',
       detail: errorMessage,
+      sticky: true,
     });
   }
 

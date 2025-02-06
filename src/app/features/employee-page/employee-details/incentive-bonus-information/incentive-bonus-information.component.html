@@ -10,8 +10,15 @@
   >
     <ui-data-element name="type" valueField="type"></ui-data-element>
     <ui-data-element name="percent" valueField="percent"></ui-data-element>
-    <ui-data-element name="paymentCurrency" valueField="payment_currency"></ui-data-element>
-    <ui-data-element name="calculationCurrency" valueField="calculation_currency"></ui-data-element>    <ui-data-element name="startDate">
+    <ui-data-element
+      name="paymentCurrency"
+      valueField="payment_currency"
+    ></ui-data-element>
+    <ui-data-element
+      name="calculationCurrency"
+      valueField="calculation_currency"
+    ></ui-data-element>
+    <ui-data-element name="startDate">
       <ng-template uiTemplate let-row>
         <span>{{ row.start_date | date: "dd/MM/yyy" }}</span>
       </ng-template>
@@ -19,13 +26,6 @@
     <ui-data-element name="endDate">
       <ng-template uiTemplate let-row>
         <span>{{ row.end_date | date: "dd/MM/yyy" }}</span>
-      </ng-template>
-    </ui-data-element>
-    <ui-data-element name="includesCompanyPension">
-      <ng-template uiTemplate let-row>
-        @if (row.includes_company_pension) {
-          <i class="pi pi-check" style="font-size: 1rem"></i>
-        }
       </ng-template>
     </ui-data-element>
     <ui-data-element name="includesEmployeePension">

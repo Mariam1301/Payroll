@@ -35,7 +35,8 @@
         [options]="currencyOptions()"
         [(ngModel)]="deduction().payment_currency"
       />
-    </ui-form-field>    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
       <p-dropdown
         required
         appendTo="body"
@@ -60,12 +61,6 @@
       [binary]="true"
       [label]="t('includesEmployeePension')"
       [(ngModel)]="deduction()!.includes_employee_pension"
-    />
-    <p-checkbox
-      name="includesCompanyPension"
-      [binary]="true"
-      [label]="t('includesCompanyPension')"
-      [(ngModel)]="deduction()!.includes_company_pension"
     />
   </div>
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">

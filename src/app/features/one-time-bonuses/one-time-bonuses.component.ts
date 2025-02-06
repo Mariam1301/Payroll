@@ -65,7 +65,6 @@ export class OneTimeBonusesComponent implements OnInit {
         calculation_currency: 'GEL',
         includes_income_tax: true,
         includes_employee_pension: true,
-        includes_company_pension: true,
         date_from: new Date('01-01-2025'),
         date_to: new Date('01-27-2025'),
       } as unknown as OneTimeDeductionInfo,

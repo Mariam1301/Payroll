@@ -11,7 +11,7 @@
         appendTo="body"
         name="dateFrom"
         dateFormat="yy-mm-dd"
-        [maxDate]="(payrollGenerationData().start_date | dateType) || now"
+        [maxDate]="payrollGenerationData().start_date | dateType"
         [showIcon]="true"
         [showOnFocus]="false"
         [(ngModel)]="payrollGenerationData().start_date"
@@ -25,7 +25,7 @@
           [showIcon]="true"
           [showOnFocus]="false"
           [minDate]="payrollGenerationData().start_date | dateType"
-          [maxDate]="(payrollGenerationData().end_date | dateType) || now"
+          [maxDate]="payrollGenerationData().end_date | dateType"
           [(ngModel)]="payrollGenerationData().end_date"
       /></ui-form-field>
     </div>

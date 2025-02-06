@@ -6,7 +6,6 @@ export interface SalaryModel {
   type: SalaryTypeEnum;
   includes_income_tax: boolean;
   includes_employee_pension: boolean;
-  includes_company_pension: boolean;
   calculation_currency: CurrencyEnum;
   amount: number;
   payment_currency: CurrencyEnum;
@@ -15,7 +14,7 @@ export interface SalaryModel {
   daily_working_hours?: number;
   monthly_working_days?: number;
   non_working_days: NonWorkingDaysEnum[];
-  non_working_custom_dates?: string[]
+  non_working_custom_dates?: string[];
 }
 
 export enum SalaryTypeEnum {

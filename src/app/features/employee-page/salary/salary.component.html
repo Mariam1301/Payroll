@@ -45,7 +45,6 @@
             [(ngModel)]="salary()!.monthly_working_days"
           />
         </ui-form-field>
-
       }
     </div>
     @if (salary().type === salaryTypeEnum.Fixed) {
@@ -150,12 +149,6 @@
         [binary]="true"
         [label]="t('includesEmployeePension')"
         [(ngModel)]="salary()!.includes_employee_pension"
-      />
-      <p-checkbox
-        name="includesCompanyPension"
-        [binary]="true"
-        [label]="t('includesCompanyPension')"
-        [(ngModel)]="salary()!.includes_company_pension"
       />
     </div>
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">

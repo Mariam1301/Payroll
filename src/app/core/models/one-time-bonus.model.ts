@@ -8,7 +8,6 @@ export interface OneTimeBonus {
   calculation_currency: CurrencyEnum;
   includes_income_tax: boolean;
   includes_employee_pension: boolean;
-  includes_company_pension: boolean;
   date_from: string;
   date_to: string;
 }
@@ -22,7 +21,6 @@ export interface OneTimeBonusInfo {
   calculation_currency: CurrencyEnum;
   includes_income_tax: boolean;
   includes_employee_pension: boolean;
-  includes_company_pension: boolean;
   date_from: string;
   date_to: string;
 }

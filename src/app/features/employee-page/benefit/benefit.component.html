@@ -35,18 +35,19 @@
         [options]="currencyOptions()"
         [(ngModel)]="benefit().payment_currency"
       />
-    </ui-form-field>    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
-    <p-dropdown
-      required
-      appendTo="body"
-      name="calculationCurrency"
-      optionLabel="label"
-      optionValue="id"
-      [placeholder]="t('selectCurrency')"
-      [options]="currencyOptions()"
-      [(ngModel)]="benefit().calculation_currency"
-    />
-  </ui-form-field>
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+      <p-dropdown
+        required
+        appendTo="body"
+        name="calculationCurrency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions()"
+        [(ngModel)]="benefit().calculation_currency"
+      />
+    </ui-form-field>
   </div>
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <p-checkbox
@@ -60,12 +61,6 @@
       [binary]="true"
       [label]="t('includesEmployeePension')"
       [(ngModel)]="benefit()!.includes_employee_pension"
-    />
-    <p-checkbox
-      name="includesCompanyPension"
-      [binary]="true"
-      [label]="t('includesCompanyPension')"
-      [(ngModel)]="benefit()!.includes_company_pension"
     />
   </div>
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
