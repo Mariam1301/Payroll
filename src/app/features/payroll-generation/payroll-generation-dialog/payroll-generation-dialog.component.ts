@@ -15,6 +15,8 @@ import { EmployeeService } from '../../../core/services/employee/employee.servic
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { JsonPipe } from '@angular/common';
 import { ChipModule } from 'primeng/chip';
+import { stringify } from 'qs';
+import { formatDateToISODate } from '../../../core/utils/date-formating';
 
 @Component({
   selector: 'app-payroll-generation-dialog',
@@ -31,7 +33,6 @@ import { ChipModule } from 'primeng/chip';
     UiDialogActionsComponent,
     UiFormFieldComponent,
     MultiSelectModule,
-    JsonPipe,
     ChipModule,
   ],
   templateUrl: './payroll-generation-dialog.component.html',
@@ -56,7 +57,10 @@ export class PayrollGenerationDialogComponent {
   }
 
   onGenerateClick() {
-    console.log({ ...this.payrollGenerationData() });
-    this._ref.close({ ...this.payrollGenerationData() });
+    this._ref.close({
+      ...this.payrollGenerationData(),
+      // start_date: formatDateToISODate(this.payrollGenerationData().start_date!),
+      // end_date: formatDateToISODate(this.payrollGenerationData().end_date!),
+    });
   }
 }

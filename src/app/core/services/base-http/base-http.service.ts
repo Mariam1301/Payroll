@@ -9,6 +9,8 @@ import {
 import { catchError, finalize, tap } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
 import { TranslocoService } from '@jsverse/transloco';
+import { stringify } from 'qs';
+import { formatDateToISODate } from '../../utils/date-formating';
 
 const BASE_URL = 'http://Payroll-api.devgkh.com/api/';
 
@@ -20,13 +22,13 @@ export class BaseHttpService implements BaseHttpActions {
     public httpClient: HttpClient,
     private readonly _toastService: MessageService,
     private readonly _loaderService: LoaderService,
-    private readonly _translocoService: TranslocoService
+    private readonly _translocoService: TranslocoService,
   ) {}
 
-  get<T>(url: string, params?: ParamsType, options?: HttpRequestOptions) {
+  get<T>(url: string, params?: any, options?: HttpRequestOptions) {
     options?.loaderId && this._loaderService.createLoader(options.loaderId);
     return this.httpClient
-      .get<T>(`${BASE_URL}${url}`, { params: this.createParams(params) })
+      .get<T>(`${BASE_URL}${url}?${this.paramsToQueryString(params)}`)
       .pipe(
         tap((x) => this.HandleResponse(x)),
         catchError((er) => {
@@ -36,8 +38,8 @@ export class BaseHttpService implements BaseHttpActions {
         finalize(
           () =>
             options?.loaderId &&
-            this._loaderService.removeLoader(options.loaderId)
-        )
+            this._loaderService.removeLoader(options.loaderId),
+        ),
       );
   }
 
@@ -45,7 +47,7 @@ export class BaseHttpService implements BaseHttpActions {
     url: string,
     data: TData,
     params?: ParamsType,
-    options?: HttpRequestOptions
+    options?: HttpRequestOptions,
   ) {
     return this.httpClient
       .post<TResponse>(`${BASE_URL}${url}`, data, {
@@ -57,7 +59,7 @@ export class BaseHttpService implements BaseHttpActions {
           this.handleErrorResponse(er);
           throw er;
         }),
-        tap(() => options?.showSuccessMessage && this.handleSuccessToast())
+        tap(() => options?.showSuccessMessage && this.handleSuccessToast()),
       );
   }
 
@@ -69,7 +71,7 @@ export class BaseHttpService implements BaseHttpActions {
         catchError((er) => {
           this.handleErrorResponse(er);
           throw er;
-        })
+        }),
       );
   }
 
@@ -77,7 +79,7 @@ export class BaseHttpService implements BaseHttpActions {
     url: string,
     data: TData,
     params?: ParamsType,
-    options?: HttpRequestOptions
+    options?: HttpRequestOptions,
   ) {
     return this.httpClient
       .put<TResponse>(`${BASE_URL}${url}`, data, {
@@ -88,7 +90,7 @@ export class BaseHttpService implements BaseHttpActions {
         catchError((er) => {
           this.handleErrorResponse(er);
           throw er;
-        })
+        }),
       );
   }
 
@@ -100,6 +102,14 @@ export class BaseHttpService implements BaseHttpActions {
       });
     }
     return httpParams;
+  }
+
+  private paramsToQueryString(params: any) {
+    return stringify(params, {
+      encode: false,
+      charset: 'iso-8859-1',
+      serializeDate: (date) => formatDateToISODate(date)!,
+    });
   }
 
   private HandleResponse(response: any) {
