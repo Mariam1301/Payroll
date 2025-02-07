@@ -55,13 +55,13 @@
     <p-checkbox
       name="includesIncomeTax"
       [binary]="true"
-      [label]="t('includesIncomeTax')"
+      [ariaLabel]="t('includesIncomeTax')"
       [(ngModel)]="incentiveBonus()!.includes_income_tax"
     />
     <p-checkbox
       name="includesEmployeePension"
       [binary]="true"
-      [label]="t('includesEmployeePension')"
+      [ariaLabel]="t('includesEmployeePension')"
       [(ngModel)]="incentiveBonus()!.includes_employee_pension"
     />
   </div>
@@ -94,7 +94,7 @@
         <p-checkbox
           name="currentBenefit"
           [binary]="true"
-          [label]="t('currentBenefit')"
+          [ariaLabel]="t('currentBenefit')"
           [(ngModel)]="currentIncentiveBonus"
           (ngModelChange)="onCurrentBenefitChange()"
         />

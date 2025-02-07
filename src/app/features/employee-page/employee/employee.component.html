@@ -133,7 +133,7 @@
         <p-checkbox
           name="stillWorking"
           [binary]="true"
-          [label]="t('stillWorking')"
+          [ariaLabel]="t('stillWorking')"
           [(ngModel)]="stillWorking"
           (ngModelChange)="onStillWorkingChange()"
         />
@@ -164,7 +164,7 @@
   <p-checkbox
     name="isInPension"
     [binary]="true"
-    [label]="t('isInPension')"
+    [ariaLabel]="t('isInPension')"
     [(ngModel)]="employeeData().pension"
   />
   <ui-dialog-actions

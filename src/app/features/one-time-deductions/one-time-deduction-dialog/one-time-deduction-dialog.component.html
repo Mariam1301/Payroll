@@ -65,13 +65,13 @@
     <p-checkbox
       name="includesIncomeTax"
       [binary]="true"
-      [label]="t('includesIncomeTax')"
+      [ariaLabel]="t('includesIncomeTax')"
       [(ngModel)]="oneTimeDeduction()!.includes_income_tax"
     />
     <p-checkbox
       name="includesEmployeePension"
       [binary]="true"
-      [label]="t('includesEmployeePension')"
+      [ariaLabel]="t('includesEmployeePension')"
       [(ngModel)]="oneTimeDeduction()!.includes_employee_pension"
     />
   </div>

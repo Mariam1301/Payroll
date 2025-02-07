@@ -19,6 +19,8 @@ import { authInterceptor } from './core/interceptors/auth/auth.interceptor';
 import { userReducer } from './store/user/user.reducer';
 import { DialogService } from 'primeng/dynamicdialog';
 import { UiDialogService } from './core/services/dialog/dialog.service';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -40,6 +42,14 @@ export const appConfig: ApplicationConfig = {
     MessageService,
     DialogService,
     UiDialogService,
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.my-app-dark',
+        },
+      },
+    }),
     provideStore({ counter: counterReducer, user: userReducer }),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
