@@ -1,139 +1,115 @@
 <ng-container *transloco="let t">
-  <div class="w-full flex items-start justify-center py-10">
-    <button
-      class="p-button w-full sm:w-fit justify-center flex gap-2 items-center"
-      (click)="onGeneratePayrollClick()"
-    >
-      <p *transloco="let t">{{ t("generatePayroll") }}</p>
-    </button>
-  </div>
+  <ui-responsive-data-view
+    [title]="t('payroll')"
+    [data]="data()"
+    [showAddButton]="true"
+    [addButtonLabel]="t('generatePayroll')"
+    [showDeleteButton]="false"
+    [areColumnsSelectable]="true"
+    [defaultColumnSelection]="defaultSelectedColumns"
+    (addButtonClicked)="onGeneratePayrollClick()"
+  >
+    <ui-data-element
+      name="name"
+      valueField="name"
+      class="hidden"
+    ></ui-data-element>
+    <ui-data-element name="lastName" valueField="surname"></ui-data-element>
+    <ui-data-element name="startDate" valueField="start_date">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.start_date | date: "dd/MM/yyyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="endDate" valueField="end_date">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.end_date | date: "dd/MM/yyyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element
+      name="personalNumber"
+      valueField="id_number"
+    ></ui-data-element>
+    <ui-data-element name="birthDate" valueField="birth_date">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.birth_date | date: "dd/MM/yyyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="phoneNumber" valueField="phone"></ui-data-element>
+    <ui-data-element name="gender" valueField="gender"></ui-data-element>
+    <ui-data-element name="address" valueField="address"></ui-data-element>
+    <ui-data-element
+      name="taxResidency"
+      valueField="residency"
+    ></ui-data-element>
 
-  @if (data().length) {
-    <!--    <ui-form-field class="w-full" [label]="t('selectedFields')">-->
-    <!--      <p-multiSelect-->
-    <!--        name="fields"-->
-    <!--        appendTo="body"-->
-    <!--        optionLabel="name"-->
-    <!--        optionValue-->
-    <!--        [placeholder]="t('selectFields')"-->
-    <!--        [options]="payrollCalculationFieldsDropdownValues"-->
-    <!--        display="chip"-->
-    <!--        class="w-full mb-5"-->
-    <!--        [filter]="false"-->
-    <!--        [(ngModel)]="selectedPayrollCalculationFields"-->
-    <!--      >-->
-    <!--      </p-multiSelect>-->
-    <!--    </ui-form-field>-->
+    <ui-data-element name="email" valueField="email"></ui-data-element>
+    <ui-data-element
+      name="bankAccountNumber"
+      valueField="bank_account"
+    ></ui-data-element>
 
-    <ui-responsive-data-view
-      [title]="t('payroll')"
-      [data]="data()"
-      [showAddButton]="false"
-      [showDeleteButton]="false"
-    >
-      <ui-data-element name="name" valueField="name"></ui-data-element>
-      <ui-data-element name="surname" valueField="surname"></ui-data-element>
-      <!--    <ui-data-element name="idNumber" valueField="id_number"></ui-data-element>
-      <ui-data-element name="birthDate" valueField="birth_date">
-        <ng-template uiTemplate let-row>
-          <span>{{ row.birth_date | date: "dd/MM/yyyy" }}</span>
-        </ng-template>
-      </ui-data-element>
-      <ui-data-element name="phone" valueField="phone"></ui-data-element>
-      <ui-data-element name="gender" valueField="gender"></ui-data-element>
-      <ui-data-element name="address" valueField="address"></ui-data-element>
-      <ui-data-element
-        name="residency"
-        valueField="residency"
-      ></ui-data-element>
-      <ui-data-element name="startDate" valueField="start_date">
-        <ng-template uiTemplate let-row>
-          <span>{{ row.start_date | date: "dd/MM/yyyy" }}</span>
-        </ng-template>
-      </ui-data-element>
+    <ui-data-element name="isInPension" valueField="pension">
+      <ng-template uiTemplate let-row>
+        <i *ngIf="row.pension" class="pi pi-check" style="font-size: 1rem"></i>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="position" valueField="position"></ui-data-element>
 
-      <ui-data-element name="endDate" valueField="end_date">
-        <ng-template uiTemplate let-row>
-          <span>{{ row.end_date | date: "dd/MM/yyyy" }}</span>
-        </ng-template>
-      </ui-data-element>
+    <ui-data-element
+      name="salaryGross"
+      valueField="salary_gross"
+    ></ui-data-element>
 
-      <ui-data-element name="email" valueField="email"></ui-data-element>
-      <ui-data-element
-        name="bankAccount"
-        valueField="bank_account"
-      ></ui-data-element>
+    <ui-data-element
+      name="salaryPension"
+      valueField="salary_pension"
+    ></ui-data-element>
 
-      <ui-data-element name="pension" valueField="pension">
-        <ng-template uiTemplate let-row>
-          <i
-            *ngIf="row.pension"
-            class="pi pi-check"
-            style="font-size: 1rem"
-          ></i>
-        </ng-template>
-      </ui-data-element>
-      <ui-data-element name="position" valueField="position"></ui-data-element> -->
+    <ui-data-element
+      name="salaryIncomeTax"
+      valueField="salary_income_tax"
+    ></ui-data-element>
 
-      <ui-data-element
-        name="salaryGross"
-        valueField="salary_gross"
-      ></ui-data-element>
+    <ui-data-element name="salaryNet" valueField="salary_net"></ui-data-element>
 
-      <ui-data-element
-        name="salaryPension"
-        valueField="salary_pension"
-      ></ui-data-element>
+    <ui-data-element
+      name="benefitGross"
+      valueField="benefit_gross"
+    ></ui-data-element>
 
-      <ui-data-element
-        name="salaryIncomeTax"
-        valueField="salary_income_tax"
-      ></ui-data-element>
+    <ui-data-element
+      name="benefitPension"
+      valueField="benefit_pension"
+    ></ui-data-element>
 
-      <ui-data-element
-        name="salaryNet"
-        valueField="salary_net"
-      ></ui-data-element>
+    <ui-data-element
+      name="benefitIncomeTax"
+      valueField="benefit_income_tax"
+    ></ui-data-element>
 
-      <!--   <ui-data-element
-        name="benefitGross"
-        valueField="benefit_gross"
-      ></ui-data-element>
+    <ui-data-element
+      name="benefitNet"
+      valueField="benefit_net"
+    ></ui-data-element>
 
-      <ui-data-element
-        name="benefitPension"
-        valueField="benefit_pension"
-      ></ui-data-element>
+    <ui-data-element
+      name="deductionGross"
+      valueField="deduction_gross"
+    ></ui-data-element>
 
-      <ui-data-element
-        name="benefitIncomeTax"
-        valueField="benefit_income_tax"
-      ></ui-data-element>
+    <ui-data-element
+      name="deductionPension"
+      valueField="deduction_pension"
+    ></ui-data-element>
 
-      <ui-data-element
-        name="benefitNet"
-        valueField="benefit_net"
-      ></ui-data-element>
+    <ui-data-element
+      name="deductionIncomeTax"
+      valueField="deduction_income_tax"
+    ></ui-data-element>
 
-      <ui-data-element
-        name="deductionGross"
-        valueField="deduction_gross"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="deductionPension"
-        valueField="deduction_pension"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="deductionIncomeTax"
-        valueField="deduction_income_tax"
-      ></ui-data-element> 
-
-      <ui-data-element
-        name="deductionNet"
-        valueField="deduction_net"
-      ></ui-data-element>-->
-    </ui-responsive-data-view>
-  }
+    <ui-data-element
+      name="deductionNet"
+      valueField="deduction_net"
+    ></ui-data-element>
+  </ui-responsive-data-view>
 </ng-container>

@@ -144,5 +144,8 @@
   "oneTimeBonus": "ერთჯერადი ბონუსი",
   "payrollGeneration": "უწყისის გენერირება",
   "generatePayroll": "დააგენერირე უწყისი",
-  "payroll": "უწყისი"
+  "payroll": "უწყისი",
+  "selectColumns": "აირჩიე ველები",
+  "toSeeDataPleaseSelectFields": "მონაცემების სანახავად, გთხოვთ, აირჩიოთ ველები.",
+  "selectEmployees": "აირჩიე თანამშრომლები"
 }

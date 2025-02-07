@@ -1,4 +1,4 @@
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule, JsonPipe, NgClass } from '@angular/common';
 import { Component, input, output, TemplateRef } from '@angular/core';
 import { UiConfirmationDirective } from '../../directives/confirmation/confirmation.directive';
 import { TableModule } from 'primeng/table';

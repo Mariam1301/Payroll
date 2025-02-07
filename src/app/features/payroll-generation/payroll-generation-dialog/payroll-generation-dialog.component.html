@@ -11,9 +11,9 @@
         appendTo="body"
         name="dateFrom"
         dateFormat="yy-mm-dd"
-        [maxDate]="payrollGenerationData().start_date | dateType"
         [showIcon]="true"
         [showOnFocus]="false"
+        [maxDate]="payrollGenerationData().end_date | dateType"
         [(ngModel)]="payrollGenerationData().start_date"
     /></ui-form-field>
     <div class="w-full relative">
@@ -25,7 +25,6 @@
           [showIcon]="true"
           [showOnFocus]="false"
           [minDate]="payrollGenerationData().start_date | dateType"
-          [maxDate]="payrollGenerationData().end_date | dateType"
           [(ngModel)]="payrollGenerationData().end_date"
       /></ui-form-field>
     </div>
@@ -41,24 +40,8 @@
       [placeholder]="t('selectEmployees')"
       [options]="employees()"
       display="chip"
-      [filter]="false"
       [(ngModel)]="payrollGenerationData()!.employee_ids"
     >
-      <ng-template pTemplate="selectedItems" let-employees>
-        <div class="min-h-6">
-          @for (item of employees; track item.id) {
-            <p-chip
-              [label]="item?.name + item?.surname"
-              [removable]="true"
-              (onRemove)="onRemoveItem(item.id)"
-            />
-          }
-        </div>
-      </ng-template>
-
-      <ng-template let-employee pTemplate="items">
-        {{ employee.name }} {{ employee.surname }}
-      </ng-template>
     </p-multiSelect>
   </ui-form-field>
 

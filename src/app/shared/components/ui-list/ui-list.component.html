@@ -12,8 +12,10 @@
       <div class="py-4">
         @for (column of columnList(); track column?.name) {
           <div class="flex items-center justify-between truncate">
-            <div class="flex items-center gap-2 my-1 px-4 truncate">
-              <p class="font-bold font-primeng text-sm"></p>
+            <div class="flex flex-wrap items-center gap-2 my-1 px-4 truncate">
+              <p class="font-bold font-primeng text-sm truncate">
+                {{ t(column.name || "") }}:
+              </p>
               <p class="truncate font-primeng text-sm">
                 @if (column.templateRef) {
                   <ng-container

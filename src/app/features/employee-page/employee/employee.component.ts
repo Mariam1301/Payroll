@@ -45,7 +45,7 @@ export class EmployeeComponent implements OnInit {
   private readonly _translocoService = inject(TranslocoService);
 
   ngOnInit(): void {
-    const employe = {...this._dialogConfig.data};
+    const employe = { ...this._dialogConfig.data };
     employe && this.employeeData.set(employe);
   }
 
@@ -86,6 +86,7 @@ export class EmployeeComponent implements OnInit {
       id_number: this.employeeData()?.id_number?.toString(),
       birth_date: formatDateToISODate(this.employeeData().birth_date!),
       start_date: formatDateToISODate(this.employeeData().start_date!),
+      end_date: formatDateToISODate(this.employeeData().end_date!),
     };
 
     const stream$ = this.employeeData().id

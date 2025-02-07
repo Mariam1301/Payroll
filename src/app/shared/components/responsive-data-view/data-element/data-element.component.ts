@@ -12,6 +12,9 @@ import { UiTemplateDirective } from '../../../directives/template/ui-template.di
   standalone: true,
   selector: 'ui-data-element',
   templateUrl: './data-element.component.html',
+  host: {
+    class: '',
+  },
 })
 export class UiDataElement implements AfterContentInit {
   public name = input<string>();

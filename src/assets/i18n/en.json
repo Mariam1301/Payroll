@@ -144,5 +144,8 @@
   "oneTimeBonus": "One-time bonus",
   "payrollGeneration": "Payroll generation",
   "generatePayroll": "Generate payroll",
-  "payroll": "Payroll"
+  "payroll": "Payroll",
+  "selectColumns": "Select columns",
+  "toSeeDataPleaseSelectFields": "To see data, please select fields",
+  "selectEmployees": "Select employees"
 }

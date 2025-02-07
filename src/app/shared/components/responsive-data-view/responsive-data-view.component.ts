@@ -1,12 +1,14 @@
 import {
   AfterContentInit,
   Component,
+  computed,
   contentChildren,
   DestroyRef,
   inject,
   input,
   OnInit,
   output,
+  Signal,
   signal,
   TemplateRef,
 } from '@angular/core';
@@ -16,18 +18,20 @@ import {
 } from './data-element/data-element.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TableModule } from 'primeng/table';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
 import { UiTemplateDirective } from '../../directives/template/ui-template.directive';
 import { LoaderService } from '../../../core/services/loader/loader.service';
-import { TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { UiPaginatorComponent } from './paginator/paginator.component';
 import { FilterComponent } from './filter/filter.component';
 import { UiLoadMoreButtonComponent } from '../load-more-button/load-more-button.component';
 import { UiListComponent } from '../ui-list/ui-list.component';
 import { UiTableComponent } from '../ui-table/ui-table.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { UiFormFieldComponent } from '../form-field/form-field.component';
 
 @Component({
   selector: 'ui-responsive-data-view',
@@ -45,10 +49,14 @@ import { UiTableComponent } from '../ui-table/ui-table.component';
     FilterComponent,
     UiTableComponent,
     UiListComponent,
+    FormsModule,
+    MultiSelectModule,
   ],
 })
 export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
   showAddButton = input(false);
+
+  addButtonLabel = input<string>();
 
   showDeleteButton = input(false);
 
@@ -64,6 +72,10 @@ export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
 
   hasPagination = input(false);
 
+  areColumnsSelectable = input(false);
+
+  defaultColumnSelection = input<string[]>([]);
+
   addButtonClicked = output();
 
   rowClicked = output<{ index: number; dataItem: any }>();
@@ -78,12 +90,23 @@ export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
 
   noteTemplate = signal<TemplateRef<any> | null>(null);
 
+  selectedColumns = signal<string[]>([]);
+
   columnList = signal<DataElement[] | null>(null);
 
   isLoading = signal(true);
 
+  fieldList = signal<{ name: string; value: string }[]>([]);
+
+  filteredColumnList = computed(() =>
+    this.columnList()?.filter((item) =>
+      this.selectedColumns().includes(item.valueField || ''),
+    ),
+  );
+
   private readonly _loaderService = inject(LoaderService);
   private readonly _destroyRef = inject(DestroyRef);
+  private readonly _translocoService = inject(TranslocoService);
 
   ngOnInit(): void {
     this.dataSource()?.fetchData();
@@ -92,19 +115,28 @@ export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
         .pipe(takeUntilDestroyed(this._destroyRef))
         .subscribe(
           ({ loaderId, showLoader }) =>
-            loaderId === this.loaderId() && this.isLoading.set(showLoader)
+            loaderId === this.loaderId() && this.isLoading.set(showLoader),
         );
     }
   }
 
   ngAfterContentInit(): void {
+    this.fieldList.set(
+      this.contentChildren().map((item) => ({
+        name: this._translocoService.translate(item.name() || ''),
+        value: item.valueField() || '',
+      })),
+    );
+
+    this.selectedColumns.set(this.defaultColumnSelection());
+
     this.columnList.set(
       this.contentChildren().map((item) => ({
         name: item.name(),
         valueField: item.valueField(),
         tempalte: item.template(),
         templateRef: item.templateRef(),
-      }))
+      })),
     );
 
     for (let template of this.templateRefs()) {
