@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
@@ -12,8 +12,8 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { CurrencyEnum } from '../../../core/models/general.model';
-import {IncentiveBonus} from "../../../core/models/incentive-bonus";
-import {InputNumberModule} from "primeng/inputnumber";
+import { IncentiveBonus } from '../../../core/models/incentive-bonus';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-incentive-bonus',
@@ -61,8 +61,9 @@ export class IncentiveBonusComponent implements OnInit {
   ]);
 
   ngOnInit(): void {
-    const incentiveBonus = {...this._dialogConfig.data?.incentiveBonus};
+    const incentiveBonus = { ...this._dialogConfig.data?.incentiveBonus };
     incentiveBonus && this.incentiveBonus.set(incentiveBonus);
+    this.currentIncentiveBonus.set(!incentiveBonus?.end_date);
   }
 
   onSaveClick() {
@@ -77,7 +78,6 @@ export class IncentiveBonusComponent implements OnInit {
       : this._employeeService.addIncentiveBonus(employeeId, data);
 
     stream$.subscribe(() => this._ref.close(true));
-
   }
 
   onCurrentBenefitChange() {

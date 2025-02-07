@@ -58,8 +58,9 @@ export class DeductionComponent {
   ]);
 
   ngOnInit(): void {
-    const deduction = {...this._dialogConfig.data?.deduction};
+    const deduction = { ...this._dialogConfig.data?.deduction };
     deduction && this.deduction.set(deduction);
+    this.currentDeduction.set(!deduction.end_date);
   }
 
   onSaveClick() {

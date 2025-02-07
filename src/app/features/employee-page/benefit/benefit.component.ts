@@ -58,8 +58,9 @@ export class BenefitComponent {
   ]);
 
   ngOnInit(): void {
-    const benefit = {...this._dialogConfig.data?.benefit};
+    const benefit = { ...this._dialogConfig.data?.benefit };
     benefit && this.benefit.set(benefit);
+    this.currentBenefit.set(!benefit?.end_date);
   }
 
   onSaveClick() {

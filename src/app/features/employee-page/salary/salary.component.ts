@@ -146,6 +146,7 @@ export class SalaryComponent implements OnInit {
   ngOnInit(): void {
     const salary = { ...this._dialogConfig.data?.salary };
     salary && this.salary.set(salary);
+    this.currentSalary.set(!salary?.end_date);
   }
 
   onSaveClick() {
