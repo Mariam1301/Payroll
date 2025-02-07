@@ -7,8 +7,11 @@ import { UiDialogService } from '../../core/services/dialog/dialog.service';
 import { PayrollGenerationDialogComponent } from './payroll-generation-dialog/payroll-generation-dialog.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { PayrollService } from '../../core/services/payroll/payroll.service';
-import { EMPTY, switchMap } from 'rxjs';
-import { PayrollCalculationResultModel } from '../../core/models/payroll-generation.model';
+import { EMPTY, switchMap, tap } from 'rxjs';
+import {
+  PayrollCalculationResultModel,
+  PayrollGenerationModel,
+} from '../../core/models/payroll-generation.model';
 import { UiTemplateDirective } from '../../shared/directives/template/ui-template.directive';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +35,7 @@ import { ChipModule } from 'primeng/chip';
 })
 export class PayrollGenerationComponent {
   data = signal<Partial<PayrollCalculationResultModel>[]>([]);
+  payrollGenerationModel = signal<PayrollGenerationModel | null>(null);
   router = inject(Router);
 
   private readonly _dialogService = inject(UiDialogService);
@@ -54,6 +58,9 @@ export class PayrollGenerationComponent {
         header: this._translocoService.translate('employee'),
       })
       .onClose.pipe(
+        tap((data: PayrollGenerationModel) =>
+          this.payrollGenerationModel.set(data),
+        ),
         switchMap((data) =>
           !!data ? this._payrollService.calculatePayroll(data) : EMPTY,
         ),

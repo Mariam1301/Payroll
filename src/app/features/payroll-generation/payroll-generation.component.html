@@ -1,6 +1,14 @@
 <ng-container *transloco="let t">
   <ui-responsive-data-view
-    [title]="t('payroll')"
+    [title]="
+      t('payroll') +
+      '  ' +
+      (payrollGenerationModel()
+        ? (payrollGenerationModel()?.start_date | date: 'dd/MM/yyyy') +
+          ' - ' +
+          (payrollGenerationModel()?.end_date | date: 'dd/MM/yyyy')
+        : '')
+    "
     [data]="data()"
     [showAddButton]="true"
     [addButtonLabel]="t('generatePayroll')"
