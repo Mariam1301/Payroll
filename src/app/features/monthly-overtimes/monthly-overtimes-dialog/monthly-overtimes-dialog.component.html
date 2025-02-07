@@ -37,7 +37,6 @@
     />
   </ui-form-field>
 
-
   <ui-form-field class="w-full" [label]="t('overtimeHoursWorked')">
     <p-inputNumber
       required
@@ -54,6 +53,7 @@
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('dateFrom')">
       <p-calendar
+        appendTo="body"
         required
         name="dateFrom"
         dateFormat="yy-mm-dd"
@@ -65,6 +65,7 @@
     <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('dateTo')">
         <p-calendar
+          appendTo="body"
           name="dateTo"
           dateFormat="yy-mm-dd"
           [showIcon]="true"

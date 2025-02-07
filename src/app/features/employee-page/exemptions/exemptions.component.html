@@ -27,20 +27,26 @@
         (ngModelChange)="onLimitTypeChange($event)"
       />
     </ui-form-field>
-    @if(exemption().limit_type === limitTypeEnum.AMOUNT_BASED||exemption().limit_type === limitTypeEnum.TIME_BASED){    <ui-form-field class="w-full" [label]="t('startDate')">
-      <p-calendar
-        required
-        name="startDate"
-        dateFormat="yy-mm-dd"
-        appendTo="body"
-        [showIcon]="true"
-        [showOnFocus]="false"
-        [maxDate]="(exemption().end_date | dateType) || now"
-        [(ngModel)]="exemption().start_date"
-      /></ui-form-field>}
-    @if (exemption().limit_type ===  limitTypeEnum.AMOUNT_BASED) {
+    @if (
+      exemption().limit_type === limitTypeEnum.AMOUNT_BASED ||
+      exemption().limit_type === limitTypeEnum.TIME_BASED
+    ) {
+      <ui-form-field class="w-full" [label]="t('startDate')">
+        <p-calendar
+          appendTo="body"
+          required
+          name="startDate"
+          dateFormat="yy-mm-dd"
+          appendTo="body"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          [maxDate]="(exemption().end_date | dateType) || now"
+          [(ngModel)]="exemption().start_date"
+      /></ui-form-field>
+    }
+    @if (exemption().limit_type === limitTypeEnum.AMOUNT_BASED) {
       <div class="flex sm:flex-nowrap flex-wrap items-center gap-4 w-full">
-        <ui-form-field class="w-full" [label]="t('amount')+' GEL'">
+        <ui-form-field class="w-full" [label]="t('amount') + ' GEL'">
           <input
             required
             pInputText
@@ -50,17 +56,14 @@
             [(ngModel)]="exemption()!.amount"
           />
         </ui-form-field>
-
       </div>
     }
-    @if (exemption().limit_type ===  limitTypeEnum.TIME_BASED) {
-
-
+    @if (exemption().limit_type === limitTypeEnum.TIME_BASED) {
       <ui-form-field class="w-full" [label]="t('endDate')">
         <p-calendar
+          appendTo="body"
           name="endDate"
           dateFormat="yy-mm-dd"
-          appendTo="body"
           [showIcon]="true"
           [showOnFocus]="false"
           [minDate]="exemption().start_date | dateType"

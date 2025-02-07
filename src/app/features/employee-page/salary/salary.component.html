@@ -89,8 +89,8 @@
       ) {
         <ui-form-field class="w-full" [label]="t('customNonWorkingDays')">
           <p-calendar
-            required
             appendTo="body"
+            required
             name="customNonWorkingDays"
             dateFormat="yy-mm-dd"
             selectionMode="multiple"
@@ -154,6 +154,7 @@
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
       <ui-form-field class="w-full" [label]="t('startDate')">
         <p-calendar
+          appendTo="body"
           required
           name="startDate"
           dateFormat="yy-mm-dd"
@@ -165,6 +166,7 @@
       <div class="w-full relative">
         <ui-form-field class="w-full" [label]="t('endDate')">
           <p-calendar
+            appendTo="body"
             name="endDate"
             dateFormat="yy-mm-dd"
             [showIcon]="true"
