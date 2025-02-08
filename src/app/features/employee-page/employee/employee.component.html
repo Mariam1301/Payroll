@@ -35,7 +35,7 @@
   </ui-form-field>
   <div class="flex w-full sm:flex-nowrap flex-wrap items-center gap-5">
     <ui-form-field class="w-full" [label]="t('birthDate')">
-      <p-calendar
+      <p-datepicker
         appendTo="body"
         required
         name="birthDate"
@@ -106,7 +106,7 @@
   </div>
   <div class="flex w-full sm:flex-nowrap flex-wrap items-center gap-5 mb-5">
     <ui-form-field class="w-full" [label]="t('startDate')">
-      <p-calendar
+      <p-datepicker
         appendTo="body"
         required
         name="workStartDate"
@@ -118,7 +118,7 @@
     /></ui-form-field>
     <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('endDate')">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           name="workEndDate"
           dateFormat="yy-mm-dd"

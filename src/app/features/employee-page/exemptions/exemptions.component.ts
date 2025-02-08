@@ -1,17 +1,17 @@
-import {Component, inject, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {UiFormFieldComponent} from '../../../shared/components/form-field/form-field.component';
-import {Exemption, LimitType} from '../../../core/models/exemption.model';
-import {TranslocoDirective, TranslocoService} from '@jsverse/transloco';
-import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {EmployeeService} from '../../../core/services/employee/employee.service';
-import {formatDateToISODate} from '../../../core/utils/date-formating';
-import {DropdownModule} from 'primeng/dropdown';
-import {CalendarModule} from 'primeng/calendar';
-import {UiDialogActionsComponent} from '../../../shared/components/dialog-actions/dialog-actions.component';
-import {CurrencyEnum} from '../../../core/models/general.model';
-import {InputTextModule} from 'primeng/inputtext';
-import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
+import { Component, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
+import { Exemption, LimitType } from '../../../core/models/exemption.model';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { EmployeeService } from '../../../core/services/employee/employee.service';
+import { formatDateToISODate } from '../../../core/utils/date-formating';
+import { DropdownModule } from 'primeng/dropdown';
+import { DatePicker } from 'primeng/datepicker';
+import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
+import { CurrencyEnum } from '../../../core/models/general.model';
+import { InputTextModule } from 'primeng/inputtext';
+import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 
 @Component({
   templateUrl: './exemptions.component.html',
@@ -20,7 +20,7 @@ import {DateTypePipe} from "../../../core/pipes/date-type.pipe";
     FormsModule,
     UiFormFieldComponent,
     DropdownModule,
-    CalendarModule,
+    DatePicker,
     UiDialogActionsComponent,
     TranslocoDirective,
     InputTextModule,
@@ -51,7 +51,7 @@ export class ExemptionsComponent {
     {
       id: LimitType.PEMANENT,
       label: this._translocoService.translate('permanent'),
-    }
+    },
   ]);
 
   currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
@@ -79,7 +79,7 @@ export class ExemptionsComponent {
     const data = {
       ...this.exemption(),
       end_date: formatDateToISODate(this.exemption().end_date!),
-      start_date: formatDateToISODate(this.exemption().start_date!)
+      start_date: formatDateToISODate(this.exemption().start_date!),
     };
     const stream$ = data?.id
       ? this._employeeService.updateIncomeTaxExemption(employeeId, data)
@@ -89,6 +89,11 @@ export class ExemptionsComponent {
   }
 
   onLimitTypeChange(type: LimitType) {
-    this.exemption.update((prev) => ({ ...prev, end_date: undefined, amount: undefined, start_date: type === LimitType.PEMANENT?undefined:prev.start_date }));
+    this.exemption.update((prev) => ({
+      ...prev,
+      end_date: undefined,
+      amount: undefined,
+      start_date: type === LimitType.PEMANENT ? undefined : prev.start_date,
+    }));
   }
 }

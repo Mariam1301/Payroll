@@ -52,7 +52,7 @@
 
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('dateFrom')">
-      <p-calendar
+      <p-datepicker
         appendTo="body"
         required
         name="dateFrom"
@@ -64,7 +64,7 @@
     /></ui-form-field>
     <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('dateTo')">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           name="dateTo"
           dateFormat="yy-mm-dd"

@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { DropdownModule } from 'primeng/dropdown';
@@ -18,7 +18,7 @@ import { Deduction } from '../../../core/models/deduction.model';
   selector: 'app-deduction',
   standalone: true,
   imports: [
-    CalendarModule,
+    DatePicker,
     CheckboxModule,
     DateTypePipe,
     DropdownModule,

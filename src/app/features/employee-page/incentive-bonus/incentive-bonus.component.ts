@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { DropdownModule } from 'primeng/dropdown';
@@ -19,7 +19,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
   selector: 'app-incentive-bonus',
   standalone: true,
   imports: [
-    CalendarModule,
+    DatePicker,
     CheckboxModule,
     DateTypePipe,
     DropdownModule,
@@ -80,7 +80,7 @@ export class IncentiveBonusComponent implements OnInit {
     stream$.subscribe(() => this._ref.close(true));
   }
 
-  onCurrentBenefitChange() {
+  onCurrentIncentiveBonusChange() {
     this.incentiveBonus.update((prev) => ({ ...prev, end_date: undefined }));
   }
 }

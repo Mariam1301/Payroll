@@ -32,7 +32,7 @@
       exemption().limit_type === limitTypeEnum.TIME_BASED
     ) {
       <ui-form-field class="w-full" [label]="t('startDate')">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           required
           name="startDate"
@@ -60,7 +60,7 @@
     }
     @if (exemption().limit_type === limitTypeEnum.TIME_BASED) {
       <ui-form-field class="w-full" [label]="t('endDate')">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           name="endDate"
           dateFormat="yy-mm-dd"

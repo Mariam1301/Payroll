@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +19,7 @@ import { map } from 'rxjs';
   selector: 'app-payroll-generation-dialog',
   standalone: true,
   imports: [
-    CalendarModule,
+    DatePicker,
     DateTypePipe,
     DropdownModule,
     FormsModule,

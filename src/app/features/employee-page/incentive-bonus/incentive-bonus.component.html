@@ -54,20 +54,25 @@
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <p-checkbox
       name="includesIncomeTax"
+      inputId="includesIncomeTax"
       [binary]="true"
-      [ariaLabel]="t('includesIncomeTax')"
       [(ngModel)]="incentiveBonus()!.includes_income_tax"
     />
+    <label for="includesIncomeTax">{{ t("includesIncomeTax") }}</label>
     <p-checkbox
       name="includesEmployeePension"
+      inputId="includesEmployeePension"
       [binary]="true"
-      [ariaLabel]="t('includesEmployeePension')"
       [(ngModel)]="incentiveBonus()!.includes_employee_pension"
     />
+    <label for="includesEmployeePension">{{
+      t("includesEmployeePension")
+    }}</label>
   </div>
+
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('startDate')">
-      <p-calendar
+      <p-datepicker
         appendTo="body"
         required
         name="startDate"
@@ -79,7 +84,7 @@
     /></ui-form-field>
     <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('endDate')">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           name="endDate"
           dateFormat="yy-mm-dd"
@@ -90,14 +95,18 @@
           [disabled]="currentIncentiveBonus()"
           [(ngModel)]="incentiveBonus().end_date"
       /></ui-form-field>
-      <div class="absolute -bottom-5">
+      <div class="absolute -bottom-5 flex items-center gap-4">
         <p-checkbox
-          name="currentBenefit"
+          name="currentIncentiveBonus"
+          inputId="currentIncentiveBonus"
           [binary]="true"
-          [ariaLabel]="t('currentBenefit')"
+          [ariaLabel]="t('currentIncentiveBonus')"
           [(ngModel)]="currentIncentiveBonus"
-          (ngModelChange)="onCurrentBenefitChange()"
+          (ngModelChange)="onCurrentIncentiveBonusChange()"
         />
+        <label for="currentIncentiveBonus">{{
+          t("currentIncentiveBonus")
+        }}</label>
       </div>
     </div>
   </div>

@@ -52,20 +52,24 @@
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <p-checkbox
       name="includesIncomeTax"
+      inputId="includesIncomeTax"
       [binary]="true"
-      [ariaLabel]="t('includesIncomeTax')"
       [(ngModel)]="benefit()!.includes_income_tax"
     />
+    <label for="includesIncomeTax">{{ t("includesIncomeTax") }}</label>
     <p-checkbox
       name="includesEmployeePension"
+      inputId="includesEmployeePension"
       [binary]="true"
-      [ariaLabel]="t('includesEmployeePension')"
       [(ngModel)]="benefit()!.includes_employee_pension"
     />
+    <label for="includesEmployeePension">{{
+      t("includesEmployeePension")
+    }}</label>
   </div>
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('startDate')">
-      <p-calendar
+      <p-datepicker
         appendTo="body"
         required
         name="startDate"
@@ -77,7 +81,7 @@
     /></ui-form-field>
     <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('endDate')">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           name="endDate"
           dateFormat="dd/mm/yy"
@@ -88,14 +92,16 @@
           [disabled]="currentBenefit()"
           [(ngModel)]="benefit().end_date"
       /></ui-form-field>
-      <div class="absolute -bottom-5">
+      <div class="absolute -bottom-5 flex items-center gap-4">
         <p-checkbox
           name="currentBenefit"
+          inputId="currentBenefit"
           [binary]="true"
           [ariaLabel]="t('currentBenefit')"
           [(ngModel)]="currentBenefit"
           (ngModelChange)="onCurrentBenefitChange()"
         />
+        <label for="currentBenefit">{{ t("currentBenefit") }}</label>
       </div>
     </div>
   </div>

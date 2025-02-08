@@ -11,7 +11,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DropdownModule } from 'primeng/dropdown';
 import { CurrencyEnum, GenderEnum } from '../../../core/models/general.model';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
@@ -27,7 +27,7 @@ import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
     InputNumberModule,
     InputMaskModule,
     DropdownModule,
-    CalendarModule,
+    DatePicker,
     CheckboxModule,
     DateTypePipe,
   ],

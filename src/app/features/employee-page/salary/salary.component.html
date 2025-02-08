@@ -88,7 +88,7 @@
         salary().non_working_days?.includes(nonWorkingDaysEnum.CUSTOM_DATES)
       ) {
         <ui-form-field class="w-full" [label]="t('customNonWorkingDays')">
-          <p-calendar
+          <p-datepicker
             appendTo="body"
             required
             name="customNonWorkingDays"
@@ -136,24 +136,28 @@
         />
       </ui-form-field>
     </div>
-
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
       <p-checkbox
         name="includesIncomeTax"
+        inputId="includesIncomeTax"
         [binary]="true"
-        [ariaLabel]="t('includesIncomeTax')"
         [(ngModel)]="salary()!.includes_income_tax"
       />
+      <label for="includesIncomeTax">{{ t("includesIncomeTax") }}</label>
       <p-checkbox
         name="includesEmployeePension"
+        inputId="includesEmployeePension"
         [binary]="true"
-        [ariaLabel]="t('includesEmployeePension')"
         [(ngModel)]="salary()!.includes_employee_pension"
       />
+      <label for="includesEmployeePension">{{
+        t("includesEmployeePension")
+      }}</label>
     </div>
+
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
       <ui-form-field class="w-full" [label]="t('startDate')">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           required
           name="startDate"
@@ -165,7 +169,7 @@
       /></ui-form-field>
       <div class="w-full relative">
         <ui-form-field class="w-full" [label]="t('endDate')">
-          <p-calendar
+          <p-datepicker
             appendTo="body"
             name="endDate"
             dateFormat="yy-mm-dd"
@@ -176,14 +180,16 @@
             [disabled]="currentSalary()"
             [(ngModel)]="salary().end_date"
         /></ui-form-field>
-        <div class="absolute -bottom-5">
+        <div class="absolute -bottom-5 flex items-center gap-4">
           <p-checkbox
             name="currentSalary"
+            inputId="currentSalary"
             [binary]="true"
             [ariaLabel]="t('currentSalary')"
             [(ngModel)]="currentSalary"
             (ngModelChange)="onCurrentSalaryChange()"
           />
+          <label for="currentSalary">{{ t("currentSalary") }}</label>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ import { UiDialogActionsComponent } from '../../../shared/components/dialog-acti
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CurrencyEnum } from '../../../core/models/general.model';
@@ -34,7 +34,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
     TranslocoModule,
     DropdownModule,
     UiDialogActionsComponent,
-    CalendarModule,
+    DatePicker,
     DateTypePipe,
     CheckboxModule,
     MultiSelectModule,

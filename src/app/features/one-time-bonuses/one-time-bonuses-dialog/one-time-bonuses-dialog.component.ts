@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { DropdownModule } from 'primeng/dropdown';
@@ -20,7 +20,7 @@ import { OneTimeBonus } from '../../../core/models/one-time-bonus.model';
   selector: 'app-one-time-bonus-dialog',
   standalone: true,
   imports: [
-    CalendarModule,
+    DatePicker,
     CheckboxModule,
     DateTypePipe,
     DropdownModule,

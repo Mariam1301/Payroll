@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { DropdownModule } from 'primeng/dropdown';
@@ -13,13 +13,13 @@ import { EmployeeService } from '../../../core/services/employee/employee.servic
 import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { InputNumberModule } from 'primeng/inputnumber';
-import {PercentageBonus} from "../../../core/models/percentage-bonus.model";
+import { PercentageBonus } from '../../../core/models/percentage-bonus.model';
 
 @Component({
   selector: 'app-percentage-bonus-dialog',
   standalone: true,
   imports: [
-    CalendarModule,
+    DatePicker,
     CheckboxModule,
     DateTypePipe,
     DropdownModule,
