@@ -5,7 +5,9 @@
     "outDir": "./out-tsc/spec",
     "types": [
       "jest" // New
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "files": [
     "src/test.ts", // REMOVE THIS
