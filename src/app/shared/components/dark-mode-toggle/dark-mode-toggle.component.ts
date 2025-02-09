@@ -6,13 +6,7 @@ import { ButtonModule } from 'primeng/button';
   selector: 'ui-dark-mode-toggle',
   standalone: true,
   imports: [ButtonModule, CommonModule],
-  template: `
-    <p-button
-      [icon]="'pi ' + (isDarkMode() ? 'pi-sun' : 'pi-moon')"
-      aria-label="menu"
-      (click)="toggle()"
-    />
-  `,
+  templateUrl: './dark-mode-toggle.component.html',
 })
 export class UiDarkModeToggleComponent {
   isDarkMode = signal(false);
