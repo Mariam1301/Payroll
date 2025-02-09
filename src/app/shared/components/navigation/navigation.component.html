@@ -5,9 +5,9 @@
   @for (navigationItem of navigation(); track navigationItem.title) {
     <button
       (click)="navigationClicked.emit()"
-      class="text-left flex group items-center gap-x-2 text-surface-700 hover:text-surface-900 hover:bg-surface-50 px-2 py-1 rounded-primeng transition-all duration-300"
+      class="text-left flex group items-center gap-x-2 hover:bg-emphasis px-2 py-1 rounded-primeng transition-all duration-300"
       [routerLink]="['/', navigationItem.path]"
-      routerLinkActive="bg-surface-100"
+      routerLinkActive="bg-emphasis"
     >
       {{ t(navigationItem.title) }}
     </button>

@@ -46,7 +46,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Noir,
         options: {
-          darkModeSelector: false,
+          darkModeSelector: '.dark',
           ripple: true,
           cssLayer: {
             name: 'primeng',

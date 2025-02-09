@@ -147,5 +147,6 @@
   "payroll": "უწყისი",
   "selectColumns": "აირჩიე ველები",
   "toSeeDataPleaseSelectFields": "მონაცემების სანახავად, გთხოვთ, აირჩიოთ ველები.",
-  "selectEmployees": "აირჩიე თანამშრომლები"
+  "selectEmployees": "აირჩიე თანამშრომლები",
+  "currentIncentiveBonus": "მიმდინარე ბონუსი"
 }

@@ -11,7 +11,7 @@
 }
 
 tr.clickable {
-  @apply hover:bg-surface-100 cursor-pointer duration-300 transition-all;
+  @apply hover:bg-emphasis cursor-pointer duration-300 transition-all;
 }
 th {
   @apply cursor-default;

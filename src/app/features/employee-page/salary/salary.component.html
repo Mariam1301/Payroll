@@ -137,22 +137,28 @@
       </ui-form-field>
     </div>
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
-      <p-checkbox
-        name="includesIncomeTax"
-        inputId="includesIncomeTax"
-        [binary]="true"
-        [(ngModel)]="salary()!.includes_income_tax"
-      />
-      <label for="includesIncomeTax">{{ t("includesIncomeTax") }}</label>
-      <p-checkbox
-        name="includesEmployeePension"
-        inputId="includesEmployeePension"
-        [binary]="true"
-        [(ngModel)]="salary()!.includes_employee_pension"
-      />
-      <label for="includesEmployeePension">{{
-        t("includesEmployeePension")
-      }}</label>
+      <div>
+        <p-checkbox
+          name="includesIncomeTax"
+          inputId="includesIncomeTax"
+          [binary]="true"
+          [(ngModel)]="salary()!.includes_income_tax"
+        />
+        <label class="ml-2" for="includesIncomeTax">{{
+          t("includesIncomeTax")
+        }}</label>
+      </div>
+      <div>
+        <p-checkbox
+          name="includesEmployeePension"
+          inputId="includesEmployeePension"
+          [binary]="true"
+          [(ngModel)]="salary()!.includes_employee_pension"
+        />
+        <label class="ml-2" for="includesEmployeePension">{{
+          t("includesEmployeePension")
+        }}</label>
+      </div>
     </div>
 
     <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
@@ -180,7 +186,7 @@
             [disabled]="currentSalary()"
             [(ngModel)]="salary().end_date"
         /></ui-form-field>
-        <div class="absolute -bottom-5 flex items-center gap-4">
+        <div class="absolute -bottom-5 flex items-center gap-2">
           <p-checkbox
             name="currentSalary"
             inputId="currentSalary"

@@ -11,11 +11,9 @@
     />
 
     <ui-language-switch></ui-language-switch>
-    <p-button
-      class="hidden"
-      label="Toggle Dark Mode"
-      (onClick)="toggleDarkMode()"
-    />
+    <!-- class="hidden" -->
+    <ui-dark-mode-toggle></ui-dark-mode-toggle>
+    <!-- <p-button label="Toggle Dark Mode" (onClick)="toggleDarkMode()" /> -->
 
     <p-avatar
       [label]="(user$ | async) || ''"
