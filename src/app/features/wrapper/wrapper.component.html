@@ -4,14 +4,14 @@
     <div class="min-w-[20%] w-1/5 lg:block hidden border min-h-full">
       <ui-navigation [navigation]="navigationArray"></ui-navigation>
     </div>
-    <div class="w-full sm:max-w-[80%] lg:px-10 sm:px-4 py-4 px-2">
+    <div class="w-full lg:max-w-[80%] lg:px-10 sm:px-4 py-4 px-2">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <p-sidebar [(visible)]="isMenuOpen">
+  <p-drawer [(visible)]="isMenuOpen">
     <ui-navigation
       [navigation]="navigationArray"
       (navigationClicked)="isMenuOpen.set(false)"
     ></ui-navigation>
-  </p-sidebar>
+  </p-drawer>
 </div>

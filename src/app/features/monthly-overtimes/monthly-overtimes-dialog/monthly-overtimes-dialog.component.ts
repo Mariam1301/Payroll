@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
-import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -23,7 +23,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
     DatePicker,
     CheckboxModule,
     DateTypePipe,
-    DropdownModule,
+    Select,
     FormsModule,
     InputTextModule,
     ReactiveFormsModule,

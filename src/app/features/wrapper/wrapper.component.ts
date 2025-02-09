@@ -5,7 +5,7 @@ import {
 } from '../../shared/components/navigation/navigation.component';
 import { UiHeaderComponent } from '../../shared/components/header/header.component';
 import { RouterModule } from '@angular/router';
-import { SidebarModule } from 'primeng/sidebar';
+import { DrawerModule } from 'primeng/drawer';
 
 @Component({
   selector: 'app-wrapper',
@@ -14,7 +14,7 @@ import { SidebarModule } from 'primeng/sidebar';
     UiHeaderComponent,
     UiNavigationComponent,
     RouterModule,
-    SidebarModule,
+    DrawerModule,
   ],
   templateUrl: './wrapper.component.html',
 })

@@ -5,7 +5,7 @@
   *transloco="let t"
 >
   <ui-form-field class="w-full" [label]="t('employee')">
-    <p-dropdown
+    <p-select
       required
       appendTo="body"
       name="employee"
@@ -21,11 +21,11 @@
 
       <ng-template let-employee pTemplate="item">
         {{ employee.name }} {{ employee.surname }}
-      </ng-template></p-dropdown
+      </ng-template></p-select
     >
   </ui-form-field>
   <ui-form-field class="w-full" [label]="t('overtimePolicyType')">
-    <p-dropdown
+    <p-select
       required
       appendTo="body"
       name="overtimePolicyType"

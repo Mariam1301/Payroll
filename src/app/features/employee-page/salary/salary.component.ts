@@ -10,7 +10,7 @@ import {
   SalaryTypeEnum,
 } from '../../../core/models/salary.model';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -32,7 +32,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
     InputTextModule,
     UiFormFieldComponent,
     TranslocoModule,
-    DropdownModule,
+    Select,
     UiDialogActionsComponent,
     DatePicker,
     DateTypePipe,

@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { DatePicker } from 'primeng/datepicker';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
-import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -21,7 +21,7 @@ import { map } from 'rxjs';
   imports: [
     DatePicker,
     DateTypePipe,
-    DropdownModule,
+    Select,
     FormsModule,
     InputNumberModule,
     ReactiveFormsModule,

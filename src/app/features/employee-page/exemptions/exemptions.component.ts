@@ -6,7 +6,7 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
-import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { DatePicker } from 'primeng/datepicker';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { CurrencyEnum } from '../../../core/models/general.model';
@@ -19,7 +19,7 @@ import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
   imports: [
     FormsModule,
     UiFormFieldComponent,
-    DropdownModule,
+    Select,
     DatePicker,
     UiDialogActionsComponent,
     TranslocoDirective,

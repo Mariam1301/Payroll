@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
-import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
@@ -19,7 +19,7 @@ import { CompanyService } from '../../../core/services/company/company.service';
   imports: [
     DatePicker,
     CheckboxModule,
-    DropdownModule,
+    Select,
     FormsModule,
     InputTextModule,
     ReactiveFormsModule,

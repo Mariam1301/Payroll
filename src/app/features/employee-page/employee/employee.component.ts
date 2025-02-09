@@ -9,7 +9,7 @@ import { Employee } from '../../../core/models/employee.model';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
-import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { CurrencyEnum, GenderEnum } from '../../../core/models/general.model';
 import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -26,7 +26,7 @@ import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
     InputTextModule,
     InputNumberModule,
     InputMaskModule,
-    DropdownModule,
+    Select,
     DatePicker,
     CheckboxModule,
     DateTypePipe,

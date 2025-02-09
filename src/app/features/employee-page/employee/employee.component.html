@@ -73,7 +73,7 @@
     </ui-form-field>
 
     <ui-form-field class="w-full" [label]="t('gender')">
-      <p-dropdown
+      <p-select
         name="gender"
         optionLabel="label"
         optionValue="id"
@@ -129,14 +129,16 @@
           [disabled]="stillWorking()"
           [(ngModel)]="employeeData().end_date"
       /></ui-form-field>
-      <div class="absolute -bottom-5">
+      <div class="absolute -bottom-5 flex items-center gap-2">
         <p-checkbox
           name="stillWorking"
+          inputId="stillWorking"
           [binary]="true"
           [ariaLabel]="t('stillWorking')"
           [(ngModel)]="stillWorking"
           (ngModelChange)="onStillWorkingChange()"
         />
+        <label for="stillWorking">{{ t("stillWorking") }}</label>
       </div>
     </div>
   </div>
@@ -161,12 +163,16 @@
       />
     </ui-form-field>
   </div>
-  <p-checkbox
-    name="isInPension"
-    [binary]="true"
-    [ariaLabel]="t('isInPension')"
-    [(ngModel)]="employeeData().pension"
-  />
+  <div class="flex w-full items-center gap-4">
+    <p-checkbox
+      name="isInPension"
+      inputId="isInPension"
+      [binary]="true"
+      [ariaLabel]="t('isInPension')"
+      [(ngModel)]="employeeData().pension"
+    />
+    <label for="isInPension">{{ t("isInPension") }}</label>
+  </div>
   <ui-dialog-actions
     [showCancel]="true"
     [disabled]="!!form.invalid"

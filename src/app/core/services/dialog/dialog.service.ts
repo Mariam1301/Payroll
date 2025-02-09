@@ -9,8 +9,10 @@ export class UiDialogService {
     return this._dialogService.open(component, {
       header: '',
       width: '60vw',
-      modal: true,
-      breakpoints: { '640px': '100vw' },
+      modal: false,
+      closable: true,
+      breakpoints: { '800px': '100vw' },
+      maskStyleClass: 'bg-black bg-opacity-50',
       ...config,
     });
   }
