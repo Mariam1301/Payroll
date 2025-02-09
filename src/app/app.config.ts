@@ -20,7 +20,7 @@ import { userReducer } from './store/user/user.reducer';
 import { DialogService } from 'primeng/dynamicdialog';
 import { UiDialogService } from './core/services/dialog/dialog.service';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
+import { Noir } from '../styles/primeng-presets';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -44,7 +44,7 @@ export const appConfig: ApplicationConfig = {
     UiDialogService,
     providePrimeNG({
       theme: {
-        preset: Aura,
+        preset: Noir,
         options: {
           darkModeSelector: false,
           ripple: true,

@@ -1,18 +1,21 @@
-<div
-  class="w-full flex items-center justify-between px-5 h-12 bg-primeng-surface-100 border-b border-primeng-surface-border"
->
+<div class="w-full flex items-center justify-between px-5 h-12 border-b">
   <div>
     <h1>LOGO</h1>
   </div>
   <div class="flex items-center gap-x-2">
-    <div
-      class="cursor-pointer flex lg:hidden bg-primeng-surface-ground rounded-primeng border-primeng-surface-border border items-center justify-center"
+    <p-button
+      icon="pi pi-bars"
+      aria-label="menu"
+      class="lg:hidden"
       (click)="menuClicked.emit()"
-    >
-      <i class="pi pi-bars text-xs"></i>
-    </div>
+    />
+
     <ui-language-switch></ui-language-switch>
-    <p-button label="Toggle Dark Mode" (onClick)="toggleDarkMode()" />
+    <p-button
+      class="hidden"
+      label="Toggle Dark Mode"
+      (onClick)="toggleDarkMode()"
+    />
 
     <p-avatar
       [label]="(user$ | async) || ''"

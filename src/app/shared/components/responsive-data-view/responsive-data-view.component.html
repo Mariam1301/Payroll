@@ -27,9 +27,7 @@
   </data-view-filter>
 }
 @if (noteTemplate()) {
-  <div
-    class="w-full bg-primeng-surface-0 px-3 sm:border-b-0 py-5 border-dashed border"
-  >
+  <div class="w-full px-3 sm:border-b-0 py-5 border-dashed border">
     <ng-container *ngTemplateOutlet="noteTemplate()"></ng-container>
   </div>
 }
@@ -74,7 +72,7 @@
       @if (!selectedColumns().length) {
         <p
           *transloco="let t"
-          class="w-full text-center font-primeng py-5 text-primeng-surface-400"
+          class="w-full text-center font-primeng py-5 text-surface-400"
         >
           {{ t("toSeeDataPleaseSelectFields") }}
         </p>
@@ -111,7 +109,7 @@
   } @else {
     <p
       *transloco="let t"
-      class="w-full text-center font-primeng py-5 text-primeng-surface-400"
+      class="w-full text-center font-primeng py-5 text-surface-400"
     >
       {{ t("noRecord") }}
     </p>

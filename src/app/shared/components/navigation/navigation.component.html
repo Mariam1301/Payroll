@@ -2,14 +2,14 @@
   class="w-full h-full flex flex-col justify-start space-y-3"
   *transloco="let t"
 >
-  @for(navigationItem of navigation(); track navigationItem.title){
-  <button
-    (click)="navigationClicked.emit()"
-    class="text-left flex group items-center gap-x-2 text-primeng-surface-700 hover:text-primeng-surface-900 font-primeng font-medium px-2 py-1 rounded-primeng transition-all duration-300"
-    [routerLink]="['/', navigationItem.path]"
-    routerLinkActive="bg-primeng-surface-100 "
-  >
-    {{ t(navigationItem.title) }}
-  </button>
+  @for (navigationItem of navigation(); track navigationItem.title) {
+    <button
+      (click)="navigationClicked.emit()"
+      class="text-left flex group items-center gap-x-2 text-surface-700 hover:text-surface-900 hover:bg-surface-50 px-2 py-1 rounded-primeng transition-all duration-300"
+      [routerLink]="['/', navigationItem.path]"
+      routerLinkActive="bg-surface-100"
+    >
+      {{ t(navigationItem.title) }}
+    </button>
   }
 </div>

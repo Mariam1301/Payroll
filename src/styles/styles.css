@@ -1,13 +1,17 @@
-@import "../../node_modules/tailwindcss/base.css" layer(tailwindcss);
-@import "../../node_modules/tailwindcss/components.css" layer(tailwindcss);
-@import "../../node_modules/tailwindcss/utilities.css" layer(tailwindcss);
-/* @import "primeng/resources/themes/aura-light-noir/theme.css"; */
-/* @import "primeng/resources/themes/saga-green/theme.css"; */
-
 @import "primeicons/primeicons.css";
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
 
 tr.clickable {
-  @apply hover:bg-primeng-surface-100 cursor-pointer duration-300 transition-all;
+  @apply cursor-pointer duration-300 transition-all;
 }
 th {
   @apply cursor-default;
@@ -22,22 +26,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .p-datepicker,
-.p-dropdown {
+.p-select {
   @apply w-full max-w-full;
 }
-.p-dialog-content {
-  @apply sm:p-5 p-2 pb-10 sm:pb-5;
-}
 
-/* .p-dialog {
-  @apply sm:w-[60vw]  w-[100vw];
-} */
-.p-dialog-header {
-  @apply sm:p-5 px-2 py-5;
-}
-.p-dialog-bottom .p-dialog {
-  @apply m-0 rounded-b-none;
-}
 @media (max-width: 640px) {
   .p-toast {
     max-width: 90vw;
@@ -82,12 +74,4 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .p-inputtext {
   width: 100%;
-}
-
-.p-dialog-mask-scrollblocker {
-  overflow-y: scroll;
-}
-
-.p-dialog-content {
-  overflow-y: clip !important;
 }
