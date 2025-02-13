@@ -1,0 +1,14 @@
+<ng-container *transloco="let t">
+  <ui-responsive-data-view
+    [title]="t('monthlyAdjustmentTypes')"
+    [data]="data()"
+    [showAddButton]="true"
+    [showDeleteButton]="true"
+    (addButtonClicked)="onAddClick()"
+    (rowClicked)="onRowClick($event)"
+    (deleteClicked)="onDeleteClick($event)"
+  >
+    <ui-data-element name="type" valueField="type"></ui-data-element>
+    <ui-data-element name="name" valueField="name"></ui-data-element>
+  </ui-responsive-data-view>
+</ng-container>

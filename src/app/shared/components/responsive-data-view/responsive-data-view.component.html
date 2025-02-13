@@ -54,7 +54,7 @@
 } @else {
   @if ((data()?.length || 0) > 0 || (dataSource()?.data?.length || 0) > 0) {
     @if (areColumnsSelectable()) {
-      <div class="min-w-52 sm:max-w-[50%] mb-5">
+      <div class="w-full mb-5">
         <p-multiSelect
           *transloco="let t"
           name="fields"
@@ -64,6 +64,7 @@
           [placeholder]="t('selectColumns')"
           [options]="fieldList()"
           display="chip"
+          [maxSelectedLabels]="50"
           [(ngModel)]="selectedColumns"
         >
         </p-multiSelect>

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
@@ -10,12 +10,13 @@ import { UiDialogActionsComponent } from '../../../shared/components/dialog-acti
 import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
-import { CurrencyEnum } from '../../../core/models/general.model';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
-import { Deduction } from '../../../core/models/deduction.model';
+import { CurrencyEnum } from '../../../core/models/general.model';
+import { IncentiveBonus } from '../../../core/models/incentive-bonus';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
-  selector: 'employee-deduction',
+  selector: 'employee-incentive-bonus',
   standalone: true,
   imports: [
     DatePicker,
@@ -28,17 +29,19 @@ import { Deduction } from '../../../core/models/deduction.model';
     TranslocoDirective,
     UiDialogActionsComponent,
     UiFormFieldComponent,
+    InputNumberModule,
   ],
-  templateUrl: './deduction.component.html',
+  templateUrl: './incentive-bonus.component.html',
 })
-export class EmployeeDeductionComponent {
-  deduction = signal<Partial<Deduction>>({});
+export class IncentiveBonusComponent implements OnInit {
+  incentiveBonus = signal<Partial<IncentiveBonus>>({});
 
+  private readonly _translocoService = inject(TranslocoService);
   private readonly _ref = inject(DynamicDialogRef);
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _employeeService = inject(EmployeeService);
 
-  currentDeduction = signal(true);
+  currentIncentiveBonus = signal(true);
 
   now = new Date();
 
@@ -58,26 +61,26 @@ export class EmployeeDeductionComponent {
   ]);
 
   ngOnInit(): void {
-    const deduction = { ...this._dialogConfig.data?.deduction };
-    deduction && this.deduction.set(deduction);
-    this.currentDeduction.set(!deduction.end_date);
+    const incentiveBonus = { ...this._dialogConfig.data?.incentiveBonus };
+    incentiveBonus && this.incentiveBonus.set(incentiveBonus);
+    this.currentIncentiveBonus.set(!incentiveBonus?.end_date);
   }
 
   onSaveClick() {
     const employeeId = this._dialogConfig.data?.employeeId;
     const data = {
-      ...this.deduction(),
-      start_date: formatDateToISODate(this.deduction().start_date!),
-      end_date: formatDateToISODate(this.deduction().end_date!),
+      ...this.incentiveBonus(),
+      start_date: formatDateToISODate(this.incentiveBonus().start_date!),
+      end_date: formatDateToISODate(this.incentiveBonus().end_date!),
     };
     const stream$ = data?.id
-      ? this._employeeService.updateDeduction(employeeId, data)
-      : this._employeeService.addDeduction(employeeId, data);
+      ? this._employeeService.updateIncentiveBonus(employeeId, data)
+      : this._employeeService.addIncentiveBonus(employeeId, data);
 
     stream$.subscribe(() => this._ref.close(true));
   }
 
-  onCurrentDeductionChange() {
-    this.deduction.update((prev) => ({ ...prev, end_date: undefined }));
+  onCurrentIncentiveBonusChange() {
+    this.incentiveBonus.update((prev) => ({ ...prev, end_date: undefined }));
   }
 }

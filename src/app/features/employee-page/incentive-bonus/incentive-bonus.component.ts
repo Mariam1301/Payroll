@@ -16,7 +16,7 @@ import { IncentiveBonus } from '../../../core/models/incentive-bonus';
 import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
-  selector: 'app-incentive-bonus',
+  selector: 'employee-incentive-bonus',
   standalone: true,
   imports: [
     DatePicker,
@@ -33,7 +33,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
   ],
   templateUrl: './incentive-bonus.component.html',
 })
-export class IncentiveBonusComponent implements OnInit {
+export class EmoloyeeIncentiveBonusComponent implements OnInit {
   incentiveBonus = signal<Partial<IncentiveBonus>>({});
 
   private readonly _translocoService = inject(TranslocoService);

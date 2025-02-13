@@ -3,12 +3,12 @@ import { EmployeeService } from '../../../../core/services/employee/employee.ser
 import { DialogService } from 'primeng/dynamicdialog';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { Deduction } from '../../../../core/models/deduction.model';
-import { DeductionComponent } from '../../deduction/deduction.component';
+import { EmployeeDeductionComponent } from '../../deduction/deduction.component';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { DatePipe } from '@angular/common';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
-import {UiTemplateDirective} from "../../../../shared/directives/template/ui-template.directive";
+import { UiTemplateDirective } from '../../../../shared/directives/template/ui-template.directive';
 
 @Component({
   selector: 'employee-deduction-information',
@@ -37,7 +37,7 @@ export class DeductionInformationComponent {
 
   onAddClick() {
     this._dialogService
-      .open(DeductionComponent, {
+      .open(EmployeeDeductionComponent, {
         header: this._translocoService.translate('monthlyDeduction'),
         data: { deduction: null, employeeId: this.employeeId() },
       })
@@ -46,7 +46,7 @@ export class DeductionInformationComponent {
 
   onRowClick({ dataItem }: any) {
     this._dialogService
-      .open(DeductionComponent, {
+      .open(EmployeeDeductionComponent, {
         header: this._translocoService.translate('monthlyDeduction'),
         data: { deduction: dataItem, employeeId: this.employeeId() },
       })

@@ -15,7 +15,7 @@ import { Benefit } from '../../../core/models/benefit.model';
 import { CurrencyEnum } from '../../../core/models/general.model';
 
 @Component({
-  selector: 'app-benefit',
+  selector: 'employee-benefit',
   standalone: true,
   imports: [
     DatePicker,
@@ -31,7 +31,7 @@ import { CurrencyEnum } from '../../../core/models/general.model';
   ],
   templateUrl: './benefit.component.html',
 })
-export class BenefitComponent {
+export class EmployeeBenefitComponent {
   benefit = signal<Partial<Benefit>>({});
 
   private readonly _ref = inject(DynamicDialogRef);

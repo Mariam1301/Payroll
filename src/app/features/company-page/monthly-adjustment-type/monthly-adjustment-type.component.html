@@ -1,0 +1,33 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <ui-form-field class="w-full" [label]="t('type')">
+    <p-select
+      required
+      appendTo="body"
+      name="type"
+      optionLabel="label"
+      optionValue="id"
+      [placeholder]="t('selectType')"
+      [options]="monthlyAdjustmentTypeOptions()"
+      [(ngModel)]="monthlyAdjustmentType().type"
+    />
+  </ui-form-field>
+  <ui-form-field class="w-full" [label]="t('name')">
+    <input
+      required
+      pInputText
+      name="name"
+      class="w-full"
+      [(ngModel)]="monthlyAdjustmentType().name"
+    />
+  </ui-form-field>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>
