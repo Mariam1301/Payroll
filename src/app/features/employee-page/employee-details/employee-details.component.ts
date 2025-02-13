@@ -7,12 +7,11 @@ import { EmployeeService } from '../../../core/services/employee/employee.servic
 import { Employee } from '../../../core/models/employee.model';
 import { GeneralInformationComponent } from './general-information/general-information.component';
 import { SalaryInformationComponent } from './salary-information/salary-information.component';
-import { BenefitInformationComponent } from './benefit-information/benefit-information.component';
-import { DeductionInformationComponent } from './deduction-information/deduction-information.component';
+import { MonthlyAdjustmentsInformationComponent } from './monthly-adjustment-information/monthly-adjustment-information.component';
 import { EmployeeComponent } from '../employee/employee.component';
 import { ExemptionInformationComponent } from './exemption-information/exemption-information.component';
 import { UiDialogService } from '../../../core/services/dialog/dialog.service';
-import {IncentiveBonusInformationComponent} from "./incentive-bonus-information/incentive-bonus-information.component";
+import { IncentiveBonusInformationComponent } from './incentive-bonus-information/incentive-bonus-information.component';
 
 @Component({
   standalone: true,
@@ -22,10 +21,9 @@ import {IncentiveBonusInformationComponent} from "./incentive-bonus-information/
     FormsModule,
     GeneralInformationComponent,
     SalaryInformationComponent,
-    BenefitInformationComponent,
-    DeductionInformationComponent,
+    MonthlyAdjustmentsInformationComponent,
     ExemptionInformationComponent,
-    IncentiveBonusInformationComponent
+    IncentiveBonusInformationComponent,
   ],
   templateUrl: './employee-details.component.html',
 })

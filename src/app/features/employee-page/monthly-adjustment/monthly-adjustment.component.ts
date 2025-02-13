@@ -5,17 +5,19 @@ import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { Select } from 'primeng/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
-import { CurrencyEnum } from '../../../core/models/general.model';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
-import { Deduction } from '../../../core/models/deduction.model';
+import { MonthlyAdjustment } from '../../../core/models/monthly-adjustment.model';
+import { CurrencyEnum } from '../../../core/models/general.model';
+import { AsyncPipe } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'employee-deduction',
+  selector: 'employee-monthly-adjustment',
   standalone: true,
   imports: [
     DatePicker,
@@ -28,19 +30,23 @@ import { Deduction } from '../../../core/models/deduction.model';
     TranslocoDirective,
     UiDialogActionsComponent,
     UiFormFieldComponent,
+    AsyncPipe,
+    ButtonModule,
   ],
-  templateUrl: './deduction.component.html',
+  templateUrl: './monthly-adjustment.component.html',
 })
-export class EmployeeDeductionComponent {
-  deduction = signal<Partial<Deduction>>({});
+export class EmployeeMonthlyAdjustmentComponent {
+  monthlyAdjustment = signal<Partial<MonthlyAdjustment>>({});
 
   private readonly _ref = inject(DynamicDialogRef);
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _employeeService = inject(EmployeeService);
 
-  currentDeduction = signal(true);
+  currentMonthlyAdjustment = signal(true);
 
   now = new Date();
+
+  monthlyAdjustmentTypeOptions = [];
 
   currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
     {
@@ -58,26 +64,26 @@ export class EmployeeDeductionComponent {
   ]);
 
   ngOnInit(): void {
-    const deduction = { ...this._dialogConfig.data?.deduction };
-    deduction && this.deduction.set(deduction);
-    this.currentDeduction.set(!deduction.end_date);
+    const monthlyAdjustment = { ...this._dialogConfig.data?.monthlyAdjustment };
+    monthlyAdjustment && this.monthlyAdjustment.set(monthlyAdjustment);
+    this.currentMonthlyAdjustment.set(!monthlyAdjustment?.end_date);
   }
 
   onSaveClick() {
     const employeeId = this._dialogConfig.data?.employeeId;
     const data = {
-      ...this.deduction(),
-      start_date: formatDateToISODate(this.deduction().start_date!),
-      end_date: formatDateToISODate(this.deduction().end_date!),
+      ...this.monthlyAdjustment(),
+      start_date: formatDateToISODate(this.monthlyAdjustment().start_date!),
+      end_date: formatDateToISODate(this.monthlyAdjustment().end_date!),
     };
     const stream$ = data?.id
-      ? this._employeeService.updateDeduction(employeeId, data)
-      : this._employeeService.addDeduction(employeeId, data);
+      ? this._employeeService.updateBenefit(employeeId, data)
+      : this._employeeService.addBenefit(employeeId, data);
 
     stream$.subscribe(() => this._ref.close(true));
   }
 
-  onCurrentDeductionChange() {
-    this.deduction.update((prev) => ({ ...prev, end_date: undefined }));
+  onCurrentMonthlyAdjustmentChange() {
+    this.monthlyAdjustment.update((prev) => ({ ...prev, end_date: undefined }));
   }
 }

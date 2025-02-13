@@ -2,11 +2,11 @@ import { Component, inject, signal } from '@angular/core';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
-import { Benefit } from '../../../../core/models/benefit.model';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 import { UiTemplateDirective } from '../../../../shared/directives/template/ui-template.directive';
 import { CompanyService } from '../../../../core/services/company/company.service';
 import { MonthlyAdjustmentTypeComponent } from '../../monthly-adjustment-type/montly-adjustment-type.component';
+import { MonthlyAdjustmentType } from '../../../../core/models/monthly-adjustment-type.model';
 
 @Component({
   selector: 'app-monthly-adjustment-types-information',
@@ -20,7 +20,7 @@ import { MonthlyAdjustmentTypeComponent } from '../../monthly-adjustment-type/mo
   templateUrl: './monthly-adjustment-types-information.component.html',
 })
 export class MonthlyAdjustmentTypesInformationComponent {
-  data = signal<Partial<Benefit>[]>([]);
+  data = signal<Partial<MonthlyAdjustmentType>[]>([]);
 
   private _companyService = inject(CompanyService);
   private _dialogService = inject(UiDialogService);

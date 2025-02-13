@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <ui-responsive-data-view
-    [title]="t('monthlyDeductions')"
+    [title]="t('monthlyAdjustments')"
     [data]="data()"
     [showAddButton]="true"
     [showDeleteButton]="true"
@@ -28,7 +28,6 @@
         <span>{{ row.end_date | date: "dd/MM/yyy" }}</span>
       </ng-template>
     </ui-data-element>
-
     <ui-data-element name="includesEmployeePension">
       <ng-template uiTemplate let-row>
         @if (row.includes_employee_pension) {

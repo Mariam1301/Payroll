@@ -4,14 +4,29 @@
   autocomplete="off"
   *transloco="let t"
 >
-  <ui-form-field class="w-full" [label]="t('type')">
-    <input
+  <ui-form-field class="w-full" [label]="t('adjustmentType')">
+    <p-select
       required
-      pInputText
+      appendTo="body"
       name="type"
-      class="w-full"
-      [(ngModel)]="benefit().type"
-    />
+      optionLabel="label"
+      optionValue="id"
+      [placeholder]="t('selectType')"
+      [options]="monthlyAdjustmentTypeOptions"
+      [(ngModel)]="monthlyAdjustment().type"
+    >
+      <ng-template #footer>
+        <div class="p-3">
+          <p-button
+            text
+            [label]="t('addNew')"
+            fluid
+            severity="secondary"
+            size="small"
+            icon="pi pi-plus"
+          />
+        </div> </ng-template
+    ></p-select>
   </ui-form-field>
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('amount')">
@@ -21,7 +36,7 @@
         type="number"
         name="amount"
         class="w-full"
-        [(ngModel)]="benefit()!.amount"
+        [(ngModel)]="monthlyAdjustment()!.amount"
       />
     </ui-form-field>
     <ui-form-field class="w-full" [label]="t('paymentCurrency')">
@@ -33,7 +48,7 @@
         optionValue="id"
         [placeholder]="t('selectCurrency')"
         [options]="currencyOptions()"
-        [(ngModel)]="benefit().payment_currency"
+        [(ngModel)]="monthlyAdjustment().payment_currency"
       />
     </ui-form-field>
     <ui-form-field class="w-full" [label]="t('calculationCurrency')">
@@ -45,7 +60,7 @@
         optionValue="id"
         [placeholder]="t('selectCurrency')"
         [options]="currencyOptions()"
-        [(ngModel)]="benefit().calculation_currency"
+        [(ngModel)]="monthlyAdjustment().calculation_currency"
       />
     </ui-form-field>
   </div>
@@ -55,7 +70,7 @@
         name="includesIncomeTax"
         inputId="includesIncomeTax"
         [binary]="true"
-        [(ngModel)]="benefit()!.includes_income_tax"
+        [(ngModel)]="monthlyAdjustment()!.includes_income_tax"
       />
       <label class="ml-2" for="includesIncomeTax">{{
         t("includesIncomeTax")
@@ -66,7 +81,7 @@
         name="includesEmployeePension"
         inputId="includesEmployeePension"
         [binary]="true"
-        [(ngModel)]="benefit()!.includes_employee_pension"
+        [(ngModel)]="monthlyAdjustment()!.includes_employee_pension"
       />
       <label class="ml-2" for="includesEmployeePension">{{
         t("includesEmployeePension")
@@ -80,10 +95,10 @@
         required
         name="startDate"
         dateFormat="dd/mm/yy"
-        [maxDate]="(benefit().end_date | dateType) || now"
+        [maxDate]="(monthlyAdjustment().end_date | dateType) || now"
         [showIcon]="true"
         [showOnFocus]="false"
-        [(ngModel)]="benefit().start_date"
+        [(ngModel)]="monthlyAdjustment().start_date"
     /></ui-form-field>
     <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('endDate')">
@@ -93,21 +108,21 @@
           dateFormat="dd/mm/yy"
           [showIcon]="true"
           [showOnFocus]="false"
-          [minDate]="benefit().start_date | dateType"
-          [maxDate]="(benefit().end_date | dateType) || now"
-          [disabled]="currentBenefit()"
-          [(ngModel)]="benefit().end_date"
+          [minDate]="monthlyAdjustment().start_date | dateType"
+          [maxDate]="(monthlyAdjustment().end_date | dateType) || now"
+          [disabled]="currentMonthlyAdjustment()"
+          [(ngModel)]="monthlyAdjustment().end_date"
       /></ui-form-field>
       <div class="absolute -bottom-5 flex items-center gap-2">
         <p-checkbox
-          name="currentBenefit"
-          inputId="currentBenefit"
+          name="currentMonthlyAdjustment"
+          inputId="currentMonthlyAdjustment"
           [binary]="true"
-          [ariaLabel]="t('currentBenefit')"
-          [(ngModel)]="currentBenefit"
-          (ngModelChange)="onCurrentBenefitChange()"
+          [ariaLabel]="t('currentMonthlyAdjustment')"
+          [(ngModel)]="currentMonthlyAdjustment"
+          (ngModelChange)="onCurrentMonthlyAdjustmentChange()"
         />
-        <label for="currentBenefit">{{ t("currentBenefit") }}</label>
+        <label for="currentMonthlyAdjustment">{{ t("current") }}</label>
       </div>
     </div>
   </div>

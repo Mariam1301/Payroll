@@ -1,7 +1,7 @@
-export interface MonthlyAdjustmentType {
+import { CommonOptionType } from './general.model';
+
+export interface MonthlyAdjustmentType extends CommonOptionType {
   type: MonthlyAdjustmentTypeEnum;
-  name: string;
-  id: number;
 }
 
 export enum MonthlyAdjustmentTypeEnum {

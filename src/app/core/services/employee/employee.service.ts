@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { BaseHttpService } from '../base-http/base-http.service';
 import { Employee } from '../../models/employee.model';
-import {SalaryModel} from "../../models/salary.model";
-import {map} from "rxjs";
-import {Benefit} from "../../models/benefit.model";
-import {Deduction} from "../../models/deduction.model";
-import {IncentiveBonus} from "../../models/incentive-bonus";
-import {Exemption} from "../../models/exemption.model";
+import { SalaryModel } from '../../models/salary.model';
+import { map } from 'rxjs';
+import { Deduction } from '../../models/deduction.model';
+import { IncentiveBonus } from '../../models/incentive-bonus';
+import { Exemption } from '../../models/exemption.model';
+import { MonthlyAdjustment } from '../../models/monthly-adjustment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,96 +29,159 @@ export class EmployeeService {
   }
 
   update(data: any) {
-    return this._baseHttpService.put<unknown, any>(`${this.entityName}/${data.id}`, data);
+    return this._baseHttpService.put<unknown, any>(
+      `${this.entityName}/${data.id}`,
+      data,
+    );
   }
 
   delete(id: number) {
     return this._baseHttpService.delete<unknown>(`${this.entityName}/${id}`);
   }
 
-  getSalary(employeeId: number, salaryId: number){
-    return this._baseHttpService.get<SalaryModel>(`${this.entityName}/${employeeId}/salaries/${salaryId}`);
+  getSalary(employeeId: number, salaryId: number) {
+    return this._baseHttpService.get<SalaryModel>(
+      `${this.entityName}/${employeeId}/salaries/${salaryId}`,
+    );
   }
 
-  addSalary(employeeId: number, data: Partial<SalaryModel>){
-    return this._baseHttpService.post(`${this.entityName}/${employeeId}/salaries`, data);
+  addSalary(employeeId: number, data: Partial<SalaryModel>) {
+    return this._baseHttpService.post(
+      `${this.entityName}/${employeeId}/salaries`,
+      data,
+    );
   }
 
-  getAllSalary(employeeId: number){
-    return this._baseHttpService.get<{data: Partial<SalaryModel>[] }>(`${this.entityName}/${employeeId}/salaries`).pipe(map(data => data.data));
+  getAllSalary(employeeId: number) {
+    return this._baseHttpService
+      .get<{
+        data: Partial<SalaryModel>[];
+      }>(`${this.entityName}/${employeeId}/salaries`)
+      .pipe(map((data) => data.data));
   }
 
-  updateSalary(employeeId: number, data: Partial<SalaryModel>){
-    return this._baseHttpService.put(`${this.entityName}/${employeeId}/salaries/${data.id}`, data);
+  updateSalary(employeeId: number, data: Partial<SalaryModel>) {
+    return this._baseHttpService.put(
+      `${this.entityName}/${employeeId}/salaries/${data.id}`,
+      data,
+    );
   }
 
-  deleteSalary(employeeId: number, salaryId: number){
-    return this._baseHttpService.delete(`${this.entityName}/${employeeId}/salaries/${salaryId}`);
+  deleteSalary(employeeId: number, salaryId: number) {
+    return this._baseHttpService.delete(
+      `${this.entityName}/${employeeId}/salaries/${salaryId}`,
+    );
   }
 
-
-
-  addBenefit(employeeId: number, data: Partial<Benefit>){
-    return this._baseHttpService.post(`${this.entityName}/${employeeId}/benefits`, data);
+  addBenefit(employeeId: number, data: Partial<MonthlyAdjustment>) {
+    return this._baseHttpService.post(
+      `${this.entityName}/${employeeId}/benefits`,
+      data,
+    );
   }
 
-  getBenefits(employeeId: number){
-    return this._baseHttpService.get<{benefits: Partial<Benefit>[] }>(`${this.entityName}/${employeeId}/benefits`).pipe(map(data => data.benefits));
+  getBenefits(employeeId: number) {
+    return this._baseHttpService
+      .get<{
+        benefits: Partial<MonthlyAdjustment>[];
+      }>(`${this.entityName}/${employeeId}/benefits`)
+      .pipe(map((data) => data.benefits));
   }
 
-  updateBenefit(employeeId: number, data: Partial<Benefit>){
-    return this._baseHttpService.put(`${this.entityName}/${employeeId}/benefits/${data.id}`, data);
+  updateBenefit(employeeId: number, data: Partial<MonthlyAdjustment>) {
+    return this._baseHttpService.put(
+      `${this.entityName}/${employeeId}/benefits/${data.id}`,
+      data,
+    );
   }
 
-  deleteBenefit(employeeId: number, benefitId: number){
-    return this._baseHttpService.delete(`${this.entityName}/${employeeId}/benefits/${benefitId}`);
+  deleteBenefit(employeeId: number, benefitId: number) {
+    return this._baseHttpService.delete(
+      `${this.entityName}/${employeeId}/benefits/${benefitId}`,
+    );
   }
 
-  addDeduction(employeeId: number, data: Partial<Deduction>){
-    return this._baseHttpService.post(`${this.entityName}/${employeeId}/deductions`, data);
+  addDeduction(employeeId: number, data: Partial<Deduction>) {
+    return this._baseHttpService.post(
+      `${this.entityName}/${employeeId}/deductions`,
+      data,
+    );
   }
 
-  getDeductions(employeeId: number){
-    return this._baseHttpService.get<{deductions: Partial<Deduction>[] }>(`${this.entityName}/${employeeId}/deductions`).pipe(map(data => data.deductions));
+  getDeductions(employeeId: number) {
+    return this._baseHttpService
+      .get<{
+        deductions: Partial<Deduction>[];
+      }>(`${this.entityName}/${employeeId}/deductions`)
+      .pipe(map((data) => data.deductions));
   }
 
-  updateDeduction(employeeId: number, data: Partial<Deduction>){
-    return this._baseHttpService.put(`${this.entityName}/${employeeId}/deductions/${data.id}`, data);
+  updateDeduction(employeeId: number, data: Partial<Deduction>) {
+    return this._baseHttpService.put(
+      `${this.entityName}/${employeeId}/deductions/${data.id}`,
+      data,
+    );
   }
 
-  deleteDeduction(employeeId: number, deductionId: number){
-    return this._baseHttpService.delete(`${this.entityName}/${employeeId}/deductions/${deductionId}`);
+  deleteDeduction(employeeId: number, deductionId: number) {
+    return this._baseHttpService.delete(
+      `${this.entityName}/${employeeId}/deductions/${deductionId}`,
+    );
   }
 
-  addIncentiveBonus(employeeId: number, data: Partial<IncentiveBonus>){
-    return this._baseHttpService.post(`${this.entityName}/${employeeId}/incentive-bonuses`, data);
+  addIncentiveBonus(employeeId: number, data: Partial<IncentiveBonus>) {
+    return this._baseHttpService.post(
+      `${this.entityName}/${employeeId}/incentive-bonuses`,
+      data,
+    );
   }
 
-  getIncentiveBonus(employeeId: number){
-    return this._baseHttpService.get<Partial<IncentiveBonus>[] >(`${this.entityName}/${employeeId}/incentive-bonuses`).pipe(map(data => data));
+  getIncentiveBonus(employeeId: number) {
+    return this._baseHttpService
+      .get<
+        Partial<IncentiveBonus>[]
+      >(`${this.entityName}/${employeeId}/incentive-bonuses`)
+      .pipe(map((data) => data));
   }
 
-  updateIncentiveBonus(employeeId: number, data: Partial<IncentiveBonus>){
-    return this._baseHttpService.put(`${this.entityName}/${employeeId}/incentive-bonuses/${data.id}`, data);
+  updateIncentiveBonus(employeeId: number, data: Partial<IncentiveBonus>) {
+    return this._baseHttpService.put(
+      `${this.entityName}/${employeeId}/incentive-bonuses/${data.id}`,
+      data,
+    );
   }
 
-  deleteIncentiveBonus(employeeId: number, incentiveBonusId: number){
-    return this._baseHttpService.delete(`${this.entityName}/${employeeId}/incentive-bonuses/${incentiveBonusId}`);
+  deleteIncentiveBonus(employeeId: number, incentiveBonusId: number) {
+    return this._baseHttpService.delete(
+      `${this.entityName}/${employeeId}/incentive-bonuses/${incentiveBonusId}`,
+    );
   }
 
-  addIncomeTaxExemption(employeeId: number, data: Partial<Exemption>){
-    return this._baseHttpService.post(`${this.entityName}/${employeeId}/income-tax-exemptions`, data);
+  addIncomeTaxExemption(employeeId: number, data: Partial<Exemption>) {
+    return this._baseHttpService.post(
+      `${this.entityName}/${employeeId}/income-tax-exemptions`,
+      data,
+    );
   }
 
-  getIncomeTaxExemption(employeeId: number){
-    return this._baseHttpService.get<Partial<Exemption>[] >(`${this.entityName}/${employeeId}/income-tax-exemptions`).pipe(map(data => data));
+  getIncomeTaxExemption(employeeId: number) {
+    return this._baseHttpService
+      .get<
+        Partial<Exemption>[]
+      >(`${this.entityName}/${employeeId}/income-tax-exemptions`)
+      .pipe(map((data) => data));
   }
 
-  updateIncomeTaxExemption(employeeId: number, data: Partial<Exemption>){
-    return this._baseHttpService.put(`${this.entityName}/${employeeId}/income-tax-exemptions/${data.id}`, data);
+  updateIncomeTaxExemption(employeeId: number, data: Partial<Exemption>) {
+    return this._baseHttpService.put(
+      `${this.entityName}/${employeeId}/income-tax-exemptions/${data.id}`,
+      data,
+    );
   }
 
-  deleteIncomeTaxExemption(employeeId: number, exemptionId: number){
-    return this._baseHttpService.delete(`${this.entityName}/${employeeId}/income-tax-exemptions/${exemptionId}`);
+  deleteIncomeTaxExemption(employeeId: number, exemptionId: number) {
+    return this._baseHttpService.delete(
+      `${this.entityName}/${employeeId}/income-tax-exemptions/${exemptionId}`,
+    );
   }
 }

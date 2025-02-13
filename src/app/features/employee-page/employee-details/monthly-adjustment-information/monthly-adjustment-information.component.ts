@@ -1,17 +1,16 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { EmployeeService } from '../../../../core/services/employee/employee.service';
-import { DialogService } from 'primeng/dynamicdialog';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
-import { Deduction } from '../../../../core/models/deduction.model';
-import { EmployeeDeductionComponent } from '../../deduction/deduction.component';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
+import { EmployeeService } from '../../../../core/services/employee/employee.service';
+import { EmployeeMonthlyAdjustmentComponent } from '../../monthly-adjustment/monthly-adjustment.component';
 import { DatePipe } from '@angular/common';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 import { UiTemplateDirective } from '../../../../shared/directives/template/ui-template.directive';
+import { MonthlyAdjustment } from '../../../../core/models/monthly-adjustment.model';
 
 @Component({
-  selector: 'employee-deduction-information',
+  selector: 'employee-monthly-adjustment-information',
   standalone: true,
   imports: [
     TranslocoDirective,
@@ -20,12 +19,12 @@ import { UiTemplateDirective } from '../../../../shared/directives/template/ui-t
     DatePipe,
     UiTemplateDirective,
   ],
-  templateUrl: './deduction-information.component.html',
+  templateUrl: './monthly-adjustment-information.component.html',
 })
-export class DeductionInformationComponent {
+export class MonthlyAdjustmentsInformationComponent {
   employeeId = input.required<number>();
 
-  data = signal<Partial<Deduction>[]>([]);
+  data = signal<Partial<MonthlyAdjustment>[]>([]);
 
   private _employeeService = inject(EmployeeService);
   private _dialogService = inject(UiDialogService);
@@ -37,31 +36,31 @@ export class DeductionInformationComponent {
 
   onAddClick() {
     this._dialogService
-      .open(EmployeeDeductionComponent, {
-        header: this._translocoService.translate('monthlyDeduction'),
-        data: { deduction: null, employeeId: this.employeeId() },
+      .open(EmployeeMonthlyAdjustmentComponent, {
+        header: this._translocoService.translate('monthlyAdjustment'),
+        data: { monthlyAdjustment: null, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
   }
 
   onRowClick({ dataItem }: any) {
     this._dialogService
-      .open(EmployeeDeductionComponent, {
-        header: this._translocoService.translate('monthlyDeduction'),
-        data: { deduction: dataItem, employeeId: this.employeeId() },
+      .open(EmployeeMonthlyAdjustmentComponent, {
+        header: this._translocoService.translate('monthlyAdjustment'),
+        data: { monthlyAdjustment: dataItem, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
   }
 
   onDeleteClick({ dataItem }: any) {
-    this._employeeService
-      .deleteDeduction(this.employeeId(), dataItem.id)
-      .subscribe(() => this.fetch());
+    // this._employeeService
+    //   .deleteBenefit(this.employeeId(), dataItem.id)
+    //   .subscribe(() => this.fetch());
   }
 
   fetch() {
-    this._employeeService
-      .getDeductions(this.employeeId())
-      .subscribe((deductions) => this.data.set(deductions));
+    // this._employeeService
+    //   .getBenefits(this.employeeId())
+    //   .subscribe((benefits) => this.data.set(benefits));
   }
 }

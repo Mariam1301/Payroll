@@ -8,3 +8,8 @@ export enum CurrencyEnum {
   USD = 'USD',
   EUR = 'EUR',
 }
+
+export interface CommonOptionType {
+  id: number;
+  name: string;
+}

@@ -148,5 +148,11 @@
   "selectColumns": "აირჩიე ველები",
   "toSeeDataPleaseSelectFields": "მონაცემების სანახავად, გთხოვთ, აირჩიოთ ველები.",
   "selectEmployees": "აირჩიე თანამშრომლები",
-  "currentIncentiveBonus": "მიმდინარე ბონუსი"
+  "currentIncentiveBonus": "მიმდინარე ბონუსი",
+  "monthlyAdjustment": "ხელფასის თვიური კორექტირება",
+  "monthlyAdjustments": "ხელფასის თვიური კორექტირება",
+  "monthlyAdjustmentType": "ხელფასის თვიური კორექტირების ტიპი",
+  "monthlyAdjustmentTypes": "ხელფასის თვიური კორექტირების ტიპი",
+  "adjustmentType": "კორექტირების ტიპი",
+  "selectType": "აირჩიეთ ტიპი"
 }

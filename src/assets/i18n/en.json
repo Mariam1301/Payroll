@@ -148,5 +148,11 @@
   "selectColumns": "Select columns",
   "toSeeDataPleaseSelectFields": "To see data, please select fields",
   "selectEmployees": "Select employees",
-  "currentIncentiveBonus": "Current incentive bonus"
+  "currentIncentiveBonus": "Current incentive bonus",
+  "monthlyAdjustment": "Monthly Salary Adjustment",
+  "monthlyAdjustments": "Monthly Salary Adjustments",
+  "monthlyAdjustmentType": "Monthly Salary Adjustment Type",
+  "monthlyAdjustmentTypes": "Monthly Salary Adjustment Types",
+  "adjustmentType": "Adjustment Type",
+  "selectType": "SelectType"
 }
