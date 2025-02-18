@@ -160,5 +160,6 @@
   "salaryIncomeTaxContribution": "Salary income tax contribution",
   "netSalary": "Net Salary",
   "totalGrossBenefits": "Total gross benefits",
-  "totalGrossDeductions": "Total gross deductions"
+  "totalGrossDeductions": "Total gross deductions",
+  "addNew": "Add New"
 }

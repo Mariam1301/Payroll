@@ -160,5 +160,6 @@
   "salaryIncomeTaxContribution": "ხელფასიდან საშემოსავლო გადასახადი",
   "netSalary": "წმინდა(net) ხელფასი",
   "totalGrossBenefits": "სრული(gross) ბენეფიტების თანხა",
-  "totalGrossDeductions": "სრული(gross) დაქვითვების თანხა"
+  "totalGrossDeductions": "სრული(gross) დაქვითვების თანხა",
+  "addNew": "დაამატე ახალი"
 }
