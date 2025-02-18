@@ -81,6 +81,6 @@ export class IncentiveBonusComponent implements OnInit {
   }
 
   onCurrentIncentiveBonusChange() {
-    this.incentiveBonus.update((prev) => ({ ...prev, end_date: undefined }));
+    this.incentiveBonus.update((prev) => ({ ...prev, end_date: null }));
   }
 }

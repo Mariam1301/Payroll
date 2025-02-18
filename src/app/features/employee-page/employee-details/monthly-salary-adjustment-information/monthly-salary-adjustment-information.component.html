@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <ui-responsive-data-view
-    [title]="t('monthlyAdjustments')"
+    [title]="t('monthlySalaryAdjustments')"
     [data]="data()"
     [showAddButton]="true"
     [showDeleteButton]="true"
@@ -8,6 +8,7 @@
     (rowClicked)="onRowClick($event)"
     (deleteClicked)="onDeleteClick($event)"
   >
+    <ui-data-element name="name" valueField="name"></ui-data-element>
     <ui-data-element name="type" valueField="type"></ui-data-element>
     <ui-data-element name="amount" valueField="amount"></ui-data-element>
     <ui-data-element

@@ -47,6 +47,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     const employe = { ...this._dialogConfig.data };
     employe && this.employeeData.set(employe);
+    this.stillWorking.set(!employe?.end_date);
   }
 
   genderOptions = signal<{ id: GenderEnum; label: string }[]>([

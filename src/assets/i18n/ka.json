@@ -149,10 +149,16 @@
   "toSeeDataPleaseSelectFields": "მონაცემების სანახავად, გთხოვთ, აირჩიოთ ველები.",
   "selectEmployees": "აირჩიე თანამშრომლები",
   "currentIncentiveBonus": "მიმდინარე ბონუსი",
-  "monthlyAdjustment": "ხელფასის თვიური კორექტირება",
-  "monthlyAdjustments": "ხელფასის თვიური კორექტირება",
-  "monthlyAdjustmentType": "ხელფასის თვიური კორექტირების ტიპი",
-  "monthlyAdjustmentTypes": "ხელფასის თვიური კორექტირების ტიპი",
+  "monthlySalaryAdjustment": "ხელფასის თვიური კორექტირება",
+  "monthlySalaryAdjustments": "ხელფასის თვიური კორექტირება",
+  "monthlySalaryAdjustmentType": "ხელფასის თვიური კორექტირების ტიპი",
+  "monthlySalaryAdjustmentTypes": "ხელფასის თვიური კორექტირების ტიპები",
   "adjustmentType": "კორექტირების ტიპი",
-  "selectType": "აირჩიეთ ტიპი"
+  "selectType": "აირჩიეთ ტიპი",
+  "grossSalary": "სრული(gross) ხელფასი",
+  "salaryPensionContribution": "ხელფასიდან საპენსიო შენატანი",
+  "salaryIncomeTaxContribution": "ხელფასიდან საშემოსავლო გადასახადი",
+  "netSalary": "წმინდა(net) ხელფასი",
+  "totalGrossBenefits": "სრული(gross) ბენეფიტების თანხა",
+  "totalGrossDeductions": "სრული(gross) დაქვითვების თანხა"
 }

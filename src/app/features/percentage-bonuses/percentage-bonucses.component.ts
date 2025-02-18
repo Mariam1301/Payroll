@@ -1,13 +1,12 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { UiDataElement } from '../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../shared/components/responsive-data-view/responsive-data-view.component';
 import { UiDialogService } from '../../core/services/dialog/dialog.service';
-import { MonthlyOvertimeInformation } from '../../core/models/monthly-overtime.model';
 import { UiTemplateDirective } from '../../shared/directives/template/ui-template.directive';
-import {PercentageBonusesDialogComponent} from "./percentage-bonuses/percentage-bonuses-dialog.component";
-import {PercentageBonusInfo} from "../../core/models/percentage-bonus.model";
+import { PercentageBonusesDialogComponent } from './percentage-bonuses/percentage-bonuses-dialog.component';
+import { PercentageBonusInfo } from '../../core/models/percentage-bonus.model';
 
 @Component({
   selector: 'app-percentage-bonuses',
@@ -64,7 +63,7 @@ export class PercentageBonucsesComponent implements OnInit {
         amount: 10,
         date_from: new Date('01-01-2025'),
         date_to: new Date('01-27-2025'),
-      } as unknown as MonthlyOvertimeInformation,
+      } as unknown as any,
     ]);
     // this._monthlyOvertimeService
     //   .getAll()

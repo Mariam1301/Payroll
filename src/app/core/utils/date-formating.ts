@@ -1,6 +1,6 @@
 export function formatDateToISODate(date: Date | string) {
-  if(!date){
-    return
+  if (!date) {
+    return null;
   }
   const localDate = new Date(date as Date);
   const year = localDate.getFullYear();

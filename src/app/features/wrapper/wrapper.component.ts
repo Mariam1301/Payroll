@@ -23,7 +23,7 @@ export class WrapperComponent {
 
   navigationArray: NavigationModel[] = [
     {
-      title: 'companies',
+      title: 'company',
       path: 'company',
     },
     {
@@ -34,18 +34,18 @@ export class WrapperComponent {
     //   title: 'overtimes',
     //   path: 'overtimes',
     // },
-    {
-      title: 'percentageBonuses',
-      path: 'percentageBonuses',
-    },
-    {
-      title: 'oneTimeDeductions',
-      path: 'oneTimeDeductions',
-    },
-    {
-      title: 'oneTimeBonuses',
-      path: 'oneTimeBonuses',
-    },
+    // {
+    //   title: 'percentageBonuses',
+    //   path: 'percentageBonuses',
+    // },
+    // {
+    //   title: 'oneTimeDeductions',
+    //   path: 'oneTimeDeductions',
+    // },
+    // {
+    //   title: 'oneTimeBonuses',
+    //   path: 'oneTimeBonuses',
+    // },
     {
       title: 'payrollGeneration',
       path: 'payrollGeneration',

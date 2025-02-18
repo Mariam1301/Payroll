@@ -9,21 +9,22 @@
       required
       appendTo="body"
       name="type"
-      optionLabel="label"
+      optionLabel="name"
       optionValue="id"
       [placeholder]="t('selectType')"
-      [options]="monthlyAdjustmentTypeOptions"
-      [(ngModel)]="monthlyAdjustment().type"
+      [options]="monthlySalaryAdjustmentTypeOptions()"
+      [(ngModel)]="monthlySalaryAdjustment().monthly_salary_adjustment_id"
     >
       <ng-template #footer>
         <div class="p-3">
           <p-button
             text
-            [label]="t('addNew')"
             fluid
+            [label]="t('addNew')"
             severity="secondary"
             size="small"
             icon="pi pi-plus"
+            (onClick)="onAddNewMonthlySalaryAdjustmentType()"
           />
         </div> </ng-template
     ></p-select>
@@ -36,7 +37,7 @@
         type="number"
         name="amount"
         class="w-full"
-        [(ngModel)]="monthlyAdjustment()!.amount"
+        [(ngModel)]="monthlySalaryAdjustment()!.amount"
       />
     </ui-form-field>
     <ui-form-field class="w-full" [label]="t('paymentCurrency')">
@@ -48,7 +49,7 @@
         optionValue="id"
         [placeholder]="t('selectCurrency')"
         [options]="currencyOptions()"
-        [(ngModel)]="monthlyAdjustment().payment_currency"
+        [(ngModel)]="monthlySalaryAdjustment().payment_currency"
       />
     </ui-form-field>
     <ui-form-field class="w-full" [label]="t('calculationCurrency')">
@@ -60,7 +61,7 @@
         optionValue="id"
         [placeholder]="t('selectCurrency')"
         [options]="currencyOptions()"
-        [(ngModel)]="monthlyAdjustment().calculation_currency"
+        [(ngModel)]="monthlySalaryAdjustment().calculation_currency"
       />
     </ui-form-field>
   </div>
@@ -70,7 +71,7 @@
         name="includesIncomeTax"
         inputId="includesIncomeTax"
         [binary]="true"
-        [(ngModel)]="monthlyAdjustment()!.includes_income_tax"
+        [(ngModel)]="monthlySalaryAdjustment()!.includes_income_tax"
       />
       <label class="ml-2" for="includesIncomeTax">{{
         t("includesIncomeTax")
@@ -81,7 +82,7 @@
         name="includesEmployeePension"
         inputId="includesEmployeePension"
         [binary]="true"
-        [(ngModel)]="monthlyAdjustment()!.includes_employee_pension"
+        [(ngModel)]="monthlySalaryAdjustment()!.includes_employee_pension"
       />
       <label class="ml-2" for="includesEmployeePension">{{
         t("includesEmployeePension")
@@ -95,10 +96,10 @@
         required
         name="startDate"
         dateFormat="dd/mm/yy"
-        [maxDate]="(monthlyAdjustment().end_date | dateType) || now"
+        [maxDate]="(monthlySalaryAdjustment().end_date | dateType) || now"
         [showIcon]="true"
         [showOnFocus]="false"
-        [(ngModel)]="monthlyAdjustment().start_date"
+        [(ngModel)]="monthlySalaryAdjustment().start_date"
     /></ui-form-field>
     <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('endDate')">
@@ -108,10 +109,10 @@
           dateFormat="dd/mm/yy"
           [showIcon]="true"
           [showOnFocus]="false"
-          [minDate]="monthlyAdjustment().start_date | dateType"
-          [maxDate]="(monthlyAdjustment().end_date | dateType) || now"
+          [minDate]="monthlySalaryAdjustment().start_date | dateType"
+          [maxDate]="(monthlySalaryAdjustment().end_date | dateType) || now"
           [disabled]="currentMonthlyAdjustment()"
-          [(ngModel)]="monthlyAdjustment().end_date"
+          [(ngModel)]="monthlySalaryAdjustment().end_date"
       /></ui-form-field>
       <div class="absolute -bottom-5 flex items-center gap-2">
         <p-checkbox

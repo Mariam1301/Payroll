@@ -149,10 +149,16 @@
   "toSeeDataPleaseSelectFields": "To see data, please select fields",
   "selectEmployees": "Select employees",
   "currentIncentiveBonus": "Current incentive bonus",
-  "monthlyAdjustment": "Monthly Salary Adjustment",
-  "monthlyAdjustments": "Monthly Salary Adjustments",
-  "monthlyAdjustmentType": "Monthly Salary Adjustment Type",
-  "monthlyAdjustmentTypes": "Monthly Salary Adjustment Types",
+  "monthlySalaryAdjustment": "Monthly Salary Adjustment",
+  "monthlySalaryAdjustments": "Monthly Salary Adjustments",
+  "monthlySalaryAdjustmentType": "Monthly Salary Adjustment Type",
+  "monthlySalaryAdjustmentTypes": "Monthly Salary Adjustment Types",
   "adjustmentType": "Adjustment Type",
-  "selectType": "SelectType"
+  "selectType": "SelectType",
+  "grossSalary": "Gross Salary",
+  "salaryPensionContribution": "Salary pension contribution",
+  "salaryIncomeTaxContribution": "Salary income tax contribution",
+  "netSalary": "Net Salary",
+  "totalGrossBenefits": "Total gross benefits",
+  "totalGrossDeductions": "Total gross deductions"
 }

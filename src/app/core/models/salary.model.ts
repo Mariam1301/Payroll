@@ -2,7 +2,7 @@ import { CurrencyEnum } from './general.model';
 
 export interface SalaryModel {
   start_date: Date | string;
-  end_date: Date | string;
+  end_date: Date | string | null;
   type: SalaryTypeEnum;
   includes_income_tax: boolean;
   includes_employee_pension: boolean;

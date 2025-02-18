@@ -159,6 +159,7 @@ export class SalaryComponent implements OnInit {
         (date) => formatDateToISODate(date),
       ),
     };
+
     const stream$ = data?.id
       ? this._employeeService.updateSalary(
           employeeId,
@@ -204,6 +205,6 @@ export class SalaryComponent implements OnInit {
   }
 
   onCurrentSalaryChange() {
-    this.salary.update((prev) => ({ ...prev, end_date: undefined }));
+    this.salary.update((prev) => ({ ...prev, end_date: null }));
   }
 }

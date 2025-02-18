@@ -12,8 +12,8 @@
       optionLabel="label"
       optionValue="id"
       [placeholder]="t('selectType')"
-      [options]="monthlyAdjustmentTypeOptions()"
-      [(ngModel)]="monthlyAdjustmentType().type"
+      [options]="monthlySalaryAdjustmentTypeOptions()"
+      [(ngModel)]="monthlySalaryAdjustmentType().type"
     />
   </ui-form-field>
   <ui-form-field class="w-full" [label]="t('name')">
@@ -22,12 +22,12 @@
       pInputText
       name="name"
       class="w-full"
-      [(ngModel)]="monthlyAdjustmentType().name"
+      [(ngModel)]="monthlySalaryAdjustmentType().name"
     />
   </ui-form-field>
   <ui-dialog-actions
     [showCancel]="true"
-    [disabled]="!!form"
+    [disabled]="!!form.invalid"
     (saveClicked)="onSaveClick()"
   ></ui-dialog-actions>
 </form>

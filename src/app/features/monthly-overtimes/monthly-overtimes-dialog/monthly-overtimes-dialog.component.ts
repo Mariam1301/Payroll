@@ -12,7 +12,6 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { MonthlyOvertimeType } from '../../../core/models/monthly-overtime.model';
-import { MonthlyOvertimesService } from '../../../core/services/monthly-overtimes/monthly-overtimes.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { InputNumberModule } from 'primeng/inputnumber';
 
@@ -40,7 +39,7 @@ export class MonthlyOvertimesDialogComponent {
   private readonly _ref = inject(DynamicDialogRef);
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _employeeService = inject(EmployeeService);
-  private readonly _monthlyOvertimeService = inject(MonthlyOvertimesService);
+  // private readonly _monthlyOvertimeService = inject(MonthlyOvertimesService);
 
   employees = toSignal<any[] | undefined>(this._employeeService.getAll());
 

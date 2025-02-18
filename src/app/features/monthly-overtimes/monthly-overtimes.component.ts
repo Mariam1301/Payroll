@@ -4,10 +4,9 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { UiDataElement } from '../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../shared/components/responsive-data-view/responsive-data-view.component';
 import { UiDialogService } from '../../core/services/dialog/dialog.service';
-import { MonthlyOvertimeInformation } from '../../core/models/monthly-overtime.model';
-import { MonthlyOvertimesService } from '../../core/services/monthly-overtimes/monthly-overtimes.service';
 import { MonthlyOvertimesDialogComponent } from './monthly-overtimes-dialog/monthly-overtimes-dialog.component';
 import { UiTemplateDirective } from '../../shared/directives/template/ui-template.directive';
+import { MonthlyOvertimeInformation } from '../../core/models/monthly-overtime.model';
 
 @Component({
   selector: 'app-monthly-overtimes',
@@ -24,7 +23,7 @@ import { UiTemplateDirective } from '../../shared/directives/template/ui-templat
 export class MonthlyOvertimesComponent {
   data = signal<Partial<MonthlyOvertimeInformation>[]>([]);
 
-  private _monthlyOvertimeService = inject(MonthlyOvertimesService);
+  // private _monthlyOvertimeService = inject(MonthlyOvertimesService);
   private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
 

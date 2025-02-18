@@ -3,10 +3,9 @@ import { BaseHttpService } from '../base-http/base-http.service';
 import { Employee } from '../../models/employee.model';
 import { SalaryModel } from '../../models/salary.model';
 import { map } from 'rxjs';
-import { Deduction } from '../../models/deduction.model';
 import { IncentiveBonus } from '../../models/incentive-bonus';
 import { Exemption } from '../../models/exemption.model';
-import { MonthlyAdjustment } from '../../models/monthly-adjustment.model';
+import { MonthlySalaryAdjustment } from '../../models/monthly-salary-adjustment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -73,59 +72,91 @@ export class EmployeeService {
     );
   }
 
-  addBenefit(employeeId: number, data: Partial<MonthlyAdjustment>) {
+  // addBenefit(employeeId: number, data: Partial<MonthlySalaryAdjustment>) {
+  //   return this._baseHttpService.post(
+  //     `${this.entityName}/${employeeId}/benefits`,
+  //     data,
+  //   );
+  // }
+
+  // getBenefits(employeeId: number) {
+  //   return this._baseHttpService
+  //     .get<{
+  //       benefits: Partial<MonthlySalaryAdjustment>[];
+  //     }>(`${this.entityName}/${employeeId}/benefits`)
+  //     .pipe(map((data) => data.benefits));
+  // }
+
+  // updateBenefit(employeeId: number, data: Partial<MonthlySalaryAdjustment>) {
+  //   return this._baseHttpService.put(
+  //     `${this.entityName}/${employeeId}/benefits/${data.id}`,
+  //     data,
+  //   );
+  // }
+
+  // deleteBenefit(employeeId: number, benefitId: number) {
+  //   return this._baseHttpService.delete(
+  //     `${this.entityName}/${employeeId}/benefits/${benefitId}`,
+  //   );
+  // }
+
+  // addDeduction(employeeId: number, data: Partial<Deduction>) {
+  //   return this._baseHttpService.post(
+  //     `${this.entityName}/${employeeId}/deductions`,
+  //     data,
+  //   );
+  // }
+
+  // getDeductions(employeeId: number) {
+  //   return this._baseHttpService
+  //     .get<{
+  //       deductions: Partial<Deduction>[];
+  //     }>(`${this.entityName}/${employeeId}/deductions`)
+  //     .pipe(map((data) => data.deductions));
+  // }
+
+  // updateDeduction(employeeId: number, data: Partial<Deduction>) {
+  //   return this._baseHttpService.put(
+  //     `${this.entityName}/${employeeId}/deductions/${data.id}`,
+  //     data,
+  //   );
+  // }
+
+  // deleteDeduction(employeeId: number, deductionId: number) {
+  //   return this._baseHttpService.delete(
+  //     `${this.entityName}/${employeeId}/deductions/${deductionId}`,
+  //   );
+  // }
+
+  addMonthlySalaryAdjustment(
+    employeeId: number,
+    data: Partial<MonthlySalaryAdjustment>,
+  ) {
     return this._baseHttpService.post(
-      `${this.entityName}/${employeeId}/benefits`,
+      `${this.entityName}/${employeeId}/monthly-salary-adjustments`,
       data,
     );
   }
 
-  getBenefits(employeeId: number) {
-    return this._baseHttpService
-      .get<{
-        benefits: Partial<MonthlyAdjustment>[];
-      }>(`${this.entityName}/${employeeId}/benefits`)
-      .pipe(map((data) => data.benefits));
+  getMonthlySalaryAdjustments(employeeId: number) {
+    return this._baseHttpService.get<Partial<MonthlySalaryAdjustment>[]>(
+      `${this.entityName}/${employeeId}/monthly-salary-adjustments`,
+    );
   }
 
-  updateBenefit(employeeId: number, data: Partial<MonthlyAdjustment>) {
+  updateMonthlySalaryAdjustment(
+    employeeId: number,
+    data: Partial<MonthlySalaryAdjustment>,
+  ) {
     return this._baseHttpService.put(
-      `${this.entityName}/${employeeId}/benefits/${data.id}`,
+      `${this.entityName}/${employeeId}/monthly-salary-adjustments/${data.id}`,
       data,
     );
   }
 
-  deleteBenefit(employeeId: number, benefitId: number) {
+  deleteMonthlySalaryAdjustment(employeeId: number, deductionId: number) {
     return this._baseHttpService.delete(
-      `${this.entityName}/${employeeId}/benefits/${benefitId}`,
-    );
-  }
-
-  addDeduction(employeeId: number, data: Partial<Deduction>) {
-    return this._baseHttpService.post(
-      `${this.entityName}/${employeeId}/deductions`,
-      data,
-    );
-  }
-
-  getDeductions(employeeId: number) {
-    return this._baseHttpService
-      .get<{
-        deductions: Partial<Deduction>[];
-      }>(`${this.entityName}/${employeeId}/deductions`)
-      .pipe(map((data) => data.deductions));
-  }
-
-  updateDeduction(employeeId: number, data: Partial<Deduction>) {
-    return this._baseHttpService.put(
-      `${this.entityName}/${employeeId}/deductions/${data.id}`,
-      data,
-    );
-  }
-
-  deleteDeduction(employeeId: number, deductionId: number) {
-    return this._baseHttpService.delete(
-      `${this.entityName}/${employeeId}/deductions/${deductionId}`,
+      `${this.entityName}/${employeeId}/monthly-salary-adjustments/${deductionId}`,
     );
   }
 

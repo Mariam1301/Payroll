@@ -7,7 +7,7 @@ import { EmployeeService } from '../../../core/services/employee/employee.servic
 import { Employee } from '../../../core/models/employee.model';
 import { GeneralInformationComponent } from './general-information/general-information.component';
 import { SalaryInformationComponent } from './salary-information/salary-information.component';
-import { MonthlyAdjustmentsInformationComponent } from './monthly-adjustment-information/monthly-adjustment-information.component';
+import { MonthlySalaryAdjustmentsInformationComponent } from './monthly-salary-adjustment-information/monthly-salary-adjustment-information.component';
 import { EmployeeComponent } from '../employee/employee.component';
 import { ExemptionInformationComponent } from './exemption-information/exemption-information.component';
 import { UiDialogService } from '../../../core/services/dialog/dialog.service';
@@ -21,7 +21,7 @@ import { IncentiveBonusInformationComponent } from './incentive-bonus-informatio
     FormsModule,
     GeneralInformationComponent,
     SalaryInformationComponent,
-    MonthlyAdjustmentsInformationComponent,
+    MonthlySalaryAdjustmentsInformationComponent,
     ExemptionInformationComponent,
     IncentiveBonusInformationComponent,
   ],

@@ -3,11 +3,11 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { UiDataElement } from '../../../../shared/components/responsive-data-view/data-element/data-element.component';
 import { UiResponsiveDataViewComponent } from '../../../../shared/components/responsive-data-view/responsive-data-view.component';
 import { EmployeeService } from '../../../../core/services/employee/employee.service';
-import { EmployeeMonthlyAdjustmentComponent } from '../../monthly-adjustment/monthly-adjustment.component';
+import { EmployeeMonthlySalaryAdjustmentComponent } from '../../monthly-salary-adjustment/monthly-salary-adjustment.component';
 import { DatePipe } from '@angular/common';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 import { UiTemplateDirective } from '../../../../shared/directives/template/ui-template.directive';
-import { MonthlyAdjustment } from '../../../../core/models/monthly-adjustment.model';
+import { MonthlySalaryAdjustment } from '../../../../core/models/monthly-salary-adjustment.model';
 
 @Component({
   selector: 'employee-monthly-adjustment-information',
@@ -19,12 +19,12 @@ import { MonthlyAdjustment } from '../../../../core/models/monthly-adjustment.mo
     DatePipe,
     UiTemplateDirective,
   ],
-  templateUrl: './monthly-adjustment-information.component.html',
+  templateUrl: './monthly-salary-adjustment-information.component.html',
 })
-export class MonthlyAdjustmentsInformationComponent {
+export class MonthlySalaryAdjustmentsInformationComponent {
   employeeId = input.required<number>();
 
-  data = signal<Partial<MonthlyAdjustment>[]>([]);
+  data = signal<Partial<MonthlySalaryAdjustment>[]>([]);
 
   private _employeeService = inject(EmployeeService);
   private _dialogService = inject(UiDialogService);
@@ -36,31 +36,36 @@ export class MonthlyAdjustmentsInformationComponent {
 
   onAddClick() {
     this._dialogService
-      .open(EmployeeMonthlyAdjustmentComponent, {
-        header: this._translocoService.translate('monthlyAdjustment'),
-        data: { monthlyAdjustment: null, employeeId: this.employeeId() },
+      .open(EmployeeMonthlySalaryAdjustmentComponent, {
+        header: this._translocoService.translate('monthlySalaryAdjustment'),
+        data: { monthlySalaryAdjustment: null, employeeId: this.employeeId() },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
   }
 
   onRowClick({ dataItem }: any) {
     this._dialogService
-      .open(EmployeeMonthlyAdjustmentComponent, {
-        header: this._translocoService.translate('monthlyAdjustment'),
-        data: { monthlyAdjustment: dataItem, employeeId: this.employeeId() },
+      .open(EmployeeMonthlySalaryAdjustmentComponent, {
+        header: this._translocoService.translate('monthlySalaryAdjustment'),
+        data: {
+          monthlySalaryAdjustment: dataItem,
+          employeeId: this.employeeId(),
+        },
       })
       .onClose.subscribe((data) => !!data && this.fetch());
   }
 
   onDeleteClick({ dataItem }: any) {
-    // this._employeeService
-    //   .deleteBenefit(this.employeeId(), dataItem.id)
-    //   .subscribe(() => this.fetch());
+    this._employeeService
+      .deleteMonthlySalaryAdjustment(this.employeeId(), dataItem.id)
+      .subscribe(() => this.fetch());
   }
 
   fetch() {
-    // this._employeeService
-    //   .getBenefits(this.employeeId())
-    //   .subscribe((benefits) => this.data.set(benefits));
+    this._employeeService
+      .getMonthlySalaryAdjustments(this.employeeId())
+      .subscribe((monthlySalaryAdjustments) =>
+        this.data.set(monthlySalaryAdjustments),
+      );
   }
 }

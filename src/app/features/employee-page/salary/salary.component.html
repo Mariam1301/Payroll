@@ -22,7 +22,6 @@
       @if (!!salary().type && salary().type !== salaryTypeEnum.Hourly) {
         <ui-form-field class="w-full" [label]="t('dailyWorkingHours')">
           <p-inputNumber
-            required
             type="number"
             mode="decimal"
             name="dailyWorkingHours"
