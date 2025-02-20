@@ -45,6 +45,10 @@
     >
     </p-multiSelect>
   </ui-form-field>
+  <payroll-calculation-configuration
+    [(selectedCalculationFields)]="selectedCalculationFields"
+    [(proportionalFields)]="proportionalFields"
+  ></payroll-calculation-configuration>
 
   <ui-dialog-actions
     [showCancel]="true"

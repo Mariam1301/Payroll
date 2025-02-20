@@ -1,7 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { DatePicker } from 'primeng/datepicker';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
-import { Select } from 'primeng/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -14,6 +13,8 @@ import { EmployeeService } from '../../../core/services/employee/employee.servic
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ChipModule } from 'primeng/chip';
 import { map } from 'rxjs';
+import { CalculationConfigurationComponent } from '../calculation-configuration/calculation-configuration.component';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-payroll-generation-dialog',
@@ -21,7 +22,6 @@ import { map } from 'rxjs';
   imports: [
     DatePicker,
     DateTypePipe,
-    Select,
     FormsModule,
     InputNumberModule,
     ReactiveFormsModule,
@@ -30,6 +30,8 @@ import { map } from 'rxjs';
     UiFormFieldComponent,
     MultiSelectModule,
     ChipModule,
+    CalculationConfigurationComponent,
+    JsonPipe,
   ],
   templateUrl: './payroll-generation-dialog.component.html',
 })
@@ -51,6 +53,9 @@ export class PayrollGenerationDialogComponent {
   );
 
   now = new Date();
+
+  selectedCalculationFields = signal<number[]>([]);
+  proportionalFields = signal<number[]>([]);
 
   onRemoveItem(id: number) {
     this.payrollGenerationData.update((prev) => ({

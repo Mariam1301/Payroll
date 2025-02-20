@@ -1,5 +1,4 @@
-import { CurrencyEnum, GenderEnum } from './general.model';
-import { SalaryTypeEnum } from './salary.model';
+import { CommonOptionType, GenderEnum } from './general.model';
 
 export interface PayrollGenerationModel {
   start_date: string;
@@ -37,4 +36,9 @@ export interface PayrollCalculationResultModel {
   start_date: string | null;
   end_date: string | null;
   pension: number | null;
+}
+
+export interface PayrollConfigurationField extends CommonOptionType {
+  includeInCalculation: boolean;
+  isProportional: boolean;
 }

@@ -161,5 +161,7 @@
   "netSalary": "Net Salary",
   "totalGrossBenefits": "Total gross benefits",
   "totalGrossDeductions": "Total gross deductions",
-  "addNew": "Add New"
+  "addNew": "Add New",
+  "includeInCalculation": "Include in calculation",
+  "makeItProportional": "Make it proportional"
 }

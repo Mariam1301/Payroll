@@ -161,5 +161,7 @@
   "netSalary": "წმინდა(net) ხელფასი",
   "totalGrossBenefits": "სრული(gross) ბენეფიტების თანხა",
   "totalGrossDeductions": "სრული(gross) დაქვითვების თანხა",
-  "addNew": "დაამატე ახალი"
+  "addNew": "დაამატე ახალი",
+  "includeInCalculation": "მიიღოს მონაწილეობა კალკულაციაში ",
+  "makeItProportional": "გააპროპორციულე"
 }

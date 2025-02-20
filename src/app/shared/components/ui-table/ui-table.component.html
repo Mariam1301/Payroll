@@ -2,6 +2,7 @@
   <p-table
     [value]="data()"
     [tableStyle]="{ 'min-width': '50rem' }"
+    [rowHover]="!disabled()"
     [columns]="columnList() || []"
   >
     <ng-template pTemplate="header" let-columns>
@@ -44,9 +45,6 @@
               *transloco="let t"
               uiConfirm
               class="py-2 px-3 rounded"
-              [ngClass]="{
-                'hover:shadow-md transition-all duration-200 ': !disabled(),
-              }"
               (confirm)="deleteClicked.emit({ dataItem: row, index: i })"
             >
               <i class="pi pi-trash" style="font-size: 1rem"></i>

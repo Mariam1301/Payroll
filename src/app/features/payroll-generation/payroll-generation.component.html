@@ -1,94 +1,110 @@
 <ng-container *transloco="let t">
-  <ui-responsive-data-view
-    [title]="
-      t('payroll') +
-      '  ' +
-      (payrollGenerationModel()
-        ? (payrollGenerationModel()?.start_date | date: 'dd/MM/yyyy') +
-          ' - ' +
-          (payrollGenerationModel()?.end_date | date: 'dd/MM/yyyy')
-        : '')
-    "
-    [data]="data()"
-    [clickable]="false"
-    [showAddButton]="true"
-    [addButtonLabel]="t('generatePayroll')"
-    [showDeleteButton]="false"
-    [areColumnsSelectable]="true"
-    [defaultColumnSelection]="defaultSelectedColumns"
-    (addButtonClicked)="onGeneratePayrollClick()"
-  >
-    <ui-data-element
-      name="name"
-      valueField="name"
-      class="hidden"
-    ></ui-data-element>
-    <ui-data-element name="lastName" valueField="surname"></ui-data-element>
-    <ui-data-element name="startDate" valueField="start_date">
-      <ng-template uiTemplate let-row>
-        <span>{{ row.start_date | date: "dd/MM/yyyy" }}</span>
-      </ng-template>
-    </ui-data-element>
-    <ui-data-element name="endDate" valueField="end_date">
-      <ng-template uiTemplate let-row>
-        <span>{{ row.end_date | date: "dd/MM/yyyy" }}</span>
-      </ng-template>
-    </ui-data-element>
-    <ui-data-element
-      name="personalNumber"
-      valueField="id_number"
-    ></ui-data-element>
-    <ui-data-element name="birthDate" valueField="birth_date">
-      <ng-template uiTemplate let-row>
-        <span>{{ row.birth_date | date: "dd/MM/yyyy" }}</span>
-      </ng-template>
-    </ui-data-element>
-    <ui-data-element name="phoneNumber" valueField="phone"></ui-data-element>
-    <ui-data-element name="gender" valueField="gender"></ui-data-element>
-    <ui-data-element name="address" valueField="address"></ui-data-element>
-    <ui-data-element
-      name="taxResidency"
-      valueField="residency"
-    ></ui-data-element>
+  @if (!!dynamicFields()) {
+    <ui-responsive-data-view
+      [title]="
+        t('payroll') +
+        '  ' +
+        (payrollGenerationModel()
+          ? (payrollGenerationModel()?.start_date | date: 'dd/MM/yyyy') +
+            ' - ' +
+            (payrollGenerationModel()?.end_date | date: 'dd/MM/yyyy')
+          : '')
+      "
+      [data]="data()"
+      [clickable]="false"
+      [showAddButton]="true"
+      [addButtonLabel]="t('generatePayroll')"
+      [showDeleteButton]="false"
+      [areColumnsSelectable]="true"
+      [defaultColumnSelection]="defaultSelectedColumns"
+      (addButtonClicked)="onGeneratePayrollClick()"
+    >
+      <ui-data-element
+        name="name"
+        valueField="name"
+        class="hidden"
+      ></ui-data-element>
+      <ui-data-element name="lastName" valueField="surname"></ui-data-element>
+      <ui-data-element name="startDate" valueField="start_date">
+        <ng-template uiTemplate let-row>
+          <span>{{ row.start_date | date: "dd/MM/yyyy" }}</span>
+        </ng-template>
+      </ui-data-element>
+      <ui-data-element name="endDate" valueField="end_date">
+        <ng-template uiTemplate let-row>
+          <span>{{ row.end_date | date: "dd/MM/yyyy" }}</span>
+        </ng-template>
+      </ui-data-element>
+      <ui-data-element
+        name="personalNumber"
+        valueField="id_number"
+      ></ui-data-element>
+      <ui-data-element name="birthDate" valueField="birth_date">
+        <ng-template uiTemplate let-row>
+          <span>{{ row.birth_date | date: "dd/MM/yyyy" }}</span>
+        </ng-template>
+      </ui-data-element>
+      <ui-data-element name="phoneNumber" valueField="phone"></ui-data-element>
+      <ui-data-element name="gender" valueField="gender"></ui-data-element>
+      <ui-data-element name="address" valueField="address"></ui-data-element>
+      <ui-data-element
+        name="taxResidency"
+        valueField="residency"
+      ></ui-data-element>
 
-    <ui-data-element name="email" valueField="email"></ui-data-element>
-    <ui-data-element
-      name="bankAccountNumber"
-      valueField="bank_account"
-    ></ui-data-element>
+      <ui-data-element name="email" valueField="email"></ui-data-element>
+      <ui-data-element
+        name="bankAccountNumber"
+        valueField="bank_account"
+      ></ui-data-element>
 
-    <ui-data-element name="isInPension" valueField="pension">
-      <ng-template uiTemplate let-row>
-        <i *ngIf="row.pension" class="pi pi-check" style="font-size: 1rem"></i>
-      </ng-template>
-    </ui-data-element>
-    <ui-data-element name="position" valueField="position"></ui-data-element>
+      <ui-data-element name="isInPension" valueField="pension">
+        <ng-template uiTemplate let-row>
+          <i
+            *ngIf="row.pension"
+            class="pi pi-check"
+            style="font-size: 1rem"
+          ></i>
+        </ng-template>
+      </ui-data-element>
+      <ui-data-element name="position" valueField="position"></ui-data-element>
 
-    <ui-data-element
-      name="grossSalary"
-      valueField="salary_gross"
-    ></ui-data-element>
+      <ui-data-element
+        name="grossSalary"
+        valueField="salary_gross"
+      ></ui-data-element>
 
-    <ui-data-element
-      name="salaryPensionContribution"
-      valueField="salary_pension"
-    ></ui-data-element>
+      <ui-data-element
+        name="salaryPensionContribution"
+        valueField="salary_pension"
+      ></ui-data-element>
 
-    <ui-data-element
-      name="salaryIncomeTaxContribution"
-      valueField="salary_income_tax"
-    ></ui-data-element>
+      <ui-data-element
+        name="salaryIncomeTaxContribution"
+        valueField="salary_income_tax"
+      ></ui-data-element>
 
-    <ui-data-element name="netSalary" valueField="salary_net"></ui-data-element>
+      <ui-data-element
+        name="netSalary"
+        valueField="salary_net"
+      ></ui-data-element>
 
-    <ui-data-element
-      name="totalGrossBenefits"
-      valueField="sum_benefits_gross"
-    ></ui-data-element>
+      <ui-data-element
+        name="totalGrossBenefits"
+        valueField="sum_benefits_gross"
+      ></ui-data-element>
 
-    <ui-data-element
-      name="totalGrossDeductions"
-      valueField="sum_deduction_gross"
-    ></ui-data-element>
-  </ui-responsive-data-view>
+      <ui-data-element
+        name="totalGrossDeductions"
+        valueField="sum_deduction_gross"
+      ></ui-data-element>
+
+      @for (field of dynamicFields(); track field.valueField) {
+        <ui-data-element
+          [name]="field.name + ' ' + t('gross')"
+          [valueField]="field.valueField + ' ' + t('gross')"
+        ></ui-data-element>
+      }
+    </ui-responsive-data-view>
+  }
 </ng-container>

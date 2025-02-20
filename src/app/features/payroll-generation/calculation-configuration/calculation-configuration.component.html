@@ -1,0 +1,38 @@
+<p-table
+  [rowTrackBy]="trackRowId"
+  *transloco="let t"
+  [value]="configurableFields() || []"
+>
+  <ng-template #header>
+    <tr>
+      <th>{{ t("monthlySalaryAdjustmentTypes") }}</th>
+      <th>
+        {{ t("includeInCalculation") }}
+      </th>
+
+      <th>
+        {{ t("makeItProportional") }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-field>
+    <tr>
+      <td class="w-1/3">{{ field.name }}</td>
+      <td class="w-1/3">
+        <p-checkbox
+          [ngModel]="field.includeInCalculation"
+          [binary]="true"
+          (ngModelChange)="onIncludedChange($event, field)"
+        />
+      </td>
+      <td class="w-1/3">
+        <p-checkbox
+          [ngModel]="field.isProportional"
+          [binary]="true"
+          [disabled]="!field.includeInCalculation"
+          (ngModelChange)="onProportionalChange($event, field)"
+        />
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
