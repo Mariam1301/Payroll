@@ -49,6 +49,13 @@ export const authorizedRoutes: Routes = [
           ),
       },
       {
+        path: 'oneTimeSalaryAdjustments',
+        loadComponent: () =>
+          import(
+            '../one-time-salary-adjustments/one-time-salary-adjustments.component'
+          ).then((r) => r.OneTimeSalaryAdjustmentComponent),
+      },
+      {
         path: 'payrollGeneration',
         loadComponent: () =>
           import('../payroll-generation/payroll-generation.component').then(

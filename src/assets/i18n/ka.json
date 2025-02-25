@@ -163,5 +163,10 @@
   "totalGrossDeductions": "სრული(gross) დაქვითვების თანხა",
   "addNew": "დაამატე ახალი",
   "includeInCalculation": "მიიღოს მონაწილეობა კალკულაციაში ",
-  "makeItProportional": "გააპროპორციულე"
+  "makeItProportional": "გააპროპორციულე",
+  "oneTimeSalaryAdjustment": "ხელფასის ერთჯერადი კორექტირება",
+  "oneTimeSalaryAdjustments": "ხელფასის ერთჯერადი კორექტირება",
+  "selectAdjustmentType": "აირჩიეთ კორექტირების ტიპი",
+  "comment": "კომენტარი",
+  "date": "თარიღი"
 }

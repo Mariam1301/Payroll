@@ -1,0 +1,112 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('employee')">
+      <p-select
+        required
+        appendTo="body"
+        name="employee"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectEmployee')"
+        [options]="employees()"
+        [(ngModel)]="oneTimeSalaryAdjustment().employee_id"
+      >
+      </p-select>
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('adjustmentType')">
+      <p-select
+        required
+        appendTo="body"
+        name="adjustmentType"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectAdjustmentType')"
+        [options]="adjustmentTypeOptions"
+        [(ngModel)]="oneTimeSalaryAdjustment().adjustment_type"
+      />
+    </ui-form-field>
+  </div>
+
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('amount')">
+      <input
+        required
+        pInputText
+        type="number"
+        name="amount"
+        class="w-full"
+        [(ngModel)]="oneTimeSalaryAdjustment()!.amount"
+      />
+    </ui-form-field>
+
+    <ui-form-field class="w-full" [label]="t('currency')">
+      <p-select
+        required
+        appendTo="body"
+        name="currency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions"
+        [(ngModel)]="oneTimeSalaryAdjustment().calculation_currency"
+      />
+    </ui-form-field>
+  </div>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <div>
+      <p-checkbox
+        name="includesIncomeTax"
+        inputId="includesIncomeTax"
+        [binary]="true"
+        [(ngModel)]="oneTimeSalaryAdjustment()!.includes_income_tax"
+      />
+      <label class="ml-2" for="includesIncomeTax">{{
+        t("includesIncomeTax")
+      }}</label>
+    </div>
+    <div>
+      <p-checkbox
+        name="includesEmployeePension"
+        inputId="includesEmployeePension"
+        [binary]="true"
+        [(ngModel)]="oneTimeSalaryAdjustment()!.includes_employee_pension"
+      />
+      <label class="ml-2" for="includesEmployeePension">{{
+        t("includesEmployeePension")
+      }}</label>
+    </div>
+  </div>
+
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('date')">
+      <p-datepicker
+        appendTo="body"
+        required
+        name="date"
+        dateFormat="yy-mm-dd"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="oneTimeSalaryAdjustment().date"
+    /></ui-form-field>
+  </div>
+  <ui-form-field class="w-full" [label]="t('comment')">
+    <textarea
+      pTextarea
+      name="comment"
+      rows="5"
+      cols="30"
+      class="resize-none w-full"
+      [(ngModel)]="oneTimeSalaryAdjustment().comment"
+    ></textarea>
+  </ui-form-field>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

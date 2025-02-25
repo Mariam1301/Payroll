@@ -13,3 +13,8 @@ export interface CommonOptionType {
   id: number;
   name: string;
 }
+
+export enum AdjustmentTypeEnum {
+  BENEFIT = 'benefit',
+  DEDUCTION = 'deduction',
+}

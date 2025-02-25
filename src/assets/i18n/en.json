@@ -163,5 +163,10 @@
   "totalGrossDeductions": "Total gross deductions",
   "addNew": "Add New",
   "includeInCalculation": "Include in calculation",
-  "makeItProportional": "Make it proportional"
+  "makeItProportional": "Make it proportional",
+  "oneTimeSalaryAdjustment": "One-time salary adjustments",
+  "oneTimeSalaryAdjustments": "One-time salary adjustments",
+  "selectAdjustmentType": "Select adjustment type",
+  "comment": "Comment",
+  "date": "Date"
 }
