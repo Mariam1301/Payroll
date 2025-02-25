@@ -4,11 +4,10 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { Select } from 'primeng/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
 import { UiFormFieldComponent } from '../../../shared/components/form-field/form-field.component';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { CurrencyEnum } from '../../../core/models/general.model';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { OvertimePolicy } from '../../../core/models/ovetime-policy.model';
 import { CompanyService } from '../../../core/services/company/company.service';
@@ -36,21 +35,6 @@ export class OvertimePolicyComponent implements OnInit {
   private readonly _ref = inject(DynamicDialogRef);
   private readonly _dialogConfig = inject(DynamicDialogConfig);
   private readonly _companyService = inject(CompanyService);
-
-  currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
-    {
-      id: CurrencyEnum.GEL,
-      label: 'GEL',
-    },
-    {
-      id: CurrencyEnum.EUR,
-      label: 'EUR',
-    },
-    {
-      id: CurrencyEnum.USD,
-      label: 'USD',
-    },
-  ]);
 
   ngOnInit(): void {
     const overtimePolicy = { ...this._dialogConfig.data?.overtimePolicy };

@@ -26,6 +26,7 @@ import {
   MonthlySalaryAdjustmentTypeEnum,
 } from '../../../core/models/monthly-salary-adjustment-type.model';
 import { MonthlySalaryAdjustmentTypeComponent } from '../../company-page/monthly-salary-adjustment-type/montly-salary-adjustment-type.component';
+import { CURRENCY_OPTIONS } from '../../../core/constants/general.constants';
 
 @Component({
   selector: 'employee-monthly-adjustment',
@@ -65,20 +66,7 @@ export class EmployeeMonthlySalaryAdjustmentComponent {
     [],
   );
 
-  currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
-    {
-      id: CurrencyEnum.GEL,
-      label: 'GEL',
-    },
-    {
-      id: CurrencyEnum.EUR,
-      label: 'EUR',
-    },
-    {
-      id: CurrencyEnum.USD,
-      label: 'USD',
-    },
-  ]);
+  currencyOptions = CURRENCY_OPTIONS;
 
   ngOnInit(): void {
     this.getMonthlySalaryAdjustmentTypeOptions();

@@ -10,11 +10,11 @@ import { EmployeeService } from '../../../core/services/employee/employee.servic
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { Select } from 'primeng/select';
-import { CurrencyEnum, GenderEnum } from '../../../core/models/general.model';
 import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
+import { GENDER_OPTIONS } from '../../../core/constants/general.constants';
 
 @Component({
   standalone: true,
@@ -50,31 +50,10 @@ export class EmployeeComponent implements OnInit {
     this.stillWorking.set(!employe?.end_date);
   }
 
-  genderOptions = signal<{ id: GenderEnum; label: string }[]>([
-    {
-      id: GenderEnum.Female,
-      label: this._translocoService.translate('female'),
-    },
-    {
-      id: GenderEnum.Male,
-      label: this._translocoService.translate('male'),
-    },
-  ]);
-
-  currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
-    {
-      id: CurrencyEnum.GEL,
-      label: 'GEL',
-    },
-    {
-      id: CurrencyEnum.EUR,
-      label: 'EUR',
-    },
-    {
-      id: CurrencyEnum.USD,
-      label: 'USD',
-    },
-  ]);
+  genderOptions = GENDER_OPTIONS.map((option) => ({
+    ...option,
+    label: this._translocoService.translate(option.label),
+  }));
 
   onStillWorkingChange() {
     this.employeeData.update((prev) => ({ ...prev, end_date: undefined }));

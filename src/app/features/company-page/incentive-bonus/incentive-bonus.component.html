@@ -34,7 +34,7 @@
         optionLabel="label"
         optionValue="id"
         [placeholder]="t('selectCurrency')"
-        [options]="currencyOptions()"
+        [options]="currencyOptions"
         [(ngModel)]="incentiveBonus().payment_currency"
       />
     </ui-form-field>
@@ -46,7 +46,7 @@
         optionLabel="label"
         optionValue="id"
         [placeholder]="t('selectCurrency')"
-        [options]="currencyOptions()"
+        [options]="currencyOptions"
         [(ngModel)]="incentiveBonus().calculation_currency"
       />
     </ui-form-field>

@@ -48,7 +48,7 @@
         optionLabel="label"
         optionValue="id"
         [placeholder]="t('selectCurrency')"
-        [options]="currencyOptions()"
+        [options]="currencyOptions"
         [(ngModel)]="monthlySalaryAdjustment().payment_currency"
       />
     </ui-form-field>
@@ -60,7 +60,7 @@
         optionLabel="label"
         optionValue="id"
         [placeholder]="t('selectCurrency')"
-        [options]="currencyOptions()"
+        [options]="currencyOptions"
         [(ngModel)]="monthlySalaryAdjustment().calculation_currency"
       />
     </ui-form-field>

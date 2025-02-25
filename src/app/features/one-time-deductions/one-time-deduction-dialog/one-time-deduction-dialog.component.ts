@@ -15,6 +15,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { OneTimeDeduction } from '../../../core/models/one-time-deduction.model';
 import { CurrencyEnum } from '../../../core/models/general.model';
+import { CURRENCY_OPTIONS } from '../../../core/constants/general.constants';
 
 @Component({
   selector: 'app-one-time-deduction-dialog',
@@ -46,20 +47,7 @@ export class OneTImeDeductionDialogComponent {
 
   now = new Date();
 
-  currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
-    {
-      id: CurrencyEnum.GEL,
-      label: 'GEL',
-    },
-    {
-      id: CurrencyEnum.EUR,
-      label: 'EUR',
-    },
-    {
-      id: CurrencyEnum.USD,
-      label: 'USD',
-    },
-  ]);
+  currencyOptions = CURRENCY_OPTIONS;
 
   ngOnInit(): void {
     const oneTimeDeduction = { ...this._dialogConfig.data?.oneTimeDeduction };

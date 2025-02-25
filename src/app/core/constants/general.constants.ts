@@ -1,4 +1,8 @@
-import { AdjustmentTypeEnum, CurrencyEnum } from '../models/general.model';
+import {
+  AdjustmentTypeEnum,
+  CurrencyEnum,
+  GenderEnum,
+} from '../models/general.model';
 
 export const ADJUSTMENT_TYPES = [
   {
@@ -23,5 +27,16 @@ export const CURRENCY_OPTIONS = [
   {
     id: CurrencyEnum.USD,
     label: 'USD',
+  },
+];
+
+export const GENDER_OPTIONS = [
+  {
+    id: GenderEnum.Female,
+    label: 'female',
+  },
+  {
+    id: GenderEnum.Male,
+    label: 'male',
   },
 ];

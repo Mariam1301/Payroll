@@ -14,6 +14,7 @@ import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { CurrencyEnum } from '../../../core/models/general.model';
 import { IncentiveBonus } from '../../../core/models/incentive-bonus';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { CURRENCY_OPTIONS } from '../../../core/constants/general.constants';
 
 @Component({
   selector: 'employee-incentive-bonus',
@@ -45,20 +46,7 @@ export class IncentiveBonusComponent implements OnInit {
 
   now = new Date();
 
-  currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
-    {
-      id: CurrencyEnum.GEL,
-      label: 'GEL',
-    },
-    {
-      id: CurrencyEnum.EUR,
-      label: 'EUR',
-    },
-    {
-      id: CurrencyEnum.USD,
-      label: 'USD',
-    },
-  ]);
+  currencyOptions = CURRENCY_OPTIONS;
 
   ngOnInit(): void {
     const incentiveBonus = { ...this._dialogConfig.data?.incentiveBonus };

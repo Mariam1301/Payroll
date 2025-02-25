@@ -15,6 +15,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CurrencyEnum } from '../../../core/models/general.model';
 import { OneTimeBonus } from '../../../core/models/one-time-bonus.model';
+import { CURRENCY_OPTIONS } from '../../../core/constants/general.constants';
 
 @Component({
   selector: 'app-one-time-bonus-dialog',
@@ -46,20 +47,7 @@ export class OneTimeBonusesDialogComponent {
 
   now = new Date();
 
-  currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
-    {
-      id: CurrencyEnum.GEL,
-      label: 'GEL',
-    },
-    {
-      id: CurrencyEnum.EUR,
-      label: 'EUR',
-    },
-    {
-      id: CurrencyEnum.USD,
-      label: 'USD',
-    },
-  ]);
+  currencyOptions = CURRENCY_OPTIONS;
 
   ngOnInit(): void {
     const oneTimeBonus = { ...this._dialogConfig.data?.oneTimeBonus };

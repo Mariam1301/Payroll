@@ -18,9 +18,14 @@ import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { DatePicker } from 'primeng/datepicker';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
 import { CheckboxModule } from 'primeng/checkbox';
-import { CurrencyEnum } from '../../../core/models/general.model';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { CURRENCY_OPTIONS } from '../../../core/constants/general.constants';
+import {
+  DAILY_SALARY_CALCULATION_BASE_OPTIONS,
+  NON_WORKING_DAYS_OPTIONS,
+  SALARY_TYPE_OPTIONS,
+} from '../../../core/constants/salary.constants';
 
 @Component({
   standalone: true,
@@ -57,91 +62,24 @@ export class SalaryComponent implements OnInit {
   salaryTypeEnum = SalaryTypeEnum;
   nonWorkingDaysEnum = NonWorkingDaysEnum;
 
-  SalaryTypeOptions = signal<{ id: SalaryTypeEnum; label: string }[]>([
-    {
-      id: SalaryTypeEnum.Daily,
-      label: this._translocoService.translate('daily'),
-    },
-    {
-      id: SalaryTypeEnum.Hourly,
-      label: this._translocoService.translate('hourly'),
-    },
-    {
-      id: SalaryTypeEnum.Fixed,
-      label: this._translocoService.translate('monthlyFixed'),
-    },
-    {
-      id: SalaryTypeEnum.Shifts,
-      label: this._translocoService.translate('monthlyShifts'),
-    },
-  ]);
+  SalaryTypeOptions = SALARY_TYPE_OPTIONS.map((option) => ({
+    ...option,
+    label: this._translocoService.translate(option.label),
+  }));
 
-  currencyOptions = signal<{ id: CurrencyEnum; label: string }[]>([
-    {
-      id: CurrencyEnum.GEL,
-      label: 'GEL',
-    },
-    {
-      id: CurrencyEnum.EUR,
-      label: 'EUR',
-    },
-    {
-      id: CurrencyEnum.USD,
-      label: 'USD',
-    },
-  ]);
+  currencyOptions = CURRENCY_OPTIONS;
 
-  dailySalaryCalculationBaseOptions = signal<
-    { id: DailySalaryCalculationBaseEnum; label: string }[]
-  >([
-    {
-      id: DailySalaryCalculationBaseEnum.CALENDAR_DAYS,
-      label: this._translocoService.translate('calendarDays'),
-    },
-    {
-      id: DailySalaryCalculationBaseEnum.WORKING_DAYS,
-      label: this._translocoService.translate('workingDays'),
-    },
-  ]);
+  dailySalaryCalculationBaseOptions = DAILY_SALARY_CALCULATION_BASE_OPTIONS.map(
+    (option) => ({
+      ...option,
+      label: this._translocoService.translate(option.label),
+    }),
+  );
 
-  nonWorkingDaysOptions = signal<{ id: NonWorkingDaysEnum; label: string }[]>([
-    {
-      id: NonWorkingDaysEnum.PUBLIC_HOLIDAYS_UNDER_GEORGIAN_LAW,
-      label: this._translocoService.translate('publicHolidaysUnderGeorgianLaw'),
-    },
-    {
-      id: NonWorkingDaysEnum.EVERY_MONDAY,
-      label: this._translocoService.translate('everyMonday'),
-    },
-    {
-      id: NonWorkingDaysEnum.EVERY_TUESDAY,
-      label: this._translocoService.translate('everyTuesday'),
-    },
-    {
-      id: NonWorkingDaysEnum.EVERY_WEDNESDAY,
-      label: this._translocoService.translate('everyWednesday'),
-    },
-    {
-      id: NonWorkingDaysEnum.EVERY_THURSDAY,
-      label: this._translocoService.translate('everyThursday'),
-    },
-    {
-      id: NonWorkingDaysEnum.EVERY_FRIDAY,
-      label: this._translocoService.translate('everyFriday'),
-    },
-    {
-      id: NonWorkingDaysEnum.EVERY_SATURDAY,
-      label: this._translocoService.translate('everySaturday'),
-    },
-    {
-      id: NonWorkingDaysEnum.EVERY_SUNDAY,
-      label: this._translocoService.translate('everySunday'),
-    },
-    {
-      id: NonWorkingDaysEnum.CUSTOM_DATES,
-      label: this._translocoService.translate('selectFromCalendar'),
-    },
-  ]);
+  nonWorkingDaysOptions = NON_WORKING_DAYS_OPTIONS.map((option) => ({
+    ...option,
+    label: this._translocoService.translate(option.label),
+  }));
 
   ngOnInit(): void {
     const salary = { ...this._dialogConfig.data?.salary };
