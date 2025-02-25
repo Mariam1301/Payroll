@@ -95,7 +95,7 @@
         appendTo="body"
         required
         name="startDate"
-        dateFormat="dd/mm/yy"
+        dateFormat="yy-mm-dd"
         [maxDate]="(monthlySalaryAdjustment().end_date | dateType) || now"
         [showIcon]="true"
         [showOnFocus]="false"
@@ -106,7 +106,7 @@
         <p-datepicker
           appendTo="body"
           name="endDate"
-          dateFormat="dd/mm/yy"
+          dateFormat="yy-mm-dd"
           [showIcon]="true"
           [showOnFocus]="false"
           [minDate]="monthlySalaryAdjustment().start_date | dateType"
