@@ -75,6 +75,28 @@
       ></ui-data-element>
 
       <ui-data-element
+        name="totalGrossBenefits"
+        valueField="sum_benefits_gross"
+      ></ui-data-element>
+
+      <ui-data-element
+        name="totalGrossDeductions"
+        valueField="sum_deduction_gross"
+      ></ui-data-element>
+      @for (field of dynamicFields(); track field.valueField) {
+        {{ field.valueField + "_gross" }}
+        <ui-data-element
+          [name]="field.name + ' ' + t('gross')"
+          [valueField]="field.valueField"
+        ></ui-data-element>
+      }
+
+      <ui-data-element
+        name="sumCompensationGross"
+        valueField="sum_amount"
+      ></ui-data-element>
+
+      <ui-data-element
         name="salaryPensionContribution"
         valueField="salary_pension"
       ></ui-data-element>
@@ -88,24 +110,6 @@
         name="netSalary"
         valueField="salary_net"
       ></ui-data-element>
-
-      <ui-data-element
-        name="totalGrossBenefits"
-        valueField="sum_benefits_gross"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="totalGrossDeductions"
-        valueField="sum_deduction_gross"
-      ></ui-data-element>
-
-      @for (field of dynamicFields(); track field.valueField) {
-        {{ field.valueField + "_gross" }}
-        <ui-data-element
-          [name]="field.name + ' ' + t('gross')"
-          [valueField]="field.valueField"
-        ></ui-data-element>
-      }
     </ui-responsive-data-view>
   }
 </ng-container>

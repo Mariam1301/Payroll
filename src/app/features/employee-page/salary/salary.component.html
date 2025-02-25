@@ -27,6 +27,7 @@
             name="dailyWorkingHours"
             [inputId]="t('dailyWorkingHours')"
             [min]="0"
+            [max]="24"
             [suffix]="' ' + t('hr')"
             [(ngModel)]="salary()!.daily_working_hours"
           />

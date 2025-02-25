@@ -72,14 +72,11 @@ export class PayrollGenerationDialogComponent {
   onGenerateClick() {
     this._ref.close({
       ...this.payrollGenerationData(),
-      regular_adjustments: this.payrollGenerationData()?.regular_adjustments
-        ?.length
-        ? this.payrollGenerationData()?.regular_adjustments
-        : null,
-      prorate_adjustments: this.payrollGenerationData()?.prorate_adjustments
-        ?.length
-        ? this.payrollGenerationData()?.prorate_adjustments
-        : null,
+      regular_adjustments:
+        this.payrollGenerationData()?.regular_adjustments?.filter(
+          (a) =>
+            !this.payrollGenerationData()?.prorate_adjustments?.includes(a),
+        ),
     });
   }
 }

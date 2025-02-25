@@ -168,5 +168,6 @@
   "oneTimeSalaryAdjustments": "One-time salary adjustments",
   "selectAdjustmentType": "Select adjustment type",
   "comment": "Comment",
-  "date": "Date"
+  "date": "Date",
+  "sumCompensationGross": "Total compensation gross"
 }
