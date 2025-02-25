@@ -20,11 +20,11 @@
       </ng-template>
     </ui-data-element>
     <ui-data-element name="employee" valueField="employee"></ui-data-element>
-    <ui-data-element name="amount">
-      <ng-template uiTemplate let-row>
-        <span>{{ row.amount + " " + row.calculation_currency }}</span>
-      </ng-template>
-    </ui-data-element>
+    <ui-data-element name="amount" valueField="amount"></ui-data-element>
+    <ui-data-element
+      name="currency"
+      valueField="calculation_currency"
+    ></ui-data-element>
 
     <ui-data-element name="date">
       <ng-template uiTemplate let-row>

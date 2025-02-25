@@ -8,7 +8,6 @@ export interface SalaryModel {
   includes_employee_pension: boolean;
   calculation_currency: CurrencyEnum;
   amount: number;
-  payment_currency: CurrencyEnum;
   id: number;
   daily_salary_calculation_base: DailySalaryCalculationBaseEnum;
   daily_working_hours?: number;

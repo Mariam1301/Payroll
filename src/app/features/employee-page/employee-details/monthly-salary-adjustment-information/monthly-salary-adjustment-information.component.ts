@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { UiDialogService } from '../../../../core/services/dialog/dialog.service';
 import { UiTemplateDirective } from '../../../../shared/directives/template/ui-template.directive';
 import { MonthlySalaryAdjustment } from '../../../../core/models/monthly-salary-adjustment.model';
+import { MonthlySalaryAdjustmentTypeEnum } from '../../../../core/models/monthly-salary-adjustment-type.model';
 
 @Component({
   selector: 'employee-monthly-adjustment-information',
@@ -25,6 +26,7 @@ export class MonthlySalaryAdjustmentsInformationComponent {
   employeeId = input.required<number>();
 
   data = signal<Partial<MonthlySalaryAdjustment>[]>([]);
+  monthlySalaryAdjustmentTypeEnum = MonthlySalaryAdjustmentTypeEnum;
 
   private _employeeService = inject(EmployeeService);
   private _dialogService = inject(UiDialogService);

@@ -1,41 +1,64 @@
- <ng-container *transloco="let t">
-   <div
-     class="flex sm:items-center justify-between flex-col sm:flex-row items-start mb-8"
-   >
+<ng-container *transloco="let t">
+  <div
+    class="flex sm:items-center justify-between flex-col sm:flex-row items-start mb-8"
+  >
+    <h1 class="font-primeng font-semibold text-xl mb-5 sm:mb-0">
+      {{ t("generalInformation") }}
+    </h1>
 
-       <h1 class="font-primeng font-semibold text-xl mb-5 sm:mb-0">{{ t('generalInformation') }}</h1>
-
-     <button
-       class="p-button w-full sm:w-fit justify-center flex gap-2 items-center"
-       (click)="editClicked.emit()"
-     >
-       <i class="pi pi-pencil" style="font-size: 1rem"></i>
-       <p *transloco="let t">{{ t("edit") }}</p>
-     </button>
-
-   </div>
-  <div class="w-full grid grid-cols-2  gap-x-10  border  p-5 items-center gap-y-5" >
-
-    <ui-preview-field [label]="t('firstName')">{{ employeeData().name }}</ui-preview-field>
-    <ui-preview-field [label]="t('lastName')">{{ employeeData().surname }}</ui-preview-field>
-    <ui-preview-field [label]="t('address')">{{ employeeData().address }}</ui-preview-field>
-    <ui-preview-field [label]="t('birthDate')">{{ employeeData().birth_date }}</ui-preview-field>
+    <button
+      class="p-button w-full sm:w-fit justify-center flex gap-2 items-center"
+      (click)="editClicked.emit()"
+    >
+      <i class="pi pi-pencil" style="font-size: 1rem"></i>
+      <p *transloco="let t">{{ t("edit") }}</p>
+    </button>
+  </div>
+  <div class="w-full grid grid-cols-2 gap-x-10 border p-5 items-center gap-y-5">
+    <ui-preview-field [label]="t('firstName')">{{
+      employeeData().name
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('lastName')">{{
+      employeeData().surname
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('address')">{{
+      employeeData().address
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('birthDate')">{{
+      employeeData().birth_date
+    }}</ui-preview-field>
     <ui-preview-field [label]="t('phoneNumber')"
-    >{{ employeeData().phone }}
-    </ui-preview-field
-    >
-    <ui-preview-field [label]="t('taxResidency')">{{ employeeData().residency }}</ui-preview-field>
-    <ui-preview-field [label]="t('gender')">{{ employeeData().gender }}</ui-preview-field>
+      >{{ employeeData().phone }}
+    </ui-preview-field>
+    <ui-preview-field [label]="t('taxResidency')">{{
+      employeeData().residency
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('gender')">{{
+      employeeData().gender
+    }}</ui-preview-field>
     <ui-preview-field [label]="t('personalNumber')"
-    >{{ employeeData().id_number }}
-    </ui-preview-field
-    >
-    <ui-preview-field [label]="t('position')">{{ employeeData().position }}</ui-preview-field>
-    <ui-preview-field [label]="t('startDate')">{{ employeeData().start_date }}</ui-preview-field>
-    <ui-preview-field [label]="t('endDate')">{{ employeeData().end_date || t('stillWorking') }}</ui-preview-field>
-    <ui-preview-field [label]="t('email')">{{ employeeData().email }}</ui-preview-field>
-    <ui-preview-field [label]="t('bankAccountNumber')">{{ employeeData().bank_account }}</ui-preview-field>
-    <ui-preview-field [label]="t('isInPension')">{{ t((employeeData().pension) ? 'active' : 'inactive') }}
+      >{{ employeeData().id_number }}
+    </ui-preview-field>
+    <ui-preview-field [label]="t('position')">{{
+      employeeData().position
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('startDate')">{{
+      employeeData().start_date
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('endDate')">{{
+      employeeData().end_date || t("stillWorking")
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('email')">{{
+      employeeData().email
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('bankAccountNumber')">{{
+      employeeData().bank_account
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('paymentCurrency')">{{
+      employeeData().payment_currency
+    }}</ui-preview-field>
+    <ui-preview-field [label]="t('isInPension')"
+      >{{ t(employeeData().pension ? "active" : "inactive") }}
     </ui-preview-field>
   </div>
- </ng-container>
+</ng-container>

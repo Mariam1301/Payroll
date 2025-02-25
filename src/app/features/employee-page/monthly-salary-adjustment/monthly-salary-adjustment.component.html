@@ -40,19 +40,8 @@
         [(ngModel)]="monthlySalaryAdjustment()!.amount"
       />
     </ui-form-field>
-    <ui-form-field class="w-full" [label]="t('paymentCurrency')">
-      <p-select
-        required
-        appendTo="body"
-        name="paymentCurrency"
-        optionLabel="label"
-        optionValue="id"
-        [placeholder]="t('selectCurrency')"
-        [options]="currencyOptions"
-        [(ngModel)]="monthlySalaryAdjustment().payment_currency"
-      />
-    </ui-form-field>
-    <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+
+    <ui-form-field class="w-full" [label]="t('currency')">
       <p-select
         required
         appendTo="body"

@@ -100,9 +100,10 @@
       ></ui-data-element>
 
       @for (field of dynamicFields(); track field.valueField) {
+        {{ field.valueField + "_gross" }}
         <ui-data-element
           [name]="field.name + ' ' + t('gross')"
-          [valueField]="field.valueField + ' ' + t('gross')"
+          [valueField]="field.valueField"
         ></ui-data-element>
       }
     </ui-responsive-data-view>

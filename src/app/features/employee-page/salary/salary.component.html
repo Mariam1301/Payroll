@@ -112,7 +112,7 @@
           [(ngModel)]="salary()!.amount"
         />
       </ui-form-field>
-      <ui-form-field class="w-full" [label]="t('calculationCurrency')">
+      <ui-form-field class="w-full" [label]="t('currency')">
         <p-select
           required
           name="calculationCurrency"
@@ -121,17 +121,6 @@
           [placeholder]="t('selectCurrency')"
           [options]="currencyOptions"
           [(ngModel)]="salary().calculation_currency"
-        />
-      </ui-form-field>
-      <ui-form-field class="w-full" [label]="t('paymentCurrency')">
-        <p-select
-          required
-          name="paymentCurrency"
-          optionLabel="label"
-          optionValue="id"
-          [placeholder]="t('selectCurrency')"
-          [options]="currencyOptions"
-          [(ngModel)]="salary().payment_currency"
         />
       </ui-form-field>
     </div>

@@ -14,7 +14,10 @@ import { DatePicker } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { formatDateToISODate } from '../../../core/utils/date-formating';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
-import { GENDER_OPTIONS } from '../../../core/constants/general.constants';
+import {
+  CURRENCY_OPTIONS,
+  GENDER_OPTIONS,
+} from '../../../core/constants/general.constants';
 
 @Component({
   standalone: true,
@@ -54,6 +57,8 @@ export class EmployeeComponent implements OnInit {
     ...option,
     label: this._translocoService.translate(option.label),
   }));
+
+  currencyOptions = CURRENCY_OPTIONS;
 
   onStillWorkingChange() {
     this.employeeData.update((prev) => ({ ...prev, end_date: undefined }));

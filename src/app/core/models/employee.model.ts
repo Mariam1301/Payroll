@@ -1,4 +1,4 @@
-import { GenderEnum } from './general.model';
+import { CurrencyEnum, GenderEnum } from './general.model';
 
 export interface Employee {
   id: number;
@@ -16,5 +16,5 @@ export interface Employee {
   start_date: Date;
   end_date?: Date;
   pension: boolean;
+  payment_currency: CurrencyEnum;
 }
-

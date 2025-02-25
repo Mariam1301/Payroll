@@ -46,8 +46,8 @@
     </p-multiSelect>
   </ui-form-field>
   <payroll-calculation-configuration
-    [(selectedCalculationFields)]="selectedCalculationFields"
-    [(proportionalFields)]="proportionalFields"
+    [(selectedCalculationFields)]="payrollGenerationData().regular_adjustments!"
+    [(proportionalFields)]="payrollGenerationData().prorate_adjustments!"
   ></payroll-calculation-configuration>
 
   <ui-dialog-actions

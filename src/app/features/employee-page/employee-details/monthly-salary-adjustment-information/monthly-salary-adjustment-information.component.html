@@ -9,17 +9,23 @@
     (deleteClicked)="onDeleteClick($event)"
   >
     <ui-data-element name="name" valueField="name"></ui-data-element>
-    <ui-data-element
-      name="type"
-      valueField="monthly_salary_adjustment_name "
-    ></ui-data-element>
+    <ui-data-element name="type" valueField="type">
+      <ng-template uiTemplate let-row>
+        <span>
+          {{
+            row.type === monthlySalaryAdjustmentTypeEnum.BENEFIT
+              ? t("benefit")
+              : row.type === monthlySalaryAdjustmentTypeEnum.DEDUCTION
+                ? t("deduction")
+                : ""
+          }}</span
+        >
+      </ng-template>
+    </ui-data-element>
     <ui-data-element name="amount" valueField="amount"></ui-data-element>
+
     <ui-data-element
-      name="paymentCurrency"
-      valueField="payment_currency"
-    ></ui-data-element>
-    <ui-data-element
-      name="calculationCurrency"
+      name="currency"
       valueField="calculation_currency"
     ></ui-data-element>
     <ui-data-element name="startDate">

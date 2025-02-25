@@ -36,7 +36,10 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './payroll-generation-dialog.component.html',
 })
 export class PayrollGenerationDialogComponent {
-  payrollGenerationData = signal<Partial<PayrollGenerationModel>>({});
+  payrollGenerationData = signal<Partial<PayrollGenerationModel>>({
+    regular_adjustments: [],
+    prorate_adjustments: [],
+  });
   private readonly _ref = inject(DynamicDialogRef);
 
   private readonly _employeeService = inject(EmployeeService);
@@ -69,6 +72,14 @@ export class PayrollGenerationDialogComponent {
   onGenerateClick() {
     this._ref.close({
       ...this.payrollGenerationData(),
+      regular_adjustments: this.payrollGenerationData()?.regular_adjustments
+        ?.length
+        ? this.payrollGenerationData()?.regular_adjustments
+        : null,
+      prorate_adjustments: this.payrollGenerationData()?.prorate_adjustments
+        ?.length
+        ? this.payrollGenerationData()?.prorate_adjustments
+        : null,
     });
   }
 }

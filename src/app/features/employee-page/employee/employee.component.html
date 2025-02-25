@@ -163,15 +163,29 @@
       />
     </ui-form-field>
   </div>
-  <div class="flex w-full items-center gap-4">
-    <p-checkbox
-      name="isInPension"
-      inputId="isInPension"
-      [binary]="true"
-      [ariaLabel]="t('isInPension')"
-      [(ngModel)]="employeeData().pension"
-    />
-    <label for="isInPension">{{ t("isInPension") }}</label>
+  <div class="flex w-full sm:flex-nowrap flex-wrap items-center gap-5">
+    <ui-form-field class="w-full" [label]="t('paymentCurrency')">
+      <p-select
+        required
+        appendTo="body"
+        name="paymentCurrency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions"
+        [(ngModel)]="employeeData().payment_currency"
+      />
+    </ui-form-field>
+    <div class="flex w-full items-center gap-4">
+      <p-checkbox
+        name="isInPension"
+        inputId="isInPension"
+        [binary]="true"
+        [ariaLabel]="t('isInPension')"
+        [(ngModel)]="employeeData().pension"
+      />
+      <label for="isInPension">{{ t("isInPension") }}</label>
+    </div>
   </div>
   <ui-dialog-actions
     [showCancel]="true"

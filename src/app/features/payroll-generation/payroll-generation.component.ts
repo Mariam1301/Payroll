@@ -60,7 +60,7 @@ export class PayrollGenerationComponent implements OnInit {
       this.dynamicFields.set(
         data.map((monthlyAdjustmentType) => ({
           name: monthlyAdjustmentType.name,
-          valueField: `${monthlyAdjustmentType.name}_gross`,
+          valueField: `${monthlyAdjustmentType.name.split(' ').join('_')}_gross`,
         })),
       ),
     );
