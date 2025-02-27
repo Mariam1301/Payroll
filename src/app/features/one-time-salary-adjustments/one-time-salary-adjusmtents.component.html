@@ -11,15 +11,19 @@
     <ui-data-element name="type">
       <ng-template uiTemplate let-row>
         {{
-          row.adjustment_type === adjustmentType.BENEFIT
+          row.type === adjustmentType.BENEFIT
             ? t("benefit")
-            : row.adjustment_type === adjustmentType.DEDUCTION
+            : row.type === adjustmentType.DEDUCTION
               ? t("deduction")
               : ""
         }}
       </ng-template>
     </ui-data-element>
-    <ui-data-element name="employee" valueField="employee"></ui-data-element>
+    <ui-data-element name="employee">
+      <ng-template uiTemplate let-row>
+        {{ row.employee_name + " " + row.employee_surname }}
+      </ng-template>
+    </ui-data-element>
     <ui-data-element name="amount" valueField="amount"></ui-data-element>
     <ui-data-element
       name="currency"
