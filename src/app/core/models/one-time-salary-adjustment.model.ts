@@ -9,7 +9,7 @@ export interface OneTimeSalaryAdjustment {
   includes_income_tax: boolean;
   includes_employee_pension: boolean;
   date: string;
-  comment: string;
+  description: string;
 }
 
 export interface OneTimeSalaryAdjustmentDialogInfo {

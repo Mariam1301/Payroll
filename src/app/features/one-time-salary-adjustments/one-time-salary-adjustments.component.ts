@@ -9,6 +9,8 @@ import { OneTimeDeductionInfo } from '../../core/models/one-time-deduction.model
 import { OneTimeSalaryAdjustment } from '../../core/models/one-time-salary-adjustment.model';
 import { OneTimeSalaryAdjustmentDialogComponent } from './one-time-salary-adjustment-dialog/one-time-salary-adjusmtent-dialog.component';
 import { AdjustmentTypeEnum } from '../../core/models/general.model';
+import { OneTimeSalaryAdjustmentsService } from '../../core/services/one-time-salary-adjusments/one-time-salary-adjustments.service';
+import { EmployeeService } from '../../core/services/employee/employee.service';
 
 @Component({
   selector: 'app-one-time-salary-adjustment',
@@ -29,6 +31,10 @@ export class OneTimeSalaryAdjustmentComponent implements OnInit {
   // private _monthlyOvertimeService = inject(MonthlyOvertimesService);
   private _dialogService = inject(UiDialogService);
   private _translocoService = inject(TranslocoService);
+  private _oneTimeSalaryAdjustmentService = inject(
+    OneTimeSalaryAdjustmentsService,
+  );
+  private _employeeService = inject(EmployeeService);
 
   ngOnInit(): void {
     this.fetch();
@@ -52,27 +58,15 @@ export class OneTimeSalaryAdjustmentComponent implements OnInit {
       .onClose.subscribe((data) => !!data && this.fetch());
   }
 
-  onDeleteClick({ dataItem }: any) {
-    // this._monthlyOvertimeService
-    //   .delete( dataItem.id)
-    //   .subscribe(() => this.fetch());
+  onDeleteClick({ dataItem }: { dataItem: OneTimeSalaryAdjustment }) {
+    this._employeeService
+      .deleteOneTimeSalaryAdjustment(dataItem.employee_id, dataItem.id)
+      .subscribe(() => this.fetch());
   }
 
   fetch() {
-    this.data.set([
-      {
-        employee: 'Mariam Khachvani',
-        amount: 10,
-        calculation_currency: 'GEL',
-        includes_income_tax: true,
-        includes_employee_pension: true,
-        date: new Date('01-01-2025'),
-        comment: 'რავიცი რავიცი რავიცი',
-        adjustment_type: AdjustmentTypeEnum.BENEFIT,
-      } as unknown as OneTimeDeductionInfo,
-    ]);
-    // this._monthlyOvertimeService
-    //   .getAll()
-    //   .subscribe((monthlyOvertimes) => this.data.set(monthlyOvertimes));
+    this._oneTimeSalaryAdjustmentService
+      .getAll()
+      .subscribe((data) => this.data.set(data));
   }
 }

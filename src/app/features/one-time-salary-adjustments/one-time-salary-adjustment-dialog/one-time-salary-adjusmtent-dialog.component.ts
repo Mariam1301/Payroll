@@ -87,10 +87,16 @@ export class OneTimeSalaryAdjustmentDialogComponent {
       date: formatDateToISODate(this.oneTimeSalaryAdjustment().date!),
     };
     console.log(data);
-    // const stream$ = data?.id
-    //   ? this._monthlyOvertimeService.update(data)
-    //   : this._employeeService.add(data);
+    const stream$ = data?.id
+      ? this._employeeService.updateOneTimeSalaryAdjustment(
+          data.employee_id!,
+          data,
+        )
+      : this._employeeService.addOneTimeSalaryAdjustment(
+          data.employee_id!,
+          data,
+        );
 
-    // stream$.subscribe(() => this._ref.close(true));
+    stream$.subscribe(() => this._ref.close(true));
   }
 }

@@ -31,7 +31,7 @@
         <span>{{ row.date | date: "dd/MM/yyy" }}</span>
       </ng-template>
     </ui-data-element>
-    <ui-data-element name="comment" valueField="comment"></ui-data-element>
+    <ui-data-element name="comment" valueField="description"></ui-data-element>
     <ui-data-element name="includesEmployeePension">
       <ng-template uiTemplate let-row>
         @if (row.includes_employee_pension) {

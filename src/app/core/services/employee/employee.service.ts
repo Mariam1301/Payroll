@@ -215,4 +215,30 @@ export class EmployeeService {
       `${this.entityName}/${employeeId}/income-tax-exemptions/${exemptionId}`,
     );
   }
+
+  addOneTimeSalaryAdjustment(
+    employeeId: number,
+    data: Partial<MonthlySalaryAdjustment>,
+  ) {
+    return this._baseHttpService.post(
+      `${this.entityName}/${employeeId}/one-time-adjustments`,
+      data,
+    );
+  }
+
+  updateOneTimeSalaryAdjustment(
+    employeeId: number,
+    data: Partial<MonthlySalaryAdjustment>,
+  ) {
+    return this._baseHttpService.put(
+      `${this.entityName}/${employeeId}/one-time-adjustments/${data.id}`,
+      data,
+    );
+  }
+
+  deleteOneTimeSalaryAdjustment(employeeId: number, deductionId: number) {
+    return this._baseHttpService.delete(
+      `${this.entityName}/${employeeId}/one-time-adjustments/${deductionId}`,
+    );
+  }
 }
