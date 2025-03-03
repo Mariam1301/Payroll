@@ -53,33 +53,6 @@
   </div>
 } @else {
   @if ((data()?.length || 0) > 0 || (dataSource()?.data?.length || 0) > 0) {
-    @if (areColumnsSelectable()) {
-      <div class="w-full mb-5">
-        <p-multiSelect
-          *transloco="let t"
-          name="fields"
-          appendTo="body"
-          optionLabel="name"
-          optionValue="value"
-          [placeholder]="t('selectColumns')"
-          [options]="fieldList()"
-          display="chip"
-          [maxSelectedLabels]="50"
-          [(ngModel)]="selectedColumns"
-        >
-        </p-multiSelect>
-      </div>
-
-      @if (!selectedColumns().length) {
-        <p
-          *transloco="let t"
-          class="w-full text-center font-primeng py-5 text-surface-400"
-        >
-          {{ t("toSeeDataPleaseSelectFields") }}
-        </p>
-      }
-    }
-
     @if (!!selectedColumns().length || !areColumnsSelectable()) {
       <div class="hidden sm:block">
         <ui-table
@@ -106,6 +79,15 @@
           (rowClicked)="rowClicked.emit($event)"
         ></ui-list>
       </div>
+    }
+
+    @if (!selectedColumns().length && !!areColumnsSelectable()) {
+      <p
+        *transloco="let t"
+        class="w-full text-center font-primeng py-5 text-surface-400"
+      >
+        {{ t("toSeeDataPleaseSelectFields") }}
+      </p>
     }
   } @else {
     <p

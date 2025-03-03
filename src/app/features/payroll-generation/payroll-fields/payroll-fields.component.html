@@ -1,0 +1,6 @@
+<p-tree
+  [value]="fields()"
+  selectionMode="checkbox"
+  [(selection)]="selectedColumns"
+  (selectionChange)="onFieldsChange($event)"
+/>

@@ -140,8 +140,8 @@
   "selectIncentiveBonusType": "მიუთითეთ ბონუსის ტიპი",
   "oneTimeDeductions": "ერთჯერადი დაქვითვები",
   "oneTimeDeduction": "ერთჯერადი დაქვითვა",
-  "oneTimeBonuses": "ერთჯერადი ბონუსები",
-  "oneTimeBonus": "ერთჯერადი ბონუსი",
+  "oneTimeBenefits": "ერთჯერადი დანამატები",
+  "oneTimeBenefit": "ერთჯერადი დანამატი",
   "payrollGeneration": "უწყისის გენერირება",
   "generatePayroll": "დააგენერირე უწყისი",
   "payroll": "უწყისი",
@@ -171,5 +171,6 @@
   "selectAdjustmentType": "აირჩიეთ კორექტირების ტიპი",
   "comment": "კომენტარი",
   "date": "თარიღი",
-  "sumCompensationGross": "სრული ანაზღაურება (დარიცხული)"
+  "sumCompensationGross": "სრული ანაზღაურება (დარიცხული)",
+  "payrollFields": "უწყისის ველები"
 }

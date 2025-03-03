@@ -46,5 +46,58 @@ export const Noir = definePreset(Aura, {
         },
       },
     },
+
+    formField: {
+      paddingX: '0.5rem',
+      paddingY: '0.450rem',
+    },
+    list: {
+      padding: '0.1rem 0.1rem',
+      header: {
+        padding: '0.5rem 1rem 0.25rem 1rem',
+      },
+      option: {
+        padding: '0.2rem 0.3rem',
+        borderRadius: '{border.radius.sm}',
+      },
+      optionGroup: {
+        padding: '0.2rem 0.3rem',
+        fontWeight: '600',
+      },
+    },
+  },
+  components: {
+    datatable: {
+      header: {
+        background: '{content.background}',
+        borderColor: '{datatable.border.color}',
+        color: '{content.color}',
+        borderWidth: '0 0 1px 0',
+        padding: '0.5rem 0.75rem',
+      },
+      headerCell: {
+        background: '{content.background}',
+        hoverBackground: '{content.hover.background}',
+        selectedBackground: '{highlight.background}',
+        borderColor: '{datatable.border.color}',
+        color: '{content.color}',
+        hoverColor: '{content.hover.color}',
+        selectedColor: '{highlight.color}',
+        gap: '0.3rem',
+        padding: '0.5rem 0.75rem',
+        focusRing: {
+          width: '{focus.ring.width}',
+          style: '{focus.ring.style}',
+          color: '{focus.ring.color}',
+          offset: '-1px',
+          shadow: '{focus.ring.shadow}',
+        },
+      },
+      bodyCell: {
+        padding: '0.5rem 0.75rem',
+        fontSize: '2px',
+        minHeight: '20px',
+      },
+    },
   },
 });
