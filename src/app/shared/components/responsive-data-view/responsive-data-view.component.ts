@@ -74,8 +74,6 @@ export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
 
   areColumnsSelectable = input(false);
 
-  defaultColumnSelection = input<string[]>([]);
-
   addButtonClicked = output();
 
   rowClicked = output<{ index: number; dataItem: any }>();
@@ -90,7 +88,7 @@ export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
 
   noteTemplate = signal<TemplateRef<any> | null>(null);
 
-  selectedColumns = signal<string[]>([]);
+  selectedColumns = input<string[]>([]);
 
   columnList = signal<DataElement[] | null>(null);
 
@@ -128,7 +126,7 @@ export class UiResponsiveDataViewComponent implements AfterContentInit, OnInit {
       })),
     );
 
-    this.selectedColumns.set(this.defaultColumnSelection());
+    // this.selectedColumns.set(this.defaultColumnSelection());
 
     this.columnList.set(
       this.contentChildren().map((item) => ({

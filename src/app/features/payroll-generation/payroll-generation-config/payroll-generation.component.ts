@@ -1,7 +1,16 @@
-import { Component, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  effect,
+  inject,
+  model,
+  output,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { DatePicker } from 'primeng/datepicker';
 import { DateTypePipe } from '../../../core/pipes/date-type.pipe';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { UiDialogActionsComponent } from '../../../shared/components/dialog-actions/dialog-actions.component';
@@ -10,14 +19,12 @@ import { PayrollGenerationModel } from '../../../core/models/payroll-generation.
 import { MultiSelectModule } from 'primeng/multiselect';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { EmployeeService } from '../../../core/services/employee/employee.service';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ChipModule } from 'primeng/chip';
 import { map } from 'rxjs';
-import { CalculationConfigurationComponent } from '../calculation-configuration/calculation-configuration.component';
-import { JsonPipe } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-payroll-generation-dialog',
+  selector: 'app-payroll-generation-config',
   standalone: true,
   imports: [
     DatePicker,
@@ -26,21 +33,24 @@ import { JsonPipe } from '@angular/common';
     InputNumberModule,
     ReactiveFormsModule,
     TranslocoDirective,
-    UiDialogActionsComponent,
     UiFormFieldComponent,
     MultiSelectModule,
     ChipModule,
-    CalculationConfigurationComponent,
-    JsonPipe,
+    ButtonModule,
+    // JsonPipe,
   ],
-  templateUrl: './payroll-generation-dialog.component.html',
+  templateUrl: './payroll-generation.component.html',
 })
-export class PayrollGenerationDialogComponent {
+export class PayrollGenerationConfigComponent implements AfterViewInit {
+  form = viewChild<NgForm>('form');
+  generatePayrollClicked = output<Partial<PayrollGenerationModel>>();
+
+  disabled = model<boolean>();
+
   payrollGenerationData = signal<Partial<PayrollGenerationModel>>({
     regular_adjustments: [],
     prorate_adjustments: [],
   });
-  private readonly _ref = inject(DynamicDialogRef);
 
   private readonly _employeeService = inject(EmployeeService);
 
@@ -60,6 +70,12 @@ export class PayrollGenerationDialogComponent {
   selectedCalculationFields = signal<number[]>([]);
   proportionalFields = signal<number[]>([]);
 
+  ngAfterViewInit(): void {
+    if (this.form()) {
+      this.form()!.valueChanges?.subscribe((value) => this.disabled.set(false));
+    }
+  }
+
   onRemoveItem(id: number) {
     this.payrollGenerationData.update((prev) => ({
       ...prev,
@@ -70,13 +86,13 @@ export class PayrollGenerationDialogComponent {
   }
 
   onGenerateClick() {
-    this._ref.close({
-      ...this.payrollGenerationData(),
-      regular_adjustments:
-        this.payrollGenerationData()?.regular_adjustments?.filter(
-          (a) =>
-            !this.payrollGenerationData()?.prorate_adjustments?.includes(a),
-        ),
-    });
+    // this._ref.close({
+    //   ...this.payrollGenerationData(),
+    //   regular_adjustments:
+    //     this.payrollGenerationData()?.regular_adjustments?.filter(
+    //       (a) =>
+    //         !this.payrollGenerationData()?.prorate_adjustments?.includes(a),
+    //     ),
+    // });
   }
 }

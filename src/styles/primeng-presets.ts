@@ -1,7 +1,5 @@
 import { definePreset } from '@primeng/themes';
 import Aura from '@primeng/themes/aura';
-import Lara from '@primeng/themes/lara';
-import Material from '@primeng/themes/material';
 
 export const Noir = definePreset(Aura, {
   semantic: {
@@ -98,6 +96,7 @@ export const Noir = definePreset(Aura, {
       bodyCell: {
         padding: '0.5rem 0.75rem',
         fontSize: '2px',
+        minHeight: '20px',
       },
     },
   },

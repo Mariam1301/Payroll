@@ -1,115 +1,160 @@
 <ng-container *transloco="let t">
-  @if (!!dynamicFields()) {
-    <ui-responsive-data-view
-      [title]="
-        t('payroll') +
-        '  ' +
-        (payrollGenerationModel()
-          ? (payrollGenerationModel()?.start_date | date: 'dd/MM/yyyy') +
-            ' - ' +
-            (payrollGenerationModel()?.end_date | date: 'dd/MM/yyyy')
-          : '')
-      "
-      [data]="data()"
-      [clickable]="false"
-      [showAddButton]="true"
-      [addButtonLabel]="t('generatePayroll')"
-      [showDeleteButton]="false"
-      [areColumnsSelectable]="true"
-      [defaultColumnSelection]="defaultSelectedColumns"
-      (addButtonClicked)="onGeneratePayrollClick()"
-    >
-      <ui-data-element
-        name="name"
-        valueField="name"
-        class="hidden"
-      ></ui-data-element>
-      <ui-data-element name="lastName" valueField="surname"></ui-data-element>
-      <ui-data-element name="startDate" valueField="start_date">
-        <ng-template uiTemplate let-row>
-          <span>{{ row.start_date | date: "dd/MM/yyyy" }}</span>
-        </ng-template>
-      </ui-data-element>
-      <ui-data-element name="endDate" valueField="end_date">
-        <ng-template uiTemplate let-row>
-          <span>{{ row.end_date | date: "dd/MM/yyyy" }}</span>
-        </ng-template>
-      </ui-data-element>
-      <ui-data-element
-        name="personalNumber"
-        valueField="id_number"
-      ></ui-data-element>
-      <ui-data-element name="birthDate" valueField="birth_date">
-        <ng-template uiTemplate let-row>
-          <span>{{ row.birth_date | date: "dd/MM/yyyy" }}</span>
-        </ng-template>
-      </ui-data-element>
-      <ui-data-element name="phoneNumber" valueField="phone"></ui-data-element>
-      <ui-data-element name="gender" valueField="gender"></ui-data-element>
-      <ui-data-element name="address" valueField="address"></ui-data-element>
-      <ui-data-element
-        name="taxResidency"
-        valueField="residency"
-      ></ui-data-element>
+  <ui-side-bar-layout [label]="t('payrollFields')">
+    <app-payroll-fields
+      ngProjectAs="side-panel"
+      [defaultSelectedColumns]="defaultSelectedColumns"
+      (fieldSelectionChange)="onFieldSelect($event)"
+    ></app-payroll-fields>
 
-      <ui-data-element name="email" valueField="email"></ui-data-element>
-      <ui-data-element
-        name="bankAccountNumber"
-        valueField="bank_account"
-      ></ui-data-element>
-
-      <ui-data-element name="isInPension" valueField="pension">
-        <ng-template uiTemplate let-row>
-          <i
-            *ngIf="row.pension"
-            class="pi pi-check"
-            style="font-size: 1rem"
-          ></i>
-        </ng-template>
-      </ui-data-element>
-      <ui-data-element name="position" valueField="position"></ui-data-element>
-
-      <ui-data-element
-        name="grossSalary"
-        valueField="salary_gross"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="totalGrossBenefits"
-        valueField="sum_benefits_gross"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="totalGrossDeductions"
-        valueField="sum_deduction_gross"
-      ></ui-data-element>
-      @for (field of dynamicFields(); track field.valueField) {
-        {{ field.valueField + "_gross" }}
-        <ui-data-element
-          [name]="field.name + ' ' + t('gross')"
-          [valueField]="field.valueField"
-        ></ui-data-element>
+    <div class="px-5">
+      <app-payroll-generation-config
+        [(disabled)]="isGenerationDisabled"
+        (generatePayrollClicked)="onGeneratePayrollClick($event)"
+      ></app-payroll-generation-config>
+      @if (!!dynamicFields()) {
+        <ui-responsive-data-view
+          [title]="
+            t('payroll') +
+            '  ' +
+            (payrollGenerationModel()
+              ? (payrollGenerationModel()?.start_date | date: 'dd/MM/yyyy') +
+                ' - ' +
+                (payrollGenerationModel()?.end_date | date: 'dd/MM/yyyy')
+              : '')
+          "
+          [data]="data()"
+          [clickable]="false"
+          [showAddButton]="false"
+          [showDeleteButton]="false"
+          [areColumnsSelectable]="true"
+          [selectedColumns]="selectedColumns()"
+        >
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.NAME"
+            [valueField]="PayrollGeneralInformationValueField.NAME"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.LAST_NAME"
+            [valueField]="PayrollGeneralInformationValueField.LAST_NAME"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.START_DATE"
+            [valueField]="PayrollGeneralInformationValueField.START_DATE"
+          >
+            <ng-template uiTemplate let-row>
+              <span>{{ row.start_date | date: "dd/MM/yyyy" }}</span>
+            </ng-template>
+          </ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.END_DATE"
+            [valueField]="PayrollGeneralInformationValueField.END_DATE"
+          >
+            <ng-template uiTemplate let-row>
+              <span>{{ row.end_date | date: "dd/MM/yyyy" }}</span>
+            </ng-template>
+          </ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.PERSONAL_NUMBER"
+            [valueField]="PayrollGeneralInformationValueField.PERSONAL_NUMBER"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.BIRTH_DATE"
+            [valueField]="PayrollGeneralInformationValueField.BIRTH_DATE"
+          >
+            <ng-template uiTemplate let-row>
+              <span>{{ row.birth_date | date: "dd/MM/yyyy" }}</span>
+            </ng-template>
+          </ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.PHONE_NUMBER"
+            [valueField]="PayrollGeneralInformationValueField.PHONE_NUMBER"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.GENDER"
+            [valueField]="PayrollGeneralInformationValueField.GENDER"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.ADDRESS"
+            [valueField]="PayrollGeneralInformationValueField.ADDRESS"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.TAX_RESIDENCY"
+            [valueField]="PayrollGeneralInformationValueField.TAX_RESIDENCY"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.EMAIL"
+            [valueField]="PayrollGeneralInformationValueField.EMAIL"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.BANK_ACCOUNT_NUMBER"
+            [valueField]="
+              PayrollGeneralInformationValueField.BANK_ACCOUNT_NUMBER
+            "
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.IS_IN_PENSION"
+            [valueField]="PayrollGeneralInformationValueField.IS_IN_PENSION"
+          >
+            <ng-template uiTemplate let-row>
+              <i
+                *ngIf="row.pension"
+                class="pi pi-check"
+                style="font-size: 1rem"
+              ></i>
+            </ng-template>
+          </ui-data-element>
+          <ui-data-element
+            [name]="PayrollGeneralInformationFieldName.POSITION"
+            valueField="position"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.GROSS_SALARY"
+            [valueField]="PayrollSalaryValueField.GROSS_SALARY"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.TOTAL_GROSS_BENEFITS"
+            [valueField]="PayrollSalaryValueField.TOTAL_GROSS_BENEFITS"
+          >
+          </ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.TOTAL_GROSS_DEDUCTIONS"
+            [valueField]="PayrollSalaryValueField.TOTAL_GROSS_DEDUCTIONS"
+          ></ui-data-element>
+          @for (field of dynamicFields(); track field.valueField) {
+            {{ field.valueField + "_gross" }}
+            <ui-data-element
+              [name]="field.name + ' ' + t('gross')"
+              [valueField]="field.valueField"
+            ></ui-data-element>
+          }
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.SUM_COMPENSATION_GROSS"
+            [valueField]="PayrollSalaryValueField.SUM_COMPENSATION_GROSS"
+          >
+          </ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.ONE_TIME_BENEFIT"
+            [valueField]="PayrollSalaryValueField.ONE_TIME_BENEFIT"
+          >
+          </ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.ONE_TIME_DEDUCTION"
+            [valueField]="PayrollSalaryValueField.ONE_TIME_DEDUCTION"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.PENSION_CONTRIBUTION"
+            [valueField]="PayrollSalaryValueField.PENSION_CONTRIBUTION"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.INCOME_TAX_CONTRIBUTION"
+            [valueField]="PayrollSalaryValueField.INCOME_TAX_CONTRIBUTION"
+          ></ui-data-element>
+          <ui-data-element
+            [name]="PayrollSalaryFieldName.NET_SALARY"
+            [valueField]="PayrollSalaryValueField.NET_SALARY"
+          ></ui-data-element>
+        </ui-responsive-data-view>
       }
-
-      <ui-data-element
-        name="sumCompensationGross"
-        valueField="sum_amount"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="salaryPensionContribution"
-        valueField="salary_pension"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="salaryIncomeTaxContribution"
-        valueField="salary_income_tax"
-      ></ui-data-element>
-
-      <ui-data-element
-        name="netSalary"
-        valueField="salary_net"
-      ></ui-data-element>
-    </ui-responsive-data-view>
-  }
+    </div>
+  </ui-side-bar-layout>
 </ng-container>

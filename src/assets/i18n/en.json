@@ -140,8 +140,8 @@
   "selectIncentiveBonusType": "Select incentive bonus type",
   "oneTimeDeductions": "One-time deductions",
   "oneTimeDeduction": "One-time deduction",
-  "oneTimeBonuses": "One-time bonuses",
-  "oneTimeBonus": "One-time bonus",
+  "oneTimeBenefits": "One-time benefits",
+  "oneTimeBenefit": "One-time benefit",
   "payrollGeneration": "Payroll generation",
   "generatePayroll": "Generate payroll",
   "payroll": "Payroll",
@@ -169,5 +169,6 @@
   "selectAdjustmentType": "Select adjustment type",
   "comment": "Comment",
   "date": "Date",
-  "sumCompensationGross": "Total compensation gross"
+  "sumCompensationGross": "Total compensation gross",
+  "payrollFields": "Payroll Fields"
 }
