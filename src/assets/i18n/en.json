@@ -170,5 +170,6 @@
   "comment": "Comment",
   "date": "Date",
   "sumCompensationGross": "Total compensation gross",
-  "payrollFields": "Payroll Fields"
+  "payrollFields": "Payroll Fields",
+  "filter": "Filter"
 }

@@ -22,6 +22,8 @@ import { EmployeeService } from '../../../core/services/employee/employee.servic
 import { ChipModule } from 'primeng/chip';
 import { map } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
+import { CalculationConfigurationComponent } from '../calculation-configuration/calculation-configuration.component';
+import { AccordionModule } from 'primeng/accordion';
 
 @Component({
   selector: 'app-payroll-generation-config',
@@ -37,7 +39,8 @@ import { ButtonModule } from 'primeng/button';
     MultiSelectModule,
     ChipModule,
     ButtonModule,
-    // JsonPipe,
+    CalculationConfigurationComponent,
+    AccordionModule,
   ],
   templateUrl: './payroll-generation.component.html',
 })
@@ -83,16 +86,5 @@ export class PayrollGenerationConfigComponent implements AfterViewInit {
         (employee_id) => employee_id !== id,
       ),
     }));
-  }
-
-  onGenerateClick() {
-    // this._ref.close({
-    //   ...this.payrollGenerationData(),
-    //   regular_adjustments:
-    //     this.payrollGenerationData()?.regular_adjustments?.filter(
-    //       (a) =>
-    //         !this.payrollGenerationData()?.prorate_adjustments?.includes(a),
-    //     ),
-    // });
   }
 }

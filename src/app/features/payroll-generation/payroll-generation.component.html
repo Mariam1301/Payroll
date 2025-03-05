@@ -11,6 +11,7 @@
         [(disabled)]="isGenerationDisabled"
         (generatePayrollClicked)="onGeneratePayrollClick($event)"
       ></app-payroll-generation-config>
+
       @if (!!dynamicFields()) {
         <ui-responsive-data-view
           [title]="

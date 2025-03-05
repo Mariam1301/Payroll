@@ -12,45 +12,61 @@
       (onClick)="generatePayrollClicked.emit(payrollGenerationData())"
     />
   </div>
-  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
-    <ui-form-field class="w-full" [label]="t('dateFrom')">
-      <p-datepicker
-        required
-        appendTo="body"
-        name="dateFrom"
-        dateFormat="yy-mm-dd"
-        [showIcon]="true"
-        [showOnFocus]="false"
-        [maxDate]="payrollGenerationData().end_date | dateType"
-        [(ngModel)]="payrollGenerationData().start_date"
-    /></ui-form-field>
-    <div class="w-full relative">
-      <ui-form-field class="w-full" [label]="t('dateTo')">
-        <p-datepicker
-          appendTo="body"
-          name="dateTo"
-          dateFormat="yy-mm-dd"
-          [showIcon]="true"
-          [showOnFocus]="false"
-          [minDate]="payrollGenerationData().start_date | dateType"
-          [(ngModel)]="payrollGenerationData().end_date"
-      /></ui-form-field>
-    </div>
-  </div>
 
-  <ui-form-field class="w-full" [label]="t('employees')">
-    <p-multiSelect
-      required
-      name="employees"
-      appendTo="body"
-      optionLabel="label"
-      optionValue="id"
-      [maxSelectedLabels]="50"
-      [placeholder]="t('selectEmployees')"
-      [options]="employees()"
-      display="chip"
-      [(ngModel)]="payrollGenerationData()!.employee_ids"
-    >
-    </p-multiSelect>
-  </ui-form-field>
+  <p-accordion value="0" styleClass="border-t border-x">
+    <p-accordion-panel value="0">
+      <p-accordion-header
+        ><p-button icon="pi  pi-ellipsis-v" [text]="true" />
+      </p-accordion-header>
+      <p-accordion-content>
+        <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+          <ui-form-field class="w-full" [label]="t('dateFrom')">
+            <p-datepicker
+              required
+              appendTo="body"
+              name="dateFrom"
+              dateFormat="yy-mm-dd"
+              [showIcon]="true"
+              [showOnFocus]="false"
+              [maxDate]="payrollGenerationData().end_date | dateType"
+              [(ngModel)]="payrollGenerationData().start_date"
+          /></ui-form-field>
+          <div class="w-full relative">
+            <ui-form-field class="w-full" [label]="t('dateTo')">
+              <p-datepicker
+                required
+                appendTo="body"
+                name="dateTo"
+                dateFormat="yy-mm-dd"
+                [showIcon]="true"
+                [showOnFocus]="false"
+                [minDate]="payrollGenerationData().start_date | dateType"
+                [(ngModel)]="payrollGenerationData().end_date"
+            /></ui-form-field>
+          </div>
+        </div>
+
+        <ui-form-field class="w-full" [label]="t('employees')">
+          <p-multiSelect
+            required
+            name="employees"
+            appendTo="body"
+            optionLabel="label"
+            optionValue="id"
+            [maxSelectedLabels]="50"
+            [placeholder]="t('selectEmployees')"
+            [options]="employees()"
+            display="chip"
+            [(ngModel)]="payrollGenerationData()!.employee_ids"
+          >
+          </p-multiSelect>
+        </ui-form-field>
+        <payroll-calculation-configuration
+          [(selectedCalculationFields)]="
+            payrollGenerationData().regular_adjustments!
+          "
+          [(proportionalFields)]="payrollGenerationData().prorate_adjustments!"
+        ></payroll-calculation-configuration>
+      </p-accordion-content> </p-accordion-panel
+  ></p-accordion>
 </form>
