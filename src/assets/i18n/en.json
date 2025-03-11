@@ -187,5 +187,10 @@
   "selectPercent": "select Percent",
   "current": "Current",
   "timeBasedSalaryAdjustmentTypes": "Time based salary adjustment types",
-  "timeBasedSalaryAdjustmentType": "Time based salary adjustment type"
+  "timeBasedSalaryAdjustmentType": "Time based salary adjustment type",
+  "timeBasedSalaryAdjustments": "Time based salary adjustments",
+  "timeBasedSalaryAdjustment": "Time based salary adjustment",
+  "day": "Day",
+  "hour": "Hour",
+  "minute": "Minute"
 }

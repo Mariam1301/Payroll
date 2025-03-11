@@ -51,6 +51,10 @@ export class WrapperComponent {
       path: 'oneTimeSalaryAdjustments',
     },
     {
+      title: 'timeBasedSalaryAdjustments',
+      path: 'timeBasedSalaryAdjustments',
+    },
+    {
       title: 'payrollGeneration',
       path: 'payrollGeneration',
     },

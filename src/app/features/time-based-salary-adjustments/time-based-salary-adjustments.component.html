@@ -1,0 +1,54 @@
+<ng-container *transloco="let t">
+  <ui-responsive-data-view
+    [title]="t('oneTimeSalaryAdjustments')"
+    [data]="data()"
+    [showAddButton]="true"
+    [showDeleteButton]="true"
+    (addButtonClicked)="onAddClick()"
+    (rowClicked)="onRowClick($event)"
+    (deleteClicked)="onDeleteClick($event)"
+  >
+    <ui-data-element name="type">
+      <ng-template uiTemplate let-row>
+        {{
+          row.type === adjustmentType.BENEFIT
+            ? t("benefit")
+            : row.type === adjustmentType.DEDUCTION
+              ? t("deduction")
+              : ""
+        }}
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="employee">
+      <ng-template uiTemplate let-row>
+        {{ row.employee_name + " " + row.employee_surname }}
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="amount" valueField="amount"></ui-data-element>
+    <ui-data-element
+      name="currency"
+      valueField="calculation_currency"
+    ></ui-data-element>
+
+    <ui-data-element name="date">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.date | date: "dd/MM/yyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="comment" valueField="description"></ui-data-element>
+    <ui-data-element name="includesEmployeePension">
+      <ng-template uiTemplate let-row>
+        @if (row.includes_employee_pension) {
+          <i class="pi pi-check" style="font-size: 1rem"></i>
+        }
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="includesIncomeTax">
+      <ng-template uiTemplate let-row>
+        @if (row.includes_income_tax) {
+          <i class="pi pi-check" style="font-size: 1rem"></i>
+        }
+      </ng-template>
+    </ui-data-element>
+  </ui-responsive-data-view>
+</ng-container>

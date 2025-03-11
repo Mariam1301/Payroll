@@ -56,6 +56,13 @@ export const authorizedRoutes: Routes = [
           ).then((r) => r.OneTimeSalaryAdjustmentComponent),
       },
       {
+        path: 'timeBasedSalaryAdjustments',
+        loadComponent: () =>
+          import(
+            '../time-based-salary-adjustments/time-based-salary-adjustments.component'
+          ).then((r) => r.TimeBasedSalaryAdjustmentComponent),
+      },
+      {
         path: 'payrollGeneration',
         loadComponent: () =>
           import('../payroll-generation/payroll-generation.component').then(

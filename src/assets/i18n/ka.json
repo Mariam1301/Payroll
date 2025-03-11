@@ -191,5 +191,10 @@
   "selectPercent": "აირჩიე პროცენტი",
   "current": "მიმდინარე",
   "timeBasedSalaryAdjustmentTypes": "დროზე მიბმული ხელფასის კორექტირების ტიპები",
-  "timeBasedSalaryAdjustmentType": "დროზე მიბმული ხელფასის კორექტირების ტიპი"
+  "timeBasedSalaryAdjustmentType": "დროზე მიბმული ხელფასის კორექტირების ტიპი",
+  "timeBasedSalaryAdjustments": "დროზე მიბმული ხელფასის კორექტირებები",
+  "timeBasedSalaryAdjustment": "დროზე მიბმული ხელფასის კორექტირება",
+  "day": "დღე",
+  "hour": "საათი",
+  "minute": "წუთი"
 }

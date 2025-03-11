@@ -15,6 +15,7 @@ import { MonthlySalaryAdjustmentsService } from '../../../core/services/monthly-
 import { TimeBasedSalaryAdjustmentType } from '../../../core/models/time-based-salary-adjustment-type.model';
 import { ADJUSTMENT_TYPES } from '../../../core/constants/general.constants';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { AdjustmentTypeEnum } from '../../../core/models/general.model';
 
 @Component({
   selector: 'app-time-based-adjustment-type',
@@ -43,6 +44,8 @@ export class TimeBasedSalaryAdjustmentTypeComponent {
   //   MonthlySalaryAdjustmentsService,
   // );
   private readonly _translocoService = inject(TranslocoService);
+
+  adjustmentTypeEnum = AdjustmentTypeEnum;
 
   timeBasedSalaryAdjustmentTypeOptions = ADJUSTMENT_TYPES.map((option) => ({
     ...option,
