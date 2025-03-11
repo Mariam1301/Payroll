@@ -1,17 +1,12 @@
-import { CurrencyEnum } from './general.model';
-
 export interface Exemption {
   id: number;
-  type: string;
-  limit_type: LimitType;
-  end_date?: string | null;
+  name: string;
   start_date?: string | null;
-  amount?: number;
-  currency?: CurrencyEnum;
-}
-
-export enum LimitType {
-  TIME_BASED = 'TIME_BASED',
-  AMOUNT_BASED = 'AMOUNT_BASED',
-  PEMANENT = 'PEMANENT',
+  end_date?: string | null;
+  renewable: boolean;
+  amount: number;
+  percent: number;
+  constant: boolean;
+  balance_amount: number;
+  balance_date: string | null;
 }

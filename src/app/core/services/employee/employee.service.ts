@@ -190,7 +190,7 @@ export class EmployeeService {
 
   addIncomeTaxExemption(employeeId: number, data: Partial<Exemption>) {
     return this._baseHttpService.post(
-      `${this.entityName}/${employeeId}/income-tax-exemptions`,
+      `${this.entityName}/${employeeId}/tax-exemptions`,
       data,
     );
   }
@@ -199,20 +199,20 @@ export class EmployeeService {
     return this._baseHttpService
       .get<
         Partial<Exemption>[]
-      >(`${this.entityName}/${employeeId}/income-tax-exemptions`)
+      >(`${this.entityName}/${employeeId}/tax-exemptions`)
       .pipe(map((data) => data));
   }
 
   updateIncomeTaxExemption(employeeId: number, data: Partial<Exemption>) {
     return this._baseHttpService.put(
-      `${this.entityName}/${employeeId}/income-tax-exemptions/${data.id}`,
+      `${this.entityName}/${employeeId}/tax-exemptions/${data.id}`,
       data,
     );
   }
 
   deleteIncomeTaxExemption(employeeId: number, exemptionId: number) {
     return this._baseHttpService.delete(
-      `${this.entityName}/${employeeId}/income-tax-exemptions/${exemptionId}`,
+      `${this.entityName}/${employeeId}/tax-exemptions/${exemptionId}`,
     );
   }
 

@@ -173,5 +173,21 @@
   "date": "თარიღი",
   "sumCompensationGross": "სრული ანაზღაურება (დარიცხული)",
   "payrollFields": "უწყისის ველები",
-  "filter": "ფილტრი"
+  "filter": "ფილტრი",
+  "constant": "მუდმივი",
+  "renewable": "განახლებადი",
+  "balanceAmount": "ნაშთის თანხა",
+  "balanceDate": "ნაშთის თარიღი",
+  "incomeTaxPercent": "საშემოსავლო გადასახადის პროცენტული შემცირება",
+  "incomeTaxBalanceAmount": "საშემოსავლო შეღავათის საწყისი ნაშთი",
+  "incomeTaxBalanceDate": "საშემოსავლო შეღავათის საწყისი ნაშთის თარიღი",
+  "incomeTaxLimit": "საშემოსავლო გადასახადისგან გათავისუფლებული შემოსავლის ლიმიტი",
+  "limit": "ლიმიტი",
+  "unlimited": "ულიმიტო",
+  "renewableLimitDescription": " ლიმიტი განახლდება ყოველი კალენდარული წლის დასაწყისში",
+  "renewableLimit": "განახლებადი ლიმიტი",
+  "limitAmount": "ლიმიტის თანხა",
+  "selectLimitAmount": "აირჩიე ლიმიტის თანხა",
+  "selectPercent": "აირჩიე პროცენტი",
+  "current": "მიმდინარე"
 }

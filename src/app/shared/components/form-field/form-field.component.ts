@@ -6,6 +6,7 @@ import {
   DestroyRef,
   HostListener,
   inject,
+  input,
   Input,
   signal,
   WritableSignal,
@@ -13,16 +14,19 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormsModule, NgControl } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'ui-form-field',
   standalone: true,
-  imports: [NgIf, CommonModule, FormsModule],
+  imports: [NgIf, CommonModule, FormsModule, TooltipModule],
   templateUrl: './form-field.component.html',
 })
 export class UiFormFieldComponent implements AfterContentInit {
   @Input() label?: string;
   @Input() errorMessage?: string;
+
+  tootipText = input<string>();
 
   @HostListener('focusin')
   handleFocusIn(): void {
@@ -56,7 +60,7 @@ export class UiFormFieldComponent implements AfterContentInit {
   ngAfterContentInit(): void {
     if (!this.control) {
       console.warn(
-        'UiFormFieldComponent: No form control found for the wrapped element.'
+        'UiFormFieldComponent: No form control found for the wrapped element.',
       );
       return;
     }

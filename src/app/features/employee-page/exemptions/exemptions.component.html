@@ -4,75 +4,110 @@
   autocomplete="off"
   *transloco="let t"
 >
-  <ui-form-field class="w-full" [label]="t('type')">
-    <input
-      required
-      pInputText
-      name="type"
-      class="w-full"
-      [(ngModel)]="exemption().type"
-    />
+  <ui-form-field class="w-full" [label]="t('name')">
+    <input required pInputText name="name" [(ngModel)]="exemption().name" />
   </ui-form-field>
+  <div class="flex items-center gap-2">
+    <p-checkbox
+      name="renewable"
+      inputId="renewable"
+      [binary]="true"
+      [ariaLabel]="t('renewable')"
+      [(ngModel)]="exemption().renewable"
+    />
+    <label for="renewable">{{ t("renewable") }}</label>
+  </div>
+
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
-    <ui-form-field class="w-full" [label]="t('limitType')">
+    <ui-form-field
+      class="w-full"
+      [tootipText]="t('incomeTaxLimit')"
+      [label]="t('limitAmount')"
+    >
       <p-select
-        required
-        name="limitType"
+        name="limitAmount"
         optionLabel="label"
         optionValue="id"
-        [placeholder]="t('selectLimitType')"
-        appendTo="body"
-        [options]="limitTypeOptions()"
-        [(ngModel)]="exemption().limit_type"
-        (ngModelChange)="onLimitTypeChange($event)"
+        [placeholder]="t('selectLimitAmount')"
+        [options]="limitAmountTypeOptions"
+        [(ngModel)]="exemption()!.amount"
       />
     </ui-form-field>
-    @if (
-      exemption().limit_type === limitTypeEnum.AMOUNT_BASED ||
-      exemption().limit_type === limitTypeEnum.TIME_BASED
-    ) {
-      <ui-form-field class="w-full" [label]="t('startDate')">
-        <p-datepicker
-          appendTo="body"
-          required
-          name="startDate"
-          dateFormat="yy-mm-dd"
-          appendTo="body"
-          [showIcon]="true"
-          [showOnFocus]="false"
-          [maxDate]="(exemption().end_date | dateType) || now"
-          [(ngModel)]="exemption().start_date"
-      /></ui-form-field>
-    }
-    @if (exemption().limit_type === limitTypeEnum.AMOUNT_BASED) {
-      <div class="flex sm:flex-nowrap flex-wrap items-center gap-4 w-full">
-        <ui-form-field class="w-full" [label]="t('amount') + ' GEL'">
-          <input
-            required
-            pInputText
-            type="number"
-            name="amount"
-            class="w-full"
-            [(ngModel)]="exemption()!.amount"
-          />
-        </ui-form-field>
-      </div>
-    }
-    @if (exemption().limit_type === limitTypeEnum.TIME_BASED) {
+
+    <ui-form-field
+      class="w-full"
+      [tootipText]="t('incomeTaxPercent')"
+      [label]="t('percent')"
+    >
+      <p-select
+        name="percent"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectPercent')"
+        [options]="percentOption"
+        [(ngModel)]="exemption()!.percent"
+      />
+    </ui-form-field>
+  </div>
+
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('incomeTaxBalanceAmount')">
+      <input
+        pInputText
+        type="number"
+        name="balanceAmount"
+        class="w-full"
+        [(ngModel)]="exemption()!.balance_amount"
+      />
+    </ui-form-field>
+    <ui-form-field class="w-full" [label]="t('incomeTaxBalanceDate')">
+      <p-datepicker
+        appendTo="body"
+        name="balanceDate"
+        dateFormat="yy-mm-dd"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="exemption().balance_date"
+    /></ui-form-field>
+  </div>
+
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('startDate')">
+      <p-datepicker
+        appendTo="body"
+        name="startDate"
+        dateFormat="yy-mm-dd"
+        [maxDate]="exemption().end_date | dateType"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [(ngModel)]="exemption().start_date"
+    /></ui-form-field>
+
+    <div class="w-full relative">
       <ui-form-field class="w-full" [label]="t('endDate')">
         <p-datepicker
           appendTo="body"
           name="endDate"
           dateFormat="yy-mm-dd"
+          [disabled]="!!exemption().constant"
+          [minDate]="exemption().start_date | dateType"
           [showIcon]="true"
           [showOnFocus]="false"
-          [minDate]="exemption().start_date | dateType"
-          [maxDate]="(exemption().end_date | dateType) || now"
           [(ngModel)]="exemption().end_date"
       /></ui-form-field>
-    }
+      <div class="absolute -bottom-5 flex items-center gap-2">
+        <p-checkbox
+          name="constant"
+          inputId="constant"
+          [binary]="true"
+          [ariaLabel]="t('constant')"
+          [(ngModel)]="exemption().constant"
+          (ngModelChange)="onConstantChange()"
+        />
+        <label for="constant">{{ t("current") }}</label>
+      </div>
+    </div>
   </div>
-
   <ui-dialog-actions
     [showCancel]="true"
     [disabled]="!!form.invalid"

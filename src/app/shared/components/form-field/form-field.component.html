@@ -1,8 +1,9 @@
 <div>
   @if (label) {
     <label
-      class="mb-1 text-sm block"
+      class="mb-1 text-sm block w-fit pr-4"
       [ngClass]="{ 'text-red-600': errorMessage || displayError() }"
+      [pTooltip]="tootipText()"
     >
       {{ label }}<span *ngIf="isRequired()" class=""> *</span>
     </label>

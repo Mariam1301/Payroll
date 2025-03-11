@@ -8,22 +8,11 @@
     (rowClicked)="onRowClick($event)"
     (deleteClicked)="onDeleteClick($event)"
   >
-    <ui-data-element name="type" valueField="type"></ui-data-element>
-    <ui-data-element name="limitType">
-      <ng-template uiTemplate let-row>
-        <span>{{
-          t(
-            row.limit_type === limitType.TIME_BASED
-              ? "timeBased"
-              : row.limit_type === limitType.AMOUNT_BASED
-                ? "amountBased"
-                : "permanent"
-          )
-        }}</span>
-      </ng-template>
-    </ui-data-element>
+    <ui-data-element name="name" valueField="name"></ui-data-element>
 
     <ui-data-element name="amount" valueField="amount"></ui-data-element>
+    <ui-data-element name="percent" valueField="percent"></ui-data-element>
+
     <ui-data-element name="startDate">
       <ng-template uiTemplate let-row>
         <span>{{ row.start_date | date: "dd/MM/yyy" }}</span>
@@ -32,6 +21,29 @@
     <ui-data-element name="endDate">
       <ng-template uiTemplate let-row>
         <span>{{ row.end_date | date: "dd/MM/yyy" }}</span>
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="renewable">
+      <ng-template uiTemplate let-row>
+        @if (row.renewable) {
+          <i class="pi pi-check" style="font-size: 1rem"></i>
+        }
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="current">
+      <ng-template uiTemplate let-row>
+        @if (row.constant) {
+          <i class="pi pi-check" style="font-size: 1rem"></i>
+        }
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element
+      name="balanceAmount"
+      valueField="balance_amount"
+    ></ui-data-element>
+    <ui-data-element name="balanceDate">
+      <ng-template uiTemplate let-row>
+        <span>{{ row.balance_date | date: "dd/MM/yyy" }}</span>
       </ng-template>
     </ui-data-element>
   </ui-responsive-data-view>

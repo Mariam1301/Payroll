@@ -171,5 +171,19 @@
   "date": "Date",
   "sumCompensationGross": "Total compensation gross",
   "payrollFields": "Payroll Fields",
-  "filter": "Filter"
+  "filter": "Filter",
+  "constant": "Constant",
+  "renewable": "Renewable",
+  "balanceAmount": "Balance amount",
+  "incomeTaxBalanceAmount": "Income benefit initial balance",
+  "incomeTaxBalanceDate": "Income benefit initial balance date",
+  "incomeTaxLimit": "Income tax exempt limit",
+  "limit": "Limit",
+  "unlimited": "Unlimited",
+  "renewableLimitDescription": "The limit is updated at the beginning of each calendar year",
+  "renewableLimit": "Renewable Limit",
+  "limitAmount": "Limit amout",
+  "selectLimitAmount": "Select limit amount",
+  "selectPercent": "select Percent",
+  "current": "Current"
 }
