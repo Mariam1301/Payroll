@@ -1,0 +1,25 @@
+<ng-container *transloco="let t">
+  <ui-responsive-data-view
+    [title]="t('timeBasedSalaryAdjustmentTypes')"
+    [data]="data()"
+    [showAddButton]="true"
+    [showDeleteButton]="true"
+    (addButtonClicked)="onAddClick()"
+    (rowClicked)="onRowClick($event)"
+    (deleteClicked)="onDeleteClick($event)"
+  >
+    <ui-data-element name="type" valueField="type">
+      <ng-template uiTemplate let-row>
+        {{
+          row.type === adjustmentTypeEnum.BENEFIT
+            ? t("benefit")
+            : row.type === adjustmentTypeEnum.DEDUCTION
+              ? t("deduction")
+              : ""
+        }}
+      </ng-template>
+    </ui-data-element>
+    <ui-data-element name="name" valueField="name"></ui-data-element>
+    <ui-data-element name="percent" valueField="percent"></ui-data-element>
+  </ui-responsive-data-view>
+</ng-container>

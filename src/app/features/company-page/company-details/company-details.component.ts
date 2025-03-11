@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Company } from '../../../core/models/company.model';
 import { OvertimePolicyInformationComponent } from './overtime-policy-information/overtime-policy-information.component';
 import { MonthlyAdjustmentTypesInformationComponent } from './monthly-adjustment-types-information/monthly-adjustment-types-information.component';
+import { TimeBasedAdjustmentTypesInformationComponent } from './time-based-adjustment-types-information/time-based-adjustment-types-information.component';
 
 @Component({
   standalone: true,
@@ -15,6 +16,7 @@ import { MonthlyAdjustmentTypesInformationComponent } from './monthly-adjustment
     FormsModule,
     OvertimePolicyInformationComponent,
     MonthlyAdjustmentTypesInformationComponent,
+    TimeBasedAdjustmentTypesInformationComponent,
   ],
   templateUrl: './company-details.component.html',
 })

@@ -189,5 +189,7 @@
   "limitAmount": "ლიმიტის თანხა",
   "selectLimitAmount": "აირჩიე ლიმიტის თანხა",
   "selectPercent": "აირჩიე პროცენტი",
-  "current": "მიმდინარე"
+  "current": "მიმდინარე",
+  "timeBasedSalaryAdjustmentTypes": "დროზე მიბმული ხელფასის კორექტირების ტიპები",
+  "timeBasedSalaryAdjustmentType": "დროზე მიბმული ხელფასის კორექტირების ტიპი"
 }

@@ -1,8 +1,10 @@
 <div *transloco="let t" class="flex flex-col my-4 gap-8 pb-16">
   <h1 class="text-lg">
-    {{ companyDetails()?.name || "Fundsaccess" }}
+    {{ companyDetails()?.name || "კმპნიის სახელი" }}
   </h1>
+
+  <app-monthly-adjustment-types-information></app-monthly-adjustment-types-information>
+  <app-time-based-adjustment-types-information></app-time-based-adjustment-types-information>
 </div>
 
 <!-- <company-overtime-policy-information></company-overtime-policy-information> -->
-<app-monthly-adjustment-types-information></app-monthly-adjustment-types-information>
