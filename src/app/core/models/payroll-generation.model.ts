@@ -6,6 +6,7 @@ export interface PayrollGenerationModel {
   employee_ids: number[];
   prorate_adjustments: number[];
   regular_adjustments: number[];
+  payment_date: string;
 }
 
 export interface PayrollCalculationResultModel {

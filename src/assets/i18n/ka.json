@@ -196,5 +196,6 @@
   "timeBasedSalaryAdjustment": "დროზე მიბმული ხელფასის კორექტირება",
   "day": "დღე",
   "hour": "საათი",
-  "minute": "წუთი"
+  "minute": "წუთი",
+    "paymentDate": "გადახდის თარიღი"
 }

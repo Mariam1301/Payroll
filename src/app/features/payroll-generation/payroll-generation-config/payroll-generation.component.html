@@ -19,6 +19,17 @@
         ><p-button icon="pi  pi-ellipsis-v" [text]="true" />
       </p-accordion-header>
       <p-accordion-content>
+        <ui-form-field class="w-full" [label]="t('paymentDate')">
+          <p-datepicker
+            required
+            appendTo="body"
+            name="paymentDate"
+            dateFormat="yy-mm-dd"
+            [showIcon]="true"
+            [showOnFocus]="false"
+            [minDate]="payrollGenerationData().payment_date | dateType"
+            [(ngModel)]="payrollGenerationData().payment_date"
+        /></ui-form-field>
         <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
           <ui-form-field class="w-full" [label]="t('dateFrom')">
             <p-datepicker

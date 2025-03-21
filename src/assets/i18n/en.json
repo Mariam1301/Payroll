@@ -192,5 +192,6 @@
   "timeBasedSalaryAdjustment": "Time based salary adjustment",
   "day": "Day",
   "hour": "Hour",
-  "minute": "Minute"
+  "minute": "Minute",
+  "paymentDate": "Payment Date"
 }
