@@ -67,6 +67,7 @@ export class ExemptionsComponent {
       end_date: formatDateToISODate(this.exemption().end_date!),
       start_date: formatDateToISODate(this.exemption().start_date!),
       balance_date: formatDateToISODate(this.exemption().balance_date!),
+      constant: !this.exemption().amount
     };
     const stream$ = data?.id
       ? this._employeeService.updateIncomeTaxExemption(employeeId, data)
@@ -74,10 +75,22 @@ export class ExemptionsComponent {
     stream$.subscribe(() => this._ref.close(true));
   }
 
-  onConstantChange() {
+  onConstantChange(constant: boolean) {
     this.exemption.update((prev) => ({
       ...prev,
       end_date: undefined,
+      amount: constant?undefined:prev.amount 
     }));
+  }
+
+  onAmountChange(value?: number){
+    if(!value){
+      this.exemption.update((prev) => ({
+        ...prev,
+        balance_amount: undefined,
+        balance_date: undefined,
+        percent: undefined
+      }));
+    }
   }
 }

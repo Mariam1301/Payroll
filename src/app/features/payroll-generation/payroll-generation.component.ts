@@ -23,6 +23,7 @@ import { TreeNode } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { PayrollGenerationConfigComponent } from './payroll-generation-config/payroll-generation.component';
 import { UiSideBarLayoutComponent } from '../../shared/components/side-bar-layout/side-bar-layout.component';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-payroll-generation',
@@ -85,10 +86,10 @@ export class PayrollGenerationComponent implements OnInit {
 
   onGeneratePayrollClick(data: Partial<PayrollGenerationModel>) {
     this._payrollService
-      .calculatePayroll(data as PayrollGenerationModel)
+      .calculatePayroll(data as PayrollGenerationModel).pipe(finalize(() => this.isGenerationDisabled.set(true)))
       .subscribe((payrollData) => {
         !!payrollData && this.data.set(payrollData);
-        this.isGenerationDisabled.set(true);
+        // this.isGenerationDisabled.set(true);
       });
   }
 

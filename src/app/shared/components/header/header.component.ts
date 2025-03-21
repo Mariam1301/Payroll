@@ -1,7 +1,7 @@
 import { Component, inject, output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AvatarModule } from 'primeng/avatar';
-import { selectUser, selectUserState } from '../../../store/user/user.selector';
+import { selectUser } from '../../../store/user/user.selector';
 import { map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { AuthUser } from '../../../store/user/user.state';

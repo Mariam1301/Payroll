@@ -99,7 +99,7 @@
           [showIcon]="true"
           [showOnFocus]="false"
           [minDate]="monthlySalaryAdjustment().start_date | dateType"
-          [maxDate]="(monthlySalaryAdjustment().end_date | dateType) || now"
+          [maxDate]="(monthlySalaryAdjustment().end_date | dateType)"
           [disabled]="currentMonthlyAdjustment()"
           [(ngModel)]="monthlySalaryAdjustment().end_date"
       /></ui-form-field>

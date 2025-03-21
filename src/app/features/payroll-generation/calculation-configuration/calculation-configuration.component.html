@@ -29,7 +29,6 @@
         <p-checkbox
           [ngModel]="field.isProportional"
           [binary]="true"
-          [disabled]="!field.includeInCalculation"
           (ngModelChange)="onProportionalChange($event, field)"
         />
       </td>

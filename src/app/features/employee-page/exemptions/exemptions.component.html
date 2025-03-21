@@ -7,16 +7,17 @@
   <ui-form-field class="w-full" [label]="t('name')">
     <input required pInputText name="name" [(ngModel)]="exemption().name" />
   </ui-form-field>
-  <div class="flex items-center gap-2">
-    <p-checkbox
-      name="renewable"
-      inputId="renewable"
-      [binary]="true"
-      [ariaLabel]="t('renewable')"
-      [(ngModel)]="exemption().renewable"
-    />
-    <label for="renewable">{{ t("renewable") }}</label>
-  </div>
+    <div class="flex items-center gap-2">
+      <p-checkbox
+        name="renewable"
+        inputId="renewable"
+        [binary]="true"
+        [ariaLabel]="t('renewable')"
+        [(ngModel)]="exemption().renewable"
+      />
+      <label for="renewable">{{ t("renewable") }}</label>
+    </div>
+
 
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field
@@ -31,10 +32,11 @@
         [placeholder]="t('selectLimitAmount')"
         [options]="limitAmountTypeOptions"
         [(ngModel)]="exemption()!.amount"
+        (ngModelChange)="onAmountChange($event)"
       />
     </ui-form-field>
 
-    <ui-form-field
+    @if(!!exemption().amount){   <ui-form-field
       class="w-full"
       [tootipText]="t('incomeTaxPercent')"
       [label]="t('percent')"
@@ -47,10 +49,10 @@
         [options]="percentOption"
         [(ngModel)]="exemption()!.percent"
       />
-    </ui-form-field>
+    </ui-form-field>}
   </div>
 
-  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+  @if(!!exemption().amount){<div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('incomeTaxBalanceAmount')">
       <input
         pInputText
@@ -69,7 +71,7 @@
         [showOnFocus]="false"
         [(ngModel)]="exemption().balance_date"
     /></ui-form-field>
-  </div>
+  </div>}
 
   <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
     <ui-form-field class="w-full" [label]="t('startDate')">
@@ -83,7 +85,7 @@
         [(ngModel)]="exemption().start_date"
     /></ui-form-field>
 
-    <div class="w-full relative">
+    <!-- <div class="w-full relative"> -->
       <ui-form-field class="w-full" [label]="t('endDate')">
         <p-datepicker
           appendTo="body"
@@ -95,19 +97,19 @@
           [showOnFocus]="false"
           [(ngModel)]="exemption().end_date"
       /></ui-form-field>
-      <div class="absolute -bottom-5 flex items-center gap-2">
+      <!-- <div class="absolute -bottom-5 flex items-center gap-2">
         <p-checkbox
           name="constant"
           inputId="constant"
           [binary]="true"
           [ariaLabel]="t('constant')"
           [(ngModel)]="exemption().constant"
-          (ngModelChange)="onConstantChange()"
+          (ngModelChange)="onConstantChange($event)"
         />
         <label for="constant">{{ t("current") }}</label>
-      </div>
+      </div> -->
     </div>
-  </div>
+  <!-- </div> -->
   <ui-dialog-actions
     [showCancel]="true"
     [disabled]="!!form.invalid"

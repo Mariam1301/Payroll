@@ -19,7 +19,7 @@ export const EXEMPTION_PERCENT_TYPE_OPTIONS = [
     label: '50%',
   },
   {
-    id: 100,
+    id: undefined,
     label: '100%',
   },
 ];
