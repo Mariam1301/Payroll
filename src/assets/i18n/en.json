@@ -193,5 +193,7 @@
   "day": "Day",
   "hour": "Hour",
   "minute": "Minute",
-  "paymentDate": "Payment Date"
+  "paymentDate": "Payment Date",
+  "initialSalaryBalance": "Initial salary balance",
+  "systemMigrationDate": "System migration date"
 }

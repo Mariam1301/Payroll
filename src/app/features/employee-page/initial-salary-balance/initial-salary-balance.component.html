@@ -1,0 +1,71 @@
+<form
+  #form="ngForm"
+  class="flex flex-col gap-4"
+  autocomplete="off"
+  *transloco="let t"
+>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <ui-form-field class="w-full" [label]="t('systemMigrationDate')">
+      <p-datepicker
+        disabled
+        appendTo="body"
+        name="startDate"
+        dateFormat="yy-mm-dd"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        [ngModel]="now"
+    /></ui-form-field>
+    <ui-form-field class="w-full" [label]="t('amount')">
+      <input
+        required
+        pInputText
+        type="number"
+        name="amount"
+        class="w-full"
+        [(ngModel)]="initialSalaryAdjustment()!.amount"
+      />
+    </ui-form-field>
+
+    <ui-form-field class="w-full" [label]="t('currency')">
+      <p-select
+        required
+        appendTo="body"
+        name="calculationCurrency"
+        optionLabel="label"
+        optionValue="id"
+        [placeholder]="t('selectCurrency')"
+        [options]="currencyOptions"
+        [(ngModel)]="initialSalaryAdjustment().currency"
+      />
+    </ui-form-field>
+  </div>
+  <div class="flex sm:flex-nowrap flex-wrap items-center gap-4">
+    <div>
+      <p-checkbox
+        name="includesIncomeTax"
+        inputId="includesIncomeTax"
+        [binary]="true"
+        [(ngModel)]="initialSalaryAdjustment()!.includes_income_tax"
+      />
+      <label class="ml-2" for="includesIncomeTax">{{
+        t("includesIncomeTax")
+      }}</label>
+    </div>
+    <div>
+      <p-checkbox
+        name="includesEmployeePension"
+        inputId="includesEmployeePension"
+        [binary]="true"
+        [(ngModel)]="initialSalaryAdjustment()!.includes_employee_pension"
+      />
+      <label class="ml-2" for="includesEmployeePension">{{
+        t("includesEmployeePension")
+      }}</label>
+    </div>
+  </div>
+  <ui-dialog-actions
+    [showCancel]="true"
+    [disabled]="!!form.invalid"
+    (saveClicked)="onSaveClick()"
+  ></ui-dialog-actions>
+</form>

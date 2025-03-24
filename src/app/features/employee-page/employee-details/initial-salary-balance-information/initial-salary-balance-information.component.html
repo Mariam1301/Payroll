@@ -1,0 +1,52 @@
+<ng-container *transloco="let t">
+  <div
+    class="flex sm:items-center justify-between flex-col sm:flex-row items-start mb-8"
+  >
+    <h1 class="font-primeng font-semibold text-xl mb-5 sm:mb-0">
+      {{ t("initialSalaryBalance") }}
+    </h1>
+
+    @if (!!initialSalaryBalanceInformation()) {
+      <button
+        class="p-button w-full sm:w-fit justify-center flex gap-2 items-center"
+        (click)="onEditClick()"
+      >
+        <i class="pi pi-pencil" style="font-size: 1rem"></i>
+        <p *transloco="let t">{{ t("edit") }}</p>
+      </button>
+    } @else {
+      <button
+        class="p-button w-full sm:w-fit justify-center flex gap-2 items-center"
+        (click)="onAddClick()"
+      >
+        <i class="pi pi-plus" style="font-size: 1rem"></i>
+        <p *transloco="let t">{{ t("add") }}</p>
+      </button>
+    }
+  </div>
+  @if (!!initialSalaryBalanceInformation()) {
+    <div
+      class="w-full grid grid-cols-2 gap-x-10 border p-5 items-center gap-y-5"
+    >
+      <ui-preview-field [label]="t('amount')">{{
+        initialSalaryBalanceInformation()?.amount +
+          " " +
+          initialSalaryBalanceInformation()?.currency
+      }}</ui-preview-field>
+      <ui-preview-field [label]="t('includesEmployeePension')">
+        @if (initialSalaryBalanceInformation()?.includes_employee_pension) {
+          <i class="pi pi-check" style="font-size: 1rem"></i>
+        }
+      </ui-preview-field>
+      <ui-preview-field [label]="t('includesIncomeTax')">
+        @if (initialSalaryBalanceInformation()?.includes_income_tax) {
+          <i class="pi pi-check" style="font-size: 1rem"></i>
+        }
+      </ui-preview-field>
+    </div>
+  } @else {
+    <p class="w-full text-center py-5 text-surface-400">
+      {{ t("noRecord") }}
+    </p>
+  }
+</ng-container>

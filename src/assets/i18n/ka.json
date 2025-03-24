@@ -197,5 +197,7 @@
   "day": "დღე",
   "hour": "საათი",
   "minute": "წუთი",
-    "paymentDate": "გადახდის თარიღი"
+  "paymentDate": "გადახდის თარიღი",
+  "initialSalaryBalance": "საწყისი ხელფასის ნაშთი",
+  "systemMigrationDate": "სისტემაზე გადმოსვლის თარიღი"
 }

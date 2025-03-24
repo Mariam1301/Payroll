@@ -11,7 +11,7 @@ import { MonthlySalaryAdjustmentsInformationComponent } from './monthly-salary-a
 import { EmployeeComponent } from '../employee/employee.component';
 import { ExemptionInformationComponent } from './exemption-information/exemption-information.component';
 import { UiDialogService } from '../../../core/services/dialog/dialog.service';
-import { IncentiveBonusInformationComponent } from './incentive-bonus-information/incentive-bonus-information.component';
+import { InitialSalaryBalanceInformationComponent } from './initial-salary-balance-information/initial-salary-balance-information.component';
 
 @Component({
   standalone: true,
@@ -23,7 +23,7 @@ import { IncentiveBonusInformationComponent } from './incentive-bonus-informatio
     SalaryInformationComponent,
     MonthlySalaryAdjustmentsInformationComponent,
     ExemptionInformationComponent,
-    IncentiveBonusInformationComponent,
+    InitialSalaryBalanceInformationComponent,
   ],
   templateUrl: './employee-details.component.html',
 })
